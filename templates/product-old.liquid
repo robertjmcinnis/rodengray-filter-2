@@ -1,0 +1,179 @@
+{% assign titleLength = product.title | size %}
+{% assign vendorLength = product.vendor | size %}
+{% assign nameLength = titleLength | plus:vendorLength %}
+{% assign brand = product.vendor | handleize %}
+
+<article class="product-page clearfix">
+	<section class="product-images eight columns alpha">
+		<script>
+			$(function(){
+				$("#slides").slidesjs({
+					width: 500,
+					height: 625
+				});
+			});
+		</script>
+		<figure id="slides" class="big">
+			{% for image in product.images %}
+				<a href="{{ image.src | product_img_url: 'master' }}">
+					<img src="{{ image.src | product_img_url: '1024x1024' }}" alt="{{ image.alt | escape }}">
+				</a>
+			{% endfor %}
+		</figure>
+		<div class="detail-images">
+			{% for image in product.images %}
+				<img {% if forloop.index == 1 %}class="thumb active" {% endif %}id="thumb{{ forloop.index0 }}" src="{{ image.src | product_img_url: 'small' }}" alt="{{ image.alt | escape }}">
+			{% endfor %}
+		</div>
+	</section>
+	<section class="product-details eight columns omega">
+		<h2 class="product-title"><span class="product-designer"><a href="/collections/{{ brand }}">{{ product.vendor }}</a></span> {% if nameLength >= 37 %}<br>{% endif %}<span class="product-name">{{ product.title }}</span></h2>
+		{% raw %}
+		<script type="text/javascript">
+			function changeContent(name) {
+			  var details = document.getElementById('item-details');
+			  var designer = document.getElementById('item-designer');
+			  var fit = document.getElementById('item-fit');
+			  var returns = document.getElementById('item-returns');
+			  switch (name){
+			    case "details":
+			      details.style.display = "block";
+			      designer.style.display = "none";
+			      fit.style.display = "none";
+			      returns.style.display = "none";
+			      $('#item-details-btn').addClass('active');
+			      $('#item-designer-btn').removeClass('active');
+			      $('#item-fit-btn').removeClass('active');
+			      $('#item-returns-btn').removeClass('active');
+			    break;
+			    case "designer":
+			      details.style.display = "none";
+			      designer.style.display = "block";
+			      fit.style.display = "none";
+			      returns.style.display = "none";
+			      $('#item-details-btn').removeClass('active');
+			      $('#item-designer-btn').addClass('active');
+			      $('#item-fit-btn').removeClass('active');
+			      $('#item-returns-btn').removeClass('active');
+			    break;
+			    case "fit":
+			      details.style.display = "none";
+			      designer.style.display = "none";
+			      fit.style.display = "block";
+			      returns.style.display = "none";
+			      $('#item-details-btn').removeClass('active');
+			      $('#item-designer-btn').removeClass('active');
+			      $('#item-fit-btn').addClass('active');
+			      $('#item-returns-btn').removeClass('active');
+			    break;
+			    case "returns":
+			      details.style.display = "none";
+			      designer.style.display = "none";
+			      fit.style.display = "none";
+			      returns.style.display = "block";
+			      $('#item-details-btn').removeClass('active');
+			      $('#item-designer-btn').removeClass('active');
+			      $('#item-fit-btn').removeClass('active');
+			      $('#item-returns-btn').addClass('active');
+			    break;
+			    default:
+			      details.style.display = "block";
+			      designer.style.display = "none";
+			      fit.style.display = "none";
+			      returns.style.display = "none";
+			  }
+			}
+		</script>
+		{% endraw %}
+		<div class="info-btns">
+			<button id="item-details-btn" class="active" onclick="javascript: changeContent('details');">Details</button>
+			<button id="item-designer-btn" onclick="javascript: changeContent('designer');">Designer</button>
+			<button id="item-fit-btn" onclick="javascript: changeContent('fit');">Fit Info</button>
+			<button id="item-returns-btn"onclick="javascript: changeContent('returns');">Returns</button>
+		</div>
+		<div class="product-desc rte">
+			{{ product.description }}
+			<div id="item-returns">
+				{% include 'item-returns' %}
+			</div>
+		</div>
+		<div class="price-field">
+			{% if product.compare_at_price_min > product.price %}
+			<span class="sale-price">{{ product.price | money }}</span>
+			<span class="regular-price">{{ product.compare_at_price_max | money }}</span>
+			{% else %}
+			{{ product.price | money }}
+			{% endif %}
+		</div>
+		<form action="/cart/add" method="post" class="product-form">
+			<div class="product-variants">
+				{% comment %} ENUMERATE PRODUCT OPTIONS {% endcomment %}
+				{% for options in product.options limit:1 %}
+					{% assign option1 = options %}
+				{% endfor %}
+				{% for options in product.options limit:1 offset:1 %}
+					{% assign option2 = options %}
+				{% endfor %}
+				{% for options in product.options limit:1 offset:2 %}
+					{% assign option3 = options %}
+				{% endfor %}
+				{% if option1 == 'Colours' %}
+					{% for variant in product.variants limit:1 %}
+						<h3>Colour: {{ variant.option1 }}</h3>
+						{% if option2 != null %}
+							<h3>Choose a {{ option2 }}:</h3>
+						{% endif %}
+					{% endfor %}
+				{% endif %}
+				{% if option1 == 'Colours' and option2 == null and option3 == null %}
+					{% for variant in product.variants %}
+						<input class="hidden" type="radio" name="id" value="{{ variant.id }}" checked>
+					{% endfor %}
+				{% else %}
+					{% assign sizeSelected = false %}
+					{% for variant in product.variants %}
+						<div class="variant">
+							<input type="radio" id="var{{ forloop.index }}"name="id" value="{{ variant.id }}"{% if variant.available == false %} disabled{% endif %}>
+							<label for="var{{ forloop.index }}" onclick="">
+								<span class="check">&nbsp;</span>
+								<span class="size">
+									{% unless option1 =='Colours' %}
+										{{ variant.option1 }}
+									{% endunless %}
+									{{ variant.option2}}
+									{% if option3 != null %}
+										 | {{ variant.option3 }}
+									{% endif %}
+								</span>
+							</label>
+						</div>
+					{% endfor %}
+				{% endif %}
+			</div>
+			<input id="add-bag" type="submit" name="add" value="Add to Bag" class="buy btn" />
+		</form>
+		{% if collection %}
+			<div class="product-nav clearflex">
+				{% if collection.previous_product %}
+					<div class="left">{{ '&larr; Previous Item' | link_to: collection.previous_product }}</div>
+				{% endif %}
+				{% if collection.next_product %}
+					<div class="right">{{ 'Next Item &rarr;' | link_to: collection.next_product }}</div>
+				{% endif %}
+			</div>
+		{% endif %}
+	</section>
+</article>
+<section class="related-items">
+	{% include 'wear-it-with' %}
+	<div class="more-from row">
+		<h3>More from {{ product.vendor }}</h3>
+		<span class="designer-link"><a href="/collections/{{ brand }}">View All</a></span>
+		{% assign currentProduct = product.id %}
+		{% capture index %}{{ 'now' | date: '%S' | times: collections.[brand].products.size | divided_by: 60 }}{% endcapture %}
+		{% for product in collections.[brand].products offset:index limit:4 %}
+			{% include 'related-loop' %}
+		{% endfor %}
+	</div>
+</section>
+{{ 'jquery.slides.js' | asset_url | script_tag }}

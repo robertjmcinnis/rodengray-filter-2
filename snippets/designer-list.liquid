@@ -1,0 +1,44 @@
+{% assign list = linklists.contemporary-brands %}
+{% assign offset = 0 %}
+{% assign list_size = list.links.size %}
+{% assign list_limit = list_size | divided_by: 3 %}
+{% assign remainder = list_size | modulo: 3 %}
+{% if remainder > 0 %}{% assign list_limit = list_limit | plus:1 %}{% endif %}
+
+<nav class="sixteen columns designer-list" id="designer-list">
+	<div class="row">
+		<h2>Brand List</h2>
+      	<br />
+	</div>
+	<div class="row">
+      <div class="one-third column alpha">
+          <ul>
+              {% for link in list.links offset: offset limit: list_limit %}
+              <li>
+                  <a href="{{ link.url }}">{{ link.title | remove: '<strong> - S/S 2014 Arrivals</strong>' | remove: '<strong> - Now Available</strong>' | remove: '<strong> - New Designer</strong>' }}</a>
+              </li>
+              {% endfor %}
+          </ul>
+      </div>
+      {% assign offset = offset | plus: list_limit %}
+      <div class="one-third column">
+          <ul>
+              {% for link in list.links offset: offset limit: list_limit %}
+              <li>
+                  <a href="{{ link.url }}">{{ link.title | remove: '<strong> - S/S 2014 Arrivals</strong>' | remove: '<strong> - Now Available</strong>' | remove: '<strong> - New Designer</strong>' }}</a>
+              </li>
+              {% endfor %}
+          </ul>
+      </div>
+      {% assign offset = offset | plus: list_limit %}
+      <div class="one-third column omega">
+          <ul>
+              {% for link in list.links offset: offset %}
+              <li>
+                  <a href="{{ link.url }}">{{ link.title | remove: '<strong> - S/S 2014 Arrivals</strong>' | remove: '<strong> - Now Available</strong>' | remove: '<strong> - New Designer</strong>' }}</a>
+              </li>
+              {% endfor %}
+          </ul>
+      </div>
+	</div>
+</nav>

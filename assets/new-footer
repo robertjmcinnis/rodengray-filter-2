@@ -1,0 +1,66 @@
+<div class="new">
+	<div class="tablet-row">
+		<div class="two columns">
+			<ul>
+				<li><h4>About</h4></li>
+				
+			</ul>
+		</div>
+		<div class="four columns">
+			<ul>
+				<li><h4>Customer Service</h4></li>
+				
+			</ul>
+		</div>
+		<div class="six columns">
+			<ul>
+				<li><h4>Become an Insider</h4></li>
+				<li>
+					<!-- Begin MailChimp Signup Form -->
+					<div class="mc_embed_signup">
+					<form action="http://rodengray.us2.list-manage.com/subscribe/post?u=81a8db5d2d46720110e454e44&amp;id=89291efd13" method="post" class="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+						
+					<div class="mc-field-group clearfix">
+						<input type="email" value="" placeholder="Enter your email" name="EMAIL" class="required email mce-EMAIL">
+						<input type="submit" value="Subscribe" name="subscribe" class="button mc-embedded-subscribe">
+					</div>
+						<div class="mce-responses">
+							<div class="response mce-error-response" style="display:none"></div>
+							<div class="response mce-success-response" style="display:none"></div>
+						</div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+					    <div style="position: absolute; left: -5000px;"><input type="text" name="b_81a8db5d2d46720110e454e44_89291efd13" tabindex="-1" value=""></div>
+					</form>
+					</div>
+
+					<!--End mc_embed_signup-->
+				</li>
+				<li><h4>Follow Us</h4></li>
+				<li class="social">
+					<a href="http://facebook.com/rodengray" class="facebook" target="_blank"><span class="icon-facebook"></span></a>
+					<a href="http://twitter.com/rodengray" class="twitter" target="_blank"><span class="icon-twitter"></span></a>
+					<a href="http://instagram.com/rodengray" class="instagram" target="_blank"><span class="icon-instagram"></span></a>
+					<a href="http://plus.google.com/+RodenGrayVancouver" class="googleplus" target="_blank"><span class="icon-googleplus"></span></a>
+					<a href="http://pinterest.com/rodengray" class="pinterest" target="_blank"><span class="icon-pinterest"></span></a>
+					<a href="http://weibo.com/u/5023318491" class="sina-weibo" target="_blank"><span class="icon-sina-weibo"></span></a>
+					<a href="http://rodengray.tumblr.com" class="tumblr" target="_blank"><span class="icon-tumblr"></span></a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="four columns contact">
+		<ul>
+			<li><a href="">
+				<!--[if lte IE 8]> 
+					<img class="logo" src="//cdn.shopify.com/s/files/1/0240/7285/t/64/assets/logo_img.png?v=9583726803777904339">
+				<![endif]-->
+				<!--[if gt IE 8]><!-->
+					<img class="logo" src="//cdn.shopify.com/s/files/1/0240/7285/t/64/assets/logo_img.svg?v=1350048129581496824">
+				<!--<![endif]-->
+			</a></li>
+			<li class="location"><a href="/pages/our-shop">8 Water St. Vancouver, BC<br>V6B 1A4 Canada</a></li>
+			<li><h4>Shop Hours</h4></li>
+			<li>Mon &mdash; Sat: 11AM &mdash; 6PM</li>
+			<li>Sun &amp; Hol: 12PM &mdash; 5PM</li>
+		</ul>
+	</div>
+</div>

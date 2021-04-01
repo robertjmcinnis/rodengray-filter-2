@@ -1,0 +1,65 @@
+{% include 'looks-featured-items' %}
+
+{% paginate blog.articles by 8 %}
+<section class="looks">
+	<div class="row title">
+		<h2>{{ blog.title }}</h2>
+	</div>
+	{% for article in blog.articles %}
+	<article id="look{{ forloop.index0 }}" class="sixteen columns look">
+		<figure id="slides{{ forloop.index0 }}" class="ten columns alpha">
+			{{ article.content }}
+		</figure>
+		<div class="six columns omega description">
+			<header>
+				<h3><a href="{{ article.url }}" title="{{ article.title }}">{{ article.title }}</a></h3>
+			</header>
+			<section class="products">
+				<div class="excerpt">{{ article.excerpt }}</div>
+			</section>
+			{% include 'share-buttons' %}
+		</div>
+	</article>
+	<script type="text/javascript" charset="utf-8">
+		lookItems( '{{ forloop.index0 }}', '{{ article.metafields.looks.products }}', '{{ article.metafields.looks.extra-products | escape }}');
+	</script>
+	{% endfor %}
+	<div class="sixteen columns blog-nav">
+		{% if paginate.previous %}
+		<a class="prev" href="{{ paginate.previous.url }}"><span class="icon-arrow-left"></span>Previous Page</a>
+		{% endif %}
+		{% if paginate.next %}
+		<a class="next" href="{{ paginate.next.url }}">Next Page<span class="icon-arrow-right"></span></a>
+		{% endif %}
+	</div>
+</section>
+<script type="text/javascript">
+	// Deprecated
+	// $(function(){
+	// 	{% for article in blog.articles %}
+	// 	if ( $('#slides{{ forloop.index0 }}').find('img').length > 1 ) {
+	// 		$('#slides{{ forloop.index0 }}').slidesjs({
+	// 			width: 760,
+	// 			height: 760,
+	// 			navigation: {
+	// 				active: true,
+	// 				effect: "fade"
+	// 			}
+	// 		});
+	// 	}
+	// 	else {
+	// 		$('#slides{{ forloop.index0 }}').removeAttr('id');
+	// 	}
+	// 	{% endfor %}
+	// });
+	$('article').each(function(){
+		var postUrl = escape($(this).find('.title a').prop('href'));
+		var postImg = escape($(this).find('img').prop('src'));
+		var postTitle = $(this).find('h3.title').text();
+		$(this).find('div.pin').find('a').attr('href', '//pinterest.com/pin/create/button/?url=' + postUrl + '&media=' + postImg + '"');
+		if ( postImg.length > 0) {
+			$(this).find('div.tumblr').find('a').attr('href', 'http://www.tumblr.com/share/photo?source=' + postImg );
+		};
+	});
+</script>
+{% endpaginate %}

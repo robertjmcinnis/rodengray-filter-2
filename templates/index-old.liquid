@@ -1,0 +1,192 @@
+<section class="index-page">
+	<figure class="sixteen columns alpha omega hero {{ settings.landing_hero_headline_color }} ">
+		<a href="{{ settings.landing_hero_link }}">
+			<img class="scale-with-grid" src="{{ "landing_hero.jpg" | asset_url }}" alt="{{ settings.landing_hero_alt }}">
+			{% if settings.landing_hero_headline_enabled %}
+				<figcaption>
+					<h2>{{ settings.landing_hero_headline }}</h2>
+					{% if settings.landing_hero_subheadline_enabled %}
+						<h3>{{ settings.landing_hero_subheadline }}</h3>
+					{% endif %}
+				</figcaption>
+			{% endif %}
+		</a>
+	</figure>
+	{% if settings.landing_row1_enabled %}
+		{% assign row1_cols = 0 %}
+		{% if settings.landing_row1_cols == "1" %}
+			{% assign row1_cols = 1 %}
+		{% endif %}
+		{% if settings.landing_row1_cols == "2" %}
+			{% assign row1_cols = 2 %}
+		{% endif %}
+		{% if settings.landing_row1_cols == "3" %}
+			{% assign row1_cols = 3 %}
+		{% endif %}
+		<div class="row">
+			{% if row1_cols >= 1 %}
+				<figure class="{{ settings.landing_row1_img1_hcolor }} {{ settings.landing_row1_img1_width }} alpha{% if row1_cols == 1 %} omega{% endif %}">
+					<a href="{{ settings.landing_row1_img1_link }}">
+						<img class="scale-with-grid" src="{{ 'landing_row1_img1.jpg' | asset_url }}" alt="{{ settings.landing_row1_img1_alt }}">
+					</a>
+					{% if settings.landing_row1_img1_headline_enabled %}
+						<figcaption>
+							<h2>{{ settings.landing_row1_img1_headline }}</h2>
+							{% if settings.landing_row1_img1_subheadline_enabled %}
+								<h3>{{ settings.landing_row1_img1_subheadline }}</h3>
+							{% endif %}
+						</figcaption>
+					{% endif %}
+				</figure>
+			{% endif %}
+			{% if row1_cols >= 2 %}
+				<figure class="{{ settings.landing_row1_img2_hcolor }} {{ settings.landing_row1_img2_width }}{% if row1_cols == 2 %} omega{% endif %}">
+					<a href="{{ settings.landing_row1_img2_link }}">
+						<img class="scale-with-grid" src="{{ 'landing_row1_img2.jpg' | asset_url }}" alt="{{ settings.landing_row1_img2_alt }}">
+						{% if settings.landing_row1_img2_headline_enabled %}
+							<figcaption>
+								<h2>{{ settings.landing_row1_img2_headline }}</h2>
+								{% if settings.landing_row1_img2_subheadline_enabled %}
+									<h3>{{ settings.landing_row1_img2_subheadline }}</h3>
+								{% endif %}
+							</figcaption>
+						{% endif %}
+					</a>
+				</figure>
+			{% endif %}
+			{% if row1_cols >= 3 %}
+				<figure class="{{ settings.landing_row1_img3_hcolor }} {{ settings.landing_row1_img3_width }} omega">
+					<a href="{{ settings.landing_row1_img3_link }}">
+						<img class="scale-with-grid" src="{{ 'landing_row1_img3.jpg' | asset_url }}" alt="{{ settings.landing_row1_img3_alt }}">
+						{% if settings.landing_row1_img3_headline_enabled %}
+							<figcaption>
+								<h2>{{ settings.landing_row1_img3_headline }}</h2>
+								{% if settings.landing_row1_img3_subheadline_enabled %}
+									<h3>{{ settings.landing_row1_img3_subheadline }}</h3>
+								{% endif %}
+							</figcaption>
+						{% endif %}
+					</a>
+				</figure>
+			{% endif %}
+		</div>
+	{% endif %}
+	{% if settings.landing_row2_enabled %}
+		{% assign row2_cols = 0 %}
+		{% if settings.landing_row2_cols == "1" %}
+			{% assign row2_cols = 1 %}
+		{% endif %}
+		{% if settings.landing_row2_cols == "2" %}
+			{% assign row2_cols = 2 %}
+		{% endif %}
+		{% if settings.landing_row2_cols == "3" %}
+			{% assign row2_cols = 3 %}
+		{% endif %}
+		<div class="row">
+			{% if row2_cols >= 1 %}
+				<figure class="{{ settings.landing_row2_img1_hcolor }} {{ settings.landing_row2_img1_width }} alpha{% if row2_cols == 1 %} omega{% endif %}">
+					<a href="{{ settings.landing_row2_img1_link }}">
+						<img class="scale-with-grid" src="{{ 'landing_row2_img1.jpg' | asset_url }}" alt="{{ settings.landing_row2_img1_alt }}">
+						{% if settings.landing_row2_img1_headline_enabled %}
+							<figcaption>
+								<h2>{{ settings.landing_row2_img1_headline }}</h2>
+								{% if settings.landing_row2_img1_subheadline_enabled %}
+									<h3>{{ settings.landing_row2_img1_subheadline }}</h3>
+								{% endif %}
+							</figcaption>
+						{% endif %}
+					</a>
+				</figure>
+			{% endif %}
+			{% if row2_cols >= 2 %}
+				<figure class="{{ settings.landing_row2_img2_hcolor }} {{ settings.landing_row2_img2_width }}{% if row2_cols == 2 %} omega{% endif %}">
+					<a href="{{ settings.landing_row2_img2_link }}">
+						<img class="scale-with-grid" src="{{ 'landing_row2_img2.jpg' | asset_url }}" alt="{{ settings.landing_row2_img2_alt }}">
+						{% if settings.landing_row2_img2_headline_enabled %}
+							<figcaption>
+								<h2>{{ settings.landing_row2_img2_headline }}</h2>
+								{% if settings.landing_row2_img2_subheadline_enabled %}
+									<h3>{{ settings.landing_row2_img2_subheadline }}</h3>
+								{% endif %}
+							</figcaption>
+						{% endif %}
+					</a>
+				</figure>
+			{% endif %}
+			{% if row2_cols >= 3 %}
+				<figure class="{{ settings.landing_row2_img3_hcolor }} {{ settings.landing_row2_img3_width }} omega">
+					<a href="{{ settings.landing_row2_img3_link }}">
+						<img class="scale-with-grid" src="{{ 'landing_row2_img3.jpg' | asset_url }}" alt="{{ settings.landing_row2_img3_alt }}">
+						{% if settings.landing_row2_img3_headline_enabled %}
+							<figcaption>
+								<h2>{{ settings.landing_row2_img3_headline }}</h2>
+								{% if settings.landing_row2_img3_subheadline_enabled %}
+									<h3>{{ settings.landing_row2_img3_subheadline }}</h3>
+								{% endif %}
+							</figcaption>
+						{% endif %}
+					</a>
+				</figure>
+			{% endif %}
+		</div>
+	{% endif %}
+	{% if settings.landing_row3_enabled %}
+		{% assign row3_cols = 0 %}
+		{% if settings.landing_row3_cols == "1" %}
+			{% assign row3_cols = 1 %}
+		{% endif %}
+		{% if settings.landing_row3_cols == "2" %}
+			{% assign row3_cols = 2 %}
+		{% endif %}
+		{% if settings.landing_row3_cols == "3" %}
+			{% assign row3_cols = 3 %}
+		{% endif %}
+		<div class="row">
+			{% if row3_cols >= 1 %}
+				<figure class="{{ settings.landing_row3_img1_hcolor }} {{ settings.landing_row3_img1_width }} alpha{% if row3_cols == 1 %} omega{% endif %}">
+					<a href="{{ settings.landing_row3_img1_link }}">
+						<img class="scale-with-grid" src="{{ 'landing_row3_img1.jpg' | asset_url }}" alt="{{ settings.landing_row3_img1_alt }}">
+						{% if settings.landing_row3_img1_headline_enabled %}
+							<figcaption>
+								<h2>{{ settings.landing_row3_img1_headline }}</h2>
+								{% if settings.landing_row3_img1_subheadline_enabled %}
+									<h3>{{ settings.landing_row3_img1_subheadline }}</h3>
+								{% endif %}
+							</figcaption>
+						{% endif %}
+					</a>
+				</figure>
+			{% endif %}
+			{% if row3_cols >= 2 %}
+				<figure class="{{ settings.landing_row3_img2_hcolor }} {{ settings.landing_row3_img2_width }}{% if row3_cols == 2 %} omega{% endif %}">
+					<a href="{{ settings.landing_row3_img2_link }}">
+						<img class="scale-with-grid" src="{{ 'landing_row3_img2.jpg' | asset_url }}" alt="{{ settings.landing_row3_img2_alt }}">
+						{% if settings.landing_row3_img2_headline_enabled %}
+							<figcaption>
+								<h2>{{ settings.landing_row3_img2_headline }}</h2>
+								{% if settings.landing_row3_img2_subheadline_enabled %}
+									<h3>{{ settings.landing_row3_img2_subheadline }}</h3>
+								{% endif %}
+							</figcaption>
+						{% endif %}
+					</a>
+				</figure>
+			{% endif %}
+			{% if row3_cols >= 3 %}
+				<figure class="{{ settings.landing_row3_img3_hcolor }} {{ settings.landing_row3_img3_width }} omega">
+					<a href="{{ settings.landing_row3_img3_link }}">
+						<img class="scale-with-grid" src="{{ 'landing_row3_img3.jpg' | asset_url }}" alt="{{ settings.landing_row3_img3_alt }}">
+						{% if settings.landing_row3_img3_headline_enabled %}
+							<figcaption>
+								<h2>{{ settings.landing_row3_img3_headline }}</h2>
+								{% if settings.landing_row3_img3_subheadline_enabled %}
+									<h3>{{ settings.landing_row3_img3_subheadline }}</h3>
+								{% endif %}
+							</figcaption>
+						{% endif %}
+					</a>
+				</figure>
+			{% endif %}
+		</div>
+	{% endif %}
+</section>

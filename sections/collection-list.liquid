@@ -1,0 +1,83 @@
+<section class="home-collection-list">
+	<div class="wrapper">
+		{% if section.settings.section_title != blank %}
+		<h3 class="widget-heading">{{ section.settings.section_title }}</h3>
+		{% endif %}
+		<carousel class="row" :per-page="1" :per-page-custom="[[992, 2], [1200, 3]]">
+			{% for block in section.blocks %}
+				{% assign collection = collections[block.settings.collection] %}
+
+				<slide class="col home-collection-list__card">
+					<a href="{{ collection.url }}">
+						<img src="{{ block.settings.image.src | img_url: '1000x' }}" alt="{{ block.settings.image.alt }}" class="home-collection-list__image" />
+
+						<div class="home-collection-list__content">
+							<h3 class="home-collection-list__title">{{ collection.title }}</h3>
+							<p class="mb-xs">{{ block.settings.description }}</p>
+							<p class="home-collection-list__cta">Shop Collection<i class="fal fa-angle-right home-collection-list__icon"></i></p>
+						</div>
+					</a>
+				</slide>
+			{% endfor %}
+
+			{% if section.blocks.size == 0 %}
+				{% include 'no-blocks' %}
+			{% endif %}
+		</carousel>
+	</div>
+</section>
+
+{% schema %}
+	{
+		"name": "Collection List",
+		"max_blocks": 3,
+		"settings": [
+			{
+				"id": "section_title",
+				"type": "text",
+				"label": "Section Heading",
+				"info": "Leave blank to hide"
+			}
+		],
+		"blocks": [
+			{
+				"type": "collection",
+				"name": "Collection",
+				"settings": [
+					{
+						"label": "Collection",
+						"id": "collection",
+						"type": "collection"
+					},
+					{
+						"label": "Featured Image",
+						"id": "image",
+						"type": "image_picker"
+					},
+					{
+						"label": "Description",
+						"id": "description",
+						"type": "textarea"
+					}
+				]
+			}
+		],
+		"presets": [
+			{
+				"name": "Collection List",
+				"category": "Collection",
+				"blocks": [
+					{
+						"type": "collection"
+					},
+					{
+						"type": "collection"
+					},
+					{
+						"type": "collection"
+					}
+				]
+			}
+		]
+	}
+{% endschema %}

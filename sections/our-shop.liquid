@@ -1,0 +1,26 @@
+<section class="about">
+	{% for block in section.blocks %}
+
+		{% if block.type == 'hero' %}
+			<div class="about-hero">
+				{% if block.settings.hero_image != blank %}
+					<div class="about-hero__image" style="background-image:url({{ block.settings.hero_image }});"></div>
+				{% endif %}
+				<div class="about-hero__content">
+					{% if block.settings.title != blank %}
+						<div class="about-hero__title" style="background-image:url({{ block.settings.title }});"></div>
+					{% endif %}
+					{% if block.settings.body_text != blank %}
+						<div class="about-hero__title" style="background-image:url({{ block.settings.title }});"></div>
+					{% endif %}
+				</div>
+			</div>
+		{% endif %}
+
+		{% if block.type == 'full_image' %}
+			<div class="about-image">
+			</div>
+		{% endif %}
+
+	{% endfor %}
+</section>

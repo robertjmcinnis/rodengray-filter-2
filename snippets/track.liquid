@@ -1,0 +1,89 @@
+{% comment %}
+*** Tracking Code Goes Here ***
+{% endcomment %}
+
+<!-- Adroll -->
+{% if settings.track-adroll %}
+<script>
+{% if template == 'product' %}adroll_custom_data = {"product_id": "{{ product.variants.first.sku }}"};{% endif %}
+adroll_adv_id = "4W3HDFKNXNENPFP4IN4W7V";
+adroll_pix_id = "VNT2ASHFGBG2RCHFL3F6B4";
+(function () {
+var oldonload = window.onload;
+window.onload = function(){
+   __adroll_loaded=true;
+   var scr = document.createElement("script");
+   var host = (("https:" == document.location.protocol) ? "https://s.adroll.com" : "http://a.adroll.com");
+   scr.setAttribute('async', 'true');
+   scr.type = "text/javascript";
+   scr.src = host + "/j/roundtrip.js";
+   ((document.getElementsByTagName('head') || [null])[0] ||
+    document.getElementsByTagName('script')[0].parentNode).appendChild(scr);
+   if(oldonload){oldonload()}};
+}());
+</script>
+{% endif %}
+
+{% if settings.track-vwo %}
+<!-- Start Visual Website Optimizer Asynchronous Code -->
+<script type='text/javascript'>
+var _vwo_code=(function(){
+var account_id=71728,
+settings_tolerance=2000,
+library_tolerance=2500,
+use_existing_jquery=false,
+// DO NOT EDIT BELOW THIS LINE
+f=false,d=document;return{use_existing_jquery:function(){return use_existing_jquery;},library_tolerance:function(){return library_tolerance;},finish:function(){if(!f){f=true;var a=d.getElementById('_vis_opt_path_hides');if(a)a.parentNode.removeChild(a);}},finished:function(){return f;},load:function(a){var b=d.createElement('script');b.src=a;b.type='text/javascript';b.innerText;b.onerror=function(){_vwo_code.finish();};d.getElementsByTagName('head')[0].appendChild(b);},init:function(){settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);this.load('//dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(d.URL)+'&r='+Math.random());var a=d.createElement('style'),b='body{opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important;}',h=d.getElementsByTagName('head')[0];a.setAttribute('id','_vis_opt_path_hides');a.setAttribute('type','text/css');if(a.styleSheet)a.styleSheet.cssText=b;else a.appendChild(d.createTextNode(b));h.appendChild(a);return settings_timer;}};}());_vwo_settings_timer=_vwo_code.init();
+</script>
+{% include 'vwo-goals' | strip %}
+<!-- End Visual Website Optimizer Asynchronous Code -->
+{% endif %}
+
+<!-- Google Remarketing -->
+<div style="display:none">
+<script type="text/javascript">
+var google_tag_params = {
+{% case template %}
+{% when 'index' %}
+ecomm_prodid: '',
+ecomm_pagetype: 'home',
+ecomm_totalvalue: ''
+{% when 'search' %}
+ecomm_prodid: '',
+ecomm_pagetype: 'searchresults',
+ecomm_totalvalue: ''
+{% when 'collection' %}
+ecomm_prodid: '',
+ecomm_pagetype: 'category',
+ecomm_totalvalue: '',
+ecomm_category: '{{ collection.title | handleize }}'
+{% when 'product' %}
+ecomm_prodid: '{{ product.id }}',
+ecomm_pagetype: 'product',
+ecomm_totalvalue: '{{ product.price | money_without_currency | remove: ',' }}'
+{% when 'cart' %}
+ecomm_prodid: [{% for item in cart.items %}'{{ item.product.id }}'{% unless forloop.last %},{% endunless %}{% endfor %}],
+ecomm_pagetype: 'cart',
+ecomm_totalvalue: '{{ cart.total_price | money_without_currency | remove: ',' }}'
+{% else %}
+ecomm_prodid: '',
+ecomm_pagetype: 'other',
+ecomm_totalvalue: ''
+{% endcase %}
+};
+</script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 997014251;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+</div>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/997014251/?value=0&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>

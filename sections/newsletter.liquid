@@ -1,0 +1,97 @@
+{%- comment -%}
+  This is a required section for the Shopify Theme Store.
+  It is available when you add "Newsletter" section on the Theme Editor.
+
+  Theme Store required settings
+  - Heading: title of the newsletter section
+  - Subheading: description of the newsletter section
+{%- endcomment -%}
+<newsletter-section inline-template :newsletter-open="newsletterOpen" :timeout="{{ section.settings.newsletter_timeout | times: 1000 }}" @handle-newsletter="handleNewsletter">
+	<section class="modal" :class="{ 'modal--open': newsletterOpen }">
+    <form :action="'https://manage.kmail-lists.com/subscriptions/subscribe?a=NADu5J&g=' + activeList" method="POST" class="modal__content" ref="form">
+      <i class="fal fa-times modal__close" @click="closeModal"></i>
+      <input type="hidden" name="g" :value="activeList">
+      {% if section.settings.section_title != blank %}
+        <h2 class="modal__title">
+          {{ section.settings.section_title | escape }}
+        </h2>
+      {% endif %}
+      {% if section.settings.subheading != blank %}
+        <p class="mb-lg">{{ section.settings.subheading | escape }}</p>
+      {% endif %}
+
+      <span class="mb-sm">
+        <label for="k_id_email" class="label-hidden">Email Address</label>
+        <input type="email" name="email" id="k_id_email" placeholder="Email Address" required />
+      </span>
+
+      <span class="mb-xs">
+        <input type="checkbox" id="newsletter_1" name="Newsletter 1" ref="newsletter1" v-model="newsletterChecked" />
+        <label for="newsletter_1">{{ section.settings.checkbox_1_label }}</label>
+      </span>
+
+      <span class="mb-lg">
+        <input type="checkbox" id="newsletter_2" name="Newsletter 2" ref="newsletter2" v-model="salesChecked" />
+        <label for="newsletter_2">{{ section.settings.checkbox_2_label }}</label>
+      </span>
+
+      <span>
+        <label for="submit-button" class="label-hidden">Subscribe</label>
+        <input @click="submitForm" id="submit-button" class="modal__button button" value="{{ section.settings.cta_text }}" />
+      </span>
+    </form>
+	</section>
+</newsletter-section>
+
+{% schema %}
+  {
+    "name": "Newsletter",
+    "settings": [
+      {
+        "type": "text",
+        "id": "section_title",
+        "label": "Heading",
+        "default": "Subscribe to the Roden Gray newsletter"
+      },
+      {
+        "type": "text",
+        "id": "subheading",
+        "label": "Subheading",
+        "default": "Be the first to hear about our latest releases"
+      },
+      {
+        "type": "text",
+        "id": "checkbox_1_label",
+        "label": "Checkbox 1 Label",
+        "info": "Label for newsletter checkbox",
+        "default": "I would like to receive the Roden Gray newsletter"
+      },
+      {
+        "type": "text",
+        "id": "checkbox_2_label",
+        "label": "Checkbox 2 Label",
+        "info": "Label for sales checkbox",
+        "default": "I would like to receive emails about sales"
+      },
+      {
+        "type": "text",
+        "id": "cta_text",
+        "label": "CTA Text",
+        "default": "Subscribe"
+      },
+      {
+        "type": "paragraph",
+        "content": "Any customers who sign up will have an account created for them in Shopify. [View customers](/admin/customers?query=&accepts_marketing=1)"
+      },
+      {
+        "type": "range",
+        "id": "newsletter_timeout",
+        "min": 3,
+        "max": 15,
+        "default": 8,
+        "label": "Newsletter Timeout",
+        "info": "Time (in seconds) that newsletter popup will appear"
+      }
+    ]
+  }
+{% endschema %}

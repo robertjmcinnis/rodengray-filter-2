@@ -1,0 +1,130 @@
+{% if template == 'collection' %}
+	{% assign conversion1 = false %}
+	{% assign conversion2 = false %}
+
+	{% comment %} Category Collection Visits {% endcomment %}
+	{% for link in linklists.departments.links %}
+		{% if collection.url == link.url %}
+			{% assign conversion1 = true %}
+			{% assign conversion1-number = 200 %}
+		{% endif %}
+	{% endfor %}
+	{% for link in linklists.clothing.links %}
+		{% if collection.url == link.url %}
+			{% assign conversion1 = true %}
+			{% assign conversion1-number = 200 %}
+		{% endif %}
+	{% endfor %}
+	{% for link in linklists.footwear.links %}
+		{% if collection.url == link.url %}
+			{% assign conversion1 = true %}
+			{% assign conversion1-number = 200 %}
+		{% endif %}
+	{% endfor %}
+	{% for link in linklists.accessories.links %}
+		{% if collection.url == link.url %}
+			{% assign conversion1 = true %}
+			{% assign conversion1-number = 200 %}
+		{% endif %}
+	{% endfor %}
+	{% for link in linklists.apothecary.links %}
+		{% if collection.url == link.url %}
+			{% assign conversion1 = true %}
+			{% assign conversion1-number = 200 %}
+		{% endif %}
+	{% endfor %}
+	{% for link in linklists.library.links %}
+		{% if collection.url == link.url %}
+			{% assign conversion1 = true %}
+			{% assign conversion1-number = 200 %}
+		{% endif %}
+	{% endfor %}
+
+	{% comment %} Brand Collection Visits {% endcomment %}
+	{% for link in linklists.designer-brands.links %}
+		{% if collection.url == link.url %}
+			{% assign conversion1 = true %}
+			{% assign conversion1-number = 201 %}
+		{% endif %}
+	{% endfor %}
+	{% for link in linklists.contemporary-brands.links %}
+		{% if collection.url == link.url %}
+			{% assign conversion1 = true %}
+			{% assign conversion1-number = 201 %}
+		{% endif %}
+	{% endfor %}
+	{% for link in linklists.heritage-brands.links %}
+		{% if collection.url == link.url %}
+			{% assign conversion1 = true %}
+			{% assign conversion1-number = 201 %}
+		{% endif %}
+	{% endfor %}
+	{% for link in linklists.footwear-brands.links %}
+		{% if collection.url == link.url %}
+			{% assign conversion1 = true %}
+			{% assign conversion1-number = 201 %}
+		{% endif %}
+	{% endfor %}
+	{% for link in linklists.accessories-bags-brands.links %}
+		{% if collection.url == link.url %}
+			{% assign conversion1 = true %}
+			{% assign conversion1-number = 201 %}
+		{% endif %}
+	{% endfor %}
+
+	{% comment %} Featured Category Collection Visits {% endcomment %}
+	{% for link in linklists.featured-clothing.links %}
+		{% if collection.url == link.url %}
+			{% assign conversion2 = true %}
+			{% assign conversion2-number = 202 %}
+		{% endif %}
+	{% endfor %}
+	{% for link in linklists.featured-footwear.links %}
+		{% if collection.url == link.url %}
+			{% assign conversion2 = true %}
+			{% assign conversion2-number = 202 %}
+		{% endif %}
+	{% endfor %}
+	{% for link in linklists.featured-accessories.links %}
+		{% if collection.url == link.url %}
+			{% assign conversion2 = true %}
+			{% assign conversion2-number = 202 %}
+		{% endif %}
+	{% endfor %}
+	{% for link in linklists.featured-apothecary.links %}
+		{% if collection.url == link.url %}
+			{% assign conversion2 = true %}
+			{% assign conversion2-number = 202 %}
+		{% endif %}
+	{% endfor %}
+	{% for link in linklists.featured-library.links %}
+		{% if collection.url == link.url %}
+			{% assign conversion2 = true %}
+			{% assign conversion2-number = 202 %}
+		{% endif %}
+	{% endfor %}
+
+	{% comment %} Featured Brand Collection Visits {% endcomment %}
+	{% for link in linklists.featured-designer-items.links %}
+		{% if collection.handle == link.object.vendor | handleize %}
+			{% assign conversion2 = true %}
+			{% assign conversion2-number = 203 %}
+		{% endif %}
+	{% endfor %}
+	{% for link in linklists.designers.links %}
+		{% if collection.url == link.url %}
+			{% assign conversion2 = true %}
+			{% assign conversion2-number = 203 %}
+		{% endif %}
+	{% endfor %}
+
+	{% if conversion1 or conversion2 %}<script type="text/javascript">
+		window._vis_opt_queue = window._vis_opt_queue || [];
+		window._vis_opt_queue.push(function() {
+			{% if conversion1 %}_vis_opt_goal_conversion({{ conversion1-number }});{% endif %}
+	    	{% if conversion2 %}_vis_opt_goal_conversion({{ conversion2-number }});{% endif %}
+	    	_vis_opt_pause(500);
+		});
+	</script>{% endif %}
+
+{% endif %}

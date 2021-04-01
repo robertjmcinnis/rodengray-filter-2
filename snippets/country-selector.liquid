@@ -1,0 +1,19 @@
+<aside id="country-selector" class="modal-wrap">
+	<div class="modal">
+		<h4>Choose your Shipping Destination:</h4>
+		<div class="country">
+			<label for="country">Country</label>
+			<select name="country" id="destination-country">
+				{{ country_option_tags }}
+			</select>
+		</div>
+		<div class="province" style="display:none;">
+			<label for="province" id="destination-province-label">Province</label>
+			<select name="province" id="destination-province"></select>
+		</div>
+		<a id="destination-apply" class="button" href="#">Apply</a>
+		<a href="#" id="country-selector-close" class="close-modal"><span class="icon-cross"></span></a>
+		<div class="currency-disclaimer">All transactions are processed in Canadian Dollars. <a href="http://rodengray.com/pages/shopping-with-us#about-currency">Read more here</a>.</div>
+	</div>
+	<div class="modal-overlay"></div>
+</aside>

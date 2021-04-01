@@ -1,0 +1,238 @@
+{% paginate collection.products by 24 %}
+	<collection :header-height="headerHeight" :has-announcements="hasAnnouncements" inline-template>
+		<div class="collection" id="collection" v-cloak>
+			{% if collection.image %}
+			<section class="collection-hero" role="banner">
+				<div class="collection-hero__background" style="background-image:url({{ collection.image | img_url: '1920x' }});background-color:{{ collection.metafields.brand.accent_color }};" id="collection-hero" :style="'transform:translateY(' + ( 1 + scrollPosition / 1.5 ) + 'px);'"></div>
+				<div class="wrapper">
+					<div class="row">
+						<div class="col-lg-6 col-md-8 col-sm-12">
+							<div class="collection-hero__content">
+								<h1 class="collection-hero__title" style="border-color:{{ collection.metafields.brand.accent_color }};">{{ collection.title }}</h1>
+								<p class="collection-hero__body">{{ collection.description | strip_html }}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			{% endif %}
+
+			<section class="collection-filters" :class="{'collection-filters--fixed': filtersFixed, 'collection-filters--announcements': hasAnnouncements}" ref="filters">
+				<div class="collection-filters__content">
+					<div class="wrapper">
+						<div class="row">
+							<div class="col-lg-4 collection-filters__item collection-filters__item--scroll">
+								<transition name="fade" mode="out-in">
+									<p :key="filtersFixed" v-if="! filtersFixed" class="collection-filters__button" @click="scrollToContent"><i class="far fa-angle-down mr-xs"></i>Start Shopping</p>
+									<p :key="filtersFixed" v-else-if="filtersFixed && scrollPosition > 0" class="collection-filters__button" @click="scrollToContent"><i class="far fa-angle-up mr-xs"></i>Scroll to Top</p>
+								</transition>
+							</div>
+							<div class="col collection-filters__item collection-filters__item--brand">
+								<transition name="fade-brand">
+									<h3 v-if="filtersFixed" class="collection-filters__title">{{ collection.title }}</h3>
+								</transition>
+							</div>
+							<div class="col-lg-4 col-sm-12 collection-filters__item collection-filters__item--filters">
+								<div class="collection-filters__button collection-filters__button--select">
+									<select ref="sort-by" class="collection-filters__select" @change="updateSort($event)">
+										<option value="" selected disabled>Sort By</option>
+										<option value="best-selling">Best Selling</option>
+										<option value="price-ascending">Price: Low to High</option>
+										<option value="price-descending">Price: High to Low</option>
+										<option value="title-ascending">Name: A-Z</option>
+										<option value="title-descending">Name: Z-A</option>
+										<option value="created-ascending">Oldest to Newest</option>
+										<option value="created-descending">Newest to Oldest</option>
+									</select>
+									<i class="fas fa-sort ml-xs"></i>
+								</div>
+								<div class="collection-filters__button collection-filters__button--filter-by">
+									<p class="collection-filters__title" @click="toggleFilters" :class="{'collection-filters__title--active': filtersOpen}">Filter By<i class="ml-xs" :class="[ filtersOpen ? 'far fa-toggle-on' : 'fas fa-toggle-off' ]"></i></p>
+									<transition name="fade">
+										{% include 'extended-filters' %}
+									</transition>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+
+			<div class="collection-list">
+				<div class="wrapper">
+					
+						<div class="row" id="AjaxinateLoop">
+						
+							{% for product in collection.products %}
+							
+								<product-card {% if product.has_only_default_variant %}:no-options="true" default-variant="{{ product.first_available_variant.id }}"{% endif %} inline-template class="product-card col-lg-3 col-md-4 col-sm-6">
+									<div class="col-lg-3 col-md-4 col-sm-6 collection-list__card" @mouseenter="isActive = true" @mouseleave="isActive = false" data-aos="fade" data-aos-offset="0" data-aos-delay="100">
+										<div class="collection-list__image-wrap">
+											<a href="{{ product.url | within: collection }}" target="_blank">
+												{% for image in product.images limit: 2 %}
+													<div class="collection-list__image">
+														{% include 'responsive-image' with
+															image: image,
+															max_width: 600,
+															max_height: 1200
+														%}
+													</div>
+												{% endfor %}
+											</a>
+										</div>
+
+										<div class="collection-list__details">
+											<div class="collection-list__item-name">
+												<a class="collection-list__designer" href="/collections/{{ product.vendor | downcase | replace: ' ', '-' }}" target="_blank">
+													{{ product.vendor }}
+												</a>
+												<a href="{{ product.url | within: collection }}" target="_blank">
+	                        						{{ product.title }}
+												</a>
+											</div>
+		                    
+						                    <div class="collection-list__price-quickshop">
+						                      <p
+						                        class="collection-list__price-info collection-list__price-info--has-quickshop"
+						                        :class="{'collection-list__price-info--hidden': isActive}"
+						                      >
+						                        {% if product.compare_at_price > product.price %}
+						                          <span class="collection-list__compare-at">{{ product.compare_at_price | money }}</span>
+						                        {% endif %}
+
+						                        {% if product.available %}
+						                          {% if product.price_varies %}from {% endif %}{{ product.price | money_with_currency }}
+						                        {% else %}
+						                          {{ 'products.product.sold_out' | t }}
+						                        {% endif %}
+						                      </p>
+
+						                      <form class="quick-shop" action="/cart/add" :class="{'quick-shop--active': isActive}">
+						                        {% if product.has_only_default_variant %}
+						                          <button
+						                            class="quick-shop__button"
+						                            @click="handleQuickShop({{ product.selected_or_first_available_variant.id }}, $event)"
+						                          >
+						                            Add to Cart
+						                          </button>
+						                        {% else %}
+						                          {% for option in product.options_with_values %}
+						                            {% if option.name contains 'Size' %}
+						                              {% assign selectedOption = 'option' | append: forloop.index %}
+						                            {% endif %}
+						                          {% endfor %}
+						                          {% for variant in product.variants %}
+						                            {% assign variant_shorthand = variant[selectedOption]
+						                              | downcase
+						                              | replace: 'small', 'S'
+						                              | replace: 'medium', 'M'
+						                              | replace: 'extra', 'X'
+						                              | replace: 'large', 'L'
+						                              | replace: ' ', ''
+						                            %}
+						                            {% if variant.available %}
+						                             <!--  <button class="quick-shop__button" @click="handleQuickShop({{ variant.id }}, $event)">{{ variant_shorthand }}</button> -->
+<!-- 
+						                             	<button type="submit" name="id" class="qb" value="{{ variant.id }}">{{ variant_shorthand }}</button> -->
+
+						                             	<input type="button" name="add" class="add_to_cart quick-shop__button" variant="{{ variant.id }}" value="{{ variant_shorthand }}">
+						                            {% else %}
+						                              <button class="quick-shop__button" disabled>{{ variant_shorthand }}</button>
+						                            {% endif %}
+						                          {% endfor %}
+						                        {% endif %}
+						                      </form>
+						                    </div>
+										</div>
+									</div>
+								</product-card>
+
+							{% else %}
+
+								{% if collection.handle == 'all' and collection.all_vendors.size == 0 and collection.all_types.size == 0 %}
+									{% for i in (1..8) %}
+									<a href="#">
+										{% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+										{{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
+									</a>
+
+									<p>
+										<a href="#">{{ 'homepage.onboarding.product_title' | t }}</a>
+									</p>
+
+									<p>
+										{{ 1999 | money }}
+									</p>
+									{% endfor %}
+								{% else %}
+									<p>{{ 'collections.general.no_matches' | t }}</p>
+								{% endif %}
+							{% endfor %}
+						</div>
+					
+				</div>
+			</div>
+
+			{% if paginate.pages > 1 %}
+			    <div id="AjaxinatePagination">
+			      {% if paginate.next %}
+			        <a href="{{ paginate.next.url }}">Loading More Products</a>
+			      {% endif %}
+			    </div>
+			{% endif %}
+		</div>
+	</collection>
+{% endpaginate %}
+
+
+{% assign archive-sale-phase = 1 %}
+
+{% if archive-sale-phase == 1 %}
+
+		<div class="password-popup">
+			<div class="content">
+				<h2 class="password-popup-title">Welcome to the Archive Sale</h2>
+				<p class="password-popup-description">Please enter the password to shop the sale.</p>
+				<form onsubmit="passwordSubmit()" class="popup-form">
+					<!-- <h2 class="password-popup__password-title">Enter the Archive Sale</h2> -->
+					<input type="password" name="password" id="archive-password" placeholder="password">
+					<button class="button button--white">Enter</button>
+					<p class="password-popup__error">Please try again</p>
+
+				</form>				
+			</div>
+		</div>
+
+
+{% endif %}
+
+{% if archive-sale-phase == 2 %}
+	
+		<div class="password-popup">
+			<div class="content">
+				<div class="content-subscribe">
+					<h2 class="password-popup-title">Welcome to the Archive Sale</h2>
+					<p class="password-popup-description password-popup-description--subscribe">Please subscribe to shop the sale.</p>
+					
+					<div class="klaviyo-form-placeholder"></div>
+					<div class="klaviyo-form-WA77cv"></div>
+
+					<p class="password-enter-password"><a class="password-link">Have a password? Enter it here <i class="fa fa-angle-right"></i></a></p>
+				</div>
+					
+				<form onsubmit="passwordSubmit()" class="popup-form popup-form--subscribe">
+					<h2 class="password-popup__password-title">Enter the Archive Sale</h2>
+					<input type="password" name="password" id="archive-password" placeholder="password">
+					<button class="button button--white">Enter</button>
+					<p class="password-popup__error">Please try again</p>
+					<a class="password-popup-back"><i class="fa fa-angle-left"></i> Back</a>					
+				</form>	
+				
+			</div>
+
+		</div>
+
+{% endif %}
+
+

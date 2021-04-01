@@ -1,0 +1,91 @@
+{% capture designers %}{% for product_vendor in shop.vendors %}{{ product_vendor | handleize }}{% endfor %}{% endcapture %}
+{% capture clothing %}{% for link in linklists.clothing.links %}{{ link.title | handleize }}{% endfor %}{% endcapture %}
+{% capture footwear %}{% for link in linklists.footwear.links %}{{ link.title | handleize }}{% endfor %}{% endcapture %}
+{% capture accessories %}{% for link in linklists.accessories.links %}{{ link.title | handleize }}{% endfor %}{% endcapture %}
+{% capture apothecary %}{% for link in linklists.apothecary.links %}{{ link.title | handleize }}{% endfor %}{% endcapture %}
+<div data-swiftype-index="false" class="breadcrumbs">
+	<span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/" class="homepage-link" title="Back to Home" itemprop="url"><span itemprop="title">Roden Gray</span></a></span>
+	{% if template contains "product" %}
+		{% if collection %}            
+			<span class="separator">&#124;</span>
+			{% if collection.handle %}
+			{% if collection.handle contains 'magazines' or collection.handle contains 'books' %}
+			<span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/collections/library" title="Library" itemprop="url"><span itemprop="title">Library</span></a></span>&nbsp;<span class="separator">&#124;</span>
+			{% else %}
+				{% if designers contains collection.handle %}
+				<span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/pages/designer-list" title="Designer List" itemprop="url"><span itemprop="title">Designers</span></a></span>&nbsp;<span class="separator">&#124;</span>
+				{% elsif clothing contains collection.handle %}
+				<span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/collections/clothing" itemprop="url"><span itemprop="title">Clothing</span></a></span>&nbsp;<span class="separator">&#124;</span>
+				{% elsif footwear contains collection.handle %}
+				<span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/collections/footwear" itemprop="url"><span itemprop="title">Footwear</span></a></span>&nbsp;<span class="separator">&#124;</span>
+				{% elsif accessories contains collection.handle %}
+				<span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/collections/accessories" itemprop="url"><span itemprop="title">Accessories</span></a></span>&nbsp;<span class="separator">&#124;</span>
+				{% elsif apothecary contains collection.handle %}
+				<span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/collections/apothecary" itemprop="url"><span itemprop="title">Apothecary</span></a></span>&nbsp;<span class="separator">&#124;</span>
+				{% endif %}
+			{% endif %}
+			{% capture url %}/collections/{{ collection.handle }}{% endcapture %}
+			<span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="{{ url }}" itemprop="url"><span itemprop="title">{{ collection.title }}</span></a></span>
+		{% elsif collection.all_products_count > 0 and collection.products.first.type == collection.title %}
+			{{ collection.title | link_to_type }}
+		{% elsif collection.all_products_count > 0 and collection.products.first.vendor == collection.title %}
+			{{ collection.title | link_to_vendor }}
+		{% endif %}
+		{% else %}
+			{% capture type %}{{ product.type | handleize }}{% endcapture %}
+			{% if type contains 'magazines' or type contains 'books' %}
+			<span class="separator">&#124;</span>&nbsp;<span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/collections/library" title="Library" itemprop="url"><span itemprop="title">Library</span></a></span>
+			{% else %}
+				{% if clothing contains type %}
+				<span class="separator">&#124;</span>&nbsp;
+				<span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/collections/clothing" itemprop="url"><span itemprop="title">Clothing</span></a></span>
+				{% elsif footwear contains type %}
+				<span class="separator">&#124;</span>&nbsp;
+				<span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/collections/footwear" itemprop="url"><span itemprop="title">Footwear</span></a></span>
+				{% elsif accessories contains type %}
+				<span class="separator">&#124;</span>&nbsp;
+				<span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/collections/accessories" itemprop="url"><span itemprop="title">Accessories</span></a></span>
+				{% elsif apothecary contains type %}
+				<span class="separator">&#124;</span>&nbsp;<span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/collections/apothecary" itemprop="url"><span itemprop="title">Apothecary</span></a></span>
+				{% endif %}
+			{% endif %}
+			<span class="separator">&#124;</span>&nbsp;
+			<span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/collections/{{ product.type }}" title="{{ product.type }}" itemprop="url"><span itemprop="title">{{ product.type }}</span></a></span>
+		{% endif %}
+	{% elsif template == "article" %}
+		<span class="separator">&#124;</span> 
+		{{ blog.title | link_to: blog.url }}
+	{% elsif template == 'collection' %}
+		{% if collection.handle contains 'magazines' or collection.handle contains 'books' %}
+		<span class="separator">&#124;</span>&nbsp;<span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/collections/library" title="Library" itemprop="url"><span itemprop="title">Library</span></a></span>
+		{% else %}
+			{% if designers contains collection.handle %}
+			<span class="separator">&#124;</span>&nbsp;<span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/pages/designer-list" title="Designer List" itemprop="url"><span itemprop="title">Designers</span></a></span>
+			{% elsif clothing contains collection.handle %}
+			<span class="separator">&#124;</span>&nbsp;<span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/collections/clothing" itemprop="url"><span itemprop="title">Clothing</span></a></span>
+			{% elsif footwear contains collection.handle %}
+			<span class="separator">&#124;</span>&nbsp;<span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/collections/footwear" itemprop="url"><span itemprop="title">Footwear</span></a></span>
+			{% elsif accessories contains collection.handle %}
+			<span class="separator">&#124;</span>&nbsp;<span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/collections/accessories" itemprop="url"><span itemprop="title">Accessories</span></a></span>
+			{% elsif apothecary contains collection.handle %}
+			<span class="separator">&#124;</span>&nbsp;<span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/collections/apothecary" itemprop="url"><span itemprop="title">Apothecary</span></a></span>
+			{% endif %}
+		{% endif %}
+	{% endif %}
+	<span class="separator">&#124;</span>
+	<span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="{% if collection and current_tags %}{{ collection.url }}{% else %}{{ page.url }}{% endif %}" title="{{ page_title }}" itemprop="url" class="page-title"><span itemprop="title">{{ page_title }}</span></a></span>
+	{% if current_tags %}
+		{% for tag in current_tags %}
+			{% assign tag_collection = collections[tag] %}
+			{% if tag_collection.title == '' %}
+				<span class="separator">&#124;</span>&nbsp;{{ current_tags }}
+			{% else %}
+				<span class="separator">&#124;</span>&nbsp;<span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+					<a href="{% if forloop.last == true %}{{ page.url }}{% else %}{{ collection.url }}/{{ tag }}{% endif %}" itemprop="url">
+						<span itemprop="title">{{ tag_collection.title | replace: 'Tops -' , 'Size' | replace: 'Bottoms -' , 'Size' | replace: 'Shoes -' , 'Size' }}</span>
+					</a>
+				</span>
+			{% endif %}
+		{% endfor %}
+	{% endif %}
+</div>

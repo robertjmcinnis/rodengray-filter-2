@@ -1,0 +1,36 @@
+{% if article.tags contains 'Locals' %}
+{% include 'feature-post' %}
+{% else %}
+<article id="post-content" class="blog article">
+	<header>
+		<h2 class="title">{{ article.title }}</h2>
+		<span class="date">{{ article.published_at | date: '%A %B %d, %Y' }}</span>
+	</header>
+	<section class="post full-content rte">
+		{{ article.content }}
+	</section>
+	<aside class="rel-products">
+	</aside>
+	<footer>
+		<div class="tags">
+			Filed under: 
+			<ul>
+				{% for tag in article.tags %}
+				<li><a href="{{ shop.url}}/blogs/{{ blog.handle }}/tagged/{{ tag | handleize }}">{{ tag }}</a></li>
+				{% endfor %}
+			</ul>
+		</div>
+		{% capture share_url %}{{ shop.url }}{{ article.url }}{% endcapture %}
+		{% capture share_text %}{{ article.title }}{% endcapture %}
+		{% include 'share-buttons' %}
+		<script>
+			$('.post p > a > img').each(function() {
+			$(this).parent().unwrap().wrap("<figure></figure>");
+			});
+			$('.post p > img').each(function() {
+				$(this).unwrap().wrap("<figure></figure>");
+			});
+		</script>
+	</footer>
+</article>
+{% endif %}

@@ -1,0 +1,1249 @@
+{
+  "current": {
+    "color_primary": "#000000",
+    "color_primary_hover": "#474747",
+    "color_secondary": "#000000",
+    "color_secondary_hover": "#474747",
+    "font_heading": "itc_new_baskerville_n4",
+    "font_body": "itc_franklin_gothic_n4",
+    "share_image": "shopify:\/\/shop_images\/store-front.jpg",
+    "social_twitter_link": "https:\/\/twitter.com\/rodengray",
+    "social_facebook_link": "https:\/\/www.facebook.com\/rodengray",
+    "social_pinterest_link": "",
+    "social_instagram_link": "https:\/\/www.instagram.com\/rodengray\/",
+    "social_snapchat_link": "",
+    "social_tumblr_link": "",
+    "social_youtube_link": "",
+    "social_vimeo_link": "",
+    "cart_notes_enable": true,
+    "favicon": "shopify:\/\/shop_images\/Screen_Shot_2019-04-25_at_2.19.43_AM.png",
+    "custom_css_enable": false,
+    "custom_css": "",
+    "checkout_header_image": "",
+    "checkout_logo_image": "shopify:\/\/shop_images\/RODENGRAY_BOX-LOGO_K_Medres.jpg",
+    "checkout_logo_position": "center",
+    "checkout_logo_size": "small",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#f4f4f4",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#ffffff",
+    "checkout_heading_font": "Open Sans",
+    "checkout_body_font": "Open Sans",
+    "checkout_accent_color": "#616161",
+    "checkout_button_color": "#30ba5b",
+    "checkout_error_color": "#ff8484",
+    "social_sharing_blog": "true",
+    "share_facebook": "true",
+    "share_twitter": "true",
+    "share_pinterest": "true",
+    "color_accent": "#56b67e",
+    "color_accent_nav": "#ffffff",
+    "color_accent_link": "#b4b4b4",
+    "shop_hours": "Monday to Saturday, 11AM to 6PM<br>Sundays and Holidays, 12 to 5PM",
+    "pod1_title": "",
+    "pod1_link": "",
+    "pod1_style": "left_up",
+    "toolbar-promo-enabled": false,
+    "toolbar-promo-text": "Get 10% Off",
+    "toolbar-promo-link": "#mailing-list",
+    "toolbar-promo-tooltip": "Get a discount code for an extra 10% off your next order!",
+    "toolbar-promo-geo-ca": true,
+    "toolbar-promo-geo-us": true,
+    "newsletter-promo-enabled": false,
+    "newsletter-promo-text": "Get a discount code for 10% off your next purchase when you sign up for our newsletter!",
+    "olark_enabled": false,
+    "swiftype_enabled": true,
+    "hours-mon-sat-open": "11AM",
+    "hours-mon-sat-close": "6PM",
+    "hours-sun-hol-open": "12PM",
+    "hours-sun-hol-close": "5PM",
+    "product-promo-1-enabled": true,
+    "product-promo-1-position": "top",
+    "product-promo-1-collection": "free-ship-auto-ca",
+    "product-promo-1-head": "Free Shipping",
+    "product-promo-1-text": "This item is eligible for Free Expedited Shipping via Canada Post. Offer applied automatically at checkout.",
+    "product-promo-1-geo-enabled": true,
+    "product-promo-1-geo": "CA",
+    "product-promo-2-enabled": true,
+    "product-promo-2-position": "top",
+    "product-promo-2-collection": "free-ship-auto-us",
+    "product-promo-2-head": "Free Shipping",
+    "product-promo-2-text": "This item is eligible for Free Expedited Shipping via USPS. Offer applied automatically at checkout.",
+    "product-promo-2-geo-enabled": true,
+    "product-promo-2-geo": "US",
+    "product-promo-3-enabled": false,
+    "product-promo-3-position": "top",
+    "product-promo-3-collection": "free-ship-ca",
+    "product-promo-3-head": "Free Shipping",
+    "product-promo-3-text": "For a limited time, this item is eligible for free shipping with discount code <strong>FREESHIP-2016<\/strong>. Enter this code at checkout to receive the savings.",
+    "product-promo-3-geo-enabled": true,
+    "product-promo-3-geo": "CA",
+    "product-promo-4-enabled": false,
+    "product-promo-4-position": "top",
+    "product-promo-4-collection": "free-ship-us",
+    "product-promo-4-head": "Free Shipping",
+    "product-promo-4-text": "For a limited time, this item is eligible for free shipping with discount code <strong>FREESHIP-2016<\/strong>. Enter this code at checkout to receive the savings.",
+    "product-promo-4-geo-enabled": true,
+    "product-promo-4-geo": "US",
+    "index-layout": "2015-index",
+    "landing2015_row1_cols": "1",
+    "landing2015_row1_img1_alt": "OAMC SS 2017",
+    "landing2015_row1_img1_link": "http:\/\/rodengray.com\/collections\/oamc",
+    "landing2015_row1_img1_headline": "OAMC",
+    "landing2015_row1_img1_subheadline": "SS 2017",
+    "landing2015_row1_img2_1_alt": "Thom Browne Spring 2017",
+    "landing2015_row1_img2_1_link": "http:\/\/rodengray.com\/collections\/thom-browne",
+    "landing2015_row1_img2_1_headline": "Thom Browne",
+    "landing2015_row1_img2_1_subheadline": "S\/S 2017",
+    "landing2015_row1_img2_2_alt": "Satisfy Satisfy",
+    "landing2015_row1_img2_2_link": "http:\/\/rodengray.com\/blogs\/news\/editorial-satisfy-spring-summer-17",
+    "landing2015_row1_img2_2_headline": "Satisfy",
+    "landing2015_row1_img2_2_subheadline": "S\/S 2017",
+    "landing2015_row2_enabled": true,
+    "landing2015_row2_cols": "1",
+    "landing2015_row2_img1": "1",
+    "landing2015_row2_img1_alt": "Golden Goose Deluxe Brand",
+    "landing2015_row2_img1_link": "http:\/\/rodengray.com\/collections\/golden-goose-deluxe-brand",
+    "landing2015_row2_img1_headline": "Spring Footwear",
+    "landing2015_row2_img1_subheadline": "Golden Goose Deluxe Brand",
+    "landing2015_row2_img2": "2",
+    "landing2015_row2_img2_alt": "",
+    "landing2015_row2_img2_link": "http:\/\/rodengray.com\/collections\/john-elliott",
+    "landing2015_row2_img2_headline": "John Elliott",
+    "landing2015_row2_img2_subheadline": "\"Watching Water\"",
+    "landing2015_row2_img3": "1",
+    "landing2015_row2_img3_alt": "",
+    "landing2015_row2_img3_link": "http:\/\/rodengray.com\/collections\/passarella-death-squad",
+    "landing2015_row2_img3_headline": "Passarella Death Squad",
+    "landing2015_row2_img3_subheadline": "Hyperreal",
+    "landing2015_row3_enabled": true,
+    "landing2015_row3_cols": "2",
+    "landing2015_row3_img1": "2",
+    "landing2015_row3_img1_alt": "Overhead Hats",
+    "landing2015_row3_img1_link": "http:\/\/rodengray.com\/collections\/overhead",
+    "landing2015_row3_img1_headline": "Spring Headwear",
+    "landing2015_row3_img1_subheadline": "Overhead",
+    "landing2015_row3_img2": "2",
+    "landing2015_row3_img2_alt": "Saturdays Surf NYC",
+    "landing2015_row3_img2_link": "http:\/\/rodengray.com\/collections\/saturdays-surf-nyc",
+    "landing2015_row3_img2_headline": "Saturdays",
+    "landing2015_row3_img2_subheadline": "Surf NYC",
+    "landing2015_row3_img3": "2",
+    "landing2015_row3_img3_alt": "Still By Hand",
+    "landing2015_row3_img3_link": "http:\/\/rodengray.com\/collections\/still-by-hand",
+    "landing2015_row3_img3_headline": "Still By Hand",
+    "landing2015_row3_img3_subheadline": "Made In Japan",
+    "landing2015_row4_enabled": true,
+    "landing2015_row4_cols": "3",
+    "landing2015_row4_img1": "3",
+    "landing2015_row4_img1_alt": "Visvim Footwear",
+    "landing2015_row4_img1_link": "http:\/\/rodengray.com\/collections\/visvim",
+    "landing2015_row4_img1_headline": "Visvim",
+    "landing2015_row4_img1_subheadline": "Skagway Lo Leopard",
+    "landing2015_row4_img2": "3",
+    "landing2015_row4_img2_alt": "Raf Simons S\/S 2017",
+    "landing2015_row4_img2_link": "http:\/\/rodengray.com\/collections\/raf-simons",
+    "landing2015_row4_img2_headline": "Raf Simons",
+    "landing2015_row4_img2_subheadline": "x Robert Mapplethorpe",
+    "landing2015_row4_img3": "3",
+    "landing2015_row4_img3_alt": "Stella McCartney",
+    "landing2015_row4_img3_link": "http:\/\/rodengray.com\/collections\/stella-mccartney",
+    "landing2015_row4_img3_headline": "Stella McCartney",
+    "landing2015_row4_img3_subheadline": "Menswear",
+    "landing2015_row5_enabled": true,
+    "landing2015_row5_cols": "2",
+    "landing2015_row5_img1": "2",
+    "landing2015_row5_img1_alt": "Wonders",
+    "landing2015_row5_img1_link": "http:\/\/rodengray.com\/collections\/wonders",
+    "landing2015_row5_img1_headline": "Wonders",
+    "landing2015_row5_img1_subheadline": "S\/S 2017",
+    "landing2015_row5_img2": "2",
+    "landing2015_row5_img2_alt": "Aimé Leon Dore",
+    "landing2015_row5_img2_link": "http:\/\/rodengray.com\/collections\/aime-leon-dore",
+    "landing2015_row5_img2_headline": "New Brand",
+    "landing2015_row5_img2_subheadline": "Aimé Leon Dore",
+    "landing2015_row5_img3": "2",
+    "landing2015_row5_img3_alt": "Vans x Schoeller",
+    "landing2015_row5_img3_link": "http:\/\/rodengray.com\/collections\/vans",
+    "landing2015_row5_img3_headline": "Vault by Vans",
+    "landing2015_row5_img3_subheadline": "x Schoeller",
+    "landing2015_row6_enabled": false,
+    "landing2015_row6_cols": "1",
+    "landing2015_row6_img1": "1",
+    "landing2015_row6_img1_alt": "Sacai",
+    "landing2015_row6_img1_link": "http:\/\/rodengray.com\/collections\/sacai",
+    "landing2015_row6_img1_headline": "Sacai",
+    "landing2015_row6_img1_subheadline": "3rd Delivery",
+    "landing2015_row6_img2": "1",
+    "landing2015_row6_img2_alt": "adidas x kolor",
+    "landing2015_row6_img2_link": "http:\/\/rodengray.com\/blogs\/news\/113963012-coming-soon-adidas-x-kolor",
+    "landing2015_row6_img2_headline": "Coming Soon",
+    "landing2015_row6_img2_subheadline": "adidas x kolor",
+    "landing2015_row6_img3": "1",
+    "landing2015_row6_img3_alt": "Mikia Jewellery",
+    "landing2015_row6_img3_link": "http:\/\/rodengray.com\/collections\/mikia",
+    "landing2015_row6_img3_headline": "Mikia",
+    "landing2015_row6_img3_subheadline": "Re-stock",
+    "landing2015_rowinsta_img1_alt": "Satisfy Satisfy",
+    "landing2015_rowinsta_img1_link": "https:\/\/www.instagram.com\/p\/BSw714ihUOH\/?taken-by=rodengray",
+    "landing2015_rowinsta_img2_alt": "Thom Browne",
+    "landing2015_rowinsta_img2_link": "https:\/\/www.instagram.com\/p\/BSmtUfWhQO0\/?taken-by=rodengray",
+    "landing2015_rowinsta_img3_alt": "Designer Thom Browne",
+    "landing2015_rowinsta_img3_link": "https:\/\/www.instagram.com\/p\/BShrY5JB6v1\/?taken-by=rodengray",
+    "track-adroll": false,
+    "track-vwo": false,
+    "ua-track": false,
+    "show_multiple_currencies": true,
+    "currency_format": "money_with_currency_format",
+    "supported_currencies": "CAD USD GBP EUR AUD NZD JPY HKD KRW",
+    "default_currency": "CAD",
+    "checkout_use_header_image": false,
+    "checkout_logo": "",
+    "checkout_use_body_background_image": false,
+    "checkout_use_sidebar_background_image": false,
+    "checkout_banner_background_color": "#ffffff",
+    "checkout_headline": "",
+    "checkout_call_to_action_color": "#8fc243",
+    "landing_hero_alt": "",
+    "landing_hero_link": "http:\/\/rodengray.com\/collections\/sale",
+    "landing_hero_headline_enabled": false,
+    "landing_hero_headline": "",
+    "landing_hero_subheadline_enabled": false,
+    "landing_hero_subheadline": "",
+    "landing_hero_headline_color": "light",
+    "landing_hero_headline_size": "4.5rem",
+    "landing_hero_headline_position": "40%",
+    "landing_row1_enabled": true,
+    "landing_row1_cols": "2",
+    "landing_row1_img1_width": "eight columns",
+    "landing_row1_img1_alt": "Barena",
+    "landing_row1_img1_link": "\/collections\/barena-venezia",
+    "landing_row1_img1_headline_enabled": true,
+    "landing_row1_img1_headline": "Barena Venezia",
+    "landing_row1_img1_subheadline_enabled": false,
+    "landing_row1_img1_subheadline": "",
+    "landing_row1_img1_hcolor": "light",
+    "landing_row1_img1_hsize": "2rem",
+    "landing_row1_img2_width": "eight columns",
+    "landing_row1_img2_alt": "",
+    "landing_row1_img2_link": "\/collections\/shinola",
+    "landing_row1_img2_headline_enabled": true,
+    "landing_row1_img2_headline": "Shinola",
+    "landing_row1_img2_subheadline_enabled": true,
+    "landing_row1_img2_subheadline": "made in detroit",
+    "landing_row1_img2_hcolor": "light",
+    "landing_row1_img2_hsize": "1rem",
+    "landing_row1_img3_width": "one-third column",
+    "landing_row1_img3_alt": "",
+    "landing_row1_img3_link": "",
+    "landing_row1_img3_headline_enabled": false,
+    "landing_row1_img3_headline": "",
+    "landing_row1_img3_subheadline_enabled": false,
+    "landing_row1_img3_subheadline": "",
+    "landing_row1_img3_hcolor": "light",
+    "landing_row1_img3_hsize": "1rem",
+    "landing_row2_enabled": true,
+    "landing_row2_cols": "1",
+    "landing_row2_img1_width": "sixteen columns",
+    "landing_row2_img1_alt": "santa maria novella italy fragrance",
+    "landing_row2_img1_link": "\/collections\/santa-maria-novella",
+    "landing_row2_img1_headline_enabled": true,
+    "landing_row2_img1_headline": "Santa Maria Novella",
+    "landing_row2_img1_subheadline_enabled": false,
+    "landing_row2_img1_subheadline": "",
+    "landing_row2_img1_hcolor": "light",
+    "landing_row2_img1_hsize": "3rem",
+    "landing_row2_img2_width": "ten columns",
+    "landing_row2_img2_alt": "",
+    "landing_row2_img2_link": "",
+    "landing_row2_img2_headline_enabled": false,
+    "landing_row2_img2_headline": "",
+    "landing_row2_img2_subheadline_enabled": false,
+    "landing_row2_img2_subheadline": "",
+    "landing_row2_img2_hcolor": "light",
+    "landing_row2_img2_hsize": "1rem",
+    "landing_row2_img3_width": "four columns",
+    "landing_row2_img3_alt": "",
+    "landing_row2_img3_link": "",
+    "landing_row2_img3_headline_enabled": true,
+    "landing_row2_img3_headline": "",
+    "landing_row2_img3_subheadline_enabled": false,
+    "landing_row2_img3_subheadline": "",
+    "landing_row2_img3_hcolor": "light",
+    "landing_row2_img3_hsize": "1rem",
+    "landing_row3_enabled": true,
+    "landing_row3_cols": "3",
+    "landing_row3_img1_width": "five columns",
+    "landing_row3_img1_alt": "new nonnative",
+    "landing_row3_img1_link": "collections\/nonnative",
+    "landing_row3_img1_headline_enabled": true,
+    "landing_row3_img1_headline": "Nonnative",
+    "landing_row3_img1_subheadline_enabled": false,
+    "landing_row3_img1_subheadline": "",
+    "landing_row3_img1_hcolor": "light",
+    "landing_row3_img1_hsize": "1rem",
+    "landing_row3_img2_width": "six columns",
+    "landing_row3_img2_alt": "",
+    "landing_row3_img2_link": "http:\/\/instagram.com\/rodengray",
+    "landing_row3_img2_headline_enabled": true,
+    "landing_row3_img2_headline": "Instagram",
+    "landing_row3_img2_subheadline_enabled": false,
+    "landing_row3_img2_subheadline": "",
+    "landing_row3_img2_hcolor": "light",
+    "landing_row3_img2_hsize": "1rem",
+    "landing_row3_img3_width": "five columns",
+    "landing_row3_img3_alt": "mihara",
+    "landing_row3_img3_link": "\/blogs\/news",
+    "landing_row3_img3_headline_enabled": true,
+    "landing_row3_img3_headline": "mihara",
+    "landing_row3_img3_subheadline_enabled": false,
+    "landing_row3_img3_subheadline": "",
+    "landing_row3_img3_hcolor": "light",
+    "landing_row3_img3_hsize": "1rem",
+    "landing2015_row2_img1_subheadline2_enabled": false,
+    "landing2015_row2_img1_subheadline2": "Subheadline2",
+    "landing2015_row2_img2_subheadline2_enabled": false,
+    "landing2015_row2_img2_subheadline2": "Subheadline2",
+    "landing2015_row2_img3_subheadline2_enabled": false,
+    "landing2015_row2_img3_subheadline2": "Subheadline2",
+    "landing2015_row3_img1_subheadline2_enabled": false,
+    "landing2015_row3_img1_subheadline2": "Subheadline2",
+    "landing2015_row3_img2_subheadline2_enabled": false,
+    "landing2015_row3_img2_subheadline2": "Subheadline2",
+    "landing2015_row3_img3_subheadline2_enabled": false,
+    "landing2015_row3_img3_subheadline2": "Subheadline2",
+    "landing2015_row4_img1_subheadline2_enabled": false,
+    "landing2015_row4_img1_subheadline2": "Subheadline2",
+    "landing2015_row4_img2_subheadline2_enabled": false,
+    "landing2015_row4_img2_subheadline2": "Subheadline2",
+    "landing2015_row4_img3_subheadline2_enabled": false,
+    "landing2015_row4_img3_subheadline2": "Subheadline2",
+    "landing2015_row5_img1_subheadline2_enabled": false,
+    "landing2015_row5_img1_subheadline2": "Subheadline2",
+    "landing2015_row5_img2_subheadline2_enabled": false,
+    "landing2015_row5_img2_subheadline2": "Subheadline2",
+    "landing2015_row5_img3_subheadline2_enabled": false,
+    "landing2015_row5_img3_subheadline2": "Subheadline2",
+    "landing2015_row6_img1_subheadline2_enabled": false,
+    "landing2015_row6_img1_subheadline2": "Subheadline2",
+    "landing2015_row6_img2_subheadline2_enabled": false,
+    "landing2015_row6_img2_subheadline2": "Subheadline2",
+    "landing2015_row6_img3_subheadline2_enabled": false,
+    "landing2015_row6_img3_subheadline2": "Subheadline2",
+    "landing2015_row1_img2_alt": "alt text",
+    "landing2015_row1_img2_link": "#",
+    "landing2015_row1_img2_headline": "Headline",
+    "landing2015_row1_img2_subheadline": "Subheadline",
+    "customer_layout": "theme",
+    "toolbar_bg_color": "#ffffff",
+    "toolbar_text_color": "#444444",
+    "shipping_calculator_heading": "Estimate Shipping",
+    "shipping_calculator_default_country": "Canada",
+    "shipping_calculator_submit_button_label": "Calculate shipping",
+    "shipping_calculator_submit_button_label_disabled": "Calculating...",
+    "landing_hero_rich_content": "landing-rich-1",
+    "landing_row1_img1_rich_content": "landing-rich-1",
+    "landing_row1_img2_rich_content": "landing-rich-1",
+    "landing_row1_img3_rich_content": "landing-rich-1",
+    "landing_row2_img1_rich_content": "landing-rich-1",
+    "landing_row2_img2_rich_content": "landing-rich-1",
+    "landing_row2_img3_rich_content": "landing-rich-1",
+    "landing_row3_img1_rich_content": "landing-rich-1",
+    "landing_row3_img2_rich_content": "landing-rich-2",
+    "landing_row3_img3_rich_content": "landing-rich-1",
+    "shipping_calculator": "Enabled",
+    "landing_hero_rich_enabled": "false",
+    "landing_row1_img1_rich_enabled": "false",
+    "landing_row1_img2_rich_enabled": "false",
+    "landing_row1_img3_rich_enabled": "false",
+    "landing_row2_img1_rich_enabled": "false",
+    "landing_row2_img2_rich_enabled": "false",
+    "landing_row2_img3_rich_enabled": "false",
+    "landing_row3_img1_rich_enabled": "false",
+    "landing_row3_img2_rich_enabled": "false",
+    "landing_row3_img3_rich_enabled": "false",
+    "sections": {
+      "Homepage": {
+        "type": "Homepage",
+        "blocks": {
+          "1542426856694": {
+            "type": "select",
+            "settings": {
+              "podimg": "shopify:\/\/shop_images\/22.jpg",
+              "shoppablecode": "",
+              "podvid": "",
+              "podtitle": "ALYX FW18",
+              "podlink": "https:\/\/rodengray.com\/collections\/1017-alyx-9sm",
+              "podtype": "New Arrivals",
+              "podtypelink": "https:\/\/rodengray.com\/collections\/1017-alyx-9sm",
+              "podstyle": "edge_to_edge",
+              "color_accent_pod": "#ff9500"
+            }
+          },
+          "1536885254545": {
+            "type": "select",
+            "settings": {
+              "podimg": "shopify:\/\/shop_images\/Kiko2.JPG",
+              "shoppablecode": "",
+              "podvid": "",
+              "podtitle": "The Sweetest Taboo",
+              "podlink": "https:\/\/rodengray.com\/blogs\/editorial\/the-sweetest-taboo",
+              "podtype": "View Editorial",
+              "podtypelink": "https:\/\/rodengray.com\/blogs\/editorial\/the-sweetest-taboo",
+              "podstyle": "centre_big",
+              "color_accent_pod": "#53b4b7"
+            }
+          },
+          "1541795302507": {
+            "type": "select",
+            "settings": {
+              "podimg": "shopify:\/\/shop_images\/232323.jpg",
+              "shoppablecode": "",
+              "podvid": "",
+              "podtitle": "Martine Rose FW18",
+              "podlink": "https:\/\/rodengray.com\/collections\/martine-rose",
+              "podtype": "New Arrivals",
+              "podtypelink": "https:\/\/rodengray.com\/collections\/martine-rose",
+              "podstyle": "edge_to_edge",
+              "color_accent_pod": "#e9c831"
+            }
+          },
+          "1535765168941": {
+            "type": "select",
+            "settings": {
+              "podimg": "shopify:\/\/shop_images\/mainpagebanner.jpg",
+              "shoppablecode": "",
+              "podvid": "",
+              "podtitle": "Salomon",
+              "podlink": "https:\/\/rodengray.com\/collections\/salomon",
+              "podtype": "Featured Brand",
+              "podtypelink": "https:\/\/rodengray.com\/collections\/salomon",
+              "podstyle": "right_down",
+              "color_accent_pod": "#c6eec6"
+            }
+          },
+          "1541202609976": {
+            "type": "select",
+            "settings": {
+              "podimg": "shopify:\/\/shop_images\/IMG_3808.jpg",
+              "shoppablecode": "",
+              "podvid": "",
+              "podtitle": "Gitman Brothers Vintage",
+              "podlink": "https:\/\/rodengray.com\/collections\/gitman-brothers-vintage",
+              "podtype": "New Arrivals",
+              "podtypelink": "https:\/\/rodengray.com\/collections\/gitman-brothers-vintage",
+              "podstyle": "left_up",
+              "color_accent_pod": "#e5e5e5"
+            }
+          },
+          "1534459987864": {
+            "type": "select",
+            "settings": {
+              "podimg": "shopify:\/\/shop_images\/IMG_3113.jpg",
+              "shoppablecode": "",
+              "podvid": "",
+              "podtitle": "Aimé Leon Dore",
+              "podlink": "https:\/\/rodengray.com\/collections\/aime-leon-dore",
+              "podtype": "Featured Brand",
+              "podtypelink": "https:\/\/rodengray.com\/collections\/aime-leon-dore",
+              "podstyle": "centre_up",
+              "color_accent_pod": "#bedade"
+            }
+          },
+          "1540593514039": {
+            "type": "select",
+            "settings": {
+              "podimg": "shopify:\/\/shop_images\/IMG_2849.jpg",
+              "shoppablecode": "",
+              "podvid": "",
+              "podtitle": "Autumn Winter 2018",
+              "podlink": "https:\/\/rodengray.com\/collections\/dries-van-noten",
+              "podtype": "Featured Brand",
+              "podtypelink": "https:\/\/rodengray.com\/collections\/dries-van-noten",
+              "podstyle": "edge_to_edge",
+              "color_accent_pod": "#e4928d"
+            }
+          },
+          "1540227938083": {
+            "type": "select",
+            "settings": {
+              "podimg": "shopify:\/\/shop_images\/jilfw18_banner.jpg",
+              "shoppablecode": "",
+              "podvid": "",
+              "podtitle": "Jil Sander FW18",
+              "podlink": "https:\/\/rodengray.com\/collections\/jil-sander",
+              "podtype": "New Arrivals",
+              "podtypelink": "https:\/\/rodengray.com\/collections\/jil-sander",
+              "podstyle": "centre_big",
+              "color_accent_pod": "#e5e5e5"
+            }
+          }
+        },
+        "block_order": [
+          "1542426856694",
+          "1536885254545",
+          "1541795302507",
+          "1535765168941",
+          "1541202609976",
+          "1534459987864",
+          "1540593514039",
+          "1540227938083"
+        ],
+        "settings": {
+        }
+      },
+      "new_arrivals": {
+        "type": "new_arrivals",
+        "blocks": {
+          "1524605692310": {
+            "type": "select",
+            "settings": {
+              "gridtitle_block": "New from OAMC",
+              "multiproduct_blockbg": "#ffffff",
+              "multiproduct_blocktitle": "#222222",
+              "product_blockimage": "shopify:\/\/shop_images\/OAMCSS18_007_101bfc4a-46bc-4c02-a483-147df94c33fe.jpg",
+              "customtext_block": "The aesthetic of OAMC's SS18 collection is informed by the current state of consciousness. What is truly necessary is a positive, constructive, inclusive attitude instead of the rampant spread of negativity. Only through a higher education and a higher consciousness can this be achieved. It is truly up to the individual, the collective of individuals, to create significant and lasting change. #onealwaysmoreconscious #peopleforpeace",
+              "multiproduct_block": "chicagosevenhoodieinblack\ncroppedcalpantinnavy\nnewtonsstop",
+              "multiproduct_blocklink": "View all new OAMC",
+              "multiproduct_blocklinkurl": "https:\/\/rodengray.com\/collections\/oamc",
+              "whatkind": "?sort_by=created-descending"
+            }
+          },
+          "1525195613236": {
+            "type": "select",
+            "settings": {
+              "gridtitle_block": "Summer Reads",
+              "multiproduct_blockbg": "#3500ff",
+              "multiproduct_blocktitle": "#ffffff",
+              "product_blockimage": "",
+              "customtext_block": "Artisan tousled green juice helvetica palo santo. Marfa kale chips authentic art party, copper mug cray quinoa distillery bespoke green juice whatever listicle. Whatever chillwave hell of 3 wolf moon put a bird on it cray williamsburg. Chambray everyday carry keffiyeh raclette vegan four loko pour-over twee typewriter venmo synth austin raw denim lyft.",
+              "multiproduct_block": "amspringsummerissue\nnhissue35\nissue110-volume12",
+              "multiproduct_blocklink": "Browse Mags",
+              "multiproduct_blocklinkurl": "https:\/\/rodengray.com\/collections\/magazines?sort_by=price-ascending",
+              "whatkind": "?sort_by=price-ascending"
+            }
+          },
+          "1525375471524": {
+            "type": "select",
+            "settings": {
+              "gridtitle_block": "Caps + Packs",
+              "multiproduct_blockbg": "#ffffff",
+              "multiproduct_blocktitle": "#ff0000",
+              "product_blockimage": "",
+              "customtext_block": "Whatever chillwave hell of 3 wolf moon put a bird on it cray williamsburg. Chambray everyday carry keffiyeh raclette vegan four loko pour-over twee typewriter venmo synth austin raw denim lyft.",
+              "multiproduct_block": "christiesventedesoir6panelhat\nchristiesbarontrump6panelhat\nkktprtrtinwhite",
+              "multiproduct_blocklink": "",
+              "multiproduct_blocklinkurl": "",
+              "whatkind": "?sort_by=created-descending"
+            }
+          }
+        },
+        "block_order": [
+          "1524605692310",
+          "1525195613236",
+          "1525375471524"
+        ],
+        "settings": {
+        }
+      },
+      "sales_page": {
+        "type": "sales_page",
+        "blocks": {
+          "1525379389156": {
+            "type": "select",
+            "settings": {
+              "gridtitle_block": "Astrid Andersen",
+              "multiproduct_blockbg": "#ffffff",
+              "multiproduct_blocktitle": "#23506d",
+              "product_blockimage": "shopify:\/\/shop_images\/2_1200x_ed6d0c13-02a0-492b-b8b5-f2449153ffcd.jpg",
+              "customtext_block": "Artisan tousled green juice helvetica palo santo. Marfa kale chips authentic art party, copper mug cray quinoa distillery bespoke green juice whatever listicle. Whatever chillwave hell of 3 wolf moon put a bird on it cray williamsburg. Chambray everyday carry keffiyeh raclette vegan four loko pour-over twee typewriter venmo synth austin raw denim lyft.",
+              "multiproduct_block": "trackjacketingreenblack\ntrackjacketinblack\npilotjacketinwhiteblue",
+              "multiproduct_blocklink": "",
+              "multiproduct_blocklinkurl": "",
+              "whatkind": "?sort_by=created-descending"
+            }
+          },
+          "1525379823319": {
+            "type": "select",
+            "settings": {
+              "gridtitle_block": "Alyx Outerwear",
+              "multiproduct_blockbg": "#eefcf6",
+              "multiproduct_blocktitle": "#36410c",
+              "product_blockimage": "",
+              "customtext_block": "Artisan tousled green juice helvetica palo santo. Marfa kale chips authentic art party, copper mug cray quinoa distillery bespoke green juice whatever listicle. Whatever chillwave hell of 3 wolf moon put a bird on it cray williamsburg. Chambray everyday carry keffiyeh raclette vegan four loko pour-over twee typewriter venmo synth austin raw denim lyft.",
+              "multiproduct_block": "xmackintoshhoodedcoatinsky\nxmackintoshhoodedcoatingray\nxmackintoshhoodedcoatinblack\nouterwearvestingray\nouterwearpilotjacketinnavy\nouterwearpilotjacketincamogreen",
+              "multiproduct_blocklink": "View All Alyx",
+              "multiproduct_blocklinkurl": "https:\/\/rodengray.com\/collections\/alyx",
+              "whatkind": "?sort_by=price-ascending"
+            }
+          }
+        },
+        "block_order": [
+          "1525379389156",
+          "1525379823319"
+        ],
+        "settings": {
+        }
+      },
+      "header": {
+        "type": "header",
+        "settings": {
+          "announcement_bar_enabled": true,
+          "announcement_bar_home_page_only": false,
+          "announcement_1_text": "Next day shipping for all US orders available at check out.",
+          "announcement_2_text": "Subscribe to stay up to date with the latest news.",
+          "announcement_2_link": "https:\/\/rodengray.com\/pages\/shopping-with-us#shipping-and-handling",
+          "announcement_3_text": "",
+          "menu": "main-menu",
+          "show_featured_designer": true,
+          "featured_designer_text": "The newest from sacai Autumn Winter 2020",
+          "featured_designer_link": "shopify:\/\/collections\/sacai",
+          "featured_designer_link_text": "Shop the Collection",
+          "show_featured_category": true,
+          "featured_category_text": "Bianca Chandôn is where skate and high fashion meets.",
+          "featured_category_link": "shopify:\/\/collections\/bianca-chandon",
+          "featured_category_link_text": "See the latest"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+        }
+      },
+      "editorial": {
+        "type": "editorial",
+        "blocks": {
+          "1554515559379": {
+            "type": "featured_article",
+            "settings": {
+              "article": "staff-picks\/rg-community-holiday-gift-guide",
+              "reverse": true
+            }
+          },
+          "1585254742574": {
+            "type": "blog_listing",
+            "settings": {
+              "blog": "staff-picks",
+              "truncate": true
+            }
+          },
+          "1555636659340": {
+            "type": "blog_listing",
+            "settings": {
+              "blog": "interviews",
+              "truncate": true
+            }
+          },
+          "1554439209807": {
+            "type": "blog_listing",
+            "settings": {
+              "blog": "editorial",
+              "truncate": true
+            }
+          },
+          "1585254757877": {
+            "type": "blog_listing",
+            "settings": {
+              "blog": "playlist",
+              "truncate": true
+            }
+          },
+          "1592606354585": {
+            "type": "blog_listing",
+            "settings": {
+              "blog": "news",
+              "truncate": true
+            }
+          }
+        },
+        "block_order": [
+          "1554515559379",
+          "1585254742574",
+          "1555636659340",
+          "1554439209807",
+          "1585254757877",
+          "1592606354585"
+        ],
+        "settings": {
+        }
+      },
+      "about": {
+        "type": "about",
+        "blocks": {
+          "1555282378682": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/frontstairs.jpg"
+            }
+          },
+          "1555205699199": {
+            "type": "hero",
+            "settings": {
+              "hero_image": "shopify:\/\/shop_images\/shop5.jpg",
+              "title": "Our Shop",
+              "body_text": "Roden Gray aims to be the leading source in menswear that showcases the ever-evolving nature and diversity in brands from all around the world. After over ten years in business, our goal remains to bring together\na unique curation of brands, new and core that celebrate culture and diversity, that share a respect for quality design, and that highlight the beautiful and\nfunctional details.",
+              "reversed": true
+            }
+          },
+          "1557437433781": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/shop6.jpg"
+            }
+          },
+          "1555282336187": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/shop2_e6748660-4a70-409f-aacb-d04d1d53cfcf.jpg"
+            }
+          },
+          "1557782106518": {
+            "type": "hero",
+            "settings": {
+              "hero_image": "shopify:\/\/shop_images\/shop3.jpg",
+              "title": "",
+              "body_text": "We strive to redefine a connection to menswear by\nallowing our community to embrace and embody the\nstories, the education, and the perspective of the\nbrands found in store and online.",
+              "reversed": false
+            }
+          },
+          "1555282354943": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/shop3.jpg"
+            }
+          },
+          "1555282346799": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/shop4.jpg"
+            }
+          },
+          "1555206670576": {
+            "type": "location",
+            "settings": {
+              "title": "Shop Details",
+              "body_text": "<h3>Shop Hours<\/h3><br>\nMonday - Sunday 12pm - 6pm<br><br>\n\n<h3>Contact<\/h3><br>\n+1 604 689-7302<br>\ninfo@rodengray.com<br><br>\n\n<h3>Location<\/h3><br>\n8 Water St.<br>\nVancouver, BC<br>\nV6B 1A4<br>\nCanada<br><br>",
+              "reversed": true
+            }
+          },
+          "1557437187358": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/shop5.jpg"
+            }
+          }
+        },
+        "block_order": [
+          "1555282378682",
+          "1555205699199",
+          "1557437433781",
+          "1555282336187",
+          "1557782106518",
+          "1555282354943",
+          "1555282346799",
+          "1555206670576",
+          "1557437187358"
+        ],
+        "settings": {
+        }
+      },
+      "policies": {
+        "type": "policies",
+        "blocks": {
+          "1555629869888": {
+            "type": "policy",
+            "settings": {
+              "title": "Product Information",
+              "body": "<h3 class=\"mb-sm\">Sizing<\/h3>\n<p class=\"mb-lg\">\n\tSizes differ from varying designers. Model measurements are provided to help in the decision on preferred size. For exact measurements of a garment, please contact Customer Care at <u><a href=\"mailto:support@rodengray.com\">support@rodengray.com<\/a><\/u> <br><br>\nShoe sizes are listed in US sizing unless otherwise specified.<br><br>\n<\/p><h3 class=\"mb-sm\">Product Authentication<\/h3>\n<p class=\"mb-lg\">\nRoden Gray guarantees the authenticity of every product we stock. Certain items may also include the designer's own proof of authenticity, such as an authenticity card, dust bag, etc.<br><br><\/p>"
+            }
+          },
+          "1555570547694": {
+            "type": "policy",
+            "settings": {
+              "title": "Payment Information",
+              "body": "<h3 class=\"mb-sm\">Exchange Rates<\/h3>\n<p class=\"mb-lg\">\n\tAll transactions are made in Canadian dollars. All currency conversion information provided on this site is for informational purposes only. The exchange rate that is used when making a purchase is determined by your credit card provider at the time of purchase.<br><br>\n\n\tRefunds are processed in Canadian dollars. Because exchange rates vary from day to day, refunds made to international customers may differ slightly from the purchase amount. Any such variances may also be due to fees charged by credit card issuers and payment institutions. These factors are outside our control and we cannot be held responsible for such variances.\n<\/p>\n\n<h3 class=\"mb-sm\">Payment Methods<\/h3>\n<p class=\"mb-lg\">\n\tWe accept payment by Visa, Mastercard, American Express, PayPal, Sezzle, WeChat Pay, AliPay, and UnionPay.<br><br>\n\n\tOccasionally, we may require additional information to verify your identity. In this case we will contact you by email or by telephone. We reserve the right to cancel an order for any reason.\n<\/p>\n\n<h3 class=\"mb-sm\">Pre-Orders<\/h3>\n<p class=\"mb-lg\">\n\tPurchase of items marked \"Pre-order\" is not a guarantee of delivery and may be cancelled due to factors outside of our control, such as production, logistical, or quality control issues. Delivery dates provided in pre-order item descriptions are estimates and subject to change. Pre-order items are non-refundable and may be returned for exchange or store credit only.\n<\/p>"
+            }
+          },
+          "1555629923345": {
+            "type": "policy",
+            "settings": {
+              "title": "Your Order",
+              "body": "<h3>COVID-19<\/h3><br>\n<p class=\"mb-lg\">Due to limited resources for processing orders during this time, online orders may experience delays of 3-5 business days before shipping. Please contact <u><a href=\"mailto:support@rodengray.com\">support@rodengray.com<\/a><\/u> for any questions or concerns placing your order. In accordance with public social distancing recommendations, all employees capable of working remotely are doing so. When processing orders,  we are being diligent with cleaning and sterilization procedures to further reduce any risks. Thank you for your support and understanding during these trying times.<\/p>\n\n<h3>Order Processing<\/h3><br>\n<p class=\"mb-lg\">All orders placed Monday-Friday (excluding holidays) before 2PM PST will begin processing that day and ship within 2 business days, pending item availability and credit card verification. Orders placed after 2PM PST will begin processing the next business day. Orders placed on Friday after 2PM PST will begin processing the following Monday. Transit times do not include Saturday, Sunday or holidays.<\/p>\n<p class=\"mb-lg\">Order processing cut-off times are provided as guidelines only, and do not take into account possible delays caused by item availability and payment verification.  <strong>We reserve the right to cancel any order for issues of payment and the right to limit quantities for exclusive releases.<\/strong> <\/p>\n\n<p>If you have any concern at all that your package will not make it on time please email us at <u><a href=\"mailto:support@rodengray.com\">support@rodengray.com<\/a><\/u> or call us at <u>604-709-0259<\/u> before placing your order. <\/p><br><br>"
+            }
+          },
+          "1555390376951": {
+            "type": "policy",
+            "settings": {
+              "title": "Shipping & Handling",
+              "body": "<h3 class=\"mb-lg\">COVID-19<\/h3>\n<p class=\"mb-lg\">Due to limited resources for processing orders during this time, online orders may experience delays of 3-5 business days before shipping. Please contact <u><a href=\"mailto:support@rodengray.com\">support@rodengray.com<\/a><\/u> for any questions or concerns placing your order. In accordance with public social distancing recommendations, all employees capable of working remotely are doing so. When processing orders,  we are being diligent with cleaning and sterilization procedures to further reduce any risks. Thank you for your support and understanding during these trying times.<\/p>\n<h3 class=\"mb-lg\">Shipping & Handling<\/h3>\n<p class=\"mb-lg\">We utilize Canada Post for all domestic orders unless specified. For US and International orders, we offer DHL service. If you do not see your destination listed upon checkout please contact us for further assistance. \n<\/p>\n<p class=\"mb-lg\">Please note that orders will only be shipped once payment and delivery details have been approved. Delivery time frames begin from the date of dispatch. All orders are trackable.<\/p>\n<p class=\"mb-lg\">All orders will require signature upon delivery. Roden Gray will not assume the risk of loss and title for merchandise for any orders that opt for no signature requirement. <\/p>\n\n<p class=\"mb-lg\">Please see below for shipping rates: <\/p>\n\n<table class=\"shipping-rates\">\n\t<thead>\n\t\t<tr>\n\t\t\t<th><h3>\n\t\t\t\tCanada\n\t\t\t<\/h3><\/th>\n\t\t\t<th><h5>\n\t\t\t\t\n\t\t\t<\/h5><\/th>\n\t\t\t<th><h5>\n\t\t\t\t\n\t\t\t<\/h5><\/th>\n\t\t<\/tr>\n\t<\/thead>\n\t<tbody>\n\t\t<tr>\n\t\t\t<td>\n<span>Flat rate via Canada Post Expedited<\/span><br>\n<\/td>\n\t\t\t<td class=\"shipping-centered\">2-7 Business Days<\/td>\n\t\t\t<td class=\"shipping-centered\">$15<\/td>\n\t\t<\/tr>\n\t\t<tr>\n\t\t\t<td>\n<span>Purolator Express<\/span><br>\n<\/td>\n\t\t\t<td class=\"shipping-centered\">1-2 Business Days<\/td>\n\t\t\t<td class=\"shipping-centered\">$35<\/td>\n\t\t<\/tr>\n\t<\/tbody>\n<\/table>\n<table class=\"shipping-rates\">\n\t<thead>\n\t\t<tr>\n\t\t\t<th><h3>\n\t\t\t\tUSA\n\t\t\t<\/h3><\/th>\n\t\t\t<th><h5>\n\t\t\t\t\n\t\t\t<\/h5><\/th>\n\t\t\t<th><h5>\n\t\t\t\t\n\t\t\t<\/h5><\/th>\n\t\t<\/tr>\n\t<\/thead>\n\t<tbody>\n\t\t<tr>\n\t\t\t<td>\n<span>Flat rate via USPS                              <\/span><br>\n<\/td>\n\t\t\t<td>3-5 Business Days<\/td>\n\t\t\t<td>$20<\/td>\n\t\t<\/tr>\n\t\t<tr>\n\t\t\t<td>\n<span>DHL Express<\/span><br><br>\n<\/td>\n\t\t\t<td class=\"shipping-centered\">Next Day<\/td>\n\t\t\t<td class=\"shipping-centered\">$25<\/td>\n\t\t<\/tr>\n\t<\/tbody>\n<\/table>\n<table class=\"shipping-rates\">\n\t<thead>\n\t\t<tr>\n\t\t\t<th><h3>\n\t\t\t\tInternational\n\t\t\t<\/h3><\/th>\n\t\t\t<th><h5>\n\t\t\t\t\n\t\t\t<\/h5><\/th>\n\t\t\t<th><h5>\n\t\t\t\t\n\t\t\t<\/h5><\/th>\n\t\t<\/tr>\n\t<\/thead>\n\t<tbody>\n\t\t<tr>\n\t\t\t<td>\n<span>DHL Express                                 \n     \n<\/span><br>\n<\/td>\n\t\t\t<td>2-6 Business Days<\/td>\n\t\t\t<td>$55<\/td>\n\t\t<\/tr>\n\t<\/tbody>\n<\/table><br><br>\n\n<h3>In-Store Pickup<\/h3><br>\n<p class=\"mb-lg\">In-Store Pickup is available free of charge. This option is available upon checkout who customers who wish to retrieve their items from our retail location.<\/p>\n<h3>International Shipping<\/h3><br>\n<p class=\"mb-lg\">Roden Gray uses DHL for all international deliveries. Rates are calculated based on destination and weight of the package. All additional taxes, customs and import duties levied by the client’s local government are the responsibility of the client. <\/p>\n<p class=\"mb-lg\">Items will be shipped from Vancouver, Canada with an official invoice declaring the exact total of merchandise purchased in Canadian dollars.<\/p>\n<h3>Lost & Damaged Orders<\/h3><br>\n<p class=\"mb-lg\">In the rare occasion, Roden Gray Inc. shall not be held liable for any direct or indirect damages done by any services provided. All items are purchased at your own risk. Any damage caused during shipment is the responsibility of the postal service\/courier. Roden Gray Inc. does not assume any responsibility for lost or stolen items.<\/p>"
+            }
+          },
+          "1555392873693": {
+            "type": "policy",
+            "settings": {
+              "title": "Return Policy",
+              "body": "<h2><strong><u>Holiday Return Policy<\/u><\/strong><\/h2>\n<br>\n<strong>In-store<\/strong>\n<br>\n<br>\n<p>Regular priced items in original, unworn condition with tags purchased in-store between December 4th-25th are eligible for an exchange\/store credit up until January 8th, 2021. No returns will be accepted on Boxing Day (December 26th). All purchases made after December 25th, 2020 will be subject to our standard return policy.<\/p>\n<br>\n<strong>Online<\/strong>\n<br>\n<br>\n<p>Regular priced items in original, unworn condition with tags purchased online between December 4th-25th are eligible for an exchange\/refund up until January 8th, 2021. No returns will be accepted on Boxing Day (December 26th). All purchases made after December 25th, 2020 will be subject to our standard return policy.<\/p>\n<br>\n<br>\n\n<h2><strong><u>Store Returns<\/u><\/strong><\/h2>\n<br>\n<p>Regular priced items in unworn, original condition (or sale items sold below 30% discount) are eligible for a return for <strong>store credit only<\/strong>, within 14 days of purchase.<\/p><br>\n\n<p>Items purchased within 7 days of a permanent price markdown are eligible for an adjustment equal to the difference in price. This difference will be rewarded as <strong>store credit only<\/strong>.<\/p><br>\n\n<p>Fragrances, candles and jewelry are exempt and will be considered <strong>final sale upon purchase<\/strong>. All returns must be accompanied by an original receipt or they will not be accepted.<\/p><br>\n<br>\n<h2>\n\t<strong><u>Online Orders<\/u><\/strong>\n<\/h2><br>\n\n<p>\n\t<strong>Returns in Canada<\/strong>\n<\/p><br>\n<p>Regular priced items in unworn, original condition (or sale items sold below 30% discount) are eligible for an online return or exchange. The return or exchange must be requested <strong>within 7 days of delivery<\/strong> as indicated by the customer’s provided tracking number. Any items sold at 30% discount or higher will be considered a <strong>final sale<\/strong> and will not be eligible for an online return or exchange.<\/p>\n<br>\n<p>Return shipping is free for customers returning or exchanging regular priced items within Canada. Request a return or exchange using the button at the bottom of this page to receive your shipping label. <\/p>\n<br>\n<p>\n\t<strong>US Returns<\/strong>\n<\/p>\n<br>\n<p>Regular priced items in unworn, original condition (or sale items sold below 30% discount) are eligible for an online return or exchange. The return or exchange must be requested <strong>within 7 days of delivery<\/strong> as indicated by the customer’s provided tracking number. Any items sold at 30% discount or higher will be considered a <strong>final sale<\/strong> and will not be eligible for an online return or exchange.<\/p>\n<br>\n<p>USA customers returning or exchanging items <strong>must cover return shipping costs and ship via USPS or DHL<\/strong>. Returns made via separate channels will incur duties that will then be deducted from your expected refund.<\/p> \n<br>\n<p>Returned items must be declared as “Returned Goods” on the customs section of the return label. Improperly declared returns may incur additional fees by customs. Please choose a service that is trackable as we are not responsible for damaged or lost returns. Request a return or exchange using the button at the bottom of this page to receive your shipping label. <\/p>\n<br>\n<p>\n\t<strong>International Returns<\/strong>\n<\/p>\n<br>\n<p>Regular priced items in unworn, original condition (or sale items sold below 30% discount) are eligible for an online return or exchange. The return or exchange must be requested <strong>within 7 days of delivery<\/strong> as indicated by the customer’s provided tracking number. Any items sold at 30% discount or higher will be considered a <strong>final sale<\/strong> and will not be eligible for an online return or exchange.<\/p>\n<br>\n<p>International customers returning or exchanging items <strong>must cover return shipping costs and must ship via DHL<\/strong>. Returns made via separate channels will incur duties that will then be deducted from your expected refund. <\/p><br>\n<p>Returned items must be declared as “Returned Goods” on the customs section of the return label. Improperly declared returns may incur additional fees by customs. Please choose a service that is trackable as we are not responsible for damaged or lost returns. Request a return or exchange using the button at the bottom of this page to receive your shipping label. <\/p>\n<br>\n<br>\n\n<a href=\"mailto:support@rodengray.com?Subject=Return%20Request%20for%20Order%20#YOUR%20ORDER\" class=\"button\">Request a Return<\/a>\n<br>\n<br>\n<br>\n<h3>\n\t<strong>Return Shipping Address<\/strong>\n<\/h3>\n<br>\nRoden Gray<br>\nAttn: Returns RA#(your return number)<br>\n386 Powell Street<br>\nV6A 1G4<br>\nCanada<br>"
+            }
+          },
+          "1555389156597": {
+            "type": "policy",
+            "settings": {
+              "title": "Contact Us",
+              "body": "You can reach our online support team Monday through Friday during store hours via:<br><br>\n\n<h4>PHONE<\/h4><br>\nOnline Support: <a href=\"tel:604-709-0259\">604-709-0259<\/a> (Canada & USA)<br>\nGastown Store: <a href=\"tel:604-689-7302\">604-689-7302<\/a><br><br>\n\n<h4>EMAIL<\/h4><br>\nClient Care & Orders<br>\n<a href=\"mailto:support@rodengray.com\">support@rodengray.com<\/a><br><br>\nWholesale Inquiries<br>\n<a href=\"mailto:buyer@rodengray.com\">buyer@rodengray.com<\/a><br><br>\nPress Inquiries<br>\n<a href=\"mailto:press@rodengray.com\">press@rodengray.com<\/a>"
+            }
+          }
+        },
+        "block_order": [
+          "1555629869888",
+          "1555570547694",
+          "1555629923345",
+          "1555390376951",
+          "1555392873693",
+          "1555389156597"
+        ],
+        "settings": {
+        }
+      },
+      "careers": {
+        "type": "careers",
+        "settings": {
+          "image": "shopify:\/\/shop_images\/4_ca4f013b-117e-4246-89ca-cef66fa15c39.jpg",
+          "heading": "Join our Team",
+          "body": "Since 2007 Roden Gray has been a leader in the Vancouver fashion market and starting in 2010 we opened our doors to the world with RODENGRAY.COM. With one of the largest selections of exclusive brands available in North America, we pride ourselves in offering an unforgettable experience to our customers every time they visit us, both in-store and online.<br><br>\n\nDo you have a passion for men's fashion? Do you believe style is something essential and accessible to everyone? We're seeking talented, motivated individuals to add to our ever-growing team. If you think you're a good fit, we'd love to hear from you."
+        }
+      },
+      "1581368883342": {
+        "type": "hero-section",
+        "disabled": true,
+        "blocks": {
+          "1581368883342-0": {
+            "type": "slide",
+            "settings": {
+              "x_position": "center",
+              "y_position": "center",
+              "x_position_tablet": "center",
+              "y_position_tablet": "center",
+              "x_position_mobile": "center",
+              "y_position_mobile": "center",
+              "show_content": false,
+              "content_x_position": "left",
+              "content_y_position": "bottom",
+              "content_color": "white",
+              "heading": "OAMC Exclusively for Roden Gray",
+              "body": "",
+              "link": "shopify:\/\/collections\/oamc",
+              "cta_text": "Shop the Collaboration",
+              "cta_style": "white"
+            }
+          }
+        },
+        "block_order": [
+          "1581368883342-0"
+        ],
+        "settings": {
+          "speed": 6
+        }
+      },
+      "1581369059717": {
+        "type": "hero-section",
+        "blocks": {
+          "1581369059717-0": {
+            "type": "slide",
+            "settings": {
+              "x_position": "center",
+              "y_position": "center",
+              "x_position_tablet": "center",
+              "y_position_tablet": "center",
+              "x_position_mobile": "center",
+              "y_position_mobile": "center",
+              "show_content": false,
+              "content_x_position": "left",
+              "content_y_position": "bottom",
+              "content_color": "black",
+              "heading": "6 Moncler 1017 ALYX 9SM",
+              "body": "",
+              "link": "shopify:\/\/collections\/moncler-genius",
+              "cta_text": "Shop the Moncler Project",
+              "cta_style": "black"
+            }
+          }
+        },
+        "block_order": [
+          "1581369059717-0"
+        ],
+        "settings": {
+          "speed": 5
+        }
+      },
+      "1581370496881": {
+        "type": "hero-section",
+        "blocks": {
+          "1581370496881-0": {
+            "type": "slide",
+            "settings": {
+              "x_position": "center",
+              "y_position": "center",
+              "x_position_tablet": "center",
+              "y_position_tablet": "center",
+              "x_position_mobile": "center",
+              "y_position_mobile": "center",
+              "show_content": false,
+              "content_x_position": "left",
+              "content_y_position": "bottom",
+              "content_color": "black",
+              "heading": "Aimé Leon Dore x Clarks Originals",
+              "body": "",
+              "link": "shopify:\/\/collections\/aime-leon-dore",
+              "cta_text": "Shop the Collaboration",
+              "cta_style": "black"
+            }
+          }
+        },
+        "block_order": [
+          "1581370496881-0"
+        ],
+        "settings": {
+          "speed": 5
+        }
+      },
+      "newsletter": {
+        "type": "newsletter",
+        "settings": {
+          "section_title": "Subscribe to stay up to date with the latest news",
+          "subheading": "Be the first to hear about our latest releases",
+          "checkbox_1_label": "I would like to receive the Roden Gray newsletter",
+          "checkbox_2_label": "I would like to receive emails about sales",
+          "cta_text": "Subscribe",
+          "newsletter_timeout": 6
+        }
+      },
+      "1587582278155": {
+        "type": "hero-section",
+        "blocks": {
+          "1587582278155-0": {
+            "type": "slide",
+            "settings": {
+              "x_position": "center",
+              "y_position": "center",
+              "x_position_tablet": "center",
+              "y_position_tablet": "center",
+              "x_position_mobile": "center",
+              "y_position_mobile": "center",
+              "show_content": false,
+              "content_x_position": "left",
+              "content_y_position": "bottom",
+              "content_color": "black",
+              "heading": "Vans x Anderson .Paak",
+              "body": "",
+              "link": "shopify:\/\/collections\/vans",
+              "cta_text": "Shop the Collaboration",
+              "cta_style": "black"
+            }
+          }
+        },
+        "block_order": [
+          "1587582278155-0"
+        ],
+        "settings": {
+          "speed": 5
+        }
+      },
+      "content-modal": {
+        "type": "content-modal",
+        "settings": {
+          "show_modal": false,
+          "heading": "Spring Summer Sale",
+          "subheading": "",
+          "body": "This one’s on us! Take 10% off all your summer essentials when you plug in the code <strong>SUMMER10<\/strong> at checkout.<br><br> <i style=\"font-size:12px;\">Exclusions may apply.<\/i>",
+          "cta_text": "",
+          "cta_blank": true,
+          "timeout": 2
+        }
+      },
+      "cart": {
+        "type": "cart",
+        "settings": {
+          "content_title": "COVID-19",
+          "content_body": "<p>Due to limited resources for processing orders during this time, online orders may experience delays of 3-5 business days before shipping.<\/p> \n<br>\n<p>Please contact <a href=\"mailto:support@rodengray.com%20\"><u><strong>support@rodengray.com <\/strong><\/u><\/a>for any questions or concerns placing your order. In accordance with public social distancing recommendations, all employees capable of working remotely are doing so. <\/p>\n<br>\nWhen processing orders, we are being diligent with cleaning and sterilization procedures to further reduce any risks. Thank you for your support and understanding during these trying times.<p><\/p>"
+        }
+      },
+      "1598302449880": {
+        "type": "hero-section",
+        "blocks": {
+          "1598302449880-0": {
+            "type": "slide",
+            "settings": {
+              "x_position": "center",
+              "y_position": "center",
+              "x_position_tablet": "center",
+              "y_position_tablet": "center",
+              "x_position_mobile": "center",
+              "y_position_mobile": "center",
+              "show_content": false,
+              "content_x_position": "right",
+              "content_y_position": "bottom",
+              "content_color": "black",
+              "heading": "",
+              "body": "",
+              "link": "shopify:\/\/collections\/sale",
+              "cta_text": "Shop the Sale!",
+              "cta_style": "white"
+            }
+          }
+        },
+        "block_order": [
+          "1598302449880-0"
+        ],
+        "settings": {
+          "speed": 5
+        }
+      },
+      "1599681167066": {
+        "type": "hero-section",
+        "blocks": {
+          "1599681167066-0": {
+            "type": "slide",
+            "settings": {
+              "x_position": "center",
+              "y_position": "center",
+              "x_position_tablet": "center",
+              "y_position_tablet": "center",
+              "x_position_mobile": "center",
+              "y_position_mobile": "center",
+              "show_content": false,
+              "content_x_position": "right",
+              "content_y_position": "bottom",
+              "content_color": "black",
+              "heading": "Lite Year",
+              "body": "",
+              "link": "shopify:\/\/collections\/lite-year",
+              "cta_text": "Introducing: Lite Year",
+              "cta_style": "black"
+            }
+          }
+        },
+        "block_order": [
+          "1599681167066-0"
+        ],
+        "settings": {
+          "speed": 5
+        }
+      },
+      "1601687685869": {
+        "type": "rich-text",
+        "settings": {
+          "title": "",
+          "text": ""
+        }
+      },
+      "1602003849919": {
+        "type": "rich-text",
+        "disabled": true,
+        "settings": {
+          "title": "",
+          "text": ""
+        }
+      },
+      "1603486998c7214eeb": {
+        "type": "rich-text",
+        "settings": {
+          "title": "",
+          "text": ""
+        }
+      },
+      "16037541411c64d22a": {
+        "type": "rich-text",
+        "settings": {
+          "title": "",
+          "text": ""
+        }
+      },
+      "16037546240eddc81a": {
+        "type": "rich-text",
+        "settings": {
+          "title": "",
+          "text": ""
+        }
+      },
+      "collection-regular": {
+        "type": "collection-regular",
+        "settings": {
+        }
+      },
+      "collection-archive-sale": {
+        "type": "collection-archive-sale",
+        "settings": {
+        }
+      },
+      "1605307256259a0ac8": {
+        "type": "rich-text",
+        "settings": {
+          "title": "",
+          "text": ""
+        }
+      },
+      "16062621350d813710": {
+        "type": "rich-text",
+        "settings": {
+          "title": "",
+          "text": ""
+        }
+      },
+      "1606262178d29d3316": {
+        "type": "hero-section",
+        "blocks": {
+          "1606262178d29d3316-0": {
+            "type": "slide",
+            "settings": {
+              "x_position": "center",
+              "y_position": "center",
+              "x_position_tablet": "center",
+              "y_position_tablet": "center",
+              "x_position_mobile": "center",
+              "y_position_mobile": "center",
+              "show_content": false,
+              "content_x_position": "left",
+              "content_y_position": "bottom",
+              "content_color": "black",
+              "heading": "",
+              "body": "",
+              "link": "https:\/\/rodengray.com\/blogs\/staff-picks\/rg-community-holiday-gift-guide",
+              "cta_text": "Find the gift they really want!",
+              "cta_style": "black"
+            }
+          },
+          "7984b3e4-0ea2-4771-8f4c-7b943111a145": {
+            "type": "slide",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/01-06-21-furthersale-banner-mobile_900x_bf4f14b4-879c-4e7a-a128-1162dfc4c37a.png",
+              "x_position": "center",
+              "y_position": "center",
+              "x_position_tablet": "center",
+              "y_position_tablet": "center",
+              "x_position_mobile": "center",
+              "y_position_mobile": "center",
+              "show_content": true,
+              "content_x_position": "left",
+              "content_y_position": "center",
+              "content_color": "white",
+              "heading": "TEST ALL PRODUCTS",
+              "body": "",
+              "link": "shopify:\/\/collections\/all-products",
+              "cta_text": "Test Now",
+              "cta_style": "primary"
+            }
+          }
+        },
+        "block_order": [
+          "1606262178d29d3316-0",
+          "7984b3e4-0ea2-4771-8f4c-7b943111a145"
+        ],
+        "settings": {
+          "speed": 5
+        }
+      },
+      "1606347087f1f42e94": {
+        "type": "hero-section",
+        "blocks": {
+          "1606347087f1f42e94-0": {
+            "type": "slide",
+            "settings": {
+              "x_position": "center",
+              "y_position": "center",
+              "x_position_tablet": "center",
+              "y_position_tablet": "center",
+              "x_position_mobile": "center",
+              "y_position_mobile": "center",
+              "show_content": false,
+              "content_x_position": "left",
+              "content_y_position": "bottom",
+              "content_color": "black",
+              "heading": "Sporty & Rich",
+              "body": "",
+              "link": "shopify:\/\/collections\/sporty-rich-1",
+              "cta_text": "Shop FW20",
+              "cta_style": "black"
+            }
+          }
+        },
+        "block_order": [
+          "1606347087f1f42e94-0"
+        ],
+        "settings": {
+          "speed": 5
+        }
+      },
+      "16063471273abe8a97": {
+        "type": "rich-text",
+        "settings": {
+          "title": "",
+          "text": ""
+        }
+      },
+      "16071332551c387e2e": {
+        "type": "hero-section",
+        "blocks": {
+          "16071332551c387e2e-0": {
+            "type": "slide",
+            "settings": {
+              "x_position": "center",
+              "y_position": "center",
+              "x_position_tablet": "center",
+              "y_position_tablet": "center",
+              "x_position_mobile": "center",
+              "y_position_mobile": "center",
+              "show_content": false,
+              "content_x_position": "right",
+              "content_y_position": "bottom",
+              "content_color": "black",
+              "heading": "",
+              "body": "",
+              "link": "https:\/\/rodengray.com\/blogs\/content\/rg-community-sock-drive",
+              "cta_text": "Support the Cause!",
+              "cta_style": "black"
+            }
+          }
+        },
+        "block_order": [
+          "16071332551c387e2e-0"
+        ],
+        "settings": {
+          "speed": 5
+        }
+      },
+      "1607133262367e425a": {
+        "type": "rich-text",
+        "settings": {
+          "title": "",
+          "text": ""
+        }
+      },
+      "filter-menu-settings": {
+        "type": "filter-menu-settings",
+        "settings": {
+        }
+      }
+    },
+    "content_for_index": [
+      "1606262178d29d3316",
+      "1601687685869",
+      "1598302449880",
+      "16037546240eddc81a",
+      "1581370496881",
+      "16063471273abe8a97",
+      "1606347087f1f42e94",
+      "1605307256259a0ac8",
+      "16071332551c387e2e",
+      "16062621350d813710",
+      "1587582278155",
+      "1607133262367e425a",
+      "1581369059717",
+      "16037541411c64d22a",
+      "1599681167066",
+      "1603486998c7214eeb",
+      "1581368883342",
+      "1602003849919"
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+<div class="py-md">
+  {% if section.blocks.size > 0 %}
+    {% for block in section.blocks %}
+      {% include 'featured-article' %}
+    {% endfor %}
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Featured Article",
+  "max_blocks": 1,
+  "blocks": [
+    {
+      "type": "featured_article",
+      "name": "Featured Article",
+      "settings": [
+        {
+          "type": "article",
+          "id": "article",
+          "label": "Choose Article"
+        },
+        {
+          "type": "checkbox",
+          "id": "reverse",
+          "label": "Reverse Layout"
+        }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "Featured Article",
+    "category": "Blog"
+  }]
+}
+{% endschema %}

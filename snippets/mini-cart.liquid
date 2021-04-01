@@ -1,0 +1,75 @@
+<aside id="mini-cart">
+	<section class="products">
+		<ul>
+		{% for line_item in cart.items %}
+		{% assign product = line_item.product  %}
+			<li class="product" data-variant-id="{{ line_item.variant_id }}">
+					<div class="picture">
+						<a href="{{ product.url }}">
+							<img src="{{ product.featured_image | product_img_url: 'small' }}" alt="{{ product.title }}">
+						</a>
+						<a href="#" class="remove-item x">&nbsp;
+						</a>
+						{% if line_item.quantity > 1 %}
+						<div class="qty">x{{ line_item.quantity }}</div>
+						{% endif %}
+					</div>
+					<a href="{{ product.url }}">
+						<div class="description">
+							<div class="brand">{{ product.vendor }}</div>
+							<div class="name">{{ product.title }}</div>
+							<div class="size">{{ line_item.variant.title }}</div>
+							<div class="price money">{{ product.price | money_with_currency }}</div>
+						</div>
+					</a>
+				</a>
+			</li>
+		{% endfor %}
+		</ul>
+		&nbsp;
+	</section>
+	<section class="totals">
+		<div class="side">
+			<table class="mini-totals">
+				<tr class="destination">
+					<td class="title" colspan="2">Shipping To: <span id="shipping-destination"></span><a href="#country-selector" class="change-dest">Change</a></td>
+				</tr>
+				<tr class="subtotal">
+					<td class="title">Subtotal</td>
+					<td class="amount">
+						<span id="mini-subtotal" class="money" data-subtotal="{{ cart.total_price | money_without_currency | replace: ',' , '' }}">{{ cart.total_price | money_with_currency }}</span>
+					</td>
+				</tr>
+				<tr class="shipping-method">
+					<td class="title">
+						<label for="shipping-method">Shipping</label>
+						<select name="shipping-method" id="mini-shipping-method" class="shipping-method">
+						</select>
+					</td>
+					<td class="amount"><span id="mini-shipping-amount" class="money">$0.00 CAD</span></td>
+				</tr>
+				<tr class="taxes">
+					<td class="title">Taxes</td>
+					<td class="amount">
+						<span class="money">$0.00</span>
+					</td>
+				</tr>
+				<tr class="total">
+					<td class="title">Total</td>
+					<td class="amount">
+						<span id="mini-total" class="money">$0.00</span>
+					</td>
+				</tr>
+			</table>
+			<span class="discount-disclaimer">Have a discount code? Apply it during check-out.</span>
+		</div>
+		<div class="side">
+			<form action="/cart" method="post" id="mini-cart-checkout">
+				<a href="/cart">View Your Bag</a>
+				<input type="submit" name="checkout" value="Check Out Now" class="btn">
+			</form>
+		</div>
+	</section>
+	<a href="#" id="close-mini-cart" class="close x">&nbsp;</a>
+</aside>
+<div id="mini-overlay"></div>

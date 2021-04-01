@@ -1,0 +1,520 @@
+<section class="hero-section">
+	<carousel :per-page="1" :autoplay="true" :loop="true" easing="cubic-bezier(0.530, 0.330, 0.190, 0.780)" :speed="1000" :autoplay-timeout="{{ section.settings.speed | times: 1000 }}" :pagination-enabled="false" v-cloak>
+		{% for block in section.blocks %}
+
+			{% if block.type == 'slide' %}
+				{% if block.settings.image != blank %}
+        {% capture slide_classes %}has-desktop{% if block.settings.image_tablet != blank %} has-tablet{% endif %}{% if block.settings.image_mobile != blank %} has-mobile{% endif %}{% endcapture %}
+				<slide class="hero-section__slide {{ slide_classes }}">
+          <div class="hero-section__image hero-section__image--desktop" style="background-image:url({{ block.settings.image.src | img_url: '1800x' }});background-position:{{ block.settings.x_position }} {{ block.settings.y_position }};"></div>
+
+          {% if block.settings.image_tablet != blank %}
+            <div class="hero-section__image hero-section__image--tablet" style="background-image:url({{ block.settings.image_tablet.src | img_url: '1200x' }});background-position:{{ block.settings.x_position }} {{ block.settings.y_position }};"></div>
+          {% endif %}
+
+          {% if block.settings.image_mobile != blank %}
+            <div class="hero-section__image hero-section__image--mobile" style="background-image:url({{ block.settings.image_mobile.src | img_url: '900x' }});background-position:{{ block.settings.x_position }} {{ block.settings.y_position }};"></div>
+          {% endif %}
+
+					{% if block.settings.link != blank and block.settings.cta_text == blank %}
+            <a class="wrapper wrapper--link" href="{{ block.settings.link }}">
+					{% else %}
+            <div class="wrapper">
+					{% endif %}
+              <div class="row hero-section__content hero-section__content--x-{{ block.settings.content_x_position }} hero-section__content--y-{{ block.settings.content_y_position }} hero-section__content--{{ block.settings.content_color }}">
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                  {% if block.settings.heading != blank %}
+                    <h2 class="hero-section__heading">{{ block.settings.heading | escape }}</h2>
+                  {% endif %}
+                  {% if block.settings.body != blank %}
+                    <p class="hero-section__body">{{ block.settings.body | escape }}</p>
+                  {% endif %}
+                  {% if block.settings.link != blank and block.settings.cta_text != blank %}
+                    <a href="{{ block.settings.link }}" class="button button--solid hero-section__button--{{ block.settings.cta_style }}">{{ block.settings.cta_text | escape }}</a>
+                  {% endif %}
+                </div>
+              </div>
+					{% if block.settings.link != blank and block.settings.cta_text == blank %}
+            </a>
+					{% else %}
+            </div>
+					{% endif %}
+				</slide>
+				{% endif %}
+
+			{% elsif block.type == 'video_slide' %}
+
+				{% if block.settings.video != blank %}
+				<slide class="hero-section__slide">
+					<div class="hero-section__video">
+						<iframe id="ytplayer" type="text/html" width="1920px" height="1080px" style="transform:translateY(-10%);" src="https://www.youtube.com/embed/{{ block.settings.video.id }}?autoplay=1&origin=http://rodengray.com&controls=0&mute=1&autohide=1&modestbranding=1&fs=0&showinfo=0&loop=1&playsinline=1" frameborder="0"></iframe>
+					</div>
+					{% if block.settings.link != blank and block.settings.cta_text == blank %}
+					<a class="wrapper wrapper--link" href="{{ block.settings.link }}">
+					{% else %}
+					<div class="wrapper">
+					{% endif %}
+						<div class="row hero-section__content hero-section__content--x-{{ block.settings.content_x_position }} hero-section__content--y-{{ block.settings.content_y_position }} hero-section__content--{{ block.settings.content_color }}">
+							<div class="col-lg-4 col-md-6 col-sm-12">
+								{% if block.settings.heading != blank %}
+									<h2 class="hero-section__heading">{{ block.settings.heading | escape }}</h2>
+								{% endif %}
+								{% if block.settings.body != blank %}
+									<p class="hero-section__body">{{ block.settings.body | escape }}</p>
+								{% endif %}
+								{% if block.settings.link != blank and block.settings.cta_text != blank %}
+									<a href="{{ block.settings.link }}" class="button button--solid hero-section__button--{{ block.settings.cta_style }}">{{ block.settings.cta_text | escape }}</a>
+								{% endif %}
+							</div>
+						</div>
+					{% if block.settings.link != blank and block.settings.cta_text == blank %}
+					</a>
+					{% else %}
+					</div>
+					{% endif %}
+				</slide>
+				{% endif %}
+			{% endif %}
+		{% endfor %}
+	</carousel>
+</section>
+
+{% schema %}
+	{
+		"name": "Hero Section",
+		"max_blocks": 5,
+		"settings": [
+			{
+				"id": "speed",
+				"type": "range",
+				"label": "Slide Duration",
+				"min": 1,
+				"max": 10,
+				"default": 5,
+				"unit": "sec"
+			}
+		],
+		"blocks": [
+			{
+				"type": "video_slide",
+				"name": "Video Slide",
+				"settings": [
+
+					{
+						"type": "header",
+						"content": "Background Video Settings"
+					},
+					{
+						"id": "video",
+						"type": "video_url",
+						"label": "Video URL",
+						"accept": ["youtube"],
+						"info": "Put full URL of video.",
+						"placeholder": "https://www.youtube.com/watch?v=gJqSp1iayBQ"
+					},
+					{
+						"type": "header",
+						"content": "Content Settings"
+					},
+					{
+						"id": "show_content",
+						"type": "checkbox",
+						"label": "Show content"
+					},
+					{
+						"id": "content_x_position",
+						"type": "select",
+						"label": "Content X Position",
+						"info": "Position along the X axis",
+						"default": "left",
+						"options": [
+							{
+								"value": "left",
+								"label": "Left"
+							},
+							{
+								"value": "center",
+								"label": "Center"
+							},
+							{
+								"value": "right",
+								"label": "Right"
+							}
+						]
+					},
+					{
+						"id": "content_y_position",
+						"type": "select",
+						"label": "Content Y Position",
+						"info": "Position along the Y axis",
+						"default": "center",
+						"options": [
+							{
+								"value": "top",
+								"label": "Top"
+							},
+							{
+								"value": "center",
+								"label": "Center"
+							},
+							{
+								"value": "bottom",
+								"label": "Bottom"
+							}
+						]
+					},
+					{
+						"id": "content_color",
+						"type": "select",
+						"label": "Content Color",
+						"default": "black",
+						"options": [
+							{
+								"value": "black",
+								"label": "Black"
+							},
+							{
+								"value": "white",
+								"label": "White"
+							}
+						]
+					},
+					{
+						"id": "heading",
+						"type": "text",
+						"label": "Heading",
+						"info": "Leave blank to hide."
+					},
+					{
+						"id": "body",
+						"type": "textarea",
+						"label": "Body Text",
+						"info": "Leave blank to hide."
+					},
+					{
+						"type": "header",
+						"content": "Link Settings"
+					},
+					{
+						"id": "link",
+						"type": "url",
+						"label": "Slide Link Destination"
+					},
+					{
+						"id": "cta_text",
+						"type": "text",
+						"label": "CTA Text",
+						"info": "Must have link set in Slide Link Destination. Leave blank to hide and have the entire slide be the link."
+					},
+					{
+						"id": "cta_style",
+						"type": "select",
+						"label": "CTA Color Style",
+						"default": "primary",
+						"options": [
+							{
+								"value": "primary",
+								"label": "Primary"
+							},
+							{
+								"value": "black",
+								"label": "Black"
+							},
+							{
+								"value": "white",
+								"label": "White"
+							}
+						]
+					}
+				]
+			},
+			{
+				"type": "slide",
+				"name": "Image Slide",
+				"settings": [
+					{
+						"type": "header",
+						"content": "Background Image Settings - Desktop"
+					},
+					{
+						"id": "image",
+						"type": "image_picker",
+						"label": "Select Image",
+						"info": "Image should be landscape orientation and at least 1800px wide"
+					},
+					{
+						"id": "x_position",
+						"type": "select",
+						"label": "Background X anchor",
+						"info": "Anchor position along the X axis",
+						"default": "center",
+						"options": [
+							{
+								"value": "left",
+								"label": "Left"
+							},
+							{
+								"value": "center",
+								"label": "Center"
+							},
+							{
+								"value": "right",
+								"label": "Right"
+							}
+						]
+					},
+					{
+						"id": "y_position",
+						"type": "select",
+						"label": "Background Y anchor",
+						"info": "Anchor position along the Y axis",
+						"default": "center",
+						"options": [
+							{
+								"value": "top",
+								"label": "Top"
+							},
+							{
+								"value": "center",
+								"label": "Center"
+							},
+							{
+								"value": "bottom",
+								"label": "Bottom"
+							}
+						]
+					},
+					{
+						"type": "header",
+						"content": "Background Image Settings - Tablet"
+					},
+					{
+						"id": "image_tablet",
+						"type": "image_picker",
+						"label": "Select Image",
+						"info": "Image should be square orientation and at least 1200px wide"
+					},
+					{
+						"id": "x_position_tablet",
+						"type": "select",
+						"label": "Background X anchor",
+						"info": "Anchor position along the X axis",
+						"default": "center",
+						"options": [
+							{
+								"value": "left",
+								"label": "Left"
+							},
+							{
+								"value": "center",
+								"label": "Center"
+							},
+							{
+								"value": "right",
+								"label": "Right"
+							}
+						]
+					},
+					{
+						"id": "y_position_tablet",
+						"type": "select",
+						"label": "Background Y anchor",
+						"info": "Anchor position along the Y axis",
+						"default": "center",
+						"options": [
+							{
+								"value": "top",
+								"label": "Top"
+							},
+							{
+								"value": "center",
+								"label": "Center"
+							},
+							{
+								"value": "bottom",
+								"label": "Bottom"
+							}
+						]
+					},
+					{
+						"type": "header",
+						"content": "Background Image Settings - Mobile"
+					},
+					{
+						"id": "image_mobile",
+						"type": "image_picker",
+						"label": "Select Image",
+						"info": "Image should be portrait orientation and at least 900px wide"
+					},
+					{
+						"id": "x_position_mobile",
+						"type": "select",
+						"label": "Background X anchor",
+						"info": "Anchor position along the X axis",
+						"default": "center",
+						"options": [
+							{
+								"value": "left",
+								"label": "Left"
+							},
+							{
+								"value": "center",
+								"label": "Center"
+							},
+							{
+								"value": "right",
+								"label": "Right"
+							}
+						]
+					},
+					{
+						"id": "y_position_mobile",
+						"type": "select",
+						"label": "Background Y anchor",
+						"info": "Anchor position along the Y axis",
+						"default": "center",
+						"options": [
+							{
+								"value": "top",
+								"label": "Top"
+							},
+							{
+								"value": "center",
+								"label": "Center"
+							},
+							{
+								"value": "bottom",
+								"label": "Bottom"
+							}
+						]
+					},
+					{
+						"type": "header",
+						"content": "Content Settings"
+					},
+					{
+						"id": "show_content",
+						"type": "checkbox",
+						"label": "Show content"
+					},
+					{
+						"id": "content_x_position",
+						"type": "select",
+						"label": "Content X Position",
+						"info": "Position along the X axis",
+						"default": "left",
+						"options": [
+							{
+								"value": "left",
+								"label": "Left"
+							},
+							{
+								"value": "center",
+								"label": "Center"
+							},
+							{
+								"value": "right",
+								"label": "Right"
+							}
+						]
+					},
+					{
+						"id": "content_y_position",
+						"type": "select",
+						"label": "Content Y Position",
+						"info": "Position along the Y axis",
+						"default": "center",
+						"options": [
+							{
+								"value": "top",
+								"label": "Top"
+							},
+							{
+								"value": "center",
+								"label": "Center"
+							},
+							{
+								"value": "bottom",
+								"label": "Bottom"
+							}
+						]
+					},
+					{
+						"id": "content_color",
+						"type": "select",
+						"label": "Content Color",
+						"default": "black",
+						"options": [
+							{
+								"value": "black",
+								"label": "Black"
+							},
+							{
+								"value": "white",
+								"label": "White"
+							}
+						]
+					},
+					{
+						"id": "heading",
+						"type": "text",
+						"label": "Heading",
+						"info": "Leave blank to hide."
+					},
+					{
+						"id": "body",
+						"type": "textarea",
+						"label": "Body Text",
+						"info": "Leave blank to hide."
+					},
+					{
+						"type": "header",
+						"content": "Link Settings"
+					},
+					{
+						"id": "link",
+						"type": "url",
+						"label": "Slide Link Destination"
+					},
+					{
+						"id": "cta_text",
+						"type": "text",
+						"label": "CTA Text",
+						"info": "Must have link set in Slide Link Destination. Leave blank to hide and have the entire slide be the link."
+					},
+					{
+						"id": "cta_style",
+						"type": "select",
+						"label": "CTA Color Style",
+						"default": "primary",
+						"options": [
+							{
+								"value": "primary",
+								"label": "Primary"
+							},
+							{
+								"value": "black",
+								"label": "Black"
+							},
+							{
+								"value": "white",
+								"label": "White"
+							}
+						]
+					}
+				]
+			}
+		],
+		"presets": [
+			{
+				"name": "Hero Section",
+				"category": "Promotional",
+				"blocks": [
+					{
+						"type": "slide"
+					}
+				]
+			}
+		]
+	}
+{% endschema %}

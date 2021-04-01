@@ -1,0 +1,16 @@
+<script type="text/x-template" id="article-image-section">
+	<div class="wrapper">
+    <div class="article-content">
+      <div class="image-section" :class="alignment">
+      		<div v-if="image1" class="image-section__image" :class="{ 'image-section__image--full': !image2 && !alignment }">
+      			<img :src="image1" :alt="caption1" />
+      			<p v-if="caption1 && !hideCaptions" class="image-section__caption" v-html="caption1"></p>
+      		</div>
+      		<div v-if="image2" class="image-section__image">
+      			<img :src="image2" :alt="caption2" />
+      			<p v-if="caption2 && !hideCaptions" class="image-section__caption" v-html="caption2"></p>
+      		</div>
+      	</div>
+    </div>
+  </div>
+</script>

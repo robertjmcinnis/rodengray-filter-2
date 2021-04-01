@@ -1,0 +1,109 @@
+<editorial inline-template>
+	<div class="editorial" id="editorial">
+		<section class="wrapper">
+			<div class="row">
+				<div class="col editorial-header">
+					<h1 class="editorial-header__title">{{ page.title }}</h1>
+					{% if section.blocks.size > 0 %}
+						<ul class="editorial-header__nav">
+							{% for block in section.blocks %}
+								{% if block.type == 'blog_listing' %}
+								{% assign blog = blogs[block.settings.blog] %}
+									<li class="editorial-header__nav-item" @click="handleScroll( '{{ blog.handle }}-{{ blog.id }}' )">{{ blog.title }}<i class="far fa-angle-down ml-xxs"></i></li>
+								{% endif %}
+							{% endfor %}
+						</ul>
+					{% endif %}
+				</div>
+			</div>
+		</section>
+
+		{% for block in section.blocks %}
+
+			{% if block.type == 'featured_article' %}
+        {% include 'featured-article' %}
+			{% endif %}
+
+			{% if block.type == 'blog_listing' %}
+			{% assign blog = blogs[block.settings.blog] %}
+				<section data-aos="fade" class="blog-listing" ref="{{ blog.handle }}-{{ blog.id }}">
+					<div class="wrapper">
+						<div class="widget-heading">
+							<h3 class="mb-xs">{{ blog.title }}</h3>
+							<a class="blog-listing__link" href="{{ blog.url }}">View All<i class="fal fa-angle-right"></i></a>
+						</div>
+						<carousel class="row blog-carousel" :navigation-enabled="true" navigation-prev-label="<i class='fal fa-angle-left VueCarousel-navigation__arrow'></i>" pag navigation-next-label="<i class='fal fa-angle-right VueCarousel-navigation__arrow'></i>" :per-page="1" :per-page-custom="[[992, 2], [1200, 3]]" :loop="true">
+							{% for article in blog.articles %}
+								<slide class="col blog-carousel__card">
+									<a href="{{ article.url }}">
+										<div class="blog-carousel__image-wrap">
+											<div class="blog-carousel__image" style="background-image:url({{ article.image.src | img_url: '800x' }});"></div>
+										</div>
+                    <div class="blog-carousel__excerpt-area">
+                      <h4 class="mb-xxs"><strong>{{ article.title }}</strong></h4>
+                      {% assign blog_handle = article.handle | split: '/' %}
+                      {% if blogs[blog_handle[0]] %}
+                        <p class="blog-carousel__category">{{ blogs[blog_handle[0]].title }}</p>
+                      {% endif %}
+                      <p class="blog-carousel__excerpt">
+                        {% if block.settings.truncate %}
+                          {{ article.excerpt_or_content | strip_html | truncate: 200 }}
+                        {% else %}
+                          {{ article.excerpt_or_content | strip_html }}
+                        {% endif %}
+                      </p>
+                    </div>
+									</a>
+								</slide>
+							{% endfor %}
+						</carousel>
+					</div>
+				</section>
+			{% endif %}
+
+		{% endfor %}
+
+	</div>
+</editorial>
+
+{% schema %}
+{
+  "name": "Editorial",
+  "blocks": [
+    {
+      "type": "featured_article",
+      "name": "Featured Article",
+      "settings": [
+        {
+          "type": "article",
+          "id": "article",
+          "label": "Choose Article"
+        },
+        {
+          "type": "checkbox",
+          "id": "reverse",
+          "label": "Reverse Layout"
+        }
+      ]
+    },
+    {
+      "type": "blog_listing",
+      "name": "Blog Listing",
+      "settings": [
+        {
+          "type": "blog",
+          "id": "blog",
+          "label": "Choose Blog"
+        },
+        {
+          "id": "truncate",
+          "type": "checkbox",
+          "label": "Truncate excerpt",
+          "info": "Limits excerpt length to 250 characters, followed by an ellipsis",
+          "default": true
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

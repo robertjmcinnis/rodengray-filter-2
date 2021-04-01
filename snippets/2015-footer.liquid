@@ -1,0 +1,106 @@
+<div class="new">
+	<div class="footer_15">
+		<div class="tablet-row">
+			<div class="two columns">
+				<ul>
+					<li><h4>About</h4></li>
+					{% for link in linklists.footer-about.links  %}
+					<li class="footer-{{ link.title }}"><a href="{{ link.url }}" title="{{ link.url }}">{{ link.title }}</a></li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div class="four columns">
+				<ul>
+					<li><h4>Customer Service</h4></li>
+					{% for link in linklists.footer-customer-service.links %}
+					<li><a href="{{ link.url }}" title="{{ link.title }}">{{ link.title }}</a></li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div class="six columns">
+				<ul>
+					<li><h4>Become an Insider</h4></li>
+					<li class="subscribe-form">
+						<!-- Begin MailChimp Signup Form -->
+						<div class="mc_embed_signup">
+						<form action="//rodengray.us2.list-manage.com/subscribe/post?u=81a8db5d2d46720110e454e44&amp;id=89291efd13" method="post" class="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+
+						<div class="mc-field-group clearfix">
+							<input type="email" value="" placeholder="Email" name="EMAIL" id="footer_newsletter" class="required email mce-EMAIL">
+							<input type="submit" value="Subscribe" name="subscribe" class="button mc-embedded-subscribe">
+						</div>
+							<div class="mce-responses">
+								<div class="response mce-error-response" style="display:none"></div>
+								<div class="response mce-success-response" style="display:none"></div>
+							</div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+						    <div style="position: absolute; left: -5000px;"><input type="text" name="b_81a8db5d2d46720110e454e44_89291efd13" tabindex="-1" value=""></div>
+						</form>
+						</div>
+
+						<!--End mc_embed_signup-->
+					</li>
+					<li><h4>Follow Us</h4></li>
+					<li class="social">
+						<a href="http://facebook.com/rodengray" class="facebook" target="_blank"><span class="icon-facebook"></span></a>
+						<a href="http://twitter.com/rodengray" class="twitter" target="_blank"><span class="icon-twitter"></span></a>
+						<a href="http://instagram.com/rodengray" class="instagram" target="_blank"><span class="icon-instagram"></span></a>
+						<a href="http://plus.google.com/+RodenGrayVancouver" class="googleplus" target="_blank"><span class="icon-googleplus"></span></a>
+						<a href="http://pinterest.com/rodengray" class="pinterest" target="_blank"><span class="icon-pinterest"></span></a>
+						<a href="http://weibo.com/u/5023318491" class="sina-weibo" target="_blank"><span class="icon-sina-weibo"></span></a>
+						<a href="http://rodengray.tumblr.com" class="tumblr" target="_blank"><span class="icon-tumblr"></span></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="four columns contact">
+			<ul>
+				<li><a href="{{ shop.url }}">
+					<!--[if lte IE 8]>
+						<img class="logo" src="{{ 'logo_img.png' | asset_url }}">
+					<![endif]-->
+					<!--[if gt IE 8]><!-->
+						<img class="logo" src="{{ 'logo_img.svg' | asset_url }}">
+					<!--<![endif]-->
+				</a></li>
+				<li class="location"><a href="/pages/our-shop">8 Water St. Vancouver, BC<br>V6B 1A4 Canada</a></li>
+				<li class="shop-hours"><h4>Shop Hours</h4></li>
+				<li class="new-hours">{{ settings.shop_hours }}</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+
+<div class='lightbox-overlay'></div>
+
+<style>  
+  .mce-success-response:before {padding-bottom:15px;display:block;content:"Use the code INSIDERS-10 at checkout to recieve 10% off your next purchase.";}
+</style>
+
+<div class="row u-full-width subscribe-wrap lightbox">
+  <div class="modal-close-button js-modal-close"><span class="icon-cross"></span></div>
+  <div class='pod-title'>Become an Insider</div><br>Sign up for our email newsletter to receive notifications on new arrivals, sales and promotions, special events, and more.
+  <div class="container">
+    <div class="one column spacing-d"></div>
+      <!-- Begin MailChimp Signup Form -->
+    <div class="mc_embed_signup-wrap four columns">
+      <div class="mc_embed_signup">
+      <form action="//rodengray.us2.list-manage.com/subscribe/post?u=81a8db5d2d46720110e454e44&amp;id=89291efd13" method="post" class="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+
+      <div class="mc-field-group">
+        <input type="email" value="" placeholder="Email" name="EMAIL" class="required email mce-EMAIL">
+        <input type="submit" value="Subscribe" name="subscribe" class="button mc-embedded-subscribe">
+      </div>
+        <div class="mce-responses">
+          <div class="response mce-error-response" style="display:none"></div>
+          <div class="response mce-success-response" style="display:none"></div>
+        </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+          <div style="position: absolute; left: -5000px;"><input type="text" name="b_81a8db5d2d46720110e454e44_89291efd13" tabindex="-1" value=""></div>
+      </form>
+      </div>
+    </div>
+
+      <!--End mc_embed_signup-->
+    <div class="one column spacing-d"></div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<!-- Twitter Cards -->{% assign product_brand = product.vendor | handleize %}{% assign brand_twitter = collections.[product_brand].metafields.brand.twitter %}
+{% case template %}
+{% when 'product' %}
+	<meta name="twitter:card" content="product">
+	{% if brand_twitter.size > 0 %}<meta name="twitter:creator" content="{{ brand_twitter}}">{% endif %}
+	<meta name="twitter:image:src" content="http:{{ product.featured_image | product_img_url: '1024x1024' }}">
+	<meta name="twitter:data1" content="{{ product.price | money_with_currency | strip_html }}">
+	<meta name="twitter:label1" content="Price">
+	{% if product.options contains 'Colour' or 'Color' or 'Colours' %}{% unless product.variants.first.option1 == 'Default' %} <meta name="twitter:data2" content="{{ product.variants.first.option1 }}">
+	<meta name="twitter:label2" content="Colour">{% endunless %}{% endif %}
+{% when 'collection' %}
+	{% if collection.image %}<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image:src" content="http:{{ collection.image.src | collection_img_url: '1024x1024' }}">{% else %}<meta name="twitter:card" content="summary">{% endif %}
+{% when 'article' %}
+	{% include 'twitter-cards-article' }
+{% else %}
+	{% unless template == 'article' %}
+	<meta name="twitter:card" content="summary">
+	{% endunless %}
+{% endcase %}
+	<meta name="twitter:site" content="@rodengray">
+	<meta name="twitter:title" content="{{ meta_title }}">
+	<meta name="twitter:description" content="{{ meta_description }}">
+	<meta name="twitter:domain" content="rodengray.com">
+	
+	<!-- End Twitter Cards -->

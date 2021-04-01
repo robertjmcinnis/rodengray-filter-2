@@ -1,0 +1,26 @@
+{% paginate blog.articles by 10 %}
+<section class="row careers">
+	<div class="row title">
+		<h2>Careers</h2>
+	</div>
+	<div class="six columns offset-by-one">
+		<p>
+			{% include 'careers-description' %}
+		</p>
+	</div>
+	<div class="seven columns offset-by-one open-jobs">
+		<h3>Open Positions</h3>
+		{% if blog.articles_count >= 1 %}
+			{% for article in blog.articles %}
+			<section class="job">
+				<h4>{{ article.title }}</h4>
+				{{ article.content }}
+				<a href="mailto:info@rodengray.com?Subject={{ article.title | escape}}" class="button">Apply Now</a>
+			</section>
+			{% endfor %}
+		{% else blog.articles_count == 0 %}
+			<p>No Positions are currently posted but we're always looking for new team members. If you think you'd be a good fit for Roden Gray don't hesitate to email your résumé to <a href="mailto:jobs@rodengray.com">jobs@rodengray.com</a>.</p>
+		{% endif %}
+	</div>
+</section>
+{% endpaginate %}

@@ -1,0 +1,56 @@
+<policies-template :is-mobile="isMobile" :has-announcements="hasAnnouncements" inline-template>
+	<div class="policies">
+		<div class="wrapper">
+			<div class="row">
+				<ul class="col-lg-4 policies__tab-list" :class="{'policies__tab-list--announcements': hasAnnouncements}">
+					{% for block in section.blocks %}
+            {% assign block_title = block.settings.title | downcase | replace: ' ', '-' | replace: '/', '-' | replace: '&', 'and' %}
+						<li class="policies__tab" :class="{ 'policies__tab--active': currentPolicy === '{{ block_title }}' }" @click="changePolicy('{{ block_title }}')" ref="{{ block_title }}">{{ block.settings.title }}</li>
+					{% endfor %}
+				</ul>
+				<div class="col-lg-8 col-sm-12">
+					<transition name="fade" mode="out-in">
+						{% for block in section.blocks %}
+              {% assign block_title = block.settings.title | downcase | replace: ' ', '-' | replace: '/', '-' | replace: '&', 'and' %}
+							<div class="policies__single policies__single--desktop" key="{{ block.settings.title }}" v-if="currentPolicy === '{{ block_title }}'">
+								<h3 class="widget-heading">{{ block.settings.title }}</h3>
+								{{ block.settings.body }}
+							</div>
+						{% endfor %}
+					</transition>
+					{% for block in section.blocks %}
+						<div class="policies__single policies__single--mobile">
+							<h3 class="widget-heading">{{ block.settings.title }}</h3>
+							{{ block.settings.body }}
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+</policies-template>
+
+{% schema %}
+	{
+		"name": "Policies",
+		"blocks": [
+			{
+				"type": "policy",
+				"name": "Policy",
+				"settings": [
+					{
+						"id": "title",
+						"type": "text",
+						"label": "Policy Title"
+					},
+					{
+						"id": "body",
+						"type": "textarea",
+						"label": "Policy Content",
+						"info": "Use HTML to style content"
+					}
+				]
+			}
+		]
+	}
+{% endschema %}

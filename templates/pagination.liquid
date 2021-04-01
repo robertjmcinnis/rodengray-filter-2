@@ -1,0 +1,23 @@
+{% if collection.handle == 'latest-stock' %}
+	<div class="pagination">
+		Page {{ paginate.current_page }} of 3
+		{% if paginate.previous %}
+			 | {{ 'Previous' | link_to: paginate.previous.url }}
+		{% endif %}
+		{% if paginate.current_page != 3 %}
+			 | {{ 'Next' | link_to: paginate.next.url }}
+		{% endif %}
+	</div>
+{% else %}
+	{% if paginate.pages > 1 %}
+		<div class="pagination">
+			Page {{ paginate.current_page }} of {{ paginate.pages }}
+			{% if paginate.previous %}
+				 | {{ 'Previous' | link_to: paginate.previous.url }}
+			{% endif %}
+			{% if paginate.next %}
+				 | {{ 'Next' | link_to: paginate.next.url }}
+			{% endif %}
+		</div>
+	{% endif %}
+{% endif %}

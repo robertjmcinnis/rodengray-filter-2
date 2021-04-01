@@ -1,0 +1,283 @@
+{% assign titleLength = product.title | size %}
+{% assign vendorLength = product.vendor | size %}
+{% assign nameLength = titleLength | plus:vendorLength %}
+{% assign brand = product.vendor | handleize %}
+{% capture setlist %}{% for collection in product.collections %}{{ collection.handle }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endcapture %}
+<article id="product" itemscope itemtype="http://schema.org/Product" class="row product-page clearfix">
+	<section class="product-images ten columns">
+		<div class="detail-images">
+			<ul class="thumbs">
+				{% for image in product.images %}
+				{% if forloop.index == 1 %}
+					{% assign thumb_link = '#product' %}
+				{% else %}
+					{% assign thumb_link = '#image'| append: forloop.index %}
+				{% endif %}
+					<li>
+						<a href="{{ thumb_link }}"><img {% if forloop.index == 1 %}class="thumb active" {% endif %}id="thumb{{ forloop.index0 }}" src="{{ image.src | product_img_url: 'small' }}" alt="{{ product.vendor }} {{ image.alt | escape }}"></a>
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
+		<div id="slider" class="big-images swipe{% if product.images.size == 1 %} single-image{% endif %}">
+			{% if product.tags contains 'preorder' %}<div class="preorder-overlay"><span>Preorder</span></div>{% endif %}
+			<div class="swipe-wrap">
+			{% for image in product.images %}
+				<figure id="image{{ forloop.index }}" class="intense" data-image="{{ image.src | product_img_url: 'master' }}">
+					<a class="bigimg" href="{{ image.src | product_img_url: 'master' }}">
+						<img {% if forloop.index0 == 0 %}itemprop="image"{% endif %}src="{{ image.src | product_img_url: '1200x' }}" alt="{{ product.title }} | {{ product.vendor }}">
+					</a>
+				</figure>
+			{% endfor %}
+			</div>
+			<div class="swipe-controls">
+				<a class="prev" href="#" onclick="window.mySwipe.prev();">
+					<span class="icon-arrow-left"></span>
+				</a>
+				<a class="next" href="#" onclick="window.mySwipe.next();">
+					<span class="icon-arrow-right"></span>
+				</a>
+			</div>
+		</div>
+	</section>
+	<section class="product-details six columns">
+		{% include 'breadcrumbs' %}
+		<h2 itemprop="name" class="product-title"><span itemprop="brand" class="product-designer">{% unless product.type == 'Books' or product.type == 'Magazines' %}<a href="/collections/{{ brand }}">{% endunless %}{{ product.vendor }}{% unless product.type == 'Books' or product.type == 'Magazines' %}</a>{% endunless %}</span> {% if nameLength >= 37 %}<br>{% endif %}<span class="product-name">{{ product.title }}</span></h2>
+		{% unless product.type == 'Books' or product.type == 'Magazines' %}
+		<div data-swiftype-index="false" class="info-btns clearfix">
+			<button id="item-details-btn" class="active" onclick="javascript: changeContent('details');">Details</button>
+			<button id="item-designer-btn" onclick="javascript: changeContent('designer');">Designer</button>
+			<button id="item-fit-btn" onclick="javascript: changeContent('fit');">Fit Info</button>
+			<button id="item-returns-btn"onclick="javascript: changeContent('returns');">Returns</button>
+		</div>
+		{% endunless %}
+		<div data-swiftype-index="false" itemprop="description" class="product-desc rte">
+			{{ product.description | replace: '<div id="item-details"', '<div data-swiftype-index="true" id="item-details"' }}
+			<div id="item-returns">
+				{% if product.tags contains 'preorder' %}
+				<p>Purchase of items marked "Pre-order" is not a guarantee of delivery and may be cancelled due to factors outisde of our control, such as production, logistical, or quality control issues. Delivery dates provided in pre-order item descriptions are estimates and subject to change. Pre-order items are non-refundable and may be returned for exchange or store credit only.</P>
+				<p>Please see our full return policy <a href="/pages/shopping-with-us#about-returns">here</a>.</p>
+				{% else %}
+				{% include 'item-returns' %}
+				{% endif %}
+			</div>
+		</div>
+		<script type="text/javascript">
+			function changeContent(name) {
+			  var details = document.getElementById('item-details');
+			  var designer = document.getElementById('item-designer');
+			  var fit = document.getElementById('item-fit');
+			  var returns = document.getElementById('item-returns');
+			  switch (name){
+			    case "details":
+			      details.style.display = "block";
+			      designer.style.display = "none";
+			      fit.style.display = "none";
+			      returns.style.display = "none";
+			      $('#item-details-btn').addClass('active');
+			      $('#item-designer-btn').removeClass('active');
+			      $('#item-fit-btn').removeClass('active');
+			      $('#item-returns-btn').removeClass('active');
+			    break;
+			    case "designer":
+			      details.style.display = "none";
+			      designer.style.display = "block";
+			      fit.style.display = "none";
+			      returns.style.display = "none";
+			      $('#item-details-btn').removeClass('active');
+			      $('#item-designer-btn').addClass('active');
+			      $('#item-fit-btn').removeClass('active');
+			      $('#item-returns-btn').removeClass('active');
+			    break;
+			    case "fit":
+			      details.style.display = "none";
+			      designer.style.display = "none";
+			      fit.style.display = "block";
+			      returns.style.display = "none";
+			      $('#item-details-btn').removeClass('active');
+			      $('#item-designer-btn').removeClass('active');
+			      $('#item-fit-btn').addClass('active');
+			      $('#item-returns-btn').removeClass('active');
+			    break;
+			    case "returns":
+			      details.style.display = "none";
+			      designer.style.display = "none";
+			      fit.style.display = "none";
+			      returns.style.display = "block";
+			      $('#item-details-btn').removeClass('active');
+			      $('#item-designer-btn').removeClass('active');
+			      $('#item-fit-btn').removeClass('active');
+			      $('#item-returns-btn').addClass('active');
+			    break;
+			    default:
+			      details.style.display = "block";
+			      designer.style.display = "none";
+			      fit.style.display = "none";
+			      returns.style.display = "none";
+			  }
+			}
+			function hideButton() {
+				var fit = $('#item-fit').text().length;
+				var fitButton = document.getElementById('item-fit-btn');
+				var designer = document.getElementById('item-designer').childNodes.length;
+				var designerButton = document.getElementById('item-designer-btn');
+				if (fit < 3) {
+					fitButton.style.display = "none";
+				};
+				if (designer == 0) {
+					designerButton.style.display = "none";
+				};
+			};
+			hideButton();
+		</script>
+		<div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="price-field"{% if product.available == false %} style="display:none;"{% endif %}>
+			{% if product.compare_at_price_min > product.price %}
+			<span itemprop="price" class="sale-price">{{ product.price | money }}</span>
+			<span class="regular-price">{{ product.compare_at_price_max | money }}</span>
+			{% assign final_sale_price = product.compare_at_price_min | divided_by: 2 %}
+			{% if final_sale_price >= product.price %}
+			<a href="/pages/shopping-with-us#about-prices" class="tooltip" title="Final Sale items may not be returned or exchanged."><span class="final-sale">Final Sale</span><span class="tooltip-text">Final Sale items may not be returned or exchanged.<br/>Click for more info.</span></a>
+			{% endif %}
+			{% else %}
+			<span itemprop="price">{{ product.price | money }}</span>
+			{% endif %}
+			{% if product.available %}<meta itemprop="availability" content="InStock"/>{% else%}<meta itemprop="availability" content="OutOfStock"/>{% endif %}
+			<meta itemprop="itemCondition" content="New" />
+			<meta itemprop="priceCurrency" content="CAD"/>
+			<meta itemprop="price" content="{{ product.price | money_without_currency }}" />
+		</div>
+		{% include 'product-promo' with 'top' %}
+		<hr>
+		{% if product.available %}
+		<form data-swiftype-index="false" action="/cart/add" method="post" class="product-form" id="product-form">
+			<div class="product-variants">
+				{% comment %} ENUMERATE PRODUCT OPTIONS {% endcomment %}
+				{% for options in product.options limit:1 %}
+					{% assign option1 = options %}
+				{% endfor %}
+				{% for options in product.options limit:1 offset:1 %}
+					{% assign option2 = options %}
+				{% endfor %}
+				{% for options in product.options limit:1 offset:2 %}
+					{% assign option3 = options %}
+				{% endfor %}
+				{% if option1 == 'Colours' or option1 == 'Colour' or option1 == 'Color' %}
+					{% for variant in product.variants limit:1 %}
+						<h3>Colour: {{ variant.option1 }}</h3>
+					{% endfor %}
+				{% endif %}
+				{% if option1 contains 'Colour' and option2 == null and option3 == null %}
+					{% for variant in product.variants %}
+						<input class="hidden" type="radio" name="id" value="{{ variant.id }}" checked>
+					{% endfor %}
+				{% elsif option1 == 'Title' %}
+					{% for variant in product.variants %}
+						<input class="hidden" type="radio" name="id" value="{{ variant.id }}" checked>
+					{% endfor %}
+				{% else %}
+					{% assign sizeSelected = false %}
+					<select name="id">
+						<option selected value="unselected" disabled>Select a {{ option2 }}</option>
+					{% for variant in product.variants %}
+						<option value="{{ variant.id }}" class="size" {% if variant.available == false %}disabled{% endif %}>
+							{% unless option1 =='Colours' or option1 == 'Colour' or option1 == 'Color'%}
+								&nbsp;{{ variant.option1 }}
+							{% endunless %}
+							&nbsp;{{ variant.option2}}
+							{% if option3 != null %}
+								 | {{ variant.option3 }}
+							{% endif %}
+							{% if variant.available %}
+								{% if variant.inventory_quantity == 1 %}
+									| Only One Left
+								{% endif %}
+							{% else %}
+								| Sold Out
+							{% endif %}
+						</option>
+					{% endfor %}
+					</select>
+				{% endif %}
+			</div>
+			{% if product.tags contains 'No Checkout' %}
+			<p class="no-checkout">
+				This item is not available for purchase via online checkout, please <a href="/pages/shopping-with-us#contact-us">contact us</a> to make a purchase.
+			</p>
+			<a href="mailto:info@rodengray.com?Subject={{ product.vendor | escape }}%20{{ product.title | escape }}" class="buy button">Email to Purchase</a>
+			{% else %}
+			<input id="add-bag" type="submit" name="add" value="{% if product.available %}Add to Bag{% else %}Item Sold Out{% endif %}" class="buy button"/>
+			<div id="bag-message">&nbsp;</div>
+			{% endif %}
+		</form>
+		{% else %}
+		<h4>Item Sold Out</h4>
+		{% endif %}
+		{% include 'share-buttons' %}
+		{% include 'product-promo' with 'bottom' %}
+	</section>
+	<div data-swiftype-index="false" id="how-measure">
+		<div class="modal">
+			<div class="control">
+			<a href="#" id="show-tops" class="active">Tops</a><a href="#" id="show-bottoms">Bottoms</a>
+			<a href="#" id="close-measure"><span class="icon-cross"></span></a>
+			</div>
+			<figure id="tops">
+				<img src="{{ 'fit-tops.svg' | asset_url}}">
+				<figcaption>
+					<div>
+						<ol>
+							<li>Shoulder</li>
+							<li>Length</li>
+							<li>Chest</li>
+							<li>Sleeve</li>
+						</ol>
+					</div>
+				</figcaption>
+			</figure>
+			<figure id="bottoms" class="clearfix">
+				<img src="{{ 'fit-bottoms.svg' | asset_url }}">
+				<figcaption>
+					<div>
+						<ol>
+							<li>Waist</li>
+							<li>Rise</li>
+							<li>Thigh</li>
+							<li>Inseam</li>
+							<li>Leg Opening</li>
+						</ol>
+					</div>
+				</figcaption>
+			</figure>
+		</div>
+	</div>
+</article>
+{% comment %}<div data-swiftype-index="false" class="sixteen columns product-nav{% if product.type == 'Books' or product.type == 'Magazines' %} noborder{% endif %}">
+	{% if collection %}
+	{% if collection.previous_product %}
+		<span class="left">{{ '<span class="icon-arrow-left"></span> Previous Item' | link_to: collection.previous_product }}</span>
+	{% endif %}
+	{% if collection.next_product %}
+		<span class="right">{{ 'Next Item <span class="icon-arrow-right"></span>' | link_to: collection.next_product }}</span>
+	{% endif %}
+	{% endif %}
+</div>{% endcomment %}
+{% unless product.type == 'Books' or product.type == 'Magazines' %}
+<aside data-swiftype-index="false" class="sixteen columns related-items">
+	<!-- TEST -->{% include 'wear-it-with' %}
+	{% include 'more-products' with 'brand' %}
+	{% include 'more-products' %}
+</aside>
+{% endunless %}
+<script>
+	$(function(){
+		productTools();
+	});
+	window.onload = function() {
+	    var elements = document.querySelectorAll( '.intense' );
+	    Intense( elements );
+	    $('.big-images a').click(function(e){
+	    	e.preventDefault();
+	    });
+	    addToBag();
+	}
+</script>

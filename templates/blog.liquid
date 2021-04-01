@@ -1,0 +1,30 @@
+{% paginate blog.articles by 15 %}
+
+<div class="blog-page">
+	<div class="wrapper">
+		<h1 class="blog-title">{{ blog.title }}</h1>
+		<div class="row">
+			{% for article in blog.articles %}
+			<div class="col-lg-4 col-md-6 col-sm-12 blog-carousel__card mb-xl" data-aos="fade">
+				<a href="{{ article.url }}">
+					<div class="blog-carousel__image-wrap">
+						<div class="blog-carousel__image" style="background-image:url({{ article.image.src | img_url: '800x' }});"></div>
+					</div>
+					<div class="blog-carousel__excerpt-area">
+						<h4 class="mb-xs"><strong>{{ article.title }}</strong></h4>
+						<p class="blog-carousel__excerpt">
+							{{ article.excerpt_or_content | strip_html | truncate: 200 }}
+						</p>
+					</div>
+				</a>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+</div>
+
+  {% if paginate.pages > 1 %}
+    {% include 'pagination' %}
+  {% endif %}
+
+{% endpaginate %}

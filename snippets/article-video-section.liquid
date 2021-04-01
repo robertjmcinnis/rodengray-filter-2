@@ -1,0 +1,14 @@
+<script type="text/x-template" id="article-video-section">
+	<div class="wrapper">
+    <div class="article-content">
+      <div class="video-section" :class="{ 'video-section--full': fullWidth }">
+      		<div v-if="youtube" class="video-section__video" :class="{ 'video-section__video--full': fullWidth }">
+      			<iframe :src="'https://www.youtube.com/embed/' + youtube" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      		</div>
+      		<div v-if="vimeo" class="video-section__video" :class="{ 'video-section__video--full': fullWidth }">
+      			<iframe :src="'https://player.vimeo.com/video/' + vimeo" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+      		</div>
+      	</div>
+    </div>
+  </div>
+</script>

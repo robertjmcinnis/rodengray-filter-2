@@ -1,0 +1,18 @@
+
+<div class="collection" id="collection" >
+<section class="collection-hero" role="banner">
+  <div class="collection-hero__background" style="background-image:url({{ collection.image | img_url: '1920x' }});background-color:{{ collection.metafields.brand.accent_color }};" id="collection-hero" 
+       ></div>
+  <div class="wrapper">
+    <div class="row">
+      <div class="col-lg-6 col-md-8 col-sm-12">
+        <div class="collection-hero__content">
+          <h1 class="collection-hero__title" style="border-color:{{ collection.metafields.brand.accent_color }};">{{ collection.title }}</h1>
+          <p class="collection-hero__body">{{ collection.description | strip_html }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+{% include 'searchanise-navigation' %}

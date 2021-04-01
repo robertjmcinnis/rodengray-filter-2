@@ -1,0 +1,8 @@
+{% if article.content contains "<img" %}
+	{% assign src = article.content | split: 'src="' %}
+	{% assign src = src[1] | split: '"' | first | replace: '//cdn', 'http://cdn'; | replace: 'http:http://';, 'http://'; | remove: 'https:' %}
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image:src" content="{{ src }}">
+    {% else %}
+	<meta name="twitter:card" content="summary">
+{% endif %}

@@ -1,0 +1,58 @@
+<section class="quote-section">
+	<div class="wrapper">
+		{% if section.settings.author != blank %}
+			<p>{{ section.settings.author }}</p>
+		{% endif %}
+		{% if section.settings.quote != blank %}
+			<h3 class="quote-section__quote">
+				<i class="fas fa-quote-left quote-section__icon"></i>
+				{{ section.settings.quote }}
+				<i class="fas fa-quote-right quote-section__icon"></i>
+			</h3>
+		{% endif %}
+		{% if section.settings.link != blank %}
+			<a class="button" href="{{ section.settings.link }}">
+				{% if section.settings.link_text != blank %}
+					{{ section.settings.link_text }}
+				{% else %}
+					Read More
+				{% endif %}
+			</a>
+		{% endif %}
+	</div>
+</section>
+
+{% schema %}
+	{
+		"name": "Quote Section",
+		"settings": [
+			{
+				"type": "text",
+				"id": "author",
+				"label": "Author"
+			},
+			{
+				"type": "text",
+				"id": "quote",
+				"label": "Quote"
+			},
+			{
+				"type": "url",
+				"id": "link",
+				"label": "Button link",
+				"info": "Leave blank to hide button"
+			},
+			{
+				"type": "text",
+				"id": "link_text",
+				"label": "Button text"
+			}
+		],
+		"presets": [
+			{
+				"name": "Quote Section",
+				"category": "Text"
+			}
+		]
+	}
+{% endschema %}

@@ -1,0 +1,45 @@
+<div class="more-from row">
+	{% if more-products == 'brand' %}
+		{% assign type = brand %}
+		{% assign title =  product.vendor %}
+	{% else %}
+		{% assign type = product.type | handleize  %}
+		{% assign title = product.type %}
+	{% endif %}
+	<h3>More {{ title }}</h3>
+  	<div class="related-wrapper">
+      <div id="related-swiper" class="swiper-container more-{{ type }}">
+        <div class="swiper-wrapper">
+        </div>
+      </div>
+      <div class="swiper-button-next"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 24"><path d="M0,3,3.06,0,15,12,3.06,24,0,21l9-9Z"/></svg></div>
+      <div class="swiper-button-prev"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 24"><path d="M0,3,3.06,0,15,12,3.06,24,0,21l9-9Z"/></svg></div>
+    </div>
+	{% assign currentProduct = product.id %}
+	{% capture index %}{{ 'now' | date: '%S' | times: collections.[type].products.size | divided_by: 60 }}{% endcapture %}
+</div>
+<script>
+	$(window).load(function() {
+		{% for product in collections.[type].products offset:index limit:8 %}
+		recommender({{ product.handle | json }}, '.swiper-container.more-{{ type }} .swiper-wrapper', 'medium', false);
+		{% endfor %}
+		$('.swiper-container.more-{{ type }}').parent().before('<a href="/collections/{{ type }}">View all</a>');
+                    
+        $(window).resize(function() {
+          if($(window).width()<768) {
+        	$('#related-swiper').swiper({
+                slidesPerView:2,
+                nextButton:'.swiper-button-next',
+                prevButton:'.swiper-button-prev'
+            });
+          } else {
+        	$('#related-swiper').swiper({
+                slidesPerView:4,
+              	spaceBetween:18,
+                nextButton:'.swiper-button-next',
+                prevButton:'.swiper-button-prev'
+            });
+          }
+        });
+	});
+</script>

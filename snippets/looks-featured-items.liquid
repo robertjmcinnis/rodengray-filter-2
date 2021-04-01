@@ -1,0 +1,36 @@
+<script type="text/javascript" charset="utf-8">
+var lookItems = function(itemNo,metafields,extraMetafields) {
+  var products = [];
+  products = jQuery.trim(metafields).split(/[\s,;]+/);
+  if (products.length && products[0] !== '') {
+    var section = jQuery('#look' + itemNo + ' .products');
+    section.append('<div class="featured"><h4>Featured</h4><ul class="list"></ul></div>');
+    var list = section.find('.list');
+    for (var i=0; i<products.length; i++) {
+      jQuery.getJSON('/products/' + products[i] + '.js', function(product) {
+        if (product.images[0]) {
+          var img = '<img class="product-thumb primary" src="' + product.images[0].replace(/(\.jpg|\.png|\.jpeg|\.gif)/, '_medium$1') + '" />'
+        } else {
+          var img = ''
+        };
+        if (product.compare_at_price_min > product.price) {
+          var price = '<span class="sale-price"> - ' + Shopify.formatMoney(product.price, "{{ shop.money_format }}") + '</span>' + '<span class="regular-price">' + Shopify.formatMoney(product.compare_at_price_max, "{{ shop.money_format }}") + '</span>'
+        } else {
+          var price = Shopify.formatMoney(product.price, "<span> - {{ shop.money_format }}</span>")
+        };
+        list.prepend('<li class="product"><div class="name">' + '<a href="' + product.url + '">' + product.vendor + ' | ' + product.title + '</a>' + price +'</div><ul><li><div class="thumb"><a class="tap-link" href="' + product.url + '">' + img + '</a></div></li></ul></li>').click(function(){
+          _gaq.push(['_trackEvent', 'The Look', 'Look Product Click', product.title]);
+        });
+      });
+    }
+  }
+  var extraProducts = [];
+  extraProducts = jQuery.trim(extraMetafields).split(/[,]+/);
+  if (extraProducts.length && extraProducts[0] !== '') {
+    var list = jQuery('#look' + itemNo + ' .list');
+    for (var i=0; i<extraProducts.length; i++) {
+      list.append('<li class="product extra">' + extraProducts[i] + '</li>');
+    }
+  }
+};
+</script>

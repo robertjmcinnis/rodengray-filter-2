@@ -1,0 +1,1 @@
+{% if template == 'product' %}onclick="_gaq.push(['_trackSocial', '{{ button }}', 'Share', '{{ product.vendor }} {{ product.title }}')]);"{% elsif blog.handle == 'looks' %}onclick="_gaq.push(['_trackSocial', '{{ button }}', 'Share', '{{ article.title }}')]);"{% else %}onclick="_gaq.push(['_trackSocial', '{{ button }}', 'Share', '{{ article.title }}')]);"{% endif %}

@@ -1,0 +1,37 @@
+{% assign feature = article.metafields.feature %}
+<article id="post-content" class="blog article feature">
+	<header data-bgimg="{{ feature.header-image | asset_url }}" {% if feature.header-image-position == 'top' %}class="bgtop"{% elsif feature.header-image-position == 'bottom' %}class="bgbottom"{% endif %}>
+		<div class="title-wrap">
+			<h2 class="title">{{ article.title }}</h2>
+			{% if feature.subtitle | size > 0 %}<h3 class="subtitle">{{ feature.subtitle }}</h3>{% endif %}
+			<span class="date">{{ article.published_at | date: '%A %B %d, %Y' }}</span>
+		</div>
+	</header>
+	<section class="post full-content rte">
+		<div class="feature-wrap">
+			{{ article.content }}
+		</div>
+	</section>
+	<aside class="rel-products">
+	</aside>
+	<footer>
+		<div class="tags">
+			Filed under: 
+			<ul>
+				{% for tag in article.tags %}
+				<li><a href="{{ shop.url}}/blogs/{{ blog.handle }}/tagged/{{ tag | handleize }}">{{ tag }}</a></li>
+				{% endfor %}
+			</ul>
+		</div>
+		{% capture share_url %}{{ shop.url }}{{ article.url }}{% endcapture %}
+		{% capture share_text %}{{ article.title }}{% endcapture %}
+		{% include 'share-buttons' %}
+	</footer>
+</article>
+<script>
+	var updateHeight = function() {
+		var newHeight = $(window).height() * 0.9;
+		$('#post-content header').css('height', newHeight );
+	};
+	updateHeight();
+</script>

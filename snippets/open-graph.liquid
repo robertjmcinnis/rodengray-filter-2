@@ -1,0 +1,11 @@
+<!-- Open Graph -->
+
+	<meta property="og:title" content="{{ meta_title }}" />
+	{% if product %}<meta property="og:type" content="product" />
+	<meta property="og:image" content="http:{{ product.featured_image | product_img_url : 'large' }}"/>{% elsif collection %}<meta property="og:type" content="website" />{% if collection.image %}
+	<meta property="og:image" content="http:{{ collection.image | asset_url }}" />{% endif %}{% elsif article %}<meta property="og:type" content="article" />{% elsif page.handle == 'our-shop' %}<meta property="og:type" content="business.business" />{% else %}<meta property="og:type" content="website" />{% endif %}
+	<meta property="og:description" content="{{ meta_description }}" />
+	<meta property="og:url" content="{{ canonical_url }}" />
+	<meta property="fb:admins" content="21004014" />
+	
+	<!-- end Open Graph -->

@@ -1,0 +1,12 @@
+{% if product.metafields.recommendations.wearItWith %}
+<div class="wear-with row">
+  <h3>Styled With</h3>
+  <ul class="styled">
+  </ul>
+  <script type="text/javascript" charset="utf-8">
+    $(window).load(function() {
+      recommender({{ product.metafields.recommendations.wearItWith | json }}, 'ul.styled');
+    });
+  </script>
+</div>
+{% endif %}

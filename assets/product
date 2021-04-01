@@ -1,0 +1,197 @@
+
+
+
+
+
+<article itemscope itemtype="http://schema.org/Product" class="row product-page clearfix">
+	<section class="product-images nine columns alpha">
+		<script>
+			$(document).ready(function(){
+				var slides = $('#slides');
+				if ( slides.find('img').length > 1 ) {
+					slides.slidesjs({
+						width: 500,
+						height: 625,
+						pagination: {
+							active: true,
+							effect: "fade"
+						}
+					});
+				} else {
+					slides.css('display', 'block');
+					$('.detail-images').css('display','none');
+				}
+			});
+		</script>
+		<div class="images-container">
+			
+			<figure id="slides" class="big">
+				
+			</figure>
+		</div>
+		<div class="detail-images">
+			
+		</div>
+	</section>
+	<section class="product-details seven columns omega">
+		Liquid error: This liquid context does not allow includes.
+		<h2 itemprop="name" class="product-title"><span itemprop="brand" class="product-designer"><a href="/collections/"></a></span> <span class="product-name"></span></h2>
+		
+		<div class="info-btns">
+			<button id="item-details-btn" class="active" onclick="javascript: changeContent('details');">Details</button>
+			<button id="item-designer-btn" onclick="javascript: changeContent('designer');">Designer</button>
+			<button id="item-fit-btn" onclick="javascript: changeContent('fit');">Fit Info</button>
+			<button id="item-returns-btn"onclick="javascript: changeContent('returns');">Returns</button>
+		</div>
+		
+		<div itemprop="description" class="product-desc rte">
+			
+			<div id="item-returns">
+				
+				Liquid error: This liquid context does not allow includes.
+				
+			</div>
+		</div>
+		<script type="text/javascript">
+			function changeContent(name) {
+			  var details = document.getElementById('item-details');
+			  var designer = document.getElementById('item-designer');
+			  var fit = document.getElementById('item-fit');
+			  var returns = document.getElementById('item-returns');
+			  switch (name){
+			    case "details":
+			      details.style.display = "block";
+			      designer.style.display = "none";
+			      fit.style.display = "none";
+			      returns.style.display = "none";
+			      $('#item-details-btn').addClass('active');
+			      $('#item-designer-btn').removeClass('active');
+			      $('#item-fit-btn').removeClass('active');
+			      $('#item-returns-btn').removeClass('active');
+			    break;
+			    case "designer":
+			      details.style.display = "none";
+			      designer.style.display = "block";
+			      fit.style.display = "none";
+			      returns.style.display = "none";
+			      $('#item-details-btn').removeClass('active');
+			      $('#item-designer-btn').addClass('active');
+			      $('#item-fit-btn').removeClass('active');
+			      $('#item-returns-btn').removeClass('active');
+			    break;
+			    case "fit":
+			      details.style.display = "none";
+			      designer.style.display = "none";
+			      fit.style.display = "block";
+			      returns.style.display = "none";
+			      $('#item-details-btn').removeClass('active');
+			      $('#item-designer-btn').removeClass('active');
+			      $('#item-fit-btn').addClass('active');
+			      $('#item-returns-btn').removeClass('active');
+			    break;
+			    case "returns":
+			      details.style.display = "none";
+			      designer.style.display = "none";
+			      fit.style.display = "none";
+			      returns.style.display = "block";
+			      $('#item-details-btn').removeClass('active');
+			      $('#item-designer-btn').removeClass('active');
+			      $('#item-fit-btn').removeClass('active');
+			      $('#item-returns-btn').addClass('active');
+			    break;
+			    default:
+			      details.style.display = "block";
+			      designer.style.display = "none";
+			      fit.style.display = "none";
+			      returns.style.display = "none";
+			  }
+			}
+			function hideButton() {
+				var fit = $('#item-fit').text().length;
+				var fitButton = document.getElementById('item-fit-btn');
+				var designer = document.getElementById('item-designer').childNodes.length;
+				var designerButton = document.getElementById('item-designer-btn');
+				console.log(fit);
+				if (fit < 3) {
+					fitButton.style.display = "none";
+				};
+				if (designer == 0) {
+					designerButton.style.display = "none";
+				};
+			};
+			hideButton();
+		</script>
+		<div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="price-field">
+			
+			<span itemprop="price"></span>
+			
+			<meta itemprop="availability" content="OutOfStock"/>
+			<meta itemprop="itemCondition" content="New" />
+			<meta itemprop="priceCurrency" content="CAD"/>
+			<meta itemprop="price" content="" />
+		</div>
+		Liquid error: This liquid context does not allow includes.
+		
+		<h4>Item Sold Out</h4>
+		
+		Liquid error: This liquid context does not allow includes.
+		Liquid error: This liquid context does not allow includes.
+	</section>
+	<div id="how-measure">
+		<div class="modal">
+			<div class="control">
+			<a href="#" id="show-tops" class="active">Tops</a><a href="#" id="show-bottoms">Bottoms</a>
+			<a href="#" id="close-measure"><span class="icon-cross"></span></a>
+			</div>
+			<figure id="tops">
+				<img src="//cdn.shopify.com/s/files/1/0240/7285/t/79/assets/fit-tops.svg?v=10779713450267962040">
+				<figcaption>
+					<div>
+						<ol>
+							<li>Shoulder</li>
+							<li>Length</li>
+							<li>Chest</li>
+							<li>Sleeve</li>
+						</ol>
+					</div>
+				</figcaption>
+			</figure>
+			<figure id="bottoms" class="clearfix">
+				<img src="//cdn.shopify.com/s/files/1/0240/7285/t/79/assets/fit-bottoms.svg?v=17706946121721090889">
+				<figcaption>
+					<div>
+						<ol>
+							<li>Waist</li>
+							<li>Rise</li>
+							<li>Thigh</li>
+							<li>Inseam</li>
+							<li>Leg Opening</li>
+						</ol>
+					</div>
+				</figcaption>
+			</figure>
+		</div>
+	</div>
+</article>
+<div class="sixteen columns product-nav">
+	
+</div>
+
+<aside class="related-items">
+	Liquid error: This liquid context does not allow includes.
+	<div class="more-from row">
+		<h3>More from </h3>
+		<span class="designer-link"><a href="/collections/">View All</a></span>
+		
+		
+		
+	</div>
+</aside>
+
+<script src="//cdn.shopify.com/s/files/1/0240/7285/t/79/assets/jquery.slides.js?v=13969011640069506820" type="text/javascript"></script>
+<script src="//cdn.shopify.com/s/files/1/0240/7285/t/79/assets/jquery.colorbox.js?v=8532459953143080733" type="text/javascript"></script>
+<script>
+	$(document).ready(function(){
+		$("a.bigimg").colorbox({rel:'big', transition:"fade"});
+	});
+</script>

@@ -1,0 +1,31 @@
+<style type="text/css">
+{% for article in blogs["homepage"].articles limit: 10 %}	
+	.a{{ article.id }} {
+		background-image: url('{{ article.metafields.homepage.mobile-image | asset_url }}');
+		{% if article.metafields.homepage.image-y-position != null %}
+		background-position-y: {{ article.metafields.homepage.image-y-position }}%;
+		{% endif %}
+	}
+@media screen and (min-width: 501px), screen and (min-resolution: 2dppx) {
+	.a{{ article.id }} {
+		background-image: url('{{ article.metafields.homepage.standard-image | asset_url }}');
+	}
+}
+@media screen and (min-width: 960px ), screen and (min-resolution: 2dppx) and (min-width: 768px) {
+	.a{{ article.id }} {
+		background-image: url('{{ article.metafields.homepage.hidef-image | asset_url }}');
+	}
+}
+	.a{{ article.id }} figcaption {
+		{% if article.metafields.homepage.link-top != null %}
+		top: {{ article.metafields.homepage.link-top }}%;
+		{% endif %}
+		{% if article.metafields.homepage.link-bottom != null %}
+		bottom: {{ article.metafields.homepage.link-bottom }}%;
+		{% endif %}
+		{% if article.metafields.homepage.link-horizontal == 'center' %}
+		width: {{ article.metafields.homepage.link-width }}em;
+		{% endif %}
+	}
+{% endfor %}
+</style>

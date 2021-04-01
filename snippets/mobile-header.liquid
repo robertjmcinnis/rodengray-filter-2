@@ -1,0 +1,124 @@
+<mobile-header class="mobile-header" inline-template>
+	<header class="mobile-header" id="header-mobile">
+		<div class="mobile-header__content">
+			<div class="mobile-header__column">
+				<a class="header-cart actions__cart {% if cart.item_count != 0 %}actions__cart--has-count{% endif %}" href="/cart">
+					<i class="fal fa-shopping-cart actions__icon mr-xs"></i>
+					<span class="actions__cart-number header-cart-count">{{ cart.item_count }}</span>
+				</a>
+			</div>
+
+			<div class="mobile-header__column mobile-header__column--logo">
+				<a href="/" class="mobile-header__logo">
+					{% include 'roden-gray-logo' %}
+				</a>
+			</div>
+
+			<div class="mobile-header__column">
+				<div class="mobile-header__icon" @click="toggleMenu">
+					<transition name="spin" mode="out-in">
+						<i :key="1" v-if="!menuOpen" class="fal fa-bars"></i>
+						<i :key="2" v-else class="fal fa-times"></i>
+					</transition>
+				</div>
+			</div>
+		</div>
+		<div class="mobile-menu" :class="[{ 'mobile-menu--closed': !menuOpen }, 'mobile-menu--' + direction]">
+			<div class="mobile-menu__content">
+				<li class="mobile-menu__list-item mobile-search">
+					<search-bar inline-template>
+						<form class="mobile-search__content" action="/search" method="get" role="search">
+							<label for="Search-{{ section.id }}" class="label-hidden">
+							{{ 'general.search.placeholder' | t }}
+							</label>
+
+							<input type="search"
+								name="q"
+								id="Search-{{ section.id }}"
+								value="{{ search.terms | escape }}"
+								placeholder="{{ 'general.search.placeholder' | t }}"
+								class="mobile-search__input"
+								ref="searchInput" />
+
+							<button type="submit" class="mobile-search__button">
+								<i class="fal fa-search actions__icon mr-xs"></i>
+							</button>
+						</form>
+					</search-bar>
+				</li>
+
+				<transition name="menu-slide" mode="out-in">
+					<ul v-if="currentList === 'main'" :key="currentList" class="mobile-menu__list">
+						{% for link in linklists.header-navigation.links %}
+							{% if link.title == 'Designers' %}
+								<li class="mobile-menu__list-item" @click="toggleList('designers')">Designers<i class="fal fa-angle-right mobile-menu__list-icon"></i></li>
+							{% elsif link.title == 'Categories' %}
+								<li class="mobile-menu__list-item" @click="toggleList('categories')">Categories<i class="fal fa-angle-right mobile-menu__list-icon"></i></li>
+							{% else %}
+								<li>
+									<a class="mobile-menu__list-item" href="{{ link.url }}">
+										{{ link.title }}
+									</a>
+								</li>
+							{% endif %}
+						{% endfor %}
+						<li class="mobile-menu__list-item" @click="toggleList('currency')">
+							Currency: ${ currency }<i class="fal fa-angle-right mobile-menu__list-icon"></i>
+						</li>
+					</ul>
+					<ul v-if="currentList === 'designers'" :key="currentList" class="mobile-menu__list">
+						<li class="mobile-menu__list-item mobile-menu__list-item--back" @click="toggleList('main')">
+							<i class="far fa-angle-left mobile-menu__list-icon"></i>Back
+						</li>
+						{% for link in linklists.contemporary-brands.links %}
+							<li>
+								<a href="{{ link.url }}" class="mobile-menu__list-item">{{ link.title }}</a>
+							</li>
+						{% endfor %}
+					</ul>
+					<ul v-if="currentList === 'categories'" :key="currentList" class="mobile-menu__list">
+						<li class="mobile-menu__list-item mobile-menu__list-item--back" @click="toggleList('main')">
+							<i class="far fa-angle-left mobile-menu__list-icon"></i>Back
+						</li>
+						{% for link in linklists.categories.links %}
+							<li>
+								<a href="{{ link.url }}" class="mobile-menu__list-item mobile-menu__list-item mobile-menu__list-item--heading">{{ link.title }}</a>
+							</li>
+							{% for childlink in link.links %}
+								<li>
+									<a href="{{ childlink.url }}" class="mobile-menu__list-item">{{ childlink.title }}</a>
+								</li>
+							{% endfor %}
+						{% endfor %}
+					</ul>
+					<div v-if="currentList === 'currency'">
+						<div class="mobile-menu__list-item mobile-menu__list-item--back" @click="toggleList('main')">
+							<i class="far fa-angle-left mobile-menu__list-icon"></i>Back
+						</div>
+						<div class="mobile-menu__currency">
+							<h3>Choose Your Shipping Destination:</h3>
+							<div class="currency__select-wrap">
+								<select class="currency__select" name="country" v-model="country">
+									{{ country_option_tags }}
+								</select>
+							</div>
+							<a class="currency__disclaimer" href="/pages/shopping-with-us#about-currency"><i class="fas fa-info-circle mr-xs"></i>All transactions are processed in Canadian Dollars.</a>
+						</div>
+					</div>					
+				</transition>
+				<div class="mobile-menu__list-item mobile-account">
+					{% if customer %}
+						<a href="/account">
+							<i class="fal fa-user actions__icon"></i> Account
+						</a>
+					{% else %}
+						<a href="/account/login">
+							<i class="fal fa-user actions__icon"></i> Login
+						</a>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</header>
+</mobile-header>
+

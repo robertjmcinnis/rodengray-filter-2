@@ -1,0 +1,78 @@
+
+
+                Gentlemen shop at...
+                   ___          __           _____             
+                  / _ \___  ___/ /__ ___    / ___/______ ___ __
+                 / , _/ _ \/ _  / -_) _ \  / (_ / __/ _ `/ // /
+                /_/|_|\___/\_,_/\__/_//_/  \___/_/  \_,_/\_, / 
+                                                        /___/  
+
+                                    				Est. 2007
+
+
+        The humans.txt file explains the team, technology, and graphic 
+        assets behind this site | humanstxt.org
+    
+_______________________________________________________________________________
+
+ONLINE TEAM
+
+Ryan Carey
+Design, Code
+@notryancarey | ryancarey.ca
+
+Jen Yau
+Copywriting, Operations
+instagr.am/jeneyau
+
+Patrick Campbell
+Photography
+instagr.am/patrickdanielcampbell
+
+_______________________________________________________________________________
+
+TYPOGRAPHY & ICONS
+
+Typekit
+http://typekit.com/
+
+Headlines & Navigation:  Franklin Gothic URW Compressed
+Body Text:               Franklin Gothic URW Condensed / Franklin Gothic URW
+
+IcoMoon
+http://icomoon.io/
+
+Steadysets | Tom Sahl
+Entypo     | Daniel Bruce
+IcoMoon    | Keyamoon
+Iconic 	   | P.J. Onori
+
+_______________________________________________________________________________
+
+TECHNOLOGY
+
+Shopify
+http://www.shopify.com
+
+HTML5 Boilerplate
+http://html5boilerplate.com/
+
+Modernizr
+http://modernizr.com/
+
+jQuery
+http://jquery.com/
+
+SASS
+http://sass-lang.com/
+
+Skeleton / Skeleton SASS
+http://www.getskeleton.com/
+http://atomicpages.github.io/skeleton-sass/
+
+Colorbox
+http://www.jacklmoore.com/colorbox/
+
+SlidesJS
+http://www.slidesjs.com/
+

@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" prefix="og: http://ogp.me/ns#"> <!--<![endif]-->
+{% include "rg10-data"%}
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="HandheldFriendly" content="true" />
+  	<meta name="google-site-verification" content="gU-sfoBnpHgALS_hy7A7v59OqRlue_iH2mhL39xFlLI" />
+	<link rel="shortcut icon" href="{{ 'favicon.ico' | asset_url }}" type="image/x-icon" />
+	<link rel="apple-touch-icon-precomposed" href="{{ 'apple-touch-icon-precomposed.png' | asset_url }}">
+	{% include 'meta' %}
+	<!--{{ '.css' | asset_url | stylesheet_tag }}-->
+	{% capture head_content %}{{ content_for_header }}{% endcapture %}
+	{{ head_content | replace: "'http://stats.g.doubleclick.net/dc.js'", "('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js'" }}
+	{% if settings.ua-track %}
+	{% include 'ua-track' %}
+	{% endif %}
+	{{ 'shopify_common.js' | shopify_asset_url | script_tag  }}
+  	<!--[if lte IE 8]>
+	{{ 'css3-mediaqueries.js' | asset_url | script_tag }}
+	<![endif]-->
+	<!--[if lte IE 7]>{{ 'lte-ie7.js' | asset_url | script_tag }}<![endif]-->
+	<!--[if lt IE 9]>
+	{{ '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js' | script_tag }}
+	<![endif]-->
+	<!--[if gte IE 9]><!-->
+	{{ '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js' | script_tag }}
+	<!--<![endif]-->
+  	<style>
+      @font-face {
+          font-family: 'aileron';
+          src: url({{'hinted-Aileron-Light.eot' | asset_url }});
+          src: url({{'hinted-Aileron-Light.eot' | asset_url }}?#iefix) format('embedded-opentype'),
+              url({{'hinted-Aileron-Light.woff' | asset_url }}) format('woff'),
+              url({{'hinted-Aileron-Light.ttf' | asset_url }}) format('truetype');
+          font-weight: 300;
+          font-style: normal;
+      }
+      @font-face {
+          font-family: 'union';
+          src: url({{'hinted-Union-Regular.eot' | asset_url }});
+          src: url({{'hinted-Union-Regular.eot' | asset_url }}?#iefix) format('embedded-opentype'),
+              url({{'hinted-Union-Regular.woff' | asset_url }}) format('woff'),
+              url({{'hinted-Union-Regular.ttf' | asset_url }}) format('truetype');
+          font-weight: normal;
+          font-style: normal;
+      }
+      * {
+      	box-sizing: border-box !important;
+      }
+      html {
+      	background:#f9f9f9;
+      }
+      body {
+        background:#f9f9f9;
+        color: #231e20;
+        padding: 34px;
+        font-family: "union";
+      }
+      .button {
+      	color: #231e20;
+        font-weight: bold;
+        text-transform: uppercase;
+        padding: 4px 10px 4px 10px;
+        border: 2px solid #231e20;
+        text-decoration: none;
+        display: inline-block;
+        clear: both;
+        margin-right: 8px;
+        margin-bottom: 10px;
+      }
+      #desktop-bot-nav {
+      	list-style-type:none;
+        display:block;
+        position:absolute;
+        bottom: 24px;
+        width:100%;
+        text-align:center;
+        z-index: 999;
+      }
+      #desktop-bot-nav a,#desktop-bot-nav a:visited,.prev a, .next a, .prev a:visited,.next a:visited {
+        display: inline-block;
+      	color: #231e20;
+        text-decoration:none;
+        text-transform: uppercase;
+        padding-right:30px;
+        font-size: 13px;
+        font-weight: bold;
+      }
+      .prev a, .next a {
+      	padding: 0px !important;
+      }
+      #desktop-bot-nav a:last-child {
+      	padding-right: 0px;
+      }
+      #desktop-bot-nav a.active {
+      	color: #7E8758;
+        color: #231e20;
+      	color: #e06d47;
+          color: #777740;
+      }
+      .fp-viewing-outro #desktop-bot-nav {
+      	top: 24px;
+        bottom: auto;
+      }
+      .scrim {
+      	position: fixed;
+        left: 15%;
+        right: 0;
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f9f9f9+0,f9f9f9+100&1+66,0.77+85,0+100 */
+        background: -moz-linear-gradient(top, rgba(249,249,249,1) 0%, rgba(249,249,249,1) 66%, rgba(249,249,249,0.77) 85%, rgba(249,249,249,0) 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(top, rgba(249,249,249,1) 0%,rgba(249,249,249,1) 66%,rgba(249,249,249,0.77) 85%,rgba(249,249,249,0) 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom, rgba(249,249,249,1) 0%,rgba(249,249,249,1) 66%,rgba(249,249,249,0.77) 85%,rgba(249,249,249,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9f9f9', endColorstr='#00f9f9f9',GradientType=0 ); /* IE6-9 */
+        padding-top: 20px;
+        z-index: 998;
+      }
+      .fp-viewing-outro .scrim {
+      	height: 62px !important;
+        padding: 0px;
+      }
+      .bottom-scrim {
+      	position: fixed;
+        left: 0%;
+        right: 0%;
+        bottom: 0px;
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f9f9f9+0,f9f9f9+100&0+0,0+0,0.77+14,1+29 */
+        background: -moz-linear-gradient(top, rgba(249,249,249,0) 0%, rgba(249,249,249,0.77) 14%, rgba(249,249,249,1) 29%, rgba(249,249,249,1) 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(top, rgba(249,249,249,0) 0%,rgba(249,249,249,0.77) 14%,rgba(249,249,249,1) 29%,rgba(249,249,249,1) 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom, rgba(249,249,249,0) 0%,rgba(249,249,249,0.77) 14%,rgba(249,249,249,1) 29%,rgba(249,249,249,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00f9f9f9', endColorstr='#f9f9f9',GradientType=0 ); /* IE6-9 */
+        height: 76px;
+        z-index: 998;
+      }
+      .section {
+      	padding-left: 10%;
+        padding-right: 10%;
+        text-align: center;
+        font-size: 12.75px;
+        line-height: 18.75px;
+        opacity:0;
+      }
+      .section p {
+      	display: block;
+        width: 75%;
+        margin: 0 auto;
+      }
+      .header-img {
+      	position: fixed;
+        top: 34px;
+        left: 10%;
+        width: 80%;
+        background:#f9f9f9;
+        z-index:999;
+      }
+      .header-img-fixed {
+      	position: fixed;
+        top: 34px;
+        left: 10%;
+        width: 80%;
+        display:none;
+        background:#f9f9f9;
+        z-index:999;
+      }
+      .fp-viewing-outro .header-img-fixed {
+      	display:none !important;
+      }
+      .fp-viewing-outro .header-img {
+      	display:block !important;
+        top: auto !important;
+        bottom: 34px !important;
+      }
+      .header-logo {
+      	width: 290px;
+        margin: 0 auto;
+        padding-bottom: 30px;
+      }
+      .down-arrow {
+        display: inline-block;
+      	width: 30px;
+        position: absolute;
+        bottom: 20%;
+      }
+      .down-arrow img {
+      	width: 100%;
+      }
+      .fp-viewing-outro .down-arrow {
+        display: inline-block;
+      	width: 30px;
+        position: absolute;
+        top: 64px;
+        z-index: 1000;
+      }
+      .fp-viewing-outro .down-arrow img {
+        transform: rotate(180deg);
+      }
+      .no-8 {
+      	position: fixed;
+        right: 34px;
+        top: 50%;
+        width: 12px;
+        transform: translate(0,-50%);
+      }
+      .product-header {
+      	position: fixed;
+        width: 80%;
+        top: 0px;
+        left:10%;
+        z-index:999;
+      }
+      .fp-viewing-outro .product-header {
+        top: 38%;
+      }
+      .fp-viewing-intro .product-header {
+        display: none !important;
+      }
+      .rg10-fixed {
+       	position: relative;
+        left: 16%;
+        width: 42%;
+        float: left;
+        display:none;
+      }
+      .rg10-fixed img {
+      	width: 60px;
+      }      
+      .rglogo-fixed {
+       	position: relative;
+        display:none;
+      }
+      .rglogo-fixed img {
+      	width: 142px;
+      }
+      .start {
+      	text-transform: uppercase;
+        color: #7E8758;
+        color: #231e20;
+        position: absolute;
+        top: 0px;
+        font-size: 12px;
+        z-index: 999;
+        font-weight: bold;
+      }
+      .stop {
+      	text-transform: uppercase;
+        color: #7E8758;
+        color: #231e20;
+        position: absolute;
+        bottom: 0px;
+        font-size: 12px;
+        z-index: 999;
+        font-weight: bold;
+      }
+      .collection {
+      	color: #C17861;
+        color: #231e20;
+    	  position: relative;
+    	  top: -10%;
+        margin-left: -12.33%;
+        text-align: left;
+        font-size: 12px;
+    	  text-transform: uppercase;
+	       font-weight: bold;
+      }
+      .preview {
+      	color: #7E8758;
+        color: #231e20;
+        text-align: left;
+        font-size: 12px;
+        margin-bottom: 24px;
+        display:block;
+        font-size: 12px;
+
+    	  font-weight: bold;
+      }
+      .d16 {
+        padding-top: 34px;
+      	width: 16%;
+        float: left;
+        font-size: 48px;
+        font-weight: 900;
+        letter-spacing: 4px;
+        line-height: 36px;
+        margin-top: 134px;
+      }
+      .d26 {
+        padding-top: 34px;
+      	width: 26%;
+        float: left;
+        text-align: left;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 20px;
+        line-height: 21px;
+        padding-right: 8px;
+	    letter-spacing: 0.35pt;
+        margin-top: 134px;
+      }
+      .d26 .release {
+        font-weight: bold;
+      	text-transform: none;
+        color: #C17861;
+        color: #231e20;
+        font-size: 12px;
+        letter-spacing: 0px;
+        display: block;
+        margin-top: 0px;
+      }
+      .d16 .release {
+        font-weight: bold;
+      	text-transform: none;
+        color: #C17861;
+        color: #231e20;
+        font-size: 12px;
+        letter-spacing: 0px;
+        display: block;
+        margin-top: 10px;
+        position: absolute;
+        top: 8px;
+        right:0px;
+      }
+      .d39 {
+        padding-top: 34px;
+      	width: 39%;
+        float: left;
+        text-align: left;
+      }
+      .product-img {
+        width: 135%;
+      	margin-bottom: 24px;
+      }
+      @media (max-width: 900px) {
+      	  .d39 {
+			width: 49%;
+          }
+        .header-img, .header-img-fixed {
+        	left: 34px;
+          	width: 100%;
+          	padding-right: 68px;
+        }
+        .product-img {
+        	width: 110%;
+        }
+        .section {
+        	padding-left: 6%;
+          	padding-right: 6%;
+        }
+        .product-header {
+         	width: 88%;
+          	left: 6%;
+        }
+      }
+      #mobile-nav,.mob-logos {
+      	display: none;
+      }
+      @media (max-width: 768px) {
+        .section, #desktop-bot-nav {
+        	position: absolute;
+          	top: 0px;
+          	left: 0px;
+          	bottom: 0px;
+          	width: 100%;
+          	overflow-x: hidden;
+          	overflow-y: auto;
+            background:#f9f9f9;
+          	display: none;
+          	padding: 20px;
+          	text-align: left;
+          	padding-bottom: 94px;
+          	padding-top: 64px;
+        }
+        #desktop-bot-nav {
+        	display: block;
+          	margin-left: -100%;
+          	transition: margin-left 0.5s;
+          	z-index: 999999;
+          	padding-top: 20px;
+          	text-align: center;
+        }
+        #desktop-bot-nav.open {
+        	margin-left: 0px;
+        }
+        #desktop-bot-nav a {
+        	display: block;
+          	padding-right: 0px;
+          	padding-bottom: 20px;
+        }
+        .mob-logos {
+        	display: block;
+        }
+        .section[data-anchor="intro"] {
+        	display: block;
+          	padding-top: 186px;
+        }
+        .header-img,.header-img-fixed,.scrim,.bottom-scrim,.start,.down-arrow {
+        	display: none;
+        }
+        .section p {
+        	width: 100%;
+        }
+        .header-logo {
+        	width: 100%;
+          	max-width: 340px;
+        }
+        .collection {
+        	top: -34px;
+	    	margin-left: 0px;
+        }
+        .no-8 {
+         	z-index: 99;
+          	position: absolute;
+          	top: 64px;
+          	right: 20px;
+          	transform: none;
+        }
+        #mobile-nav {
+          	position: fixed;
+          	left: 0px;
+          	right: 0px;
+          	top: 0px;
+          	height: 80px;
+          	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f9f9f9+0,f9f9f9+100&1+66,0.77+85,0+100 */
+            background: -moz-linear-gradient(top, rgba(249,249,249,1) 0%, rgba(249,249,249,1) 66%, rgba(249,249,249,0.77) 85%, rgba(249,249,249,0) 100%); /* FF3.6-15 */
+            background: -webkit-linear-gradient(top, rgba(249,249,249,1) 0%,rgba(249,249,249,1) 66%,rgba(249,249,249,0.77) 85%,rgba(249,249,249,0) 100%); /* Chrome10-25,Safari5.1-6 */
+            background: linear-gradient(to bottom, rgba(249,249,249,1) 0%,rgba(249,249,249,1) 66%,rgba(249,249,249,0.77) 85%,rgba(249,249,249,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9f9f9', endColorstr='#00f9f9f9',GradientType=0 ); /* IE6-9 */
+      		display: block;
+          	margin: 0px;
+          	z-index: 9999;
+          	padding: 20px;
+          	padding-bottom: 0px;
+      	}
+        #hamburger {
+        	float: left;
+          	width: 30px;
+          	cursor: pointer;
+        }
+        #hamburger img {
+        	width: 100%;
+        }
+        #mob-img {
+        	float: right;
+        }
+        #mob-img img {
+        	height: 38px;
+          	width: auto;
+          	margin-top: -1px;
+        }
+        .prev {
+        	width: 50%;
+          	position: fixed;
+          	left: 0px;
+          	bottom: 0px;
+          	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f9f9f9+0,f9f9f9+100&0+0,0+0,0.77+14,1+29 */
+            background: -moz-linear-gradient(top, rgba(249,249,249,0) 0%, rgba(249,249,249,0.77) 14%, rgba(249,249,249,1) 29%, rgba(249,249,249,1) 100%); /* FF3.6-15 */
+            background: -webkit-linear-gradient(top, rgba(249,249,249,0) 0%,rgba(249,249,249,0.77) 14%,rgba(249,249,249,1) 29%,rgba(249,249,249,1) 100%); /* Chrome10-25,Safari5.1-6 */
+            background: linear-gradient(to bottom, rgba(249,249,249,0) 0%,rgba(249,249,249,0.77) 14%,rgba(249,249,249,1) 29%,rgba(249,249,249,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00f9f9f9', endColorstr='#f9f9f9',GradientType=0 ); /* IE6-9 */
+          	text-align: left;
+          	padding: 20px;
+          	padding-top: 28px;
+          	z-index: 999998;
+        }
+        .next {
+        	width: 100%;
+          	position: fixed;
+          	right: 0px;
+          	bottom: 0px;
+          	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f9f9f9+0,f9f9f9+100&0+0,0+0,0.77+14,1+29 */
+            background: -moz-linear-gradient(top, rgba(249,249,249,0) 0%, rgba(249,249,249,0.77) 14%, rgba(249,249,249,1) 29%, rgba(249,249,249,1) 100%); /* FF3.6-15 */
+            background: -webkit-linear-gradient(top, rgba(249,249,249,0) 0%,rgba(249,249,249,0.77) 14%,rgba(249,249,249,1) 29%,rgba(249,249,249,1) 100%); /* Chrome10-25,Safari5.1-6 */
+            background: linear-gradient(to bottom, rgba(249,249,249,0) 0%,rgba(249,249,249,0.77) 14%,rgba(249,249,249,1) 29%,rgba(249,249,249,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00f9f9f9', endColorstr='#f9f9f9',GradientType=0 ); /* IE6-9 */
+          	text-align: right;
+          	padding: 20px;
+          	padding-top: 28px;
+          	z-index: 999997;
+        }
+        .section.cp .prev {
+        	width: 100%;
+        }
+        .d16,.d26 {
+        	margin-top: 0px;
+          	width: 100%;
+          	position: relative;
+        }
+        .d26 {
+        	padding-top: 12px;
+        }
+        .d39 {
+        	width: 100%;
+        }
+        .product-img {
+    		width: 100%;
+		}
+        .img-wrapper {
+          margin-left: -20px;
+          padding-left: 20px;
+          overflow-x: scroll;
+          width: calc(100% + 40px);
+        }
+        .img-wrapper::-webkit-scrollbar {
+        	display: none;
+        }
+        .rg10-mob {
+        	float:left;
+        }
+        .rglogo-mob {
+        	float:right;
+        }
+        .rg10-mob img {
+        	width: 70px;
+        }
+        .rglogo-mob img {
+        	width: 160px;
+        }
+        .mob-logos {
+        	width: 100%;
+          	clear: both;
+        }
+        .mob-collection {
+          	display: block;
+          	clear: both;
+           	color: #C17861;
+            color: #231e20;
+            text-align: center;
+          	width: 100%;
+            font-size: 12px;
+            text-transform: uppercase;
+            font-weight: bold;
+          	padding-top: 34px;
+          	padding-bottom: 42px;
+          	cursor: pointer;
+        }
+        #mob-close {
+          	display: block;
+          	position: absolute;
+          	bottom: 0px;
+          	left: 0px;
+          	width: 100%;
+          	color: #C17861;
+            color: #231e20;
+            text-align: center;
+          	width: 100%;
+            font-size: 12px;
+            text-transform: uppercase;
+            font-weight: bold;
+          	padding: 20px;
+          	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f9f9f9+0,f9f9f9+100&0+0,0+0,0.77+14,1+29 */
+            background: -moz-linear-gradient(top, rgba(249,249,249,0) 0%, rgba(249,249,249,0.77) 14%, rgba(249,249,249,1) 29%, rgba(249,249,249,1) 100%); /* FF3.6-15 */
+            background: -webkit-linear-gradient(top, rgba(249,249,249,0) 0%,rgba(249,249,249,0.77) 14%,rgba(249,249,249,1) 29%,rgba(249,249,249,1) 100%); /* Chrome10-25,Safari5.1-6 */
+            background: linear-gradient(to bottom, rgba(249,249,249,0) 0%,rgba(249,249,249,0.77) 14%,rgba(249,249,249,1) 29%,rgba(249,249,249,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00f9f9f9', endColorstr='#f9f9f9',GradientType=0 ); /* IE6-9 */
+          	cursor: pointer;
+        }
+      }
+      .oamc .product-img img {
+        width: 100%;
+        height: auto;
+      }
+      .readymade .product-img img {
+        width: 31%;
+        height: auto;
+      }
+      .herschel .product-img img {
+        width: 100%;
+        height: auto;
+      }
+      .je .product-img img {
+        width: 32%;
+        height: auto;
+      }
+      .purple .product-img img {
+        width: 46%;
+        height: auto;
+      }
+      .alyx .product-img img {
+        width: 62%;
+        height: auto;
+      }
+      .cp .product-img img {
+        width: 50%;
+        height: auto;
+      }
+      @media (max-width: 768px) {
+        .oamc .product-img img {
+          width: 170%;
+          height: auto;
+        }
+        .readymade .product-img img {
+          width: 48%;
+          height: auto;
+        }
+        .herschel .product-img img {
+          width: 190%;
+          height: auto;
+        }
+        .je .product-img img {
+          width: 49%;
+          height: auto;
+        }
+        .purple .product-img img {
+          width: 90%;
+          height: auto;
+        }
+        .alyx .product-img img {
+          width: 120%;
+          height: auto;
+        }
+        .cp .product-img img {
+          width: 90%;
+          height: auto;
+        }
+      }
+      .rglogo-fixed, .header-logo {
+      	cursor: pointer;
+      }
+  	</style>
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.5/jquery.fullpage.min.css" />
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.5/jquery.fullpage.min.js"></script>
+</head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  	<div class="scrim"></div>
+  	<div class="bottom-scrim"></div>
+  	<div id="mobile-nav">
+      <div id="hamburger"><img src="https://cdn.shopify.com/s/files/1/0240/7285/files/hamburger_ad5d73b0-5c93-484f-baaa-46d9d870fbb2.png?7679670557282689503"></div>
+      <div id="mob-img"><img src="https://cdn.shopify.com/s/files/1/0240/7285/files/mobilehead_661e2aa0-fb7c-4269-91b1-f932a39e4c41.png?7679670557282689503"></div>
+  	</div>
+  	<div id="desktop-bot-nav">
+      <div class="mob-logos">
+        <div class="rg10-mob">
+            <img src="https://cdn.shopify.com/s/files/1/0240/7285/files/rg10small_8b7e043c-47ac-41bf-8b82-d9f1a9fe27b2.png?7679670557282689503">
+        </div>
+        <div class="rglogo-mob">
+            <img src="https://cdn.shopify.com/s/files/1/0240/7285/files/rglogosmall_d9d29bc2-1905-48b7-b65a-3c0cd8afd109.png?7679670557282689503">
+        </div>
+  	  </div>
+      <a href="#oamc" data-menuanchor="oamc">OAMC</a>
+      <a href="#readymade" data-menuanchor="readymade">Readymade</a>
+      <a href="#herschel" data-menuanchor="herschel">Herschel</a>
+      <a href="#purple" data-menuanchor="purple">Purple</a>
+      <a href="#je" data-menuanchor="je">John Elliott</a>
+      <a href="#alyx" data-menuanchor="alyx">Alyx</a>
+      <a href="#cp" data-menuanchor="cp">Common Projects</a>
+    </div>
+  	<img class="header-img" src="https://cdn.shopify.com/s/files/1/0240/7285/files/header-sketch_fd0b68a7-3620-4f7c-b528-6a70a69233a7.png?16173949872897990621">
+  	<img class="header-img-fixed" src="https://cdn.shopify.com/s/files/1/0240/7285/files/product-head_8d98f034-d37a-47d7-a9ad-98c62cd4482b.png?7679670557282689503">
+    
+  	<div class="product-header">
+      <div class="rg10-fixed">
+          <img src="https://cdn.shopify.com/s/files/1/0240/7285/files/rg10small_8b7e043c-47ac-41bf-8b82-d9f1a9fe27b2.png?7679670557282689503">
+      </div>
+      <div class="rglogo-fixed">
+          <img src="https://cdn.shopify.com/s/files/1/0240/7285/files/rglogosmall_d9d29bc2-1905-48b7-b65a-3c0cd8afd109.png?7679670557282689503">
+      </div>
+  	</div>
+  
+  	<img class="no-8" src="https://cdn.shopify.com/s/files/1/0240/7285/files/download_4de113ce-95a1-4519-a6fb-5ec94be5aefb.png?16173949872897990621">
+  	<div id="fullpage">
+      <div class="section fp-auto-height-responsive intro" data-anchor="intro">
+        <div class="start">Start</div>
+        <div class="collection">Collection</div>
+        <img class="header-logo" src="https://cdn.shopify.com/s/files/1/0240/7285/files/download_b6d17978-fe21-43f3-a39f-bf5952b014d9.png?11882151775481770195">
+        <br>
+        <p>{{intro_copy}}</p>
+        <br>
+        <a class="down-arrow" href="#oamc" data-menuanchor="oamc">
+        	<img src="https://cdn.shopify.com/s/files/1/0240/7285/files/dngrn_76d5f55f-113a-4c91-8585-a90f2347f62b.png?16173949872897990621">
+        </a>
+      </div>
+      
+      <div class="section fp-auto-height-responsive oamc" data-anchor="oamc">
+        <div class="d16">{{oamc_number}}</div>
+        <div class="d26">{{oamc_title}}
+            <br><span class="release">Release date: {{oamc_date}}</span>
+        </div>
+        <div class="d39">
+          <span class="preview">Preview</span>
+          <div class="product-img">
+            {% if oamc_img1 != "" %}<img src="{{oamc_img1}}">{% endif %}
+            {% if oamc_img2 != "" %}<img src="{{oamc_img2}}">{% endif %}
+            {% if oamc_img3 != "" %}<img src="{{oamc_img3}}">{% endif %}
+          </div>
+          {{oamc_copy}}</div>
+      </div>
+      
+      <div class="section fp-auto-height-responsive readymade" data-anchor="readymade">
+        <div class="d16">{{readymade_number}}</div>
+        <div class="d26">{{readymade_title}}
+            <br><span class="release">Release date: {{readymade_date}}</span>
+        </div>
+        <div class="d39">
+          <span class="preview">Preview</span>
+          <div class="product-img">
+            {% if readymade_img1 != "" %}<img src="{{readymade_img1}}">{% endif %}
+            {% if readymade_img2 != "" %}<img src="{{readymade_img2}}">{% endif %}
+            {% if readymade_img3 != "" %}<img src="{{readymade_img3}}">{% endif %}
+          </div>
+          {{readymade_copy}}</div>
+      </div>
+      
+      <div class="section fp-auto-height-responsive herschel" data-anchor="herschel">
+        <div class="d16">{{herschel_number}}</div>
+        <div class="d26">{{herschel_title}}
+            <br><span class="release">Release date: {{herschel_date}}</span>
+        </div>
+        <div class="d39">
+          <span class="preview">Preview</span>
+          <div class="product-img">
+            {% if herschel_img1 != "" %}<img src="{{herschel_img1}}">{% endif %}
+            {% if herschel_img2 != "" %}<img src="{{herschel_img2}}">{% endif %}
+            {% if herschel_img3 != "" %}<img src="{{herschel_img3}}">{% endif %}
+          </div>
+          {{herschel_copy}}</div>
+      </div>
+      
+      <div class="section fp-auto-height-responsive purple" data-anchor="purple">
+        <div class="d16">{{purple_number}}</div>
+        <div class="d26">{{purple_title}}
+            <br><span class="release">Release date: {{purple_date}}</span>
+        </div>
+        <div class="d39">
+          <span class="preview">Preview</span>
+          <div class="product-img">
+            {% if purple_img1 != "" %}<img src="{{purple_img1}}">{% endif %}
+            {% if purple_img2 != "" %}<img src="{{purple_img2}}">{% endif %}
+            {% if purple_img3 != "" %}<img src="{{purple_img3}}">{% endif %}
+          </div>
+          {{purple_copy}}</div>
+      </div>
+      
+      <div class="section fp-auto-height-responsive je" data-anchor="je">
+        <div class="d16">{{je_number}}</div>
+        <div class="d26">{{je_title}}
+            <br><span class="release">Release date: {{je_date}}</span>
+        </div>
+        <div class="d39">
+          <span class="preview">Preview</span>
+          <div class="product-img">
+            {% if je_img1 != "" %}<img src="{{je_img1}}">{% endif %}
+            {% if je_img2 != "" %}<img src="{{je_img2}}">{% endif %}
+            {% if je_img3 != "" %}<img src="{{je_img3}}">{% endif %}
+          </div>
+          {{je_copy}}</div>
+      </div>
+      
+      <div class="section fp-auto-height-responsive alyx" data-anchor="alyx">
+        <div class="d16">{{alyx_number}}</div>
+        <div class="d26">{{alyx_title}}
+            <br><span class="release">Release date: {{alyx_date}}</span>
+        </div>
+        <div class="d39">
+          <span class="preview">Preview</span>
+          <div class="product-img">
+            {% if alyx_img1 != "" %}<img src="{{alyx_img1}}">{% endif %}
+            {% if alyx_img2 != "" %}<img src="{{alyx_img2}}">{% endif %}
+            {% if alyx_img3 != "" %}<img src="{{alyx_img3}}">{% endif %}
+          </div>
+          {{alyx_copy}}</div>
+      </div>
+      
+      <div class="section fp-auto-height-responsive cp" data-anchor="cp">
+        <div class="d16">{{cp_number}}</div>
+        <div class="d26">{{cp_title}}
+            <br><span class="release">Release date: {{cp_date}}</span>
+        </div>
+        <div class="d39">
+          <span class="preview">Preview</span>
+          <div class="product-img">
+            {% if cp_img1 != "" %}<img src="{{cp_img1}}">{% endif %}
+            {% if cp_img2 != "" %}<img src="{{cp_img2}}">{% endif %}
+            {% if cp_img3 != "" %}<img src="{{cp_img3}}">{% endif %}
+          </div>
+          {{cp_copy}}</div>
+      </div>
+      
+      <div class="section fp-auto-height-responsive outro" data-anchor="outro">
+      	<a class="down-arrow" href="#oamc" data-menuanchor="oamc">
+        	<img src="https://cdn.shopify.com/s/files/1/0240/7285/files/dngrn_76d5f55f-113a-4c91-8585-a90f2347f62b.png?16173949872897990621">
+        </a>
+        <div class="stop">Stop</div>
+      </div>
+    </div>
+  
+	<!--{{ '/services/javascripts/currencies.js' | script_tag }}-->
+	<!--{{ '/services/javascripts/countries.js' | script_tag }}-->
+  	<script>
+      $(document).ready(function() {
+        if ($(window).width() >768) {
+          $('#fullpage').fullpage({
+              menu: '#desktop-bot-nav',
+              onLeave: function(index, nextIndex, direction){
+                if(index == 1 && direction =='down'){
+                  $(".header-img").fadeOut("fast");
+                  $(".header-img-fixed, .rg10-fixed, .rglogo-fixed").fadeIn("slow");
+                  $(".scrim").css("left","0px");
+                }
+                if(index == 2 && direction =='up'){
+                  $(".header-img-fixed, .rg10-fixed, .rglogo-fixed").fadeOut("fast");
+                  $(".header-img").fadeIn("slow");
+                  $(".scrim").css("left","15%");
+                }
+                if(index == 8 && direction =='down'){
+				  productHeader();
+                }
+              },
+              responsiveWidth: 768
+          });
+          productHeader();
+        }
+      });
+      $(window).load(function() {
+        $(".section").animate({opacity:1},200);
+        $(window).trigger("resize");
+      });
+      function productHeader() {
+      	var theTop = $(".header-img-fixed").height();
+        var theOtherTop = $(".header-img").height();
+        var theLeft = $(".header-logo").offset().left;
+        var theBottom = $(".header-img").height();
+        $(".product-header").css("margin-top",(theTop + 68)+"px");
+        $(".start").css("margin-top",(theTop + 90)+"px");
+        $(".stop").css("margin-bottom",(theBottom + 40)+"px");
+        $(".collection").css("padding-left",theLeft + "px");        
+        var theStartTop = $(".start").css("margin-top");
+        theStartTop = theStartTop.replace("px","");
+        theStartTop = parseInt(theStartTop) + 15;
+        $(".scrim").css("height",theStartTop + "px");
+      }
+      
+      $(window).resize(function(){
+        if ($(window).width() >768) {
+      		productHeader();
+        }
+      });
+      
+      $(document).ready(function(){
+          if ($(window).width() <=768) {
+            	$("#desktop-bot-nav").append("<div id='mob-close'>Close</div>");
+	            $(".mob-logos").after("<div class='mob-collection'>Collection</div>");
+            	doHash();
+           	 	var the8 = $(".no-8").clone().addClass("cloned");
+            	$(".no-8").not(".cloned").remove();
+            	$(".section.intro").append(the8.clone());
+                $(".section").each(function(){
+					$(this).find(".d16").append($(this).find(".release"));
+                  	$(this).find(".product-img").wrap("<div class='img-wrapper'>");
+                });
+            $("body").on("click","#mob-close",function(){
+            	$("#desktop-bot-nav").removeClass("open");
+            });
+            $("body").on("click",".mob-collection",function(){
+				$(".section").hide();
+                $("#desktop-bot-nav").removeClass("open");
+                $(".section.intro").fadeIn();
+            });
+            $(window).on("hashchange",function(){
+            	doHash();
+            });
+            $(".section").each(function(){
+            	var thePrev = $(this).prev(".section").attr("data-anchor");
+              	var theNext = $(this).next(".section").attr("data-anchor");
+              	if (thePrev != null) {
+              		$(this).append("<div class='prev'></div>");
+                  	$(this).find(".prev").append($("#desktop-bot-nav a[data-menuanchor='"+thePrev+"']").clone());
+                }
+              	if (theNext != null) {
+              		$(this).append("<div class='next'></div>");
+                  	$(this).find(".next").append($("#desktop-bot-nav a[data-menuanchor='"+theNext+"']").clone());
+                }
+            });
+          }
+        function doHash() {
+          	if(window.location.hash) {
+              $(".section").hide();
+              $("#desktop-bot-nav").removeClass("open");
+              $(".section."+window.location.hash.substring(1)).fadeIn();
+              $("#desktop-bot-nav a").removeClass("active");
+              $("#desktop-bot-nav a[href='"+window.location.hash+"']").addClass("active");
+            }
+        }
+          var ww = $(window).width();
+          var limit = 768;            
+
+          function refresh() {
+              ww = $(window).width();
+              var w =  ww<limit ? (location.reload(true)) :  ( ww>limit ? (location.reload(true)) : ww=limit );
+          }
+          var tOut;
+          $(window).resize(function() {
+              var resW = $(window).width();
+              clearTimeout(tOut);                 
+              if ((ww>limit && resW<limit) || (ww<limit && resW>limit) ) {        
+                $("body").hide();
+                tOut = setTimeout(refresh, 100);
+              }
+          });
+        $("#hamburger").click(function(){
+        	$("#desktop-bot-nav").addClass("open");
+        });
+      });
+      $(".rglogo-fixed, .header-logo").click(function(){
+        window.location.href = "https://rodengray.com";
+      });
+    </script>
+</body>
+</html>

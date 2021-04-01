@@ -1,0 +1,325 @@
+<product-details :has-announcements="hasAnnouncements" :is-mobile="isMobile" {% if product.has_only_default_variant %}:no-options="true" default-variant="{{ product.first_available_variant.id }}"{% endif %} inline-template>
+	<div data-section-id="{{ section.id }}" data-section-type="product" data-enable-history-state="true" id="pdp" class="product {% if product.tags contains 'No Checkout' %}product--nocheckout{% endif %}">
+		<div class="wrapper">
+			{% for image in product.images %}
+				<div v-if="featuredZoom && featuredInd === {{ forloop.index }}" class="product__featured" @click="toggleZoom">
+					{% include 'responsive-image' with
+						image: image.src,
+						max_width: 2200,
+						max_height: 2200
+					%}
+				</div>
+			{% endfor %}
+			<div v-if="!featuredZoom" class="product__top" id="pdp-top">
+				{%- assign current_variant = product.selected_or_first_available_variant -%}
+				{%- assign featured_image = current_variant.featured_image | default: product.featured_image -%}
+
+				<div class="product__image-wrap">
+					{% for image in product.images %}
+						<div class="product__image" data-aos="fade-right" @click="toggleZoom({{ forloop.index }})">
+							{% include 'responsive-image' with
+								image: image.src,
+								max_width: 1024,
+								max_height: 1024
+							%}
+						</div>
+					{% endfor %}
+				</div>
+
+				<carousel class="product__mobile-image-wrap" v-if="isMobile" :per-page="1" pagination-position="bottom-overlay" data-product-image-wrapper>
+					{% for image in product.images %}
+						<slide>
+							<div class="product__image product__image--mobile">
+								{% include 'responsive-image' with
+									image: image.src,
+									max_width: 1024,
+									max_height: 1024
+								%}
+							</div>
+						</slide>
+					{% endfor %}
+				</carousel>
+
+				<div class="product__details-wrap">
+					<div class="product__details" :class="{'product__details--announcements': hasAnnouncements}">
+            <a class="product__brand-name" href="/collections/{{ product.vendor | handleize }}">
+              <h1>{{ product.vendor }}</h1>
+              <i class="fal fa-angle-right"></i>
+            </a>
+            <h2 class="product__product-title mt-xxs">{{ product.title }}</h2>
+
+            <div class="product__price-area" data-price-wrapper>
+              {% if product.compare_at_price_max > product.price %}
+                <p class="product__initial-price" data-compare-price>
+                  <span data-compare-text>{{ current_variant.compare_at_price | money }}</span>
+                </p>
+              {% endif %}
+
+              <p class="product__final-price" data-product-price>
+                {{ current_variant.price | money }}
+              </p>           
+            </div>
+
+            <form action="/cart/add" method="post" enctype="multipart/form-data">
+              <div v-if="!noOptions" class="product-variants">
+                <h4 class="product-variants__title">Size:</h4>
+
+                {% for option in product.options_with_values %}
+                  {% if option.name contains 'Size' %}
+                    {% assign selectedOption = 'option' | append: forloop.index %}
+                  {% endif %}
+                {% endfor %}
+                {% for variant in product.variants %}
+                  <div class="product-variants__single {% if variant.available == false %}product-variants__single--disabled{% endif %}" @click="changeVariantPrice('{{ variant.compare_at_price }}', '{{ variant.price }}')">
+                    <input name="size" id="variant-{{ forloop.index }}" type="radio" value="{{ variant.id }}" v-model="variantID" class="product-variants__radio">
+                    <label for="variant-{{ forloop.index }}" class="product-variants__label">{{ variant[selectedOption] }}</label>
+                  </div>
+                {% endfor %}
+              </div>
+
+              {% if product.tags contains 'No Checkout' %}
+					<p class="no-checkout">
+						This item is not available for purchase via online checkout, please <a href="/pages/shopping-with-us#contact-us">contact us</a> to make a purchase.
+					</p>
+				{% else %}
+						<button
+		                type="button"
+		                class="button button--solid mb-sm"
+		                :class="{ 'button--disabled': !variantID }"
+		                @click="addToCart"
+		                data-add-to-cart
+		                {% unless current_variant.available %}disabled="disabled"{% endunless %}
+		              >
+		                {% if current_variant.available %}
+		                  {{ 'products.product.add_to_cart' | t }}
+		                  <i class="fal fa-shopping-cart ml-xs"></i>
+		                {% else %}
+		                  <span data-add-to-cart-text>{{ 'products.product.sold_out' | t }}</span>
+		                {% endif %}
+		              </button>
+				{% endif %}
+            </form>
+
+            <div>
+              {% assign price_limit = current_variant.compare_at_price | times: 0.7 | ceil %}
+              {%
+                if price_limit >= current_variant.price
+                or product.type contains 'Jewellery'
+                or product.type contains 'Apothecary'
+                or product.tags contains 'final-sale'
+              %}
+                <a href="/pages/shopping-with-us#return-policy" class="product__shipping-info product__shipping-info--final-sale"><i class="far fa-exclamation-circle"></i>Final Sale</a>
+              {% else %}
+                <a href="/pages/shopping-with-us#return-policy" class="product__shipping-info"><i class="far fa-undo"></i>Free Returns Within Canada</a>
+              {% endif %}
+            </div>
+
+						<div class="product__description mt-lg">
+							{{ product.description }}
+						</div>
+					</div>
+				</div>
+
+				{% unless product == empty %}
+					<script type="application/json" data-product-json>
+					{{ product | json }}
+					</script>
+				{% endunless %}
+			</div>
+		</div>
+
+		{% assign vendorHandle = product.vendor | handle %}
+		{% assign brand = collections[vendorHandle] %}
+		{% unless brand == empty %}
+			<div class="vendor-info">
+				<div class="vendor-info__background" data-aos="fade-left" style="background-image:url({{ brand.image.src | img_url: '1000x' }});"></div>
+				<div class="wrapper">
+					<div class="row">
+						<div class="col-lg-5 col-sm-12 vendor-info__content" data-aos="fade-right" data-aos-anchor=".vendor-info__background">
+							<h2 class="vendor-info__title">{{ brand.title }}</h2>
+							<p class="vendor-info__description">{{ brand.description | strip_html }}</p>
+							<a class="button" href="{{ brand.url }}">View Collection</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		{% endunless %}
+
+		{% comment %} Find top-level category {% endcomment %}
+		{% for collection in product.collections %}
+			{% if collection.title == 'Clothing' %}{% assign category = collections[collection.handle] %}
+			{% elsif collection.title == 'Footwear' %}{% assign category = collections[collection.handle] %}
+			{% elsif collection.title == 'Accessories' %}{% assign category = collections[collection.handle] %}
+			{% elsif collection.title == 'Library' %}{% assign category = collections[collection.handle] %}
+			{% elsif collection.title == 'Apothecary' %}{% assign category = collections[collection.handle] %}
+			{% endif %}
+		{% endfor %}
+
+		{% comment %} Get styled with items {% endcomment %}
+		{% if product.metafields.recommendations.wearItWith != blank %}
+			{% assign styled_with = product.metafields.recommendations.wearItWith | split: ',' %}
+		{% endif %}
+
+		<div class="related" data-aos="fade">
+			<div class="wrapper">
+				<div class="row">
+					<ul class="col related__tab-list">
+						{% if styled_with %}
+							<li class="related__tab" :class="{'related__tab--active': currentTab === 'styled'}" @click="currentTab = 'styled'">Styled With</li>
+						{% endif %}
+						{% if brand != empty and brand.title %}
+							<li class="related__tab" :class="{'related__tab--active': currentTab === 'brand'}" @click="currentTab = 'brand'"><span class="related__tab-label">More by</span> {{ brand.title }}</li>
+						{% endif %}
+						{% if category %}
+							<li class="related__tab" :class="{'related__tab--active': currentTab === 'category'}" @click="currentTab = 'category'"><span class="related__tab-label">More in</span> {{ category.title }}</li>
+						{% endif %}
+					</ul>
+				</div>
+
+				<transition name="fade" mode="out-in">
+					{% if styled_with %}
+						<carousel :key="'styled'" ref="styled" v-if="currentTab === 'styled'" :navigation-enabled="true" navigation-prev-label="<i class='fal fa-angle-left VueCarousel-navigation__arrow'></i>" navigation-next-label="<i class='fal fa-angle-right VueCarousel-navigation__arrow'></i>" class="row featured-collection__carousel" :pagination-enabled="false" :per-page="1" :per-page-custom="[[768, 3], [992, 3], [1200, 4]]">
+							{% for styled_handle in styled_with limit: 12 %}
+							{% assign styled_item = all_products[styled_handle] %}
+								<slide class="col featured-collection__item">
+									<a href="{{ styled_item.url | within: collection }}">
+										<div class="featured-collection__image-wrap">
+											{% for image in styled_item.images limit: 2 %}
+												<div class="featured-collection__image">
+													{% include 'responsive-image' with
+														image: image,
+														max_width: 600,
+														max_height: 1200
+													%}
+												</div>
+											{% endfor %}
+										</div>
+
+										<h4 class="featured-collection__item-title">{{ styled_item.title | escape }}</h4>
+										<span class="featured-collection__link">View Details<i class="fal fa-plus featured-collection__link-icon"></i></span>
+									</a>
+								</slide>
+							{% endfor %}
+						</carousel>
+					{% endif %}
+
+					{% if brand != empty and brand.products_count > 0 %}
+						<carousel :key="'brand'" ref="brand" v-if="currentTab === 'brand'" :navigation-enabled="true" navigation-prev-label="<i class='fal fa-angle-left VueCarousel-navigation__arrow'></i>" navigation-next-label="<i class='fal fa-angle-right VueCarousel-navigation__arrow'></i>" class="row featured-collection__carousel" :pagination-enabled="false" :per-page="1" :per-page-custom="[[768, 3], [992, 3], [1200, 4]]">
+							{% for brand_item in brand.products limit: 12 %}
+								<slide class="col featured-collection__item">
+									<a href="{{ brand_item.url | within: collection }}">
+											<div class="featured-collection__image-wrap">
+												{% for image in brand_item.images limit: 2 %}
+													<div class="featured-collection__image">
+														{% include 'responsive-image' with
+															image: image,
+															max_width: 600,
+															max_height: 1200
+														%}
+													</div>
+												{% endfor %}
+											</div>
+
+										<h4 class="featured-collection__item-title">{{ brand_item.title | escape }}</h4>
+										<span class="featured-collection__link">View Details<i class="fal fa-plus featured-collection__link-icon"></i></span>
+									</a>
+								</slide>
+							{% endfor %}
+						</carousel>
+					{% endif %}
+
+					{% if category and category.products_count > 0 %}
+						<carousel :key="'category'" ref="category" v-if="currentTab === 'category'" :navigation-enabled="true" navigation-prev-label="<i class='fal fa-angle-left VueCarousel-navigation__arrow'></i>" navigation-next-label="<i class='fal fa-angle-right VueCarousel-navigation__arrow'></i>" class="row featured-collection__carousel" :pagination-enabled="false" :per-page="1" :per-page-custom="[[768, 3], [992, 3], [1200, 4]]">
+							{% for category_item in category.products limit: 12 %}
+								<slide class="col featured-collection__item">
+									<a href="{{ category_item.url | within: collection }}">
+										<div class="featured-collection__image-wrap">
+											{% for image in category_item.images limit: 2 %}
+												<div class="featured-collection__image">
+													{% include 'responsive-image' with
+														image: image,
+														max_width: 600,
+														max_height: 1200
+													%}
+												</div>
+											{% endfor %}
+										</div>
+
+										<h4 class="featured-collection__item-title">{{ category_item.title | escape }}</h4>
+										<span class="featured-collection__link">View Details<i class="fal fa-plus featured-collection__link-icon"></i></span>
+									</a>
+								</slide>
+							{% endfor %}
+						</carousel>
+					{% endif %}
+				</transition>
+			</div>
+		</div>
+	</div>
+</product-details>
+
+
+
+
+<script type="application/ld+json">
+{
+	"@context": "http://schema.org/",
+	"@type": "Product",
+	"name": "{{ product.title | escape }}",
+	"url": "{{ shop.url }}{{ product.url }}",
+	{% if product.featured_image %}
+		{% assign image_size = product.featured_image.width | append: 'x' %}
+		"image": [
+		"https:{{ product.featured_image.src | img_url: image_size }}"
+		],
+	{% endif %}
+	"description": "{{ product.description | strip_html | escape }}",
+	{% if current_variant.sku != blank %}
+		"sku": "{{ current_variant.sku }}",
+	{% endif %}
+	"brand": {
+		"@type": "Thing",
+		"name": "{{ product.vendor | escape }}"
+	},
+	{% if product.variants %}
+		"offers": [
+		{% for variant in product.variants %}
+			{
+			"@type" : "Offer",
+			"availability" : "http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}",
+			"price" : "{{ variant.price | divided_by: 100.00 }}",
+			"priceCurrency" : "{{ shop.currency }}",
+			"url" : "{{ shop.url }}{{ variant.url }}",
+			"itemOffered" :
+			{
+				"@type" : "Product",
+				{% if variant.image %}
+					{% assign variant_image_size = variant.image.width | append: 'x' %}
+					"image": "http:{{ variant.image.src | img_url: variant_image_size }}",
+				{% endif %}
+				{% if variant.title != blank %}
+					"name" : "{{ variant.title | escape }}",
+				{% endif %}
+				{% if variant.sku != blank %}
+					"sku": "{{ variant.sku }}",
+				{% endif %}
+				{% if variant.weight != blank %}
+					"weight": {
+					"@type": "QuantitativeValue",
+					{% if variant.weight_unit != blank %}
+						"unitCode": "{{ variant.weight_unit }}",
+					{% endif %}
+					"value": "{{ variant.weight | weight_with_unit: variant.weight_unit }}"
+					},
+				{% endif %}
+				"url": "{{ shop.url }}{{ variant.url }}"
+			}
+			}{% unless forloop.last %},{% endunless %}
+		{% endfor %}
+		]
+	{% endif %}
+}
+</script>
+
+
+<script src="https://widget.sezzle.com/v1/javascript/price-widget?uuid=0b8be0b2-e8ce-4997-8cbc-2b383abfec63"></script>

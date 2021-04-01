@@ -1,0 +1,85 @@
+  <footer class="footer">
+    <i class="fal fa-angle-down footer__list-icon footer__list-icon--master"></i>
+  	<div class="footer__main">
+  		<div class="wrapper">
+  			<div class="row">
+  				<div class="col-lg-6 col-sm-12">
+  					<div class="footer__logo">
+  						{% include 'roden-gray-logo' %}
+  					</div>
+  					<p class="footer__text">
+  						8 Water St. Vancouver, BC<br/>
+  						V6B 1A4 Canada
+  					</p>
+            <footer-accordion inline-template>
+              <div>
+                <h4 class="footer__list-title" @click="toggle">Shop Hours <i class="fal fa-plus footer__list-icon"></i></h4>
+                <p class="footer__text" ref="footerList" :style="{'max-height': listHeight}">
+                  	Monday - Sunday 12pm - 6pm
+                </p>
+              </div>
+            </footer-accordion>
+  				</div>
+  
+  				<footer-accordion inline-template>
+            <div class="col-lg-2 col-sm-12">
+              <h4 class="footer__list-title" @click="toggle">About <i class="fal fa-plus footer__list-icon"></i></h4>
+              <ul class="footer__list" ref="footerList" :style="{'max-height': listHeight}">
+              {% for link in linklists.footer-about.links %}
+                <li class="footer__list-item"><a href="{{ link.url }}">{{ link.title }}</a></li>
+              {% endfor %}
+              </ul>
+            </div>
+          </footer-accordion>
+  
+  				<footer-accordion inline-template>
+            <div class="col-lg-2 col-sm-12">
+              <h4 class="footer__list-title" @click="toggle">Customer Care <i class="fal fa-plus footer__list-icon"></i></h4>
+              <ul class="footer__list" ref="footerList" :style="{'max-height': listHeight}">
+              {% for link in linklists.footer-customer-service.links %}
+                <li class="footer__list-item"><a href="{{ link.url }}">{{ link.title }}</a></li>
+              {% endfor %}
+              </ul>
+            </div>
+          </footer-accordion>
+  
+  				{%- assign social_accounts = 'Facebook, Twitter, Pinterest, Instagram, Snapchat, Tumblr, YouTube, Vimeo,' | split: ', ' -%}
+  				<footer-accordion inline-template>
+            <div class="col-lg-2 col-sm-12">
+              <h4 class="footer__list-title" @click="toggle">Connect With Us <i class="fal fa-plus footer__list-icon"></i></h4>
+              <ul class="footer__list" ref="footerList" :style="{'max-height': listHeight}">
+                {% for social in social_accounts %}
+                {%- assign social_handle = social | handleize -%}
+                {% capture social_link %}social_{{ social_handle }}_link{% endcapture %}
+                {% capture social_icon %}icon-{{ social_handle }}{% endcapture %}
+    
+                {% if settings[social_link] != blank %}
+                  <li class="footer__social-item">
+                    <a href="{{ settings[social_link] }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: social }}">
+                      {% include social_icon %}
+                      <span class="icon-fallback-text">{{ social }}</span>
+                    </a>
+                  </li>
+                {% endif %}
+    
+                {% endfor %}
+              </ul>
+            </div>
+          </footer-accordion>
+  			</div>
+  		</div>
+  	</div>
+  
+  	<div class="footer__lower">
+  		<div class="wrapper">
+  			<div class="row">
+  				<p class="footer__lower-item">
+  					&copy; 2007 - {{ 'now' | date: "%Y" }} Roden Gray Inc.
+  				</p>
+  				<a href="/pages/terms-and-conditions" class="footer__lower-item footer__lower-item--link">Terms & Conditions</a>
+  				<a href="/pages/privacy-policy" class="footer__lower-item footer__lower-item--link">Privacy Policy</a>
+  			</div>
+  		</div>
+  	</div>
+  </footer>
+

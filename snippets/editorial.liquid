@@ -1,0 +1,24 @@
+{% paginate blog.articles by 999 %}
+<section class="row editorial">
+	<div class="row title">
+		<h2>Editorial</h2>
+	</div>
+		{% if blog.articles_count >= 1 %}
+			{% for article in blog.articles %}
+			
+  
+            <div class="pod wow fadeIn {% cycle 'left_down', 'right_up', 'centre_up_left','centre_up','left_up','right_down','centre_up' %}" data-wow-duration="0.4s" {% if block.settings.podstyle == "right_up" %}data-wow-delay="0.5s"{% endif %}{% if block.settings.podstyle == "right_down" %}data-wow-delay="0.5s"{% endif %}>
+              	<a class="pod-link" href="{{ article.url }}">
+                	<img src="{{ article.image.src | img_url: "original" }}" width="100%">
+                	<div class="pod-title balance-text">{{ article.title }}</div>
+              	</a>
+                <div class="pod-type"><a href="{{ article.url }}">{{article.metafields.editorial.ed-type}}</a></div>
+            </div>
+  
+  
+			{% endfor %}
+		{% else blog.articles_count == 0 %}
+			No Posts
+		{% endif %}
+</section>
+{% endpaginate %}

@@ -1,0 +1,100 @@
+<ul id="tab-nav" class="new-nav">
+	<li><a href="/collections/new-arrivals">New Arrivals</a></li>
+  	<li><a href="https://rodengray.com/collections/rg-10">RG.10</a></li>
+  
+  	<li class="drop">
+		<a href="#!">Designers</a>
+		<div class="tab">
+			<div class="container">
+				<div class="sixteen columns designers">
+					<div class="designers-featured collapsed">
+						<ul>
+						{% for link in linklists.featured-designer-items.links limit:5 %}
+							{% assign item_brand = link.object.vendor | handleize %}
+							{% if link.object.available %}
+								{% assign item_image_url = link.object.featured_image | product_img_url: 'medium' %}
+							{% else %}
+								{% for product in collections.[item_brand].products limit: 1 %}
+								{% assign item_image_url = product.featured_image | product_img_url: 'medium' %}
+								{% endfor %}
+							{% endif %}
+							<li>
+								<a href="/collections/{{ item_brand }}">
+									<img src="{{ item_image_url }}" alt="">
+								</a>
+								<a href="/collections/{{ item_brand }}" title="{{ link.title }}">{{ link.title }}</a>
+							</li>
+						{% endfor %}
+						</ul>
+						<a href="/pages/designer-list" id="view-designers">View All Brands</a>
+					</div>
+					<div class="designers-list clearfix active">
+						<div class="side clearfix">
+							{% include 'nav-designer-list' %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</li>
+  
+    <li class="drop">
+          <a href="#!">Categories</a>
+          <div class="tab">
+              <div class="container">
+                  <ul class="top-depts one-level">
+                      {% for link in linklists.departments.links %}
+                      {% capture child_list_handle %}{{ link.title | handle }}{% endcapture %}
+                      {% capture child_featured_list_handle %}featured-{{ link.title | handle }}{% endcapture %}
+                          <li>
+                              <a href="{{ link.url }}?sort_by=created-descending">{{ link.title }}</a>
+                              <div class="dept-panel">
+                                  <div class="container">
+                                      <div class="sixteen columns categories">{% if linklists[child_list_handle] and linklists[child_list_handle].links.size > 0 %}
+                                          <ul class="category-list">
+                                              {% for link in linklists.[child_list_handle].links %}
+                                              <li><a href="{{ link.url }}?sort_by=created-descending">{{ link.title }}</a></li>
+                                              {% endfor %}
+                                              <li><a href="{{ link.url }}?sort_by=created-descending">All {{ link.title }}</a></li>
+                                          </ul>
+                                          {% endif %}
+                                  </div>
+                              </div>
+                          </li>
+                      {% endfor %}
+                      {% if collections.sale.products_count > 0 %}
+                          <li><a  class="sale" href="/collections/sale" title="Sale Items">Sale</a></li>
+                      {% endif %}
+                  </ul>
+              </div>
+          </div>
+      </li>
+  
+  	<li><a href="/blogs/editorial">Editorial</a></li>
+  	<!--<li><a href="/blogs/lookbook">Lookbook</a></li>-->
+	
+  	<li><a href="/collections/sale">Sale</a></li>
+  
+	<li class="mobileonly"><!--<a id='show-search-mobile' href='#!'>Search</a>-->
+      <form style="margin-bottom:0px !important;" action="/search" method="get" role="search">
+        <input class="mob-search" id="st-search-input" name="q" type="text" class="topsearch-field" placeholder="SEARCH" style="margin-top: 0px !important;margin-bottom: 3px !important;"/>
+        <input name="type" type="hidden" value="product"/>
+      </form>
+  	</li>
+  
+  
+  {% if customer %}
+  <li class="mobileonly"><a href="/account">Account</a></li>
+  
+  {% else %}
+  <li class="mobileonly">{{ 'Log in' | customer_login_link }}</li>
+  {% if shop.customer_accounts_optional %}
+  <li class="mobileonly">{{ 'Register' | customer_register_link }}</li>
+  {% endif %}
+  {% endif %}
+  
+   	<li class="mobileonly">{% include 'currency-selector' %}</li>
+  	
+  
+  
+</ul>

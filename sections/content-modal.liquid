@@ -1,0 +1,86 @@
+{%- comment -%}
+  This is a required section for the Shopify Theme Store.
+  It is available when you add "Newsletter" section on the Theme Editor.
+
+  Theme Store required settings
+  - Heading: title of the newsletter section
+  - Subheading: description of the newsletter section
+{%- endcomment -%}
+{% if section.settings.show_modal %}
+  <content-modal-section inline-template :content-modal-open="contentModalOpen" :timeout="{{ section.settings.timeout | times: 1000 }}" @handle-content-modal="handleContentModal">
+    <section class="content-modal modal" :class="{ 'modal--open': contentModalOpen }">
+      <div class="modal__content">
+        <i class="fal fa-times modal__close" @click="closeModal"></i>
+        {% if section.settings.heading != blank %}
+          <h2 class="modal__heading">
+            {{ section.settings.heading | escape }}
+          </h2>
+        {% endif %}
+        {% if section.settings.subheading != blank %}
+          <h4 class="mt-xs">{{ section.settings.subheading | escape }}</h4>
+        {% endif %}
+        {% if section.settings.body != blank %}
+          <p class="modal__body mt-md">{{ section.settings.body }}</p>
+        {% endif %}
+        {% if section.settings.cta_url != blank and section.settings.cta_text != blank %}
+          <a class="button mt-md" href="{{ section.settings.cta_url }}" {% if section.settings.cta_blank %}target="_blank"{% endif %}>
+            {{ section.settings.cta_text }}
+          </a>
+        {% endif %}
+      </div>
+    </section>
+  </content-modal-section>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Content Modal",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_modal",
+        "label": "Use Content Modal",
+        "info": "Overrides newsletter modal when checked"
+      },
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading"
+      },
+      {
+        "type": "text",
+        "id": "subheading",
+        "label": "Subheading"
+      },
+      {
+        "type": "textarea",
+        "id": "body",
+        "label": "Body"
+      },
+      {
+        "type": "url",
+        "id": "cta_url",
+        "label": "CTA URL"
+      },
+      {
+        "type": "text",
+        "id": "cta_text",
+        "label": "CTA Text"
+      },
+      {
+        "type": "checkbox",
+        "id": "cta_blank",
+        "label": "Open CTA in new tab"
+      },
+      {
+        "type": "range",
+        "id": "timeout",
+        "min": 0,
+        "max": 15,
+        "default": 4,
+        "label": "Timeout",
+        "info": "Time (in seconds) that the popup will appear"
+      }
+    ]
+  }
+{% endschema %}

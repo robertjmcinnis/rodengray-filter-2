@@ -1,0 +1,213 @@
+<!doctype html>
+<html class="no-js supports-no-cookies" lang="{{ shop.locale }}">
+<head>{%- comment -%}smartseo_integration_begin{%- endcomment -%}{% include 'smartseo' %}{%- comment -%}smartseo_integration_end{%- endcomment -%}
+	<style type="text/css">
+		.template-index .hero-section {
+			height: 80vh;
+		}
+	</style>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<meta name="theme-color" content="{{ settings.color_accent }}">
+	<link rel="canonical" href="{{ canonical_url }}">
+	<meta name="google-site-verification" content="yeV0YO6wXFNR0Yws_56SVHbgfLcwBR5LV6_m3vCGih8" />
+  
+	{%- if settings.favicon != blank -%}
+		<link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png">
+	{%- endif -%}
+
+	{%- capture seo_title -%}
+		{{ page_title }}
+		{%- if current_tags -%}
+			{%- assign meta_tags = current_tags | join: ', ' -%} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags -}}
+		{%- endif -%}
+		{%- if current_page != 1 -%}
+			&ndash; {{ 'general.meta.page' | t: page: current_page }}
+		{%- endif -%}
+		{%- assign escaped_page_title = page_title | escape -%}
+		{%- unless escaped_page_title contains shop.name -%}
+			&ndash; {{ shop.name }}
+		{%- endunless -%}
+	{%- endcapture -%}
+	{%- comment smartseo_integration_begin_meta_data -%}<title>{{ seo_title | strip }}</title>{%- endcomment smartseo_integration_end_meta_data -%}
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-15454718-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-15454718-1');
+	</script>
+
+  <!-- Global site tag (gtag.js) - Google Ads: 809250638 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-809250638"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'AW-809250638');
+  </script>
+
+	{%- if page_description -%}
+		{%- comment smartseo_integration_begin_meta_data -%}<meta name="description" content="{{ page_description | escape }}">{%- endcomment smartseo_integration_end_meta_data -%}
+	{%- endif -%}
+
+	{% include 'social-meta-tags' %}
+	{% include 'style-tags', layout: 'theme' %}
+	{% include 'css-variables' %}
+
+	<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+	<link href="https://fonts.googleapis.com/css?family=Work+Sans:400,700|Libre+Baskerville:400,700" rel="stylesheet" />
+
+	<script>
+		document.documentElement.className = document.documentElement.className.replace('no-js', '');
+
+		window.theme = {
+			strings: {
+			  addToCart: {{ 'products.product.add_to_cart' | t | json }},
+  			  soldOut: {{ 'products.product.sold_out' | t | json }},
+  			  unavailable: {{ 'products.product.unavailable' | t | json }}
+  			},
+  			moneyFormat: {{ shop.money_format | json }}
+  		};
+
+		{% if template.directory == 'customers' %}
+  			theme.allCountryOptionTags = {{ all_country_option_tags | json }};
+  		{% endif %}
+  	</script>
+
+	{% include 'script-tags', layout: 'theme' %}
+
+
+	{{ content_for_header }}
+
+  	{% include 'custom-css' %}
+	{% include 'grss-json-ld' %}{% render 'minmaxify-head' %}
+	{% if template contains 'collection' %}{{ 'ajaxinate.js' | asset_url | script_tag }}{% endif %}
+
+	<script type="text/javascript">
+		(function(h,e,a,t,m,p) {
+		m=e.createElement(a);m.async=!0;m.src=t;
+		p=e.getElementsByTagName(a)[0];p.parentNode.insertBefore(m,p);
+		})(window,document,'script','https://u.heatmap.it/log.js');
+	</script>
+
+	<!-- Hotjar Tracking Code for rodengray.com -->
+	<script>
+	    (function(h,o,t,j,a,r){
+	        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+	        h._hjSettings={hjid:2083536,hjsv:6};
+	        a=o.getElementsByTagName('head')[0];
+	        r=o.createElement('script');r.async=1;
+	        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+	        a.appendChild(r);
+	    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+	</script>
+
+	{% section 'filter-menu-settings' %}
+
+</head>
+ 
+
+<body id="{{ page_title | handle }}" class="template-{{ template.name | handle }} {% assign found = false %}"    >
+
+	<div id="RodenGray" >
+		<a class="in-page-link visually-hidden skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
+
+		{% section 'header' %}
+
+		<main role="main" :class="{'has-announcements': hasAnnouncements}" id="MainContent">
+			{{ content_for_layout }}
+		</main>
+
+		{% section 'footer' %}
+
+    {% if template.name == 'index' %}
+      {% section 'newsletter' %}
+    {% endif %}
+
+    {% if template.name == 'index' %}
+      {% section 'content-modal' %}
+    {% endif %}
+
+    {% if template.name == 'article' %}
+      {% include 'article-slider-section' %}
+    {% endif %}
+
+    {% include 'cart-feedback' %}
+	</div>
+
+	{% include 'currencies' %}
+	<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.min.js" ></script>
+
+	<!-- Fix to allow registration/login -->
+	<script type="text/javascript" src="{{ 'recaptcha-fix.js' | asset_url }}" defer="defer"></script>
+
+    {% if template contains 'collection' %}
+		<script type="text/javascript">
+
+			document.addEventListener("DOMContentLoaded", function() {
+			  var endlessScroll = new Ajaxinate({
+			  		loadingText: 'Loading More Products',
+			  		container: '#AjaxinateLoop'
+			  });
+
+			});
+
+			$(document).ready ( function () {
+				var cartCount = {{ cart.item_count }};
+		        
+		        $(document).on('click','.add_to_cart',function(){
+		          event.preventDefault();
+		            var quantity = 1;
+		            var id= $(this).attr('variant');
+		            
+		            $.ajax({
+		                type: 'POST',
+		                url: '/cart/add.js',
+		                dataType: 'json',
+		                data: {id:id,quantity:quantity},
+		                success: function(response){
+		                  	        
+		                  cartCount++;
+		                  $('.cart-feedback img').attr("src",response.image);
+		                  $('.cart-feedback .cart-feedback__vendor').text(response.vendor);
+		                  $('.cart-feedback .cart-feedback__product-title').text(response.product_title);
+		                  $('.cart-feedback .cart-feedback__size').text(response.variant_title);
+		                  $('.cart-feedback').addClass('cart-feedback--active');
+		                  setTimeout(function() {
+		                  	 $('.cart-feedback').removeClass('cart-feedback--active');
+		                  }, 2000);
+		           
+		                },
+		                
+		                error: function() {
+		                  console.log("error, could not add to cart");
+		                }
+		            });
+		        })
+
+			});
+		</script>
+	{% endif %}
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

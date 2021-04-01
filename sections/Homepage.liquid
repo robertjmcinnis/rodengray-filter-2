@@ -1,0 +1,216 @@
+{% for block in section.blocks %}
+  <div class="pod wow fadeIn {{ block.settings.podstyle }}" data-wow-duration="0.4s" {% if block.settings.podstyle == "right_up" %}data-wow-delay="0.5s"{% endif %}{% if block.settings.podstyle == "right_down" %}data-wow-delay="0.5s"{% endif %}>
+    <a class="pod-link" href="{{ block.settings.podlink }}">
+      {% if block.settings.shoppablecode == blank %}
+      	{% if block.settings.podvid == blank %}
+	      <img src="{{ block.settings.podimg | img_url: "master" }}" width="100%">
+ 	     {% else %}
+      	 
+      
+
+      <script src="https://fast.wistia.com/embed/medias/{{ block.settings.podvid }}.jsonp" async></script>
+      <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+      <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
+        <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+          <div class="wistia_embed wistia_async_{{ block.settings.podvid }} seo=false videoFoam=true autoPlay=true playbar=false playButton=false volume=0 endVideoBehavior=loop controlsVisibleOnLoad=false fullscreenButton=false smallPlayButton=false volumeControl=false settingsControl=false" style="height:100%;width:100%">&nbsp;</div>
+        </div>
+      </div>
+      
+      
+      
+            {% endif %}
+      {% else %}
+      	<div class="shoppable-wrap">
+			<div class="shoppable">
+  				<img src="{{ block.settings.podimg | img_url: "master" }}">
+   				{{ block.settings.shoppablecode }}
+ 			</div>
+		</div>
+      {% endif %}
+      {% if block.settings.podstyle == "edge_to_edge" %}
+      </a>
+      <figcaption class="edge-caption" style="background:{{ block.settings.color_accent_pod }} !important;">
+      	<a href="{{ block.settings.podlink }}">
+          <div class="pod-title" style="margin-top:0px;">{{ block.settings.podtitle }}</div>
+        </a>
+      	<div class="pod-type"><a href="{{ block.settings.podtypelink }}">{{ block.settings.podtype }}</a></div>
+      </figcaption>
+      {% else %}
+      		<div class="pod-title">{{ block.settings.podtitle }}</div>
+    	</a>
+      	<div class="pod-type"><a href="{{ block.settings.podtypelink }}">{{ block.settings.podtype }}</a></div>
+    {% endif %}
+  </div>
+{% endfor %}
+
+{% schema %}
+{
+  "name": "Homepage Pods",
+	"max_blocks": 10,
+
+
+  "blocks": [
+    {
+      "type": "select",
+      "name": "Pod",
+      "settings": [
+        
+
+
+
+{                        
+"type": "image_picker",
+"id": "podimg",
+"label": "Pod Image" 
+},
+{
+"id": "shoppablecode",
+"type": "textarea",
+"label": "Shoppable Image Code"
+},
+{
+"id": "podvid",
+"type": "text",
+"label": "Pod Video"
+},
+{
+  "id": "podtitle",
+  "type": "text",
+  "label": "Pod Title"
+},
+{
+  "id": "podlink",
+  "type": "text",
+  "label": "Pod Link"
+},
+{
+  "id": "podtype",
+  "type": "select",
+  "label": "Pod Type",
+  "options": [
+       {
+         "value": "New Arrivals",
+         "label": "New Arrivals"
+       },
+       {
+         "value": "Shop All",
+         "label": "Shop All"
+       },
+       {
+         "value": "Shop Now",
+         "label": "Shop Now"
+       },
+       {
+         "value": "View Editorial",
+         "label": "View Editorial"
+       },
+       {
+         "value": "View Now",
+         "label": "View Now"
+       },
+       {
+         "value": "View Lookbook",
+         "label": "View Lookbook"
+       },
+       {
+         "value": "Read Now",
+         "label": "Read Now"
+       },
+       {
+         "value": "Featured Brand",
+         "label": "Featured Brand"
+       },
+       {
+         "value": "Featured Product",
+         "label": "Featured Product"
+       },
+       {
+         "value": "Instagram",
+         "label": "Instagram"
+       },
+       {
+         "value": "Up to 40% off",
+         "label": "Up to 40% off"
+       },
+       {
+         "value": "Up to 50% off",
+         "label": "Up to 50% off"
+       },
+       {
+         "value": "Up to 60% off",
+         "label": "Up to 60% off"
+       },
+       {
+         "value": "Up to 70% off",
+         "label": "Up to 70% off"
+       },
+       {
+         "value": "Up to 80% off",
+         "label": "Up to 80% off"
+       },
+       {
+         "value": "Restock",
+         "label": "Restock"
+       }
+     ]
+  },
+{
+  "id": "podtypelink",
+  "type": "text",
+  "label": "Pod Type Link"
+},
+{
+   "id":        "podstyle",
+   "type":      "select",
+   "label":     "Pod Style",
+   "options": [
+     {
+       "value": "left_up",
+       "label": "Float Left"
+     },
+     {
+       "value": "left_down",
+       "label": "Float Left Bump Down"
+     },
+     {
+       "value": "right_up",
+       "label": "Float Right"
+     },
+     {
+       "value": "right_down",
+       "label": "Float Right Bump Down"
+     },
+     {
+       "value": "centre_up",
+       "label": "Float Centre"
+     },
+	 {
+       "value": "centre_big",
+       "label": "Float Centre Big"
+     },
+	 {
+       "value": "edge_to_edge",
+       "label": "Edge-to-Edge"
+     }
+   ]
+},
+ {
+        "type": "header",
+        "content": "Accent Color"
+      },
+      {
+        "type": "color",
+        "id": "color_accent_pod",
+        "label": "Accent Color",
+        "default": "#e5e5e5"
+      }
+
+
+
+
+
+      ]
+    }
+  ]
+}
+{% endschema %}

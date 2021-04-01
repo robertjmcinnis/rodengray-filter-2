@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" prefix="og: http://ogp.me/ns#"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="HandheldFriendly" content="true" />
+	<link rel="shortcut icon" href="{{ 'favicon.ico' | asset_url }}" type="image/x-icon" />
+	<link rel="apple-touch-icon-precomposed" href="{{ 'apple-touch-icon-precomposed.png' | asset_url }}">
+	{% include 'meta' %}
+
+	{{ 'skeleton.css' | asset_url | stylesheet_tag }}
+	{{ 'base.css' | asset_url | stylesheet_tag }}
+	{{ 'layout.css' | asset_url | stylesheet_tag }}
+	{% if settings.index-layout == '2014-index' %}
+	{% include '2014-index-styles' %}
+	{% endif %}
+	{{ content_for_header }}
+	{{ 'modernizr-2.6.2.min.js' | asset_url | script_tag }}
+	{{ 'shopify_common.js' | shopify_asset_url | script_tag  }}
+	<!--[if lte IE 8]>
+	{{ 'css3-mediaqueries.js' | asset_url | script_tag }}
+	<![endif]-->
+	{{ '//use.typekit.net/vht1ykm.js' | script_tag }}
+	{% raw %}
+		<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+	{% endraw %}
+	<!--[if lte IE 7]>{{ 'lte-ie7.js' | asset_url | script_tag }}<![endif]-->
+	{{ '//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js' | script_tag }}
+	{{ 'api.jquery.js' | shopify_asset_url | script_tag }}
+	<script>
+		var cartCount = {{ cart.item_count }};
+	</script>
+</head>
+<body itemscope itemtype="http://schema.org/WebPage" {% if template == 'index' or template == 'article' and blog.handle == 'homepage' %} class="welcome" {% endif %}>
+	<!--[if lt IE 7]>
+		<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+	<![endif]-->
+	<div id="outer-wrap">
+		<div id="container" class="container">
+			<header class="row top">
+				<div class="row header-toolbar mobilehide">
+					<div class="acctlink one-third column alpha">
+						<ul>
+							{% if customer %}
+							<li><a href="/account">Account</a></li>
+							<li>{{ 'Log Out' | customer_logout_link }}</li>
+							{% else %}
+							<li>{{ 'Log in' | customer_login_link }}</li>
+							{% if shop.customer_accounts_optional %}
+							<li>{{ 'Register' | customer_register_link }}</li>
+							{% endif %}
+							{% endif %}
+						</ul>
+					</div>
+					<div class="one-third column">
+						&nbsp;
+					</div>
+					<div class="cartlink one-third column omega">
+						{% include 'currency-selector' %}
+						<a id="cart-count" href="/cart">{% if cart.item_count == 1 %}1 item{% else %}{{ cart.item_count }} items{% endif %} in your bag</a>
+					</div>
+				</div>
+				<div class="row title">
+					<div class="one-third column mobile-buttons"><a id="nav-open-btn" href="#nav" class="shownav button"><span class="icon-menu"></span></a><a href="/cart" class="showbag button"><span class="icon-bag"></span></a></div>
+					<a class="logo one-third column" href="{{ shop.url }}"><img class="logo" src="{{ 'logo_img.png' | asset_url }}"></a>
+					<div class="one-third column searchbar mobilehide">
+						<form action="/search" method="get" class="search-form" role="search">
+							<input name="q" type="text" class="topsearch-field" placeholder=""/>
+							<button type="submit" class="topsearch-btn" title="Search">
+								<span class="icon-search">&nbsp;</span>
+							</button>
+						</form>
+					</div>
+				</div>
+				<nav id="nav" class="sixteen columns main-menu">
+					<div class="searchbar mobileonly">
+						<form action="/search" method="get" class="search-form" role="search">
+							<input name="q" type="text" class="topsearch-field" id="mobilesearch" placeholder=""/>
+							<button type="submit" class="topsearch-btn" title="Search">
+								<span class="icon-search">&nbsp;</span>
+							</button>
+						</form>
+					</div>
+					<ul class="level1 clearfix">
+						{% for link in linklists.main-menu.links %}
+						{% capture child_list_handle %}{{ link.title | handle }}{% endcapture %}
+							<li {% if linklists[child_list_handle] and linklists[child_list_handle].links.size > 0 %}class="drop{% if child_list_handle == 'designers' %} featured-designers{% endif %}"{% endif %}>
+								<a href="{{ link.url }}">{{ link.title }}</a>
+								{% if linklists[child_list_handle] and linklists[child_list_handle].links.size > 0 %}
+								<ul class="level2 clearfix">
+									{% for link in linklists.[child_list_handle].links %}
+									<li><a href="{{ link.url }}">{{ link.title }}</a></li>
+									{% endfor %}
+								</ul>
+								{% endif %}
+							</li>
+						{% endfor %}
+						<li id="closenav" class="button">
+							<a id="nav-close-btn" href="#close"><span class="icon-cross"></span></a>
+						</li>
+					</ul>
+				</nav>
+			</header>
+			{% if settings.index-layout == '2014-index' and template == 'index' or template == 'article' and blog.handle == 'homepage' %}
+			</div>
+			{{ content_for_layout }}
+			<div class="container">
+			{% else %}
+			<section class="content row">
+			      {{ content_for_layout}}
+			</section>
+			{% endif %}
+			<nav class="sixteen columns designer-list" id="designer-list">
+				<div class="row">
+					<h2>Designers</h2>
+				</div>
+				<div class="one-third column alpha">
+					<ul>
+						<li><h3>Collection</h3></li>
+						{% for link in linklists.designer-brands.links %}
+							<li><a href="{{ link.url }}">{{ link.title }}</a></li>
+						{% endfor %}
+					</ul>
+					<ul>
+					<li><h3>Heritage</h3></li>
+					{% for link in linklists.heritage-brands.links %}
+						<li><a href="{{ link.url }}">{{ link.title }}</a></li>
+					{% endfor %}
+					</ul>
+				</div>
+				<div class="one-third column">
+					<ul>
+						<li><h3>Contemporary</h3></li>
+						{% for link in linklists.contemporary-brands.links %}
+							<li><a href="{{ link.url }}">{{ link.title }}</a></li>
+						{% endfor %}
+					</ul>
+				</div>
+				<div class="one-third column omega">
+					<ul>
+						<li><h3>Footwear</h3></li>
+						{% for link in linklists.footwear-brands.links %}
+							<li><a href="{{ link.url }}">{{ link.title }}</a></li>
+						{% endfor %}
+					</ul>
+					<ul>
+						<li><h3>Accessories &amp; Bags</h3></li>
+						{% for link in linklists.accessories-bags-brands.links %}
+							<li><a href="{{ link.url }}">{{ link.title }}</a></li>
+						{% endfor %}
+					</ul>
+				</div>
+			</nav>
+		</div>
+		<footer class="sitelinks fullbleed">
+			<div class="container">
+				<div class="three columns">
+					<ul>
+						{% assign about = linklists.about %}
+						<li><h3>{{ about.title }}</h3></li>
+						{% for link in about.links %}
+						<li><a href="{{ link.url }}">{{ link.title }}</a></li>
+						{% endfor %}
+					</ul>
+				</div>
+				<div class="three columns">
+					<ul>
+						{% assign service = linklists.service %}
+						<li><h3>{{ service.title }}</h3></li>
+						{% for link in service.links %}
+						<li><a href="{{ link.url }}">{{ link.title }}</a></li>
+						{% endfor %}
+					</ul>
+				</div>
+				<div  class="three columns">
+					<ul>
+						{% assign shoplinks = linklists.shoplinks %}
+						<li><h3>{{ shoplinks.title }}</h3></li>
+						{% for link in shoplinks.links %}
+						<li><a href="{{ link.url }}">{{ link.title }}</a></li>
+						{% endfor %}
+					</ul>
+				</div>
+				<div  class="three columns">
+					<ul>
+						{% assign follow-us = linklists.follow-us %}
+						<li><h3>{{ follow-us.title }}</h3></li>
+						{% for link in follow-us.links %}
+						<li><a href="{{ link.url }}">{{ link.title }}</a></li>
+						{% endfor %}
+					</ul>
+				</div>
+				<div  class="four columns">
+					<ul class="contact">
+						<li><a href="{{ shop.url }}"><img class="logo" src="{{ 'logo_img.png' | asset_url }}"></a></li>
+						<li><a href="/pages/our-shop">8 Water St. Vancouver, BC<br>V6B 1A4 Canada</a></li>
+						<li><a href="mailto:{{ shop.email }}">{{ shop.email }}</a></li>
+						<li><a href="tel:+18884582323">1.888.458.2323</a></li>
+						<li><a href="tel:+16046897302">604.689.7302</a></li>
+					</ul>
+				</div>
+			</div>
+		</footer>
+		<div class="copyright"><p>&copy; 2007 - {{ 'now' | date: "%Y" }} <a href="{{ 'humans.txt' | asset_url }}">Roden Gray Inc.</a></p></div>
+	</div>
+	<div id="mailing-list">
+		<div class="signup">
+			<!-- Begin MailChimp Signup Form -->
+			<div id="mc_embed_signup">
+			<form action="http://rodengray.us2.list-manage.com/subscribe/post?u=81a8db5d2d46720110e454e44&amp;id=a41d6417dc" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+			<h2>Join our Newsletter</h2>
+			<div class="mc-field-group">
+				<label for="mce-FNAME">First Name </label>
+				<input type="text" value="" name="FNAME" class="" id="mce-FNAME">
+			</div>
+			<div class="mc-field-group">
+				<label for="mce-LNAME">Last Name </label>
+				<input type="text" value="" name="LNAME" class="" id="mce-LNAME">
+			</div>
+			<div class="mc-field-group">
+				<label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
+			</label>
+				<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+			</div>
+				<div id="mce-responses">
+					<div class="response" id="mce-error-response" style="display:none"><a href="#" class="button">Okay</a></div>
+					<div class="response" id="mce-success-response" style="display:none"><a href="#" class="button">Okay</a></div>
+				</div>	<div class="submit"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"><span>or <a href="#">Cancel</a></div>
+			</form>
+			</div>
+			<!--End mc_embed_signup-->
+		</div>
+		<div class="overlay">
+		</div>
+	</div>
+	{{ 'main.js' | asset_url | script_tag }}
+	{{ 'customer_area.js' | shopify_asset_url | script_tag }}
+	{% include 'currencies' %}
+	{% if sharing_enabled %}
+	<!-- Social Media Plugins -->
+	{% include 'share-scripts' %}
+	{% endif %}
+	{% if settings.olark_enabled == true %}
+	{% include 'olark' %}
+	{% endif %}
+	{% include 'track' %}
+</body>
+</html>

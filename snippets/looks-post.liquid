@@ -1,0 +1,32 @@
+{% include 'looks-featured-items' %}
+
+<section class="looks post">
+	<div class="row title">
+		<h2>{{ article.title }}</h2>
+	</div>
+	<article id="look{{ forloop.index0 }}" class="row look">
+		<figure class="ten columns">
+			{{ article.content }}
+		</figure>
+		<div class="six columns description">
+			<section class="products">
+				<div class="excerpt">{{ article.excerpt }}</div>
+				{% include 'share-buttons' %}
+			</section>
+		</div>
+	</article>
+	<script type="text/javascript" charset="utf-8">
+		lookItems( '{{ forloop.index0 }}', '{{ article.metafields.looks.products }}');
+	</script>
+</section>
+<script type="text/javascript">
+$('article').each(function(){
+	var postUrl = escape($(this).find('.title a').prop('href'));
+	var postImg = escape($(this).find('img').prop('src'));
+	var postTitle = $(this).find('h3.title').text();
+	$(this).find('div.pin').find('a').attr('href', '//pinterest.com/pin/create/button/?url=' + postUrl + '&media=' + postImg + '"');
+	if ( postImg.length > 0) {
+		$(this).find('div.tumblr').find('a').attr('href', 'http://www.tumblr.com/share/photo?source=' + postImg );
+	};
+});
+</script>

@@ -1,0 +1,12 @@
+{% assign article = articles[block.settings.article] %}
+
+<section class="featured-article {% if block.settings.reverse %}featured-article--reversed{% endif %}">
+  <div data-aos={% if block.settings.reverse %}"fade-left"{% else %}"fade-right"{% endif %} class="featured-article__background" style="background-image:url({{ article.image.src | img_url: '1200x' }});"></div>
+  <div class="wrapper">
+    <div class="featured-article__content" data-aos={% if block.settings.reverse %}"fade-right"{% else %}"fade-left"{% endif %}>
+      <h2 class="widget-heading featured-article__title">{{ article.title }}</h2>
+      <p class="featured-article__excerpt">{{ article.excerpt_or_content | strip_html | truncate: 500 }}</p>
+      <a href="{{ article.url }}" class="button button--solid">Keep Reading</a>
+    </div>
+  </div>
+</section>

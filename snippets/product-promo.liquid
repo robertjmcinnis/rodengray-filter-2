@@ -1,0 +1,25 @@
+{% assign position = product-promo %}
+{% if settings.product-promo-1-enabled == true and setlist contains settings.product-promo-1-collection and settings.product-promo-1-position == position %}
+<div class="promo{% if settings.product-promo-1-geo-enabled == true %} geo-{{ settings.product-promo-1-geo }} geo-block{% endif %}">
+	<h4>{{ settings.product-promo-1-head }}</h4>
+	<p>{{ settings.product-promo-1-text }}</p>
+</div>
+{% endif %}
+{% if settings.product-promo-2-enabled == true and setlist contains settings.product-promo-2-collection and settings.product-promo-2-position == position %}
+<div class="promo{% if settings.product-promo-2-geo-enabled == true %} geo-{{ settings.product-promo-2-geo }} geo-block{% endif %}">
+	<h4>{{ settings.product-promo-2-head }}</h4>
+	<p>{{ settings.product-promo-2-text }}</p>
+</div>
+{% endif %}
+{% if settings.product-promo-3-enabled == true and setlist contains settings.product-promo-3-collection and settings.product-promo-3-position == position %}
+<div class="promo{% if settings.product-promo-3-geo-enabled == true %} geo-{{ settings.product-promo-3-geo }} geo-block{% endif %}">
+	<h4>{{ settings.product-promo-3-head }}</h4>
+	<p>{{ settings.product-promo-3-text }}</p>
+</div>
+{% endif %}
+{% if settings.product-promo-4-enabled == true and setlist contains settings.product-promo-4-collection and settings.product-promo-4-position == position %}
+<div class="promo{% if settings.product-promo-4-geo-enabled == true %} geo-{{ settings.product-promo-4-geo }} geo-block{% endif %}">
+	<h4>{{ settings.product-promo-4-head }}</h4>
+	<p>{{ settings.product-promo-4-text }}</p>
+</div>
+{% endif %}

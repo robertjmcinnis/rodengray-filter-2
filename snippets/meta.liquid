@@ -1,0 +1,14 @@
+{% include 'meta-vars' | strip %}
+	<title>{{ meta_title }}</title>
+	<meta name="description" content="{{ meta_description }}">
+	{% if blog.handle == 'homepage' %}<meta name="robots" content="noindex, nofollow" />
+	<meta http-equiv="refresh" content="0;URL='http://rodengray.com'" />{% endif%}
+	<link rel="canonical" href="{{ canonical_url }}" />
+	<link type="text/plain" rel="author" href="{{ 'humans.txt' | asset_url }}" />
+	<link rel="publisher" href="https://plus.google.com/+RodenGrayVancouver" />
+
+	{% include 'meta-swiftype' | strip %}
+
+	{% include 'open-graph' | strip %}
+
+	{% include 'twitter-cards' | strip %}

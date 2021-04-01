@@ -1,0 +1,62 @@
+{% if discounts | size > 0 %}
+{% assign lineItemQuantity = line_items | size %}
+{% assign totalDiscounts = 0 %}
+{% for discount in discounts %}
+{% unless discount.code contains 'ship' %}
+{% assign totalDiscounts = totalDiscounts | plus: discount.savings %}
+{% endunless %}
+{% endfor %}
+{% assign lineItemDiscount = totalDiscounts | divided_by: lineItemQuantity %}
+<!-- Adroll -->
+<script>
+adroll_conversion_value_in_dollars = {{ order.subtotal_price | money_without_currency }};
+adroll_custom_data = {
+	"ORDER_ID": "{{ order.order_number }}",
+	"ORDER_EMAIL": "{{ order.email }}"
+};
+
+adroll_adv_id = "4W3HDFKNXNENPFP4IN4W7V";
+adroll_pix_id = "VNT2ASHFGBG2RCHFL3F6B4";
+(function () {
+var oldonload = window.onload;
+window.onload = function(){
+   __adroll_loaded=true;
+   var scr = document.createElement("script");
+   var host = (("https:" == document.location.protocol) ? "https://s.adroll.com" : "http://a.adroll.com");
+   scr.setAttribute('async', 'true');
+   scr.type = "text/javascript";
+   scr.src = host + "/j/roundtrip.js";
+   ((document.getElementsByTagName('head') || [null])[0] ||
+    document.getElementsByTagName('script')[0].parentNode).appendChild(scr);
+   if(oldonload){oldonload()}};
+}());
+</script>
+<!-- Affiliate -->
+<iframe src="https://t.pepperjamnetwork.com/track?PID=6948&INT=ITEMIZED{% for line_item in line_items %}&ITEM{{ forloop.index }}={{ line_item.sku }}&TOTALAMOUNT{{ forloop.index }}={{ line_item.line_price | plus: lineItemDiscount | money_without_currency }}&QTY{{ forloop.index }}={{ line_item.quantity }}{% endfor %}&OID={{ order_number }}&PROMOCODE={% for discount in discounts %}{{ discount.code }}{% unless forloop.last %},{% endunless %}{% endfor %}" width="1" height="1" frameborder="0"></iframe>
+{% else %}
+<iframe src="https://t.pepperjamnetwork.com/track?PID=6948&INT=ITEMIZED{% for line_item in line_items %}&ITEM{{ forloop.index }}={{ line_item.sku }}&TOTALAMOUNT{{ forloop.index }}={{ line_item.line_price | money_without_currency }}&QTY{{ forloop.index }}={{ line_item.quantity }}{% endfor %}&OID={{ order_number }}" width="1" height="1" frameborder="0"></iframe>
+{% endif %}
+<!-- Google Remarketing -->
+<div style="display: none">
+<script type="text/javascript">
+var google_tag_params = {
+ecomm_prodid: [{% for line_item in order.line_items %}'{{ line_item.product.id }}'{% unless forloop.last %},{% endunless %}{% endfor %}],
+ecomm_pagetype: 'purchase',
+ecomm_totalvalue: '{{ order.subtotal_price | money_without_currency | remove: ','  }}'
+};
+</script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 997014251;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+</div>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/997014251/?value=0&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>

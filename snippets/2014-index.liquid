@@ -1,0 +1,44 @@
+<script>
+$(document).ready(function() {
+  // Set feature height to window height minus top nav
+  var updateSize = function() {
+    var navHeight = $('header.top').height();
+    var featureHeight = $(window).height() - navHeight;
+    $('.feature').each(function(){
+      $(this).css( "height", $(window).height() + 1 + 'px');
+    });
+    $('.feature.first').css( "height", featureHeight + 'px' );
+  };
+  if ($('.new-welcome').length > 0) {
+    updateSize();
+    if (is_touch_device()) {
+      window.addEventListener("orientationchange", function() {
+        updateSize();
+      });
+    } else {
+      $(window).resize(function(){
+        updateSize();
+      });
+    }
+  }
+  // Make feature scrolling smooth
+  $('.feature a.next').each(function(){
+  	var go = $(this).attr('href');
+  	$(this).click(function(event){
+  		event.preventDefault();
+  		$('html, body').animate({scrollTop: $(go).offset().top }, 500);
+  	});
+  });
+});
+</script>
+<section class="new-welcome">
+{% for article in blogs["homepage"].articles limit: 10 %}
+	<figure id="f{{ forloop.index0 }}" class="a{{ article.id }} feature{% if forloop.first %} first{% elsif forloop.last %} last{% endif %}">
+		<a href="{{ article.metafields.homepage.link }}"><figcaption class="{{ article.metafields.homepage.link-horizontal }}">
+			<h2>{{ article.metafields.homepage.title }}</h2>
+			<h3>{{ article.metafields.homepage.subtitle }}</h3>
+		</figcaption></a>
+		<a href="{% if forloop.last %}#designer-list{% else %}#f{{ forloop.index }}{% endif %}" class="next"><span class="icon-arrow-down"></span></a>
+	</figure>
+{% endfor %}
+</section>

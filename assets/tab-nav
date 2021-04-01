@@ -1,0 +1,43 @@
+<ul id="tab-nav" class="new-nav">
+	<li><a href="/collections/new-arrivals">New Arrivals</a></li>
+	<li class="drop">
+		<a href="/pages/designer-list">Brands</a>
+		<div class="tab">
+			<div class="container">
+				<div class="sixteen columns designers">
+					<div class="designers-featured">
+						<ul>
+						
+						</ul>
+						<a href="/pages/designer-list" id="view-designers">View All Brands</a>
+					</div>
+					<div class="designers-list clearfix">
+						<div class="side clearfix">
+							Liquid error: This liquid context does not allow includes.
+							Liquid error: This liquid context does not allow includes.
+						</div>
+						<div class="side clearfix">
+							Liquid error: This liquid context does not allow includes.
+							Liquid error: This liquid context does not allow includes.
+							Liquid error: This liquid context does not allow includes.
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</li>
+	<li class="drop">
+		<a href="/collections/all">Departments</a>
+		<div class="tab">
+			<div class="container">
+				<ul class="top-depts one-level">
+					
+					
+				</ul>
+			</div>
+		</div>
+	</li>
+	<li><a href="/blogs/the-look">The Look</a></li>
+	<li><a href="/blogs/news">News</a></li>
+	<li class="mobileonly"><a href="/search">Search</a></li>
+</ul>

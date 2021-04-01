@@ -1,0 +1,409 @@
+{%- comment -%}
+  This is a required section for the Shopify Theme Store.
+  It is available in the "Header" section in the theme editor.
+
+  Theme Store required settings
+  - Show announcement
+  - Text: message to announce
+  - Link: link of the announcement bar
+
+  Theme Store optional settings
+  - Home page only: only shows on the home page
+{%- endcomment -%}
+<section data-section-id="{{ section.id }}" data-section-type="header">
+	<main-header class="header" inline-template>
+		<header role="banner" id="site-header" style="width:100%;">
+			<div class="header__body-overlay" :class="{ 'header__body-overlay--active': menuActive }" @mouseover="closeMenu"></div>
+			<div class="mega-menu" :class="{ 'mega-menu--active': menuActive }" ref="menuContent">
+				<div class="wrapper">
+
+					<form class="search" action="/search">
+			            <input type="text" placeholder="Search" name="q" value="{{ search.terms | escape }}"  />
+			            <button type="submit" class="button" />
+			            	<i class="fal fa-search actions__icon mr-xs"></i><span>Search</span>
+			        	</button>
+			        </form>
+			        
+					<transition name="fragment" mode="out-in" @enter="setHeight">
+						<!-- <search-bar v-if="fragment === 'search'" class="row" inline-template> -->
+
+
+	<!-- 				        <form class="search" action="/search">
+					            <input type="text" placeholder="Search" name="q" value="{{ search.terms | escape }}"  />
+					            <button type="submit" class="button" />
+					            	<i class="fal fa-search actions__icon mr-xs"></i><span>Search</span>
+					        	</button>
+					        </form>
+ -->
+<!--  							<form class="search-bar" action="/search" method="get" role="search">
+								<label for="Search-{{ section.id }}" class="label-hidden">
+								{{ 'general.search.placeholder' | t }}
+								</label>
+
+								<input type="search"
+									name="q"
+									id="Search-{{ section.id }}"
+									value="{{ search.terms | escape }}"
+									placeholder="{{ 'general.search.placeholder' | t }}"
+									class="search-bar__input"
+									ref="searchInput" />
+
+
+								<button type="submit" class="button">
+									<i class="fal fa-search actions__icon mr-xs"></i>Search
+									<span class="icon-fallback-text">{{ 'general.search.submit' | t }}</span>
+								</button>
+
+							</form>  -->
+						<!-- </search-bar> -->
+						<div v-if="fragment === 'currency'" class="row currency">
+							<h3>Choose Your Shipping Destination:</h3>
+							<div class="currency__select-wrap">
+								<select class="currency__select" name="country" v-model="country">
+									{{ country_option_tags }}
+								</select>
+							</div>
+							<a class="currency__disclaimer" href="/pages/shopping-with-us#about-currency"><i class="fas fa-info-circle mr-xs"></i>All transactions are processed in Canadian Dollars.</a>
+						</div>
+						<div :key="fragment" v-if="fragment === 'designers'" class="row">
+							{% if section.settings.show_featured_designer %}
+								<div class="col col-lg-3" data-aos="fade-down">
+									<a href="{{ section.settings.featured_designer_link }}" class="featured">
+										{% if section.settings.featured_designer_image %}
+											<div class="featured__image" style="background-image:url({{ section.settings.featured_designer_image | img_url: '600x' }});"></div>
+										{% endif %}
+										{% if section.settings.featured_designer_text %}
+											<p class="featured__text">{{ section.settings.featured_designer_text }}</p>
+										{% endif %}
+										{% if section.settings.featured_designer_link and section.settings.featured_designer_link_text %}
+											<p class="featured__link">{{ section.settings.featured_designer_link_text }} <i class="far fa-angle-right featured__arrow"></i></p>
+										{% endif %}
+									</a>
+								</div>
+							{% endif %}
+							{% for link in linklists.contemporary-brands.links %}
+								{% assign divisible = forloop.index | modulo: 10 %}
+								{% if divisible == 1 %}
+								<ul class="col nav__sub-list" data-aos="fade-down" data-aos-delay="{% cycle 'designers': '100', '200', '300', '400', '500', '600', '700', '800', '900', '1000' %}">
+								{% endif %}
+										<li class="nav__sub-item">
+											<a class="nav__link" href="{{ link.url }}">
+											{{ link.title }}
+											</a>
+										</li>
+								{% if divisible == 0 %}
+								</ul>
+								{% endif %}
+							{% endfor %}
+						</div>
+						<div :key="fragment" v-if="fragment === 'categories'" class="row">
+							{% if section.settings.show_featured_category %}
+								<div class="col col-lg-3" data-aos="fade-down">
+									<a href="{{ section.settings.featured_category_link }}" class="featured">
+										{% if section.settings.featured_category_image %}
+											<div class="featured__image" style="background-image:url({{ section.settings.featured_category_image | img_url: '600x' }});"></div>
+										{% endif %}
+										{% if section.settings.featured_category_text %}
+											<p class="featured__text">{{ section.settings.featured_category_text }}</p>
+										{% endif %}
+										{% if section.settings.featured_category_link and section.settings.featured_category_link_text %}
+											<p class="featured__link">{{ section.settings.featured_category_link_text }}<i class="far fa-angle-right featured__arrow"></i></p>
+										{% endif %}
+									</a>
+								</div>
+							{% endif %}
+							{% for link in linklists.categories.links %}
+								<ul class="col nav__sub-list" data-aos="fade-down" data-aos-delay="{% cycle 'categories': '100', '200', '300', '400', '500', '600' %}">
+									<li class="nav__sub-title">
+										<a class="nav__link" href="{{ link.url }}">
+											{{ link.title }} <i class="far fa-angle-right"></i>
+										</a>
+									</li>
+									{% for childlink in link.links %}
+										<li class="nav__sub-item">
+										<a class="nav__link" href="{{ childlink.url }}">
+											{{ childlink.title }}
+										</a>
+										</li>
+									{% endfor %}
+								</ul>
+							{% endfor %}
+						</div>
+					</transition>
+				</div>
+			</div>
+
+			{%- if section.settings.announcement_bar_enabled -%}
+				<announcement-bar
+					announcement1text="{{ section.settings.announcement_1_text | escape }}"
+					announcement1url="{{ section.settings.announcement_1_link }}"
+					announcement2text="{{ section.settings.announcement_2_text | escape }}"
+					announcement2url="{{ section.settings.announcement_2_link | escape }}"
+					announcement3text="{{ section.settings.announcement_3_text | escape }}"
+					announcement3url="{{ section.settings.announcement_3_link | escape }}"
+					inline-template
+				>
+					<component :is="announcementType" :href="announcements[current].url" v-if="announcements.length > 0" class="announcements" :class="announcements[current].url ? 'announcements--link' : ''" v-cloak>
+						<div class="wrapper">
+							<div class="row announcements__row" :class="['announcements__row--' + direction, {'announcements__row--single': announcements.length <= 1}]">
+								<i class="far fa-angle-left announcements__arrow" @click="prevAnnouncement"></i>
+								<transition name="announcement-bar" mode="out-in">
+									<span class="announcements__link" :key="current">
+										${ announcements[current].text }
+									</span>
+								</transition>
+								<i class="far fa-angle-right announcements__arrow" @click="nextAnnouncement"></i>
+							</div>
+						</div>
+					</component>
+				</announcement-bar>
+			{%- endif -%}
+
+			<div class="header__main" id="header-main">
+				<div class="wrapper">
+					<div class="row">
+						<div class="header__logo-area col-lg-2">
+							<a href="/" class="header__logo">
+								{% include 'roden-gray-logo' %}
+							</a>
+						</div>
+
+						<nav class="nav col" role="navigation">
+							<ul class="nav__list">
+								{% for link in linklists.header-navigation.links %}
+									{% if link.title == 'Designers' %}
+										<li class="nav__item" :class="{ 'nav__item--active': menuActive && fragment === 'designers' }" @mouseover="openMenu( 'designers' )">Designers <i class="fal fa-angle-down"></i></li>
+									{% elsif link.title == 'Categories' %}
+										<li class="nav__item" :class="{ 'nav__item--active': menuActive && fragment === 'categories' }" @mouseover="openMenu( 'categories' )">Categories <i class="fal fa-angle-down"></i></li>
+									{% else %}
+										<li class="nav__item" @mouseover="closeMenu">
+											<a class="nav__link" href="{{ link.url }}">
+												{{ link.title }}
+											</a>
+										</li>
+									{% endif %}
+								{% endfor %}
+								</li>
+							</ul>
+						</nav>
+
+						<ul class="actions col-lg-2">
+							{% if shop.customer_accounts_enabled %}
+								<li class="actions__item">
+									{% if customer %}
+										<a href="/account">
+											<i class="fal fa-user actions__icon"></i>
+										</a>
+									{% else %}
+										<a href="/account/login">
+											<i class="fal fa-user actions__icon"></i>
+										</a>
+									{% endif %}
+								</li>
+							{% endif %}
+
+							{%- comment -%}Searchbar{%- endcomment -%}
+							<li class="actions__item" @mouseover="openMenu( 'search' )">
+								<i class="fal fa-search actions__icon"></i>
+							</li>
+
+							{%- comment -%}Currency{%- endcomment -%}
+							<li class="actions__item" @mouseover="openMenu( 'currency' )">
+								<p class="actions__currency">${ currency }<i class="fal fa-angle-down ml-xs"></i></p>
+							</li>
+
+							{%- comment -%}Cart{%- endcomment -%}
+							<li class="actions__item">
+								<a class="header-cart actions__cart {% if cart.item_count != 0 %}actions__cart--has-count{% endif %}" href="/cart">
+									<i class="fal fa-shopping-cart actions__icon mr-xs"></i>
+									<span class="actions__cart-number header-cart-count">{{ cart.item_count }}</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</header>
+	</main-header>
+
+	{% include 'mobile-header' %}
+</section>
+
+{% schema %}
+  {
+    "name": "Header",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Announcement bar"
+      },
+      {
+        "type": "checkbox",
+        "id": "announcement_bar_enabled",
+        "label": "Show announcement",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "announcement_bar_home_page_only",
+        "label": "Show on home page only",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Announcement #1"
+      },
+      {
+        "type": "text",
+        "id": "announcement_1_text",
+        "label": "Announcement text",
+        "default": "Announce something here"
+      },
+      {
+        "type": "url",
+        "id": "announcement_1_link",
+        "label": "Announcement link",
+        "info": "Optional"
+      },
+      {
+        "type": "header",
+        "content": "Announcement #2"
+      },
+      {
+        "type": "text",
+        "id": "announcement_2_text",
+        "label": "Announcement text",
+        "default": "Announce something here"
+      },
+      {
+        "type": "url",
+        "id": "announcement_2_link",
+        "label": "Announcement link",
+        "info": "Optional"
+      },
+      {
+        "type": "header",
+        "content": "Announcement #3"
+      },
+      {
+        "type": "text",
+        "id": "announcement_3_text",
+        "label": "Announcement text",
+        "default": "Announce something here"
+      },
+      {
+        "type": "url",
+        "id": "announcement_3_link",
+        "label": "Announcement link",
+        "info": "Optional"
+      },
+      {
+        "type": "header",
+        "content": "Header"
+      },
+      {
+        "type": "link_list",
+        "id": "menu",
+        "label": "Menu",
+        "default": "main-menu"
+      },
+      {
+        "type": "header",
+        "content": "Featured Designer"
+      },
+	  {
+		  "type": "checkbox",
+		  "id": "show_featured_designer",
+		  "label": "Enable featured designer content"
+	  },
+      {
+        "type": "image_picker",
+        "id": "featured_designer_image",
+        "label": "Featured designer image"
+      },
+      {
+        "type": "text",
+        "id": "featured_designer_text",
+        "label": "Featured designer text"
+      },
+      {
+        "type": "url",
+        "id": "featured_designer_link",
+        "label": "Featured designer link"
+      },
+      {
+        "type": "text",
+        "id": "featured_designer_link_text",
+        "label": "Featured designer link text"
+      },
+      {
+        "type": "header",
+        "content": "Featured Category"
+      },
+	  {
+		  "type": "checkbox",
+		  "id": "show_featured_category",
+		  "label": "Enable featured category content"
+	  },
+      {
+        "type": "image_picker",
+        "id": "featured_category_image",
+        "label": "Featured category image"
+      },
+      {
+        "type": "text",
+        "id": "featured_category_text",
+        "label": "Featured category text"
+      },
+      {
+        "type": "url",
+        "id": "featured_category_link",
+        "label": "Featured category link"
+      },
+      {
+        "type": "text",
+        "id": "featured_category_link_text",
+        "label": "Featured category link text"
+      }
+    ]
+  }
+{% endschema %}
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "{{ shop.name }}",
+  {% if section.settings.logo %}
+    {% assign image_size = section.settings.logo.width | append:'x' %}
+    "logo": "https:{{ section.settings.logo | img_url: image_size }}",
+  {% endif %}
+  "sameAs": [
+    "{{ settings.social_twitter_link }}",
+    "{{ settings.social_facebook_link }}",
+    "{{ settings.social_pinterest_link }}",
+    "{{ settings.social_instagram_link }}",
+    "{{ settings.social_tumblr_link }}",
+    "{{ settings.social_snapchat_link }}",
+    "{{ settings.social_youtube_link }}",
+    "{{ settings.social_vimeo_link }}"
+  ],
+  "url": "{{ shop.url }}{{ page.url }}"
+}
+</script>
+
+{% if template.name == 'index' %}
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      "name": "{{ shop.name }}",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "{{ shop.url }}/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      },
+      "url": "{{ shop.url }}{{ page.url }}"
+    }
+  </script>
+{% endif %}

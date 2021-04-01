@@ -1,0 +1,56 @@
+{% capture meta_title %}
+
+	{% if current_tags %}
+		{% if template == 'collection' %}
+			{% for tag in current_tags reversed %}
+
+				{% assign tag_collection = collections[tag] %}
+				{% if tag_collection.title == '' %}
+					{{ current_tags }} | 
+				{% else %}
+					{{ tag_collection.title | replace: 'Tops -' , 'Size' }} | 
+				{% endif %}
+
+			{% endfor %}
+		{% else %}
+			{{ current_tags }} | 
+		{% endif %}
+	{% endif %}
+
+	{% unless page_title == 'Welcome' %}
+		
+		{% if product %}
+			{{ product.vendor }} 
+		{% endif %}
+
+		{{ page_title }} 
+		
+		{% if template == 'collection' and collection.handle == 'mr-gray' %} 
+			Socks - Made in Japan 
+		{% endif %}
+
+		{% if template == 'product' and product.options contains 'Colour' or 'Color' or 'Colours' %}
+			{% unless product.variants.first.option1 == 'Default Title'%}
+				in {{ product.variants.first.option1 }} 
+			{% endunless %}
+		{% endif %}
+
+		{% if current_page > 1 %}
+			- Page {{ current_page }} 
+		{% endif %}
+		| {{shop.name}}
+	{% endunless%}
+{% endcapture %}
+
+{% capture meta_description %}
+	{% if page_description %}
+		{{ page_description }}
+	{% else %}
+		{% if shop.description %}
+			{{ shop.description }}
+		{% endif %}
+	{% endif %}
+{% endcapture %}
+
+{% assign meta_description = meta_description | escape %}
+{% assign meta_title = meta_title | strip_newlines | lstrip | rstrip%}

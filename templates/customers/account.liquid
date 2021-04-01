@@ -1,0 +1,66 @@
+<section class="customer-account">
+	<h1 class="page-title">{{ 'customer.account.title' | t }}</h1>
+
+	<div class="wrapper">
+		<div class="row">
+			<div class="col-lg-8 col-sm-12 customer-account__orders">
+				<div class="customer-account__section-title-area">
+					<h3 class="customer-account__section-title">{{ 'customer.orders.title' | t }}</h3>
+				</div>
+
+				{% paginate customer.orders by 20 %}
+				{% if customer.orders.size != 0 %}
+					{% for order in customer.orders %}
+					<div class="customer-account__orders-single">
+						<div>
+							<p class="customer-account__order-info">Order: <span class="customer-account__order-number">{{ order.name }}</span></p>
+							<p class="customer-account__order-info">Status: {{ order.fulfillment_status_label }}</p>
+							<p class="customer-account__order-info">{{ order.created_at | date: format: 'month_day_year' }}</p>
+						</div>
+
+						<div class="customer-account__order-options">
+							{% for line_item in order.line_items %}
+							{% if line_item.fulfillment and line_item.fulfillment.tracking_url %}
+								<a class="button button--secondary customer-account__tracking-link" target="_blank" href="{{ line_item.fulfillment.tracking_url }}">
+									{{ 'customer.order.track_shipment' | t }}
+								</a>
+							{% endif %}
+							{% endfor %}
+							<a class="button" href="{{ order.customer_url }}">View Details</a>
+						</div>
+					</div>
+					{% endfor %}
+				{% else %}
+					<p>{{ 'customer.orders.none' | t }}</p>
+				{% endif %}
+
+				{% if paginate.pages > 1 %}
+					{% include 'pagination' %}
+				{% endif %}
+
+				{% endpaginate %}
+			</div>
+
+			<div class="col-lg-4 col-sm-12">
+				<div class="customer-account__section-title-area">
+					<h3 class="customer-account__section-title">{{ 'customer.account.details' | t }}</h3>
+					<a class="customer-account__logout" href="/account/logout">Logout</a>
+				</div>
+
+
+				<div class="customer-account__email">
+					<div class="account-subheading">Email</div>
+					<p>{{ customer.email }}</p>
+
+				</div>
+
+				<div class="customer-account__address">
+					<div class="account-subheading">Addresses</div>
+					{{ customer.default_address | format_address }}
+				</div>
+
+				<a class="customer-account__view-addresses button" href="/account/addresses">{{ 'customer.account.view_addresses' | t }}</a>
+			</div>
+		</div>
+	</div>
+</section>

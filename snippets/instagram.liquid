@@ -1,0 +1,95 @@
+<style>
+  .instagram {width:33%;padding-top: 33%;position:relative;overflow:hidden;
+      float: left;
+    margin-bottom:0.5%;
+  }
+  .insta-1,.insta-2 {
+      margin-right: 0.5%}
+  .instagram-pop { position: absolute;
+    padding: 16px;
+    left: 0px;
+    background: {{settings.color_accent}};
+    width: 100%;
+    bottom: 0px;
+    display:none;
+    z-index: 10;
+  }
+  #prod-details-l {
+    background: {{settings.color_accent}};
+    padding: 6px 30px 0px 30px;
+    width: 280px;
+  }
+  .instagram-image {
+  	position:absolute;
+    top:0px;
+    left:0px;
+    width:100%;
+    z-index:5;
+    display:none;
+  }
+  .buy-me {position:absolute !important;z-index:20;top:0px;left:0px;width:100%;}
+  #insta-lb {position:fixed;background:#fff;top:64px;left:0px;right:0px;bottom:0px;overflow-y:auto;}
+  .product-title {
+    font-family: "Cormorant Garamond";
+    font-size: 2.25em;
+    line-height: 1;
+    margin-bottom: 22px;
+}
+  .product-designer {display:block;line-height:20px;}
+  
+  
+  .row.editorial {    margin-left: -7%;
+    width: 114%;}
+</style>
+
+{% paginate blog.articles by 21 %}
+<section class="row editorial">
+	<!--<div class="row title" style="display:none;">
+		<h2>Shop Instagram</h2> 
+	</div>-->
+		{% if blog.articles_count >= 1 %}
+			{% for article in blog.articles %}
+			
+  
+            <div data-url="{{article.content}}" class="instagram wow fadeIn {% cycle 'insta-1','insta-2','insta-3' %}" data-wow-duration="0.4s" data-wow-delay="0.5s" style="background:url({{ article.image.src | img_url: "original" }});background-size:cover !important;background-position:center center;">
+  
+  			</div>
+  
+  
+			{% endfor %}
+		{% else blog.articles_count == 0 %}
+			No Posts
+		{% endif %}
+</section>
+{% endpaginate %}
+
+<script>
+  $("body").on("click",".instagram",function(){
+    
+
+   //$("#insta-lb").remove();
+   $(".instagram-pop").fadeOut("fast").remove();
+   $(".instagram-image").fadeOut("fast").remove();
+   //$("body").append("<div id='insta-lb'></div>");
+    
+    var theItem = $("#insta-lb");
+    var theInsta = $(this);
+  $.getJSON(theInsta.attr("data-url")+'.js', function(product) {
+                  
+                  	//theItem.append("<img class='instagram-image' src='http://"+product.images[0]+"'>");
+                    //theItem.find(".instagram-image").fadeIn();
+    				//theItem.find(".instagram-image").after("<div class='buy-me'></div>");
+    theInsta.append("<div class='buy-me'></div>");
+    				var loader = theInsta.attr("data-url")+" #prod-details-l";
+    				//console.log(loader);
+    				theInsta.find(".buy-me").load(loader);
+    
+        			balanceText();
+						
+    			
+    
+  });
+
+});
+
+</script>

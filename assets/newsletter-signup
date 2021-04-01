@@ -1,0 +1,32 @@
+<div id="mailing-list">
+	<div class="signup">
+		<a href="#" class="close"><span class="icon-cross"></span></a>
+		<!-- Begin MailChimp Signup Form -->
+		<div class="mc_embed_signup">
+			<form action="http://rodengray.us2.list-manage.com/subscribe/post?u=81a8db5d2d46720110e454e44&amp;id=89291efd13" method="post" name="mc-embedded-subscribe-form" class="validate " target="_blank" novalidate>
+			<h2>Join our Newsletter</h2>
+			
+			<div class="mc-field-group">
+				<label for="mce-FNAME">First Name </label>
+				<input type="text" value="" name="FNAME" class="mce-FNAME">
+			</div>
+			<div class="mc-field-group">
+				<label for="mce-LNAME">Last Name </label>
+				<input type="text" value="" name="LNAME" class="mce-LNAME">
+			</div>
+			<div class="mc-field-group">
+				<label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
+			</label>
+				<input type="email" value="" name="EMAIL" class="required email mce-EMAIL">
+			</div>
+				<div class="mce-responses">
+					<div class="response" class="mce-error-response" style="display:none"><a href="#" class="button">Okay</a></div>
+					<div class="response" class="mce-success-response" style="display:none"><a href="#" class="button">Okay</a></div>
+				</div>	<div class="submit"><input type="submit" value="Subscribe" name="subscribe" class="button mc-embedded-subscribe"><span>or <a href="#">Cancel</a></div>
+			</form>
+		</div>
+		<!--End mc_embed_signup-->
+	</div>
+	<div class="overlay">
+	</div>
+</div>

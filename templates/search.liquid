@@ -1,0 +1,71 @@
+{% paginate search.results by 10 %}
+
+	<div class="search-header">
+		<div class="wrapper">
+			<div class="row">
+				<div class="col search-header__content">
+					<h1 class="search-header__title">
+						{% if search.performed %}
+						<span class="visually-hidden">{{ 'general.search.heading' | t: count: search.results_count }}:</span>
+							<!-- {{ 'general.search.results_with_count' | t: terms: search.terms, count: search.results_count }} -->
+							Results for "{{ search.terms }}"
+						{% else %}
+						{{ 'general.search.title' | t }}
+						{% endif %}
+					</h1>
+
+					<form class="search-header__form" action="/search" method="get" role="search">
+						<label for="Search" class="label-hidden">
+						{{ 'general.search.placeholder' | t }}
+						</label>
+						<input class="mr-xs"
+							type="search"
+							name="q"
+							id="Search"
+							value="{{ search.terms | escape }}"
+							placeholder="{{ 'general.search.placeholder' | t }}">
+						<button type="submit" class="button button--solid search-header__cta">
+							<i class="far fa-search mr-xs"></i>Search
+						</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	{% if search.performed %}
+		{% if search.results_count == 0 %}
+		<p>{{ 'general.search.no_results_html' | t: terms: search.terms }}</p>
+		{% else %}
+		<h2 class="visually-hidden">{{ 'general.search.heading' | t: count: search.results_count }}</h2>
+		<div class="wrapper">
+			<ul class="row search-results">
+				{% for item in search.results %}
+				<a href="{{ item.url | within: collection }}" class="col-lg-8 col-sm-12 search-results__single">
+					<div class="search-results__link">
+						{% assign featured_image = item.image | default: item.featured_image %}
+						{% if featured_image != blank %}
+							<div class="search-results__image">
+								{{ featured_image | img_url: 'x400' | img_tag }}
+							</div>
+						{% endif %}
+						<h3 class="search-results__title">{{ item.title }}</h3>
+					</div>
+					{% if item.object_type == 'product' %}
+            <p class="search-results__details">View Details<i class="fal fa-angle-right ml-xs"></i></p>
+					{% else %}
+            <p class="search-results__other">{{ item.content | strip_html | truncatewords: 50 }}</p>
+					{% endif %}
+
+				</a>
+				{% endfor %}
+			</ul>
+		</div>
+
+		{% if paginate.pages > 1 %}
+			{% include 'pagination' %}
+		{% endif %}
+		{% endif %}
+	{% endif %}
+
+{% endpaginate %}

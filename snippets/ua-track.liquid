@@ -1,0 +1,23 @@
+{% capture designers %}{% for product_vendor in shop.vendors %}{{ product_vendor | handleize }}{% endfor %}{% endcapture %}{% capture clothing %}{% for link in linklists.clothing.links %}{{ link.title | handleize }}{% endfor %}{% endcapture %}{% capture footwear %}{% for link in linklists.footwear.links %}{{ link.title | handleize }}{% endfor %}{% endcapture %}{% capture accessories %}{% for link in linklists.accessories.links %}{{ link.title | handleize }}{% endfor %}{% endcapture %}{% capture apothecary %}{% for link in linklists.apothecary.links %}{{ link.title | handleize }}{% endfor %}{% endcapture %}
+<!-- Classic Analytics Additions -->
+<script>
+  
+  {% if template == 'product' %}
+  _gaq.push(['_setPageGroup', 1, '{{ product.type }}']); _gaq.push(['_setPageGroup', 2, '{{ product.vendor }}']);{% endif %}{% if template == 'collection' %}{% if designers contains collection.handle %}_gaq.push(['_setPageGroup', 3, '{{ collection.title }}']);{% elsif clothing contains collection.handle or footwear contains collection.handle or accessories contains collection.handle or apothecary contains collection.handle or collection.handle == 'clothing' or collection.handle == 'footwear' or collection.handle == 'accessories' or collection.handle == 'apothecary' or collection.handle == 'library' %}_gaq.push(['_setPageGroup', 4, '{{ collection.title }}']);{% endif %}{% endif %}
+
+</script>
+
+<!-- Universal Analytics Code -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-15454718-5', 'rodengray.com');
+  ga('require', 'linkid', 'linkid.js');
+  {% if template == 'product' %}
+  ga('set', 'contentGroup1', '{{ product.type }}'); ga('set', 'contentGroup2', '{{ product.vendor }}'){% endif %}{% if template == 'collection' %}{% if designers contains collection.handle %}ga('set', 'contentGroup3', '{{ collection.title }}');{% elsif clothing contains collection.handle or footwear contains collection.handle or accessories contains collection.handle or apothecary contains collection.handle or collection.handle == 'clothing' or collection.handle == 'footwear' or collection.handle == 'accessories' or collection.handle == 'apothecary' or collection.handle == 'library' %}ga('set', 'contentGroup4', '{{ collection.title }}');{% endif %}{% endif %}
+  ga('send', 'pageview');
+
+</script>

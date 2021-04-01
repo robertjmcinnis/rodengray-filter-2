@@ -1,0 +1,50 @@
+<div class="careers">
+	<div class="wrapper">
+		<div class="row">
+			<div class="col-lg-4 col-sm-12">
+				{% if section.settings.image != blank %}
+					<div class="careers__image" style="background-image:url({{ section.settings.image | img_url: '1200x' }});"></div>
+				{% endif %}
+			</div>
+
+			<div class="col">
+				<h3 class="widget-heading">{{ section.settings.heading }}</h3>
+				<p class="mb-xl">{{ section.settings.body }}</p>
+				{% for article in blog.articles %}
+					<career inline-template>
+						<div class="careers__single">
+							<h3 class="careers__job-title" :class="{ 'careers__job-title--active': isOpen }" @click="toggle">{{ article.title }}</h3>
+							<div class="careers__body" :style="'max-height:' + height" ref="content">
+								{{ article.content }}
+							</div>
+						</div>
+					</career>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</div>
+
+{% schema %}
+  {
+    "name": "Careers Sidebar",
+	"settings": [
+		{
+			"type": "image_picker",
+			"id": "image",
+			"label": "Choose Featured Image",
+			"info": "16:9 aspect ratio. Remove image to hide"
+		},
+		{
+			"type": "text",
+			"id": "heading",
+			"label": "Sidebar Heading"
+		},
+		{
+			"type": "textarea",
+			"id": "body",
+			"label": "Sidebar Body Text"
+		}
+	]
+  }
+{% endschema %}

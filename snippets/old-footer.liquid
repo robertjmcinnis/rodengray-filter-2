@@ -1,0 +1,47 @@
+<div class="current">
+	<div class="three columns">
+		<ul>
+			{% assign about = linklists.about %}
+			<li><h3>{{ about.title }}</h3></li>
+			{% for link in about.links %}
+			<li><a href="{{ link.url }}">{{ link.title }}</a></li>
+			{% endfor %}
+		</ul>
+	</div>
+	<div class="three columns">
+		<ul>
+			{% assign service = linklists.service %}
+			<li><h3>{{ service.title }}</h3></li>
+			{% for link in service.links %}
+			<li><a href="{{ link.url }}">{{ link.title }}</a></li>
+			{% endfor %}
+		</ul>
+	</div>
+	<div  class="three columns mobilehide">
+		<ul>
+			{% assign shoplinks = linklists.shoplinks %}
+			<li><h3>{{ shoplinks.title }}</h3></li>
+			{% for link in shoplinks.links %}
+			<li><a href="{{ link.url }}">{{ link.title }}</a></li>
+			{% endfor %}
+		</ul>
+	</div>
+	<div  class="three columns">
+		<ul>
+			{% assign follow-us = linklists.follow-us %}
+			<li><h3>{{ follow-us.title }}</h3></li>
+			{% for link in follow-us.links %}
+			<li><a href="{{ link.url }}">{{ link.title }}</a></li>
+			{% endfor %}
+		</ul>
+	</div>
+	<div  class="four columns">
+		<ul class="contact">
+			<li><a href="{{ shop.url }}"><img class="logo" src="{{ 'logo_img.png' | asset_url }}"></a></li>
+			<li><a href="/pages/our-shop">8 Water St. Vancouver, BC<br>V6B 1A4 Canada</a></li>
+			<li><a href="mailto:{{ shop.email }}">{{ shop.email }}</a></li>
+			<li><a href="tel:+18884582323">1.888.458.2323</a></li>
+			<li><a href="tel:+16046897302">604.689.7302</a></li>
+		</ul>
+	</div>
+</div>

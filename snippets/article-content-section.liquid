@@ -1,0 +1,11 @@
+<script type="text/x-template" id="article-content-section">
+	<div class="wrapper">
+    <div class="article-content">
+      <div class="content-section" :class="alignment">
+      		<div class="content-section__content" :class="{ 'content-section__content--full': !alignTo }">
+      			<slot></slot>
+      		</div>
+      	</div>
+    </div>
+  </div>
+</script>

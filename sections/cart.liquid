@@ -1,0 +1,148 @@
+<form class="cart" :class="{'cart--announcements': hasAnnouncements}" action="/cart" method="post" novalidate>
+	<div class="wrapper wrapper--small">
+		<div class="row">
+			<div class="col">
+        <h2 class="cart__main-heading">Shopping Cart</h2>
+        {% if cart.item_count > 0 %}
+          {% for item in cart.items %}
+            <cart-item
+              :initial-quantity="{{ item.quantity }}"
+              :variant="{{ item.variant_id }}"
+              :available="{{ item.variant.inventory_quantity }}"
+              inline-template
+            >
+              <div class="cart__row">
+                {% if item.image != blank %}
+                  <a href="{{ item.url | within: collections.all }}" class="cart__cell cart__cell--image">
+                    {% include 'responsive-image' with
+                      image: item.image,
+                      max_width: 1000,
+                      max_height: 1000,
+                      wrapper_class: 'cart__image'
+                    %}
+                  </a>
+                {% endif %}
+
+                <div class="cart__cell cart__cell--details">
+                  <p class="cart__cell-title cart__cell-title--details">Product</p>
+                  <a href="{{ item.url }}">
+                    <h3 class="cart__vendor">{{ item.vendor }}</h3>
+                    <h3 class="cart__item-title">{{ item.product.title }}</h3>
+                  </a>
+                </div>
+
+                <div class="cart__cell cart__cell--size">
+                  <p class="cart__cell-title">Size</p>
+                  {% unless item.variant.title == 'Default Title' %}
+                    <p class="cart__size">
+                      {{ item.variant.title }}
+                    </p>
+                  {% endunless %}
+                </div>
+
+                <div class="cart__cell cart__cell--quantity" data-label="{{ 'cart.label.quantity' | t }}">
+                  <label for="updates_{{ item.key }}" class="cart__cell-title">Quantity</label>
+                  x
+                  <input
+                    type="number"
+                    class="cart__quantity-input"
+                    name="updates[]"
+                    id="updates_{{ item.key }}"
+                    v-model="quantity"
+                    min="0"
+                    aria-label="{{ 'cart.general.item_quantity' | t }}"
+                    :max="available"
+                  >
+                </div>
+
+                <div class="cart__cell cart__cell--total" data-label="{{ 'cart.label.total' | t }}">
+                  <p class="cart__cell-title">Total</p>
+                  {% if item.variant.compare_at_price > item.line_price %}
+                    <span class="cart__original-price">{{ item.variant.compare_at_price | money }}</span>
+                  {% endif %}
+                  <span class="cart__total" ref="itemTotal">{{ item.price | money }}</span>
+                  {% assign price_limit = item.variant.compare_at_price | times: 0.7 | ceil %}
+                  {% if price_limit >= item.price %}
+                    <a href="/pages/shopping-with-us#return-policy" class="product__shipping-info mt-xxs product__shipping-info--final-sale"><i class="far fa-exclamation-circle"></i>Final Sale</a>
+                  {% endif %}
+                </div>
+
+                <a class="cart__cell cart__cell--remove" data-label="{{ 'cart.general.remove' | t }}" href="/cart/change?line={{ forloop.index }}&amp;quantity=0">
+                  <p class="cart__cell-title">Remove</p>
+                  <i class="cart__remove fas fa-trash"></i>
+                </a>
+              </div>
+            </cart-item>
+          {% endfor %}
+        {% else %}
+          <p class="cart__no-items">
+            Oops! Looks like your cart is empty.
+            <a href="/collections/all">Continue Shopping</a>
+          </p>
+        {% endif %}
+			</div>
+    </div>
+
+    {% if cart.item_count > 0 %}
+      <div class="row">
+        <div class="col-lg-6 col-sm-12">
+          <div class="cart-summary"><h3 class="cart-summary__title">{{ section.settings.content_title }}</h3>
+          <p class="mt-md">{{ section.settings.content_body }}</p></div>
+        </div>
+
+        <div class="col-lg-6 col-sm-12">
+          <div class="cart-summary" :class="{'cart-summary--announcements': hasAnnouncements}">
+            <h3 class="cart-summary__title">Summary</h3>
+
+            <div class="mb-md">
+              {% if cart.total_discounts > 0 %}
+                <p class="cart-summary__price-block">
+                  <span class="cart-summary__price-label">Discounts:</span>
+                  <span class="cart-summary__price">{{ cart.total_discounts | money }}</span>
+                </p>
+              {% endif %}
+
+              <p class="cart-summary__price-block">
+                <span class="cart-summary__price-label">Subtotal:</span>
+                <span class="cart-summary__price cart-summary__price--subtotal" id="cart-subtotal">{{ cart.total_price | money }}</span>
+              </p>
+            </div>
+
+            {% if settings.cart_notes_enable %}
+              <label class="cart-summary__notes-label" for="CartSpecialInstructions">Order Notes:</label>
+              <textarea class="cart-summary__notes" name="note" id="CartSpecialInstructions">{{ cart.note }}</textarea>
+            {% endif %}
+
+             <button class="button cart-summary__button" type="submit" name="update" value="{{ 'cart.general.update' | t }}">
+              <i class="fas fa-redo mr-xs"></i>Update Cart
+            </button> 
+
+            <button class="button button--solid cart-summary__button" type="submit" name="checkout">
+              <i class="fas fa-lock mr-xs"></i>Secure Checkout
+            </button>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+	</div>
+</form>
+
+{% schema %}
+  {
+    "name": "Content Area",
+    "settings": [
+      {
+        "type": "text",
+        "id": "content_title",
+        "label": "Heading",
+        "default": "Content Area"
+      },
+      {
+        "type": "textarea",
+        "id": "content_body",
+        "label": "Body",
+        "default": "This section is editable in theme settings. Visit this page in the theme customizer to make changes"
+      }
+    ]
+  }
+{% endschema %}

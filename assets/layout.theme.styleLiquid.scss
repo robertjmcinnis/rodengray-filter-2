@@ -1,0 +1,30 @@
+/**
+ * Insert your styles with Liquid below.
+ *
+ * Import additional stylesheets into this sheet using CSS imports:
+ * @import url('./global/form.scss');
+ */
+
+@font-face {
+  font-family: "ITC New Baskerville";
+  font-weight: 400;
+  font-style: normal;
+  src: url("https://fonts.shopifycdn.com/itc_new_baskerville/itcnewbaskerville_n4.c98042f15d9854e216f628b711f9f5d0a1e0d33e.woff2?h1=cm9kZW5ncmF5LmNvbQ&h2=cm9kZW5ncmF5LmNh&h3=cm9kZW5ncmV5LmNvbQ&hmac=c850206aac9a4caced2bb579b118e54fd1ea9616672621d8bd45e8d1327ea022") format("woff2"),
+       url("https://fonts.shopifycdn.com/itc_new_baskerville/itcnewbaskerville_n4.b637e92bcd392c405020ad7c112ef0401929f416.woff?h1=cm9kZW5ncmF5LmNvbQ&h2=cm9kZW5ncmF5LmNh&h3=cm9kZW5ncmV5LmNvbQ&hmac=8c2aeba44db1aafb3c6b8e27dca7558be9af0ff6e7521aa90a95999efe7d9301") format("woff");
+}
+
+@font-face {
+  font-family: "ITC Franklin Gothic";
+  font-weight: 400;
+  font-style: normal;
+  src: url("https://fonts.shopifycdn.com/itc_franklin_gothic/itcfranklingothic_n4.0650f0cd22e02edadb9c15f99f19dc5c0d7bc6b4.woff2?h1=cm9kZW5ncmF5LmNvbQ&h2=cm9kZW5ncmF5LmNh&h3=cm9kZW5ncmV5LmNvbQ&hmac=dbfcbafd87ae08ca9a954b74bd6c9c1786aee87edcac38c6efa02299ae030a6d") format("woff2"),
+       url("https://fonts.shopifycdn.com/itc_franklin_gothic/itcfranklingothic_n4.da686d71b454de6d8aed163b6e87da63142350d3.woff?h1=cm9kZW5ncmF5LmNvbQ&h2=cm9kZW5ncmF5LmNh&h3=cm9kZW5ncmV5LmNvbQ&hmac=9000c32da6092ac0ffcafecadb277e59a0f1a2cd069128706a32c5dad4dce31a") format("woff");
+}
+
+@font-face {
+  font-family: "UniversNextTypewriter";
+  font-weight: 400;
+  font-style: normal;
+  src: url("https://cdn.shopify.com/s/files/1/0240/7285/files/UniversNextTypewriter-RG-Edit.woff2?v=1606411801") format("woff2"),
+       url("https://cdn.shopify.com/s/files/1/0240/7285/files/UniversNextTypewriter-RG-Edit.woff?v=1606411801") format("woff");
+}

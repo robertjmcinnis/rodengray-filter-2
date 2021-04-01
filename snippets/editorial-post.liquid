@@ -1,0 +1,55 @@
+<style>
+  
+  x.ed-p strong {color:{{article.metafields.editorial.box-color}};}
+</style>
+  <header class="sixteen columns collection-head ed">
+        
+        {% if article.metafields.editorial.video-url %}
+
+        
+        <figure class="collection-desc rte row">
+					
+          
+       <script src="https://fast.wistia.com/embed/medias/{{ article.metafields.editorial.video-url }}.jsonp" async></script>
+      <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+      <div class="hero wistia_responsive_padding" style="padding:66% 0 0 0;position:relative;">
+        <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+          <div class="wistia_embed wistia_async_{{ article.metafields.editorial.video-url }} seo=false videoFoam=true autoPlay=true playbar=false playButton=false volume=0 endVideoBehavior=loop controlsVisibleOnLoad=false fullscreenButton=false smallPlayButton=false volumeControl=false settingsControl=false" style="height:100%;width:100%">&nbsp;</div>
+        </div>
+      </div>
+          
+          
+          <figcaption style="background: {{article.metafields.editorial.box-color}} !important;">
+
+                        	<div class="pod-title ed-title balance-text" style="margin-top:0px;">{{ article.title }}</div>
+							<div class="pod-type ed-title">{{article.metafields.editorial.ed-type}}</div>
+	
+					</figcaption>
+        </figure>
+        
+				
+        
+        				{% else %}
+        <figure class="collection-desc rte row">
+                  <div class="hero" style="background-image:url({{ article.image.src | img_url: "1600x" }});background-size:cover !important;background-position:{{article.metafields.feature.header-image-position}};"></div>
+					<figcaption style="background: {{article.metafields.editorial.box-color}} !important;">
+
+                        	<div class="pod-title ed-title balance-text" style="margin-top:0px;">{{ article.title }}</div>
+							<div class="pod-type ed-title">{{article.metafields.editorial.ed-type}}</div>
+	
+					</figcaption>
+				</figure>
+        
+        
+        
+                				{% endif %}
+        
+	</header>
+
+<section class="rg-content editorial row">
+      
+  	<!--<div class="pod-title ed-title balance-text">{{ article.title }}</div>
+	<div class="pod-type ed-title">EDITORIAL</div>
+	<br>-->
+ 	{{ article.content }}
+</section>

@@ -1,0 +1,52 @@
+<div id="mailing-list">
+	<div class="signup">
+		<a href="#" class="close"><span class="icon-cross"></span></a>
+		<!-- Begin MailChimp Signup Form -->
+
+<div id="mc_embed_signup">
+<form action="https://rodengray.us2.list-manage.com/subscribe/post?u=81a8db5d2d46720110e454e44&amp;id=89291efd13" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+    <div id="mc_embed_signup_scroll">
+	<h2>---Become a Roden Gray Insider</h2>
+<div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+<div class="mc-field-group">
+	<label for="mce-FNAME">First Name  <span class="asterisk">*</span>
+</label>
+	<input type="text" value="" name="FNAME" class="required" id="mce-FNAME">
+</div>
+<div class="mc-field-group">
+	<label for="mce-LNAME">Last Name </label>
+	<input type="text" value="" name="LNAME" class="" id="mce-LNAME">
+</div>
+<div class="mc-field-group">
+	<label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
+</label>
+	<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+</div>
+	<div id="mce-responses" class="clear">
+		<div class="response" id="mce-error-response" style="display:none"></div>
+		<div class="response" id="mce-success-response" style="display:none"></div>
+	</div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_81a8db5d2d46720110e454e44_89291efd13" tabindex="-1" value=""></div>
+    <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+    </div>
+</form>
+</div>
+<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[0]='EMAIL';ftypes[0]='email';fnames[3]='COMPANY';ftypes[3]='text';fnames[4]='PHONE';ftypes[4]='phone';fnames[6]='LAST_ORDER';ftypes[6]='date';fnames[7]='RGRSEG';ftypes[7]='dropdown';fnames[8]='RGTAGS';ftypes[8]='text';fnames[9]='RGCNTRY';ftypes[9]='text';fnames[10]='NOORDER';ftypes[10]='number';fnames[11]='TOTALOV';ftypes[11]='number';fnames[12]='AVGOV';ftypes[12]='number';fnames[13]='DAYSSFP';ftypes[13]='number';fnames[14]='DAYSSLP';ftypes[14]='number';fnames[15]='RGIDENT';ftypes[15]='text';fnames[16]='MMERGE16';ftypes[16]='text';fnames[17]='SOURCE';ftypes[17]='text';fnames[18]='TAGS';ftypes[18]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+		<!--End mc_embed_signup-->
+	</div>
+	<div class="overlay">
+	</div>
+</div>
+{% if settings.newsletter-promo-enabled %}
+<script>
+	$(window).bind('load',function(){
+		var shown = $.cookie('newsletter_promo');
+		$('#mailing-list a, #mailing-list .submit input').click(function(){
+			$.cookie('newsletter_promo', true, { expires: 15, path: '/' });
+		});
+		if ( !shown ) {
+			setTimeout( "$('#mailing-list').addClass('active');", 3000);
+		}
+	});
+</script>
+{% endif %}

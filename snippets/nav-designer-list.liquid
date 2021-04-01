@@ -1,0 +1,68 @@
+{% assign list = linklists.contemporary-brands %}
+{% assign offset = 0 %}
+{% assign list_size = list.links.size %}
+{% assign list_limit = list_size | divided_by: 4 %}
+{% assign remainder = list_size | modulo: 4 %}
+{% if remainder > 0 %}{% assign list_limit = list_limit | plus:1 %}{% endif %}
+
+{% if list_size > 14 %}
+<ul class="list-column">
+<!-- 	<li>
+      <h3>&nbsp;</h3>
+		<h3>{{ list.title | remove: ' Brands'}}</h3>
+	</li> -->
+	{% for link in list.links offset: offset limit: list_limit %}
+	<li>
+		<a href="{{ link.url }}">{{ link.title | remove: '<strong> - S/S 2014 Arrivals</strong>' | remove: '<strong> - Now Available</strong>' | remove: '<strong> - New Designer</strong>' }}</a>
+	</li>
+	{% endfor %}
+</ul>
+{% assign offset = offset | plus: list_limit %}
+
+<ul class="list-column">
+<!-- 	<li>
+		<h3>&nbsp;</h3>
+	</li> -->
+	{% for link in list.links offset: offset limit: list_limit %}
+	<li>
+		<a href="{{ link.url }}">{{ link.title | remove: '<strong> - S/S 2014 Arrivals</strong>' | remove: '<strong> - Now Available</strong>' | remove: '<strong> - New Designer</strong>' }}</a>
+	</li>
+	{% endfor %}
+</ul>
+{% assign offset = offset | plus: list_limit %}
+
+<ul class="list-column">
+<!-- 	<li>
+		<h3>&nbsp;</h3>
+	</li> -->
+{% for link in list.links offset: offset limit: list_limit %}
+	<li>
+		<a href="{{ link.url }}">{{ link.title | remove: '<strong> - S/S 2014 Arrivals</strong>' | remove: '<strong> - Now Available</strong>' | remove: '<strong> - New Designer</strong>' }}</a>
+	</li>
+	{% endfor %}
+</ul>
+{% assign offset = offset | plus: list_limit %}
+
+<ul class="list-column">
+<!-- 	<li>
+		<h3>&nbsp;</h3>
+	</li> -->
+{% for link in list.links offset: offset %}
+	<li>
+		<a href="{{ link.url }}">{{ link.title | remove: '<strong> - S/S 2014 Arrivals</strong>' | remove: '<strong> - Now Available</strong>' | remove: '<strong> - New Designer</strong>' }}</a>
+	</li>
+	{% endfor %}
+</ul>
+
+{% else %}
+<ul class="list-column">
+<!-- 	<li>
+		<h3>{{ list.title | remove: ' Brands' }}</h3>
+	</li> -->
+	{% for link in list.links %}
+	<li>
+		<a href="{{ link.url }}">{{ link.title | remove: '<strong> - S/S 2014 Arrivals</strong>' | remove: '<strong> - Now Available</strong>' | remove: '<strong> - New Designer</strong>' }}</a>
+	</li>
+	{% endfor %}
+</ul>
+{% endif %}

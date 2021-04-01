@@ -1,0 +1,65 @@
+<section class="featured-collection">
+	{% if section.settings.section_title != blank %}
+	<h3 class="widget-heading">{{ section.settings.section_title }}</h3>
+	{% endif %}
+	<div class="wrapper">
+		<div>
+			{%- assign collection = collections[section.settings.collection] -%}
+
+			<div class="featured-collection__title-area">
+				<h3 class="widget-heading">{{ collection.title }}</h3>
+				<a class="button" href="{{ collection.url }}">View All</a>
+			</div>
+
+			<carousel :navigation-enabled="true" navigation-prev-label="<i class='fal fa-angle-left VueCarousel-navigation__arrow'></i>" navigation-next-label="<i class='fal fa-angle-right VueCarousel-navigation__arrow'></i>" class="row featured-collection__carousel" :per-page="1" :per-page-custom="[[768, 3], [992, 3], [1200, 4]]">
+				{% for product in collection.products limit: 12 %}
+				
+					<slide class="col featured-collection__item">
+						<a href="{{ product.url | within: collection }}">
+							<div class="featured-collection__image-wrap">
+								{% for image in product.images limit: 2 %}
+									<div class="featured-collection__image">
+										{% include 'responsive-image' with
+											image: image,
+											max_width: 600,
+											max_height: 1200
+										%}
+									</div>
+								{% endfor %}
+							</div>
+						</a>
+
+            <h4 class="featured-collection__item-title">{{ product.title | escape }}</h4>
+            {% unless section.settings.hide_designer %}
+              <a href="/collections/{{ product.vendor | handleize }}" class="featured-collection__link">{{ product.vendor }}<i class="fal fa-angle-right featured-collection__link-icon ml-xs"></i></a>
+            {% endunless %}
+					</slide>
+				{% endfor %}
+			</carousel>
+		</div>
+	</div>
+</section>
+
+{% schema %}
+  {
+    "name": "Featured collection",
+    "settings": [
+      {
+        "id": "collection",
+        "type": "collection",
+        "label": "Collection"
+      },
+      {
+        "id": "hide_designer",
+        "type": "checkbox",
+        "label": "Hide Designer Name"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Featured collection",
+        "category": "Collection"
+      }
+    ]
+  }
+{% endschema %}

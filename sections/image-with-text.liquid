@@ -1,0 +1,40 @@
+<section class="hero-section">
+	<carousel>
+		{% for block in section.blocks %}
+			<slide>
+			
+			</slide>
+		{% endfor %}
+	</carousel>
+</section>
+
+{% schema %}
+	{
+		"name": "Hero Section",
+		"max_blocks": 5,
+		"blocks": [
+			{
+				"type": "slide",
+				"name": "Slide",
+				"settings": [
+					{
+						"id": "image",
+						"type": "image_picker",
+						"label": "Select article"
+					}
+				]
+			}
+		],
+		"presets": [
+			{
+				"name": "Blog posts",
+				"category": "Blog",
+				"blocks": [
+					{
+						"type": "slide"
+					}
+				]
+			}
+		]
+	}
+{% endschema %}

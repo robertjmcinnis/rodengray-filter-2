@@ -1,0 +1,99 @@
+{%- comment -%}
+  This is a required section for the Shopify Theme Store.
+  It is available when you add "Blog posts" section in the Theme Editor.
+
+  Theme Store required settings
+  - Heading: title of the blog posts section
+  - Blog (which blog category to show in your store)
+
+  Theme Store optional settings
+  - Number of posts to show
+  - Show author
+  - Show date
+{%- endcomment -%}
+<section class="featured-posts" id="featured-posts">
+	<div class="wrapper">
+		{% if section.settings.section_title != blank %}
+		<h3 class="widget-heading">{{ section.settings.section_title }}</h3>
+		{% endif %}
+		<carousel class="row blog-carousel" :per-page="1" :per-page-custom="[[992, 2], [1200, 3]]" :loop="true">
+			{% for block in section.blocks %}
+				{% assign article = articles[block.settings.article] %}
+
+				<slide class="col blog-carousel__card">
+					<a href="{{ article.url }}">
+						<div class="blog-carousel__image-wrap">
+							<div class="blog-carousel__image" style="background-image:url({{ article.image.src | img_url: '800x' }});"></div>
+						</div>
+            <div class="blog-carousel__excerpt-area">
+              <h4 class="mb-xxs"><strong>{{ article.title }}</strong></h4>
+              {% assign blog_handle = article.handle | split: '/' %}
+              {% if blogs[blog_handle[0]] %}
+                <p class="blog-carousel__category">{{ blogs[blog_handle[0]].title }}</p>
+              {% endif %}
+              <p class="blog-carousel__excerpt">
+                {% if section.settings.truncate %}
+                  {{ article.excerpt_or_content | strip_html | truncate: 250 }}
+                {% else %}
+                  {{ article.excerpt_or_content | strip_html }}
+                {% endif %}
+              </p>
+            </div>
+					</a>
+				</slide>
+			{% endfor %}
+		</carousel>
+	</div>
+</section>
+
+{% schema %}
+	{
+		"name": "Blog posts",
+		"max_blocks": 3,
+		"settings": [
+			{
+				"id": "section_title",
+				"type": "text",
+				"label": "Section Heading",
+				"info": "Leave blank to hide"
+			},
+			{
+				"id": "truncate",
+				"type": "checkbox",
+				"label": "Truncate excerpt",
+				"info": "Limits excerpt length to 250 characters, followed by an ellipsis",
+				"default": true
+			}
+		],
+		"blocks": [
+			{
+				"type": "article",
+				"name": "Article",
+				"settings": [
+					{
+						"id": "article",
+						"type": "article",
+						"label": "Select article"
+					}
+				]
+			}
+		],
+		"presets": [
+			{
+				"name": "Blog posts",
+				"category": "Blog",
+				"blocks": [
+					{
+						"type": "article"
+					},
+					{
+						"type": "article"
+					},
+					{
+						"type": "article"
+					}
+				]
+			}
+		]
+	}
+{% endschema %}

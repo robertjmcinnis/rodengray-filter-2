@@ -1,0 +1,1177 @@
+<script>
+$(document).ready(function() {
+
+});
+</script>
+<section class="feature-products">
+{% comment %}Row1{% endcomment %}
+  {% assign row1_cols = 0 %}
+  {% if settings.landing2015_row1_cols == "1" %}
+    {% assign row1_cols = 1 %}
+  {% endif %}
+  {% if settings.landing2015_row1_cols == "2" %}
+    {% assign row1_cols = 2 %}
+  {% endif %}
+  <div class="row first-row">
+    {% if row1_cols == 1 %}
+    <a href="{{ settings.landing2015_row1_img1_link }}" class="landing-first full-width twelve columns">
+      <figcaption>
+        <div class="figcap-container">
+          <h2>{{ settings.landing2015_row1_img1_headline }}</h2>
+          <h3>{{ settings.landing2015_row1_img1_subheadline }}</h3>
+          <div class="icon-arrow-right"></div>
+        </div>
+      </figcaption>
+      <figure class="figure_row1_1">
+
+        <picture>
+
+            <!--[if IE 9]><video style="display: none;"><![endif]-->
+              <source srcset="{{ 'landing2015_row1_img1.jpg' | asset_url }}" media="(min-width: 768px)">
+              <source srcset="{{ 'landing2015_row1_img1_mo.jpg' | asset_url }}" media="(min-width: 320px)">
+            <!--[if IE 9]></video><![endif]-->
+
+            <!--[if lt IE 9]>
+              <img class="scale-with-grid mobile-hide" src="{{ 'landing2015_row1_img1.jpg' | asset_url }}" alt="{{ settings.landing2015_row1_img1_alt }}">
+              <img class="scale-with-grid mobile-show" src="{{ 'landing2015_row1_img1_mo.jpg' | asset_url }}" alt="{{ settings.landing2015_row1_img1_alt }}">
+            <![endif]-->
+
+            <!--[if !lt IE 9]> -->
+              <img class="scale-with-grid mobile-hide" srcset="{{ 'landing2015_row1_img1.jpg' | asset_url }}" alt="{{ settings.landing2015_row1_img1_alt }}">
+              <img class="scale-with-grid mobile-show" srcset="{{ 'landing2015_row1_img1_mo.jpg' | asset_url }}" alt="{{ settings.landing2015_row1_img1_alt }}">
+            <!-- <![endif]-->
+
+        </picture>
+
+      </figure>
+    </a>
+    {% endif %}
+    {% if row1_cols == 2 %}
+    <a href="{{ settings.landing2015_row1_img2_1_link }}" class="landing-first half-width-left six columns no-gutter">
+      <div class="half-width-left-bg">
+        <figcaption>
+          <div class="figcap-container">
+            <h2>{{ settings.landing2015_row1_img2_1_headline }}</h2>
+            <h3>{{ settings.landing2015_row1_img2_1_subheadline }}</h3>
+            <div class="icon-arrow-right"></div>
+          </div>
+        </figcaption>
+        <figure class="figure_row1_2_l">
+
+          <picture>
+
+              <!--[if IE 9]><video style="display: none;"><![endif]-->
+                <source srcset="{{ 'landing2015_row1_img2_1.jpg' | asset_url }}" media="(min-width: 768px)">
+                <source srcset="{{ 'landing2015_row1_img2_1_mo.jpg' | asset_url }}" media="(min-width: 320px)">
+              <!--[if IE 9]></video><![endif]-->
+
+              <!--[if lt IE 9]>
+                <img class="scale-with-grid mobile-hide" src="{{ 'landing2015_row1_img2_1.jpg' | asset_url }}" alt="{{ settings.landing2015_row1_img2_1_alt }}">
+                <img class="scale-with-grid mobile-show" src="{{ 'landing2015_row1_img2_1_mo.jpg' | asset_url }}" alt="{{ settings.landing2015_row1_img2_1_alt }}">
+              <![endif]-->
+
+              <!--[if !lt IE 9]> -->
+                <img class="scale-with-grid mobile-hide" srcset="{{ 'landing2015_row1_img2_1.jpg' | asset_url }}" alt="{{ settings.landing2015_row1_img2_1_alt }}">
+                <img class="scale-with-grid mobile-show" srcset="{{ 'landing2015_row1_img2_1_mo.jpg' | asset_url }}" alt="{{ settings.landing2015_row1_img2_1_alt }}">
+              <!-- <![endif]-->
+
+          </picture>
+
+        </figure>
+      </div>
+    </a>
+    <a href="{{ settings.landing2015_row1_img2_2_link }}" class="landing-first half-width-right six columns no-gutter">
+      <div class="half-width-right-bg">
+        <figcaption>
+          <div class="figcap-container">
+            <h2>{{ settings.landing2015_row1_img2_2_headline }}</h2>
+            <h3>{{ settings.landing2015_row1_img2_2_subheadline }}</h3>
+            <div class="icon-arrow-right"></div>
+          </div>
+        </figcaption>
+        <figure class="figure_row1_2_r">
+
+          <picture>
+
+              <!--[if IE 9]><video style="display: none;"><![endif]-->
+                <source srcset="{{ 'landing2015_row1_img2_2.jpg' | asset_url }}" media="(min-width: 768px)">
+                <source srcset="{{ 'landing2015_row1_img2_2_mo.jpg' | asset_url }}" media="(min-width: 320px)">
+              <!--[if IE 9]></video><![endif]-->
+
+              <!--[if lt IE 9]>
+                <img class="scale-with-grid mobile-hide" src="{{ 'landing2015_row1_img2_2.jpg' | asset_url }}" alt="{{ settings.landing2015_row1_img2_2_alt }}">
+                <img class="scale-with-grid mobile-show" src="{{ 'landing2015_row1_img2_2_mo.jpg' | asset_url }}" alt="{{ settings.landing2015_row1_img2_2_alt }}">
+              <![endif]-->
+
+              <!--[if !lt IE 9]> -->
+                <img class="scale-with-grid mobile-hide" srcset="{{ 'landing2015_row1_img2_2.jpg' | asset_url }}" alt="{{ settings.landing2015_row1_img2_2_alt }}">
+                <img class="scale-with-grid mobile-show" srcset="{{ 'landing2015_row1_img2_2_mo.jpg' | asset_url }}" alt="{{ settings.landing2015_row1_img2_2_alt }}">
+              <!-- <![endif]-->
+
+          </picture>
+
+        </figure>
+      </div>
+    </a>
+    {% endif %}
+  </div>
+
+{% comment %}Row2{% endcomment %}
+  {% if settings.landing2015_row2_enabled %}
+
+  {% comment %}START setting for each item{% endcomment %}
+    {% assign row2_img1 = "" %}
+    {% if settings.landing2015_row2_img1 == "1" %}
+      {% assign row2_img1 = "g1_large-portrait-left" %}
+    {% endif %}
+    {% if settings.landing2015_row2_img1 == "2" %}
+      {% assign row2_img1 = "g2_small-landscape-left" %}
+    {% endif %}
+    {% if settings.landing2015_row2_img1 == "3" %}
+      {% assign row2_img1 = "g3_med-landscape-right" %}
+    {% endif %}
+
+    {% assign row2_img2 = "" %}
+    {% if settings.landing2015_row2_img2 == "1" %}
+      {% assign row2_img2 = "g1_med-landscape-right" %}
+    {% endif %}
+    {% if settings.landing2015_row2_img2 == "2" %}
+      {% assign row2_img2 = "g2_large-portrait-right" %}
+    {% endif %}
+    {% if settings.landing2015_row2_img2 == "3" %}
+      {% assign row2_img2 = "g3_large-portrait-left" %}
+    {% endif %}
+
+    {% assign row2_img3 = "" %}
+    {% if settings.landing2015_row2_img3 == "1" %}
+      {% assign row2_img3 = "g1_small-portrait-right" %}
+    {% endif %}
+    {% if settings.landing2015_row2_img3 == "2" %}
+      {% assign row2_img3 = "g2_med-portrait-left" %}
+    {% endif %}
+    {% if settings.landing2015_row2_img3 == "3" %}
+      {% assign row2_img3 = "g3_small-landscape-right" %}
+    {% endif %}
+  {% comment %}END setting for each item{% endcomment %}
+
+
+    {% assign row2_cols_layout = "" %}
+
+  {% comment %}condition for row type:G1{% endcomment %}
+    {% if settings.landing2015_row2_cols == "1" %}
+      {% assign row2_cols_layout = "g1_large_med_small" %}
+
+      <div class="row custom-row {{ row2_cols_layout }}">
+        <div class="one column spacing-d"></div>
+        <a href="{{ settings.landing2015_row2_img1_link }}" class="five columns">
+          <figcaption class="{{ row2_img1 }} mobile-hide">
+            <h2>{{ settings.landing2015_row2_img1_headline }}</h2>
+            <h3>{{ settings.landing2015_row2_img1_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+          <figure class="{{ row2_img1 }}">
+            <div class="overlay"></div>
+            <img class="scale-with-grid" src="{{ 'landing2015_row2_img1.jpg' | asset_url }}" alt="{{ settings.landing2015_row2_img1_alt }}">
+          </figure>
+          <figcaption class="{{ row2_img1 }} mobile-show">
+            <h2>{{ settings.landing2015_row2_img1_headline }}</h2>
+            <h3>{{ settings.landing2015_row2_img1_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+        </a>
+
+        <a href="{{ settings.landing2015_row2_img2_link }}" class="six columns">
+          <figure class="{{ row2_img2 }} eight columns">
+            <div class="overlay"></div>
+            <img class="scale-with-grid" src="{{ 'landing2015_row2_img2.jpg' | asset_url }}" alt="{{ settings.landing2015_row2_img2_alt }}">
+          </figure>
+          <figcaption class="{{ row2_img2 }} four columns">
+            <h2>{{ settings.landing2015_row2_img2_headline }}</h2>
+            <h3>{{ settings.landing2015_row2_img2_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+        </a>
+
+        <div class="one column u-pull-right spacing-d"></div>
+        <a href="{{ settings.landing2015_row2_img3_link }}" class="four columns u-pull-right">
+          <figure class="{{ row2_img3 }} six columns">
+            <div class="overlay"></div>
+            <img class="scale-with-grid" src="{{ 'landing2015_row2_img3.jpg' | asset_url }}" alt="{{ settings.landing2015_row2_img3_alt }}">
+          </figure>
+          <figcaption class="{{ row2_img3 }} six columns">
+            <h2>{{ settings.landing2015_row2_img3_headline }}</h2>
+            <h3>{{ settings.landing2015_row2_img3_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+        </a>
+      </div>
+    {% endif %}
+
+  {% comment %}condition for row type:G2{% endcomment %}
+    {% if settings.landing2015_row2_cols == "2" %}
+      {% assign row2_cols_layout = "g2_med_large_med" %}
+
+      <div class="row custom-row {{ row2_cols_layout }}">
+
+        <div class="three columns spacing-d"></div>
+        <a href="{{ settings.landing2015_row2_img1_link }}" class="three columns">
+          <figcaption class="{{ row2_img1 }} mobile-hide">
+            <h2>{{ settings.landing2015_row2_img1_headline }}</h2>
+            <h3>{{ settings.landing2015_row2_img1_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+          <figure class="{{ row2_img1 }}">
+            <div class="overlay"></div>
+            <img class="scale-with-grid" src="{{ 'landing2015_row2_img1.jpg' | asset_url }}" alt="{{ settings.landing2015_row2_img1_alt }}">
+          </figure>
+          <figcaption class="{{ row2_img1 }} mobile-show">
+            <h2>{{ settings.landing2015_row2_img1_headline }}</h2>
+            <h3>{{ settings.landing2015_row2_img1_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+        </a>
+
+        <div class="one column spacing-d u-pull-right"></div>
+        <a href="{{ settings.landing2015_row2_img2_link }}" class="five columns u-pull-right">
+          <figcaption class="{{ row2_img2 }} mobile-hide">
+            <h2>{{ settings.landing2015_row2_img2_headline }}</h2>
+            <h3>{{ settings.landing2015_row2_img2_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+          <figure class="{{ row2_img2 }}">
+            <div class="overlay"></div>
+            <img class="scale-with-grid" src="{{ 'landing2015_row2_img2.jpg' | asset_url }}" alt="{{ settings.landing2015_row2_img2_alt }}">
+          </figure>
+          <figcaption class="{{ row2_img2 }} mobile-show">
+            <h2>{{ settings.landing2015_row2_img2_headline }}</h2>
+            <h3>{{ settings.landing2015_row2_img2_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+        </a>
+
+        <a href="{{ settings.landing2015_row2_img3_link }}" class="five columns u-pull-right">
+          <figure class="{{ row2_img3 }} seven columns">
+            <div class="overlay"></div>
+            <img class="scale-with-grid" src="{{ 'landing2015_row2_img3.jpg' | asset_url }}" alt="{{ settings.landing2015_row2_img3_alt }}">
+          </figure>
+          <figcaption class="{{ row2_img3 }} five columns">
+            <h2>{{ settings.landing2015_row2_img3_headline }}</h2>
+            <h3>{{ settings.landing2015_row2_img3_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+        </a>
+
+      </div>
+    {% endif %}
+
+  {% comment %}condition for row type:G3{% endcomment %}
+    {% if settings.landing2015_row2_cols == "3" %}
+      {% assign row2_cols_layout = "g3_small_large_med" %}
+      <div class="row custom-row {{ row2_cols_layout }}">
+
+        <div class="one column spacing-d u-pull-right"></div>
+        <a href="{{ settings.landing2015_row2_img1_link }}" class="four columns u-pull-right">
+          <figcaption class="{{ row2_img1 }} mobile-hide">
+            <h2>{{ settings.landing2015_row2_img1_headline }}</h2>
+            <h3>{{ settings.landing2015_row2_img1_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+          <figure class="{{ row2_img1 }}">
+            <div class="overlay"></div>
+            <img class="scale-with-grid" src="{{ 'landing2015_row2_img1.jpg' | asset_url }}" alt="{{ settings.landing2015_row2_img1_alt }}">
+          </figure>
+          <figcaption class="{{ row2_img1 }} mobile-show">
+            <h2>{{ settings.landing2015_row2_img1_headline }}</h2>
+            <h3>{{ settings.landing2015_row2_img1_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+        </a>
+
+        <div class="two columns spacing-d"></div>
+        <a href="{{ settings.landing2015_row2_img2_link }}" class="five columns">
+          <figcaption class="{{ row2_img2 }} mobile-hide">
+            <h2>{{ settings.landing2015_row2_img2_headline }}</h2>
+            <h3>{{ settings.landing2015_row2_img2_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+          <figure class="{{ row2_img2 }}">
+            <div class="overlay"></div>
+            <img class="scale-with-grid" src="{{ 'landing2015_row2_img2.jpg' | asset_url }}" alt="{{ settings.landing2015_row2_img2_alt }}">
+          </figure>
+          <figcaption class="{{ row2_img2 }} mobile-show">
+            <h2>{{ settings.landing2015_row2_img2_headline }}</h2>
+            <h3>{{ settings.landing2015_row2_img2_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+        </a>
+
+        <div class="one column spacing-d"></div>
+        <a href="{{ settings.landing2015_row2_img3_link }}" class="three columns">
+          <figcaption class="{{ row2_img3 }} mobile-hide">
+            <h2>{{ settings.landing2015_row2_img3_headline }}</h2>
+            <h3>{{ settings.landing2015_row2_img3_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+          <figure class="{{ row2_img3 }}">
+            <div class="overlay"></div>
+            <img class="scale-with-grid" src="{{ 'landing2015_row2_img3.jpg' | asset_url }}" alt="{{ settings.landing2015_row2_img3_alt }}">
+          </figure>
+          <figcaption class="{{ row2_img3 }} mobile-show">
+            <h2>{{ settings.landing2015_row2_img3_headline }}</h2>
+            <h3>{{ settings.landing2015_row2_img3_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+        </a>
+
+      </div>
+    {% endif %}
+
+
+  {% endif %}
+
+
+{% comment %}Row3{% endcomment %}
+  {% if settings.landing2015_row3_enabled %}
+
+  {% comment %}START setting for each item{% endcomment %}
+    {% assign row3_img1 = "" %}
+    {% if settings.landing2015_row3_img1 == "1" %}
+      {% assign row3_img1 = "g1_large-portrait-left" %}
+    {% endif %}
+    {% if settings.landing2015_row3_img1 == "2" %}
+      {% assign row3_img1 = "g2_small-landscape-left" %}
+    {% endif %}
+    {% if settings.landing2015_row3_img1 == "3" %}
+      {% assign row3_img1 = "g3_med-landscape-right" %}
+    {% endif %}
+
+    {% assign row3_img2 = "" %}
+    {% if settings.landing2015_row3_img2 == "1" %}
+      {% assign row3_img2 = "g1_med-landscape-right" %}
+    {% endif %}
+    {% if settings.landing2015_row3_img2 == "2" %}
+      {% assign row3_img2 = "g2_large-portrait-right" %}
+    {% endif %}
+    {% if settings.landing2015_row3_img2 == "3" %}
+      {% assign row3_img2 = "g3_large-portrait-left" %}
+    {% endif %}
+
+    {% assign row3_img3 = "" %}
+    {% if settings.landing2015_row3_img3 == "1" %}
+      {% assign row3_img3 = "g1_small-portrait-right" %}
+    {% endif %}
+    {% if settings.landing2015_row3_img3 == "2" %}
+      {% assign row3_img3 = "g2_med-portrait-left" %}
+    {% endif %}
+    {% if settings.landing2015_row3_img3 == "3" %}
+      {% assign row3_img3 = "g3_small-landscape-right" %}
+    {% endif %}
+  {% comment %}END setting for each item{% endcomment %}
+
+
+    {% assign row3_cols_layout = "" %}
+
+  {% comment %}condition for row type:G1{% endcomment %}
+    {% if settings.landing2015_row3_cols == "1" %}
+      {% assign row3_cols_layout = "g1_large_med_small" %}
+
+      <div class="row custom-row {{ row3_cols_layout }}">
+        <div class="one column spacing-d"></div>
+        <a href="{{ settings.landing2015_row3_img1_link }}" class="five columns">
+          <figcaption class="{{ row3_img1 }} mobile-hide">
+            <h2>{{ settings.landing2015_row3_img1_headline }}</h2>
+            <h3>{{ settings.landing2015_row3_img1_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+          <figure class="{{ row3_img1 }}">
+            <div class="overlay"></div>
+            <img class="scale-with-grid" src="{{ 'landing2015_row3_img1.jpg' | asset_url }}" alt="{{ settings.landing2015_row3_img1_alt }}">
+          </figure>
+          <figcaption class="{{ row3_img1 }} mobile-show">
+            <h2>{{ settings.landing2015_row3_img1_headline }}</h2>
+            <h3>{{ settings.landing2015_row3_img1_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+        </a>
+
+        <a href="{{ settings.landing2015_row3_img2_link }}" class="six columns">
+          <figure class="{{ row3_img2 }} eight columns">
+            <div class="overlay"></div>
+            <img class="scale-with-grid" src="{{ 'landing2015_row3_img2.jpg' | asset_url }}" alt="{{ settings.landing2015_row3_img2_alt }}">
+          </figure>
+          <figcaption class="{{ row3_img2 }} four columns">
+            <h2>{{ settings.landing2015_row3_img2_headline }}</h2>
+            <h3>{{ settings.landing2015_row3_img2_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+        </a>
+
+        <div class="one column u-pull-right spacing-d"></div>
+        <a href="{{ settings.landing2015_row3_img3_link }}" class="four columns u-pull-right">
+          <figure class="{{ row3_img3 }} six columns">
+            <div class="overlay"></div>
+            <img class="scale-with-grid" src="{{ 'landing2015_row3_img3.jpg' | asset_url }}" alt="{{ settings.landing2015_row3_img3_alt }}">
+          </figure>
+          <figcaption class="{{ row3_img3 }} six columns">
+            <h2>{{ settings.landing2015_row3_img3_headline }}</h2>
+            <h3>{{ settings.landing2015_row3_img3_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+        </a>
+      </div>
+    {% endif %}
+
+  {% comment %}condition for row type:G2{% endcomment %}
+    {% if settings.landing2015_row3_cols == "2" %}
+      {% assign row3_cols_layout = "g2_med_large_med" %}
+
+      <div class="row custom-row {{ row3_cols_layout }}">
+
+        <div class="three columns spacing-d"></div>
+        <a href="{{ settings.landing2015_row3_img1_link }}" class="three columns">
+          <figcaption class="{{ row3_img1 }} mobile-hide">
+            <h2>{{ settings.landing2015_row3_img1_headline }}</h2>
+            <h3>{{ settings.landing2015_row3_img1_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+          <figure class="{{ row3_img1 }}">
+            <div class="overlay"></div>
+            <img class="scale-with-grid" src="{{ 'landing2015_row3_img1.jpg' | asset_url }}" alt="{{ settings.landing2015_row3_img1_alt }}">
+          </figure>
+          <figcaption class="{{ row3_img1 }} mobile-show">
+            <h2>{{ settings.landing2015_row3_img1_headline }}</h2>
+            <h3>{{ settings.landing2015_row3_img1_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+        </a>
+
+        <div class="one column spacing-d u-pull-right"></div>
+        <a href="{{ settings.landing2015_row3_img2_link }}" class="five columns u-pull-right">
+          <figcaption class="{{ row3_img2 }} mobile-hide">
+            <h2>{{ settings.landing2015_row3_img2_headline }}</h2>
+            <h3>{{ settings.landing2015_row3_img2_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+          <figure class="{{ row3_img2 }}">
+            <div class="overlay"></div>
+            <img class="scale-with-grid" src="{{ 'landing2015_row3_img2.jpg' | asset_url }}" alt="{{ settings.landing2015_row3_img2_alt }}">
+          </figure>
+          <figcaption class="{{ row3_img2 }} mobile-show">
+            <h2>{{ settings.landing2015_row3_img2_headline }}</h2>
+            <h3>{{ settings.landing2015_row3_img2_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+        </a>
+
+        <a href="{{ settings.landing2015_row3_img3_link }}" class="five columns u-pull-right">
+          <figure class="{{ row3_img3 }} seven columns">
+            <div class="overlay"></div>
+            <img class="scale-with-grid" src="{{ 'landing2015_row3_img3.jpg' | asset_url }}" alt="{{ settings.landing2015_row3_img3_alt }}">
+          </figure>
+          <figcaption class="{{ row3_img3 }} five columns">
+            <h2>{{ settings.landing2015_row3_img3_headline }}</h2>
+            <h3>{{ settings.landing2015_row3_img3_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+        </a>
+
+      </div>
+    {% endif %}
+
+  {% comment %}condition for row type:G3{% endcomment %}
+    {% if settings.landing2015_row3_cols == "3" %}
+      {% assign row3_cols_layout = "g3_small_large_med" %}
+      <div class="row custom-row {{ row3_cols_layout }}">
+
+        <div class="one column spacing-d u-pull-right"></div>
+        <a href="{{ settings.landing2015_row3_img1_link }}" class="four columns u-pull-right">
+          <figcaption class="{{ row3_img1 }} mobile-hide">
+            <h2>{{ settings.landing2015_row3_img1_headline }}</h2>
+            <h3>{{ settings.landing2015_row3_img1_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+          <figure class="{{ row3_img1 }}">
+            <div class="overlay"></div>
+            <img class="scale-with-grid" src="{{ 'landing2015_row3_img1.jpg' | asset_url }}" alt="{{ settings.landing2015_row3_img1_alt }}">
+          </figure>
+          <figcaption class="{{ row3_img1 }} mobile-show">
+            <h2>{{ settings.landing2015_row3_img1_headline }}</h2>
+            <h3>{{ settings.landing2015_row3_img1_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+        </a>
+
+        <div class="two columns spacing-d"></div>
+        <a href="{{ settings.landing2015_row3_img2_link }}" class="five columns">
+          <figcaption class="{{ row3_img2 }} mobile-hide">
+            <h2>{{ settings.landing2015_row3_img2_headline }}</h2>
+            <h3>{{ settings.landing2015_row3_img2_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+          <figure class="{{ row3_img2 }}">
+            <div class="overlay"></div>
+            <img class="scale-with-grid" src="{{ 'landing2015_row3_img2.jpg' | asset_url }}" alt="{{ settings.landing2015_row3_img2_alt }}">
+          </figure>
+          <figcaption class="{{ row3_img2 }} mobile-show">
+            <h2>{{ settings.landing2015_row3_img2_headline }}</h2>
+            <h3>{{ settings.landing2015_row3_img2_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+        </a>
+
+        <div class="one column spacing-d"></div>
+        <a href="{{ settings.landing2015_row3_img3_link }}" class="three columns">
+          <figcaption class="{{ row3_img3 }} mobile-hide">
+            <h2>{{ settings.landing2015_row3_img3_headline }}</h2>
+            <h3>{{ settings.landing2015_row3_img3_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+          <figure class="{{ row3_img3 }}">
+            <div class="overlay"></div>
+            <img class="scale-with-grid" src="{{ 'landing2015_row3_img3.jpg' | asset_url }}" alt="{{ settings.landing2015_row3_img3_alt }}">
+          </figure>
+          <figcaption class="{{ row3_img3 }} mobile-show">
+            <h2>{{ settings.landing2015_row3_img3_headline }}</h2>
+            <h3>{{ settings.landing2015_row3_img3_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+        </a>
+
+      </div>
+    {% endif %}
+
+
+  {% endif %}
+
+{% comment %}Row4{% endcomment %}
+  {% if settings.landing2015_row4_enabled %}
+
+  {% comment %}START setting for each item{% endcomment %}
+    {% assign row4_img1 = "" %}
+    {% if settings.landing2015_row4_img1 == "1" %}
+      {% assign row4_img1 = "g1_large-portrait-left" %}
+    {% endif %}
+    {% if settings.landing2015_row4_img1 == "2" %}
+      {% assign row4_img1 = "g2_small-landscape-left" %}
+    {% endif %}
+    {% if settings.landing2015_row4_img1 == "3" %}
+      {% assign row4_img1 = "g3_med-landscape-right" %}
+    {% endif %}
+
+    {% assign row4_img2 = "" %}
+    {% if settings.landing2015_row4_img2 == "1" %}
+      {% assign row4_img2 = "g1_med-landscape-right" %}
+    {% endif %}
+    {% if settings.landing2015_row4_img2 == "2" %}
+      {% assign row4_img2 = "g2_large-portrait-right" %}
+    {% endif %}
+    {% if settings.landing2015_row4_img2 == "3" %}
+      {% assign row4_img2 = "g3_large-portrait-left" %}
+    {% endif %}
+
+    {% assign row4_img3 = "" %}
+    {% if settings.landing2015_row4_img3 == "1" %}
+      {% assign row4_img3 = "g1_small-portrait-right" %}
+    {% endif %}
+    {% if settings.landing2015_row4_img3 == "2" %}
+      {% assign row4_img3 = "g2_med-portrait-left" %}
+    {% endif %}
+    {% if settings.landing2015_row4_img3 == "3" %}
+      {% assign row4_img3 = "g3_small-landscape-right" %}
+    {% endif %}
+  {% comment %}END setting for each item{% endcomment %}
+
+
+    {% assign row4_cols_layout = "" %}
+
+  {% comment %}condition for row type:G1{% endcomment %}
+    {% if settings.landing2015_row4_cols == "1" %}
+      {% assign row4_cols_layout = "g1_large_med_small" %}
+
+      <div class="row custom-row {{ row4_cols_layout }}">
+        <div class="one column spacing-d"></div>
+        <a href="{{ settings.landing2015_row4_img1_link }}" class="five columns">
+          <figcaption class="{{ row4_img1 }} mobile-hide">
+            <h2>{{ settings.landing2015_row4_img1_headline }}</h2>
+            <h3>{{ settings.landing2015_row4_img1_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+          <figure class="{{ row4_img1 }}">
+            <div class="overlay"></div>
+            <img class="scale-with-grid" src="{{ 'landing2015_row4_img1.jpg' | asset_url }}" alt="{{ settings.landing2015_row4_img1_alt }}">
+          </figure>
+          <figcaption class="{{ row4_img1 }} mobile-show">
+            <h2>{{ settings.landing2015_row4_img1_headline }}</h2>
+            <h3>{{ settings.landing2015_row4_img1_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+        </a>
+
+        <a href="{{ settings.landing2015_row4_img2_link }}" class="six columns">
+          <figure class="{{ row4_img2 }} eight columns">
+            <div class="overlay"></div>
+            <img class="scale-with-grid" src="{{ 'landing2015_row4_img2.jpg' | asset_url }}" alt="{{ settings.landing2015_row4_img2_alt }}">
+          </figure>
+          <figcaption class="{{ row4_img2 }} four columns">
+            <h2>{{ settings.landing2015_row4_img2_headline }}</h2>
+            <h3>{{ settings.landing2015_row4_img2_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+        </a>
+
+        <div class="one column u-pull-right spacing-d"></div>
+        <a href="{{ settings.landing2015_row4_img3_link }}" class="four columns u-pull-right">
+          <figure class="{{ row4_img3 }} six columns">
+            <div class="overlay"></div>
+            <img class="scale-with-grid" src="{{ 'landing2015_row4_img3.jpg' | asset_url }}" alt="{{ settings.landing2015_row4_img3_alt }}">
+          </figure>
+          <figcaption class="{{ row4_img3 }} six columns">
+            <h2>{{ settings.landing2015_row4_img3_headline }}</h2>
+            <h3>{{ settings.landing2015_row4_img3_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+        </a>
+      </div>
+    {% endif %}
+
+  {% comment %}condition for row type:G2{% endcomment %}
+    {% if settings.landing2015_row4_cols == "2" %}
+      {% assign row4_cols_layout = "g2_med_large_med" %}
+
+      <div class="row custom-row {{ row4_cols_layout }}">
+
+        <div class="three columns spacing-d"></div>
+        <a href="{{ settings.landing2015_row4_img1_link }}" class="three columns">
+          <figcaption class="{{ row4_img1 }} mobile-hide">
+            <h2>{{ settings.landing2015_row4_img1_headline }}</h2>
+            <h3>{{ settings.landing2015_row4_img1_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+          <figure class="{{ row4_img1 }}">
+            <div class="overlay"></div>
+            <img class="scale-with-grid" src="{{ 'landing2015_row4_img1.jpg' | asset_url }}" alt="{{ settings.landing2015_row4_img1_alt }}">
+          </figure>
+          <figcaption class="{{ row4_img1 }} mobile-show">
+            <h2>{{ settings.landing2015_row4_img1_headline }}</h2>
+            <h3>{{ settings.landing2015_row4_img1_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+        </a>
+
+        <div class="one column spacing-d u-pull-right"></div>
+        <a href="{{ settings.landing2015_row4_img2_link }}" class="five columns u-pull-right">
+          <figcaption class="{{ row4_img2 }} mobile-hide">
+            <h2>{{ settings.landing2015_row4_img2_headline }}</h2>
+            <h3>{{ settings.landing2015_row4_img2_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+          <figure class="{{ row4_img2 }}">
+            <div class="overlay"></div>
+            <img class="scale-with-grid" src="{{ 'landing2015_row4_img2.jpg' | asset_url }}" alt="{{ settings.landing2015_row4_img2_alt }}">
+          </figure>
+          <figcaption class="{{ row4_img2 }} mobile-show">
+            <h2>{{ settings.landing2015_row4_img2_headline }}</h2>
+            <h3>{{ settings.landing2015_row4_img2_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+        </a>
+
+        <a href="{{ settings.landing2015_row4_img3_link }}" class="five columns u-pull-right">
+          <figure class="{{ row4_img3 }} seven columns">
+            <div class="overlay"></div>
+            <img class="scale-with-grid" src="{{ 'landing2015_row4_img3.jpg' | asset_url }}" alt="{{ settings.landing2015_row4_img3_alt }}">
+          </figure>
+          <figcaption class="{{ row4_img3 }} five columns">
+            <h2>{{ settings.landing2015_row4_img3_headline }}</h2>
+            <h3>{{ settings.landing2015_row4_img3_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+        </a>
+
+      </div>
+    {% endif %}
+
+  {% comment %}condition for row type:G3{% endcomment %}
+    {% if settings.landing2015_row4_cols == "3" %}
+      {% assign row4_cols_layout = "g3_small_large_med" %}
+      <div class="row custom-row {{ row4_cols_layout }}">
+
+        <div class="one column spacing-d u-pull-right"></div>
+        <a href="{{ settings.landing2015_row4_img1_link }}" class="four columns u-pull-right">
+          <figcaption class="{{ row4_img1 }} mobile-hide">
+            <h2>{{ settings.landing2015_row4_img1_headline }}</h2>
+            <h3>{{ settings.landing2015_row4_img1_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+          <figure class="{{ row4_img1 }}">
+            <div class="overlay"></div>
+            <img class="scale-with-grid" src="{{ 'landing2015_row4_img1.jpg' | asset_url }}" alt="{{ settings.landing2015_row4_img1_alt }}">
+          </figure>
+          <figcaption class="{{ row4_img1 }} mobile-show">
+            <h2>{{ settings.landing2015_row4_img1_headline }}</h2>
+            <h3>{{ settings.landing2015_row4_img1_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+        </a>
+
+        <div class="two columns spacing-d"></div>
+        <a href="{{ settings.landing2015_row4_img2_link }}" class="five columns">
+          <figcaption class="{{ row4_img2 }} mobile-hide">
+            <h2>{{ settings.landing2015_row4_img2_headline }}</h2>
+            <h3>{{ settings.landing2015_row4_img2_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+          <figure class="{{ row4_img2 }}">
+            <div class="overlay"></div>
+            <img class="scale-with-grid" src="{{ 'landing2015_row4_img2.jpg' | asset_url }}" alt="{{ settings.landing2015_row4_img2_alt }}">
+          </figure>
+          <figcaption class="{{ row4_img2 }} mobile-show">
+            <h2>{{ settings.landing2015_row4_img2_headline }}</h2>
+            <h3>{{ settings.landing2015_row4_img2_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+        </a>
+
+        <div class="one column spacing-d"></div>
+        <a href="{{ settings.landing2015_row4_img3_link }}" class="three columns">
+          <figcaption class="{{ row4_img3 }} mobile-hide">
+            <h2>{{ settings.landing2015_row4_img3_headline }}</h2>
+            <h3>{{ settings.landing2015_row4_img3_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+          <figure class="{{ row4_img3 }}">
+            <div class="overlay"></div>
+            <img class="scale-with-grid" src="{{ 'landing2015_row4_img3.jpg' | asset_url }}" alt="{{ settings.landing2015_row4_img3_alt }}">
+          </figure>
+          <figcaption class="{{ row4_img3 }} mobile-show">
+            <h2>{{ settings.landing2015_row4_img3_headline }}</h2>
+            <h3>{{ settings.landing2015_row4_img3_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+        </a>
+
+      </div>
+    {% endif %}
+
+
+  {% endif %}
+
+{% comment %}Row5{% endcomment %}
+  {% if settings.landing2015_row5_enabled %}
+
+  {% comment %}START setting for each item{% endcomment %}
+    {% assign row5_img1 = "" %}
+    {% if settings.landing2015_row5_img1 == "1" %}
+      {% assign row5_img1 = "g1_large-portrait-left" %}
+    {% endif %}
+    {% if settings.landing2015_row5_img1 == "2" %}
+      {% assign row5_img1 = "g2_small-landscape-left" %}
+    {% endif %}
+    {% if settings.landing2015_row5_img1 == "3" %}
+      {% assign row5_img1 = "g3_med-landscape-right" %}
+    {% endif %}
+
+    {% assign row5_img2 = "" %}
+    {% if settings.landing2015_row5_img2 == "1" %}
+      {% assign row5_img2 = "g1_med-landscape-right" %}
+    {% endif %}
+    {% if settings.landing2015_row5_img2 == "2" %}
+      {% assign row5_img2 = "g2_large-portrait-right" %}
+    {% endif %}
+    {% if settings.landing2015_row5_img2 == "3" %}
+      {% assign row5_img2 = "g3_large-portrait-left" %}
+    {% endif %}
+
+    {% assign row5_img3 = "" %}
+    {% if settings.landing2015_row5_img3 == "1" %}
+      {% assign row5_img3 = "g1_small-portrait-right" %}
+    {% endif %}
+    {% if settings.landing2015_row5_img3 == "2" %}
+      {% assign row5_img3 = "g2_med-portrait-left" %}
+    {% endif %}
+    {% if settings.landing2015_row5_img3 == "3" %}
+      {% assign row5_img3 = "g3_small-landscape-right" %}
+    {% endif %}
+  {% comment %}END setting for each item{% endcomment %}
+
+
+    {% assign row5_cols_layout = "" %}
+
+  {% comment %}condition for row type:G1{% endcomment %}
+    {% if settings.landing2015_row5_cols == "1" %}
+      {% assign row5_cols_layout = "g1_large_med_small" %}
+
+      <div class="row custom-row {{ row5_cols_layout }}">
+        <div class="one column spacing-d"></div>
+        <a href="{{ settings.landing2015_row5_img1_link }}" class="five columns">
+          <figcaption class="{{ row5_img1 }} mobile-hide">
+            <h2>{{ settings.landing2015_row5_img1_headline }}</h2>
+            <h3>{{ settings.landing2015_row5_img1_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+          <figure class="{{ row5_img1 }}">
+            <div class="overlay"></div>
+            <img class="scale-with-grid" src="{{ 'landing2015_row5_img1.jpg' | asset_url }}" alt="{{ settings.landing2015_row5_img1_alt }}">
+          </figure>
+          <figcaption class="{{ row5_img1 }} mobile-show">
+            <h2>{{ settings.landing2015_row5_img1_headline }}</h2>
+            <h3>{{ settings.landing2015_row5_img1_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+        </a>
+
+        <a href="{{ settings.landing2015_row5_img2_link }}" class="six columns">
+          <figure class="{{ row5_img2 }} eight columns">
+            <div class="overlay"></div>
+            <img class="scale-with-grid" src="{{ 'landing2015_row5_img2.jpg' | asset_url }}" alt="{{ settings.landing2015_row5_img2_alt }}">
+          </figure>
+          <figcaption class="{{ row5_img2 }} four columns">
+            <h2>{{ settings.landing2015_row5_img2_headline }}</h2>
+            <h3>{{ settings.landing2015_row5_img2_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+        </a>
+
+        <div class="one column u-pull-right spacing-d"></div>
+        <a href="{{ settings.landing2015_row5_img3_link }}" class="four columns u-pull-right">
+          <figure class="{{ row5_img3 }} six columns">
+            <div class="overlay"></div>
+            <img class="scale-with-grid" src="{{ 'landing2015_row5_img3.jpg' | asset_url }}" alt="{{ settings.landing2015_row5_img3_alt }}">
+          </figure>
+          <figcaption class="{{ row5_img3 }} six columns">
+            <h2>{{ settings.landing2015_row5_img3_headline }}</h2>
+            <h3>{{ settings.landing2015_row5_img3_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+        </a>
+      </div>
+    {% endif %}
+
+  {% comment %}condition for row type:G2{% endcomment %}
+    {% if settings.landing2015_row5_cols == "2" %}
+      {% assign row5_cols_layout = "g2_med_large_med" %}
+
+      <div class="row custom-row {{ row5_cols_layout }}">
+
+        <div class="three columns spacing-d"></div>
+        <a href="{{ settings.landing2015_row5_img1_link }}" class="three columns">
+          <figcaption class="{{ row5_img1 }} mobile-hide">
+            <h2>{{ settings.landing2015_row5_img1_headline }}</h2>
+            <h3>{{ settings.landing2015_row5_img1_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+          <figure class="{{ row5_img1 }}">
+            <div class="overlay"></div>
+            <img class="scale-with-grid" src="{{ 'landing2015_row5_img1.jpg' | asset_url }}" alt="{{ settings.landing2015_row5_img1_alt }}">
+          </figure>
+          <figcaption class="{{ row5_img1 }} mobile-show">
+            <h2>{{ settings.landing2015_row5_img1_headline }}</h2>
+            <h3>{{ settings.landing2015_row5_img1_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+        </a>
+
+        <div class="one column spacing-d u-pull-right"></div>
+        <a href="{{ settings.landing2015_row5_img2_link }}" class="five columns u-pull-right">
+          <figcaption class="{{ row5_img2 }} mobile-hide">
+            <h2>{{ settings.landing2015_row5_img2_headline }}</h2>
+            <h3>{{ settings.landing2015_row5_img2_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+          <figure class="{{ row5_img2 }}">
+            <div class="overlay"></div>
+            <img class="scale-with-grid" src="{{ 'landing2015_row5_img2.jpg' | asset_url }}" alt="{{ settings.landing2015_row5_img2_alt }}">
+          </figure>
+          <figcaption class="{{ row5_img2 }} mobile-show">
+            <h2>{{ settings.landing2015_row5_img2_headline }}</h2>
+            <h3>{{ settings.landing2015_row5_img2_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+        </a>
+
+        <a href="{{ settings.landing2015_row5_img3_link }}" class="five columns u-pull-right">
+          <figure class="{{ row5_img3 }} seven columns">
+            <div class="overlay"></div>
+            <img class="scale-with-grid" src="{{ 'landing2015_row5_img3.jpg' | asset_url }}" alt="{{ settings.landing2015_row5_img3_alt }}">
+          </figure>
+          <figcaption class="{{ row5_img3 }} five columns">
+            <h2>{{ settings.landing2015_row5_img3_headline }}</h2>
+            <h3>{{ settings.landing2015_row5_img3_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+        </a>
+
+      </div>
+    {% endif %}
+
+  {% comment %}condition for row type:G3{% endcomment %}
+    {% if settings.landing2015_row5_cols == "3" %}
+      {% assign row5_cols_layout = "g3_small_large_med" %}
+      <div class="row custom-row {{ row5_cols_layout }}">
+
+        <div class="one column spacing-d u-pull-right"></div>
+        <a href="{{ settings.landing2015_row5_img1_link }}" class="four columns u-pull-right">
+          <figcaption class="{{ row5_img1 }} mobile-hide">
+            <h2>{{ settings.landing2015_row5_img1_headline }}</h2>
+            <h3>{{ settings.landing2015_row5_img1_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+          <figure class="{{ row5_img1 }}">
+            <div class="overlay"></div>
+            <img class="scale-with-grid" src="{{ 'landing2015_row5_img1.jpg' | asset_url }}" alt="{{ settings.landing2015_row5_img1_alt }}">
+          </figure>
+          <figcaption class="{{ row5_img1 }} mobile-show">
+            <h2>{{ settings.landing2015_row5_img1_headline }}</h2>
+            <h3>{{ settings.landing2015_row5_img1_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+        </a>
+
+        <div class="two columns spacing-d"></div>
+        <a href="{{ settings.landing2015_row5_img2_link }}" class="five columns">
+          <figcaption class="{{ row5_img2 }} mobile-hide">
+            <h2>{{ settings.landing2015_row5_img2_headline }}</h2>
+            <h3>{{ settings.landing2015_row5_img2_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+          <figure class="{{ row5_img2 }}">
+            <div class="overlay"></div>
+            <img class="scale-with-grid" src="{{ 'landing2015_row5_img2.jpg' | asset_url }}" alt="{{ settings.landing2015_row5_img2_alt }}">
+          </figure>
+          <figcaption class="{{ row5_img2 }} mobile-show">
+            <h2>{{ settings.landing2015_row5_img2_headline }}</h2>
+            <h3>{{ settings.landing2015_row5_img2_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+        </a>
+
+        <div class="one column spacing-d"></div>
+        <a href="{{ settings.landing2015_row5_img3_link }}" class="three columns">
+          <figcaption class="{{ row5_img3 }} mobile-hide">
+            <h2>{{ settings.landing2015_row5_img3_headline }}</h2>
+            <h3>{{ settings.landing2015_row5_img3_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+          <figure class="{{ row5_img3 }}">
+            <div class="overlay"></div>
+            <img class="scale-with-grid" src="{{ 'landing2015_row5_img3.jpg' | asset_url }}" alt="{{ settings.landing2015_row5_img3_alt }}">
+          </figure>
+          <figcaption class="{{ row5_img3 }} mobile-show">
+            <h2>{{ settings.landing2015_row5_img3_headline }}</h2>
+            <h3>{{ settings.landing2015_row5_img3_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+        </a>
+
+      </div>
+    {% endif %}
+
+
+  {% endif %}
+
+{% comment %}Row6{% endcomment %}
+  {% if settings.landing2015_row6_enabled %}
+
+  {% comment %}START setting for each item{% endcomment %}
+    {% assign row6_img1 = "" %}
+    {% if settings.landing2015_row6_img1 == "1" %}
+      {% assign row6_img1 = "g1_large-portrait-left" %}
+    {% endif %}
+    {% if settings.landing2015_row6_img1 == "2" %}
+      {% assign row6_img1 = "g2_small-landscape-left" %}
+    {% endif %}
+    {% if settings.landing2015_row6_img1 == "3" %}
+      {% assign row6_img1 = "g3_med-landscape-right" %}
+    {% endif %}
+
+    {% assign row6_img2 = "" %}
+    {% if settings.landing2015_row6_img2 == "1" %}
+      {% assign row6_img2 = "g1_med-landscape-right" %}
+    {% endif %}
+    {% if settings.landing2015_row6_img2 == "2" %}
+      {% assign row6_img2 = "g2_large-portrait-right" %}
+    {% endif %}
+    {% if settings.landing2015_row6_img2 == "3" %}
+      {% assign row6_img2 = "g3_large-portrait-left" %}
+    {% endif %}
+
+    {% assign row6_img3 = "" %}
+    {% if settings.landing2015_row6_img3 == "1" %}
+      {% assign row6_img3 = "g1_small-portrait-right" %}
+    {% endif %}
+    {% if settings.landing2015_row6_img3 == "2" %}
+      {% assign row6_img3 = "g2_med-portrait-left" %}
+    {% endif %}
+    {% if settings.landing2015_row6_img3 == "3" %}
+      {% assign row6_img3 = "g3_small-landscape-right" %}
+    {% endif %}
+  {% comment %}END setting for each item{% endcomment %}
+
+
+    {% assign row6_cols_layout = "" %}
+
+  {% comment %}condition for row type:G1{% endcomment %}
+    {% if settings.landing2015_row6_cols == "1" %}
+      {% assign row6_cols_layout = "g1_large_med_small" %}
+
+      <div class="row custom-row {{ row6_cols_layout }}">
+        <div class="one column spacing-d"></div>
+        <a href="{{ settings.landing2015_row6_img1_link }}" class="five columns">
+          <figcaption class="{{ row6_img1 }} mobile-hide">
+            <h2>{{ settings.landing2015_row6_img1_headline }}</h2>
+            <h3>{{ settings.landing2015_row6_img1_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+          <figure class="{{ row6_img1 }}">
+            <div class="overlay"></div>
+            <img class="scale-with-grid" src="{{ 'landing2015_row6_img1.jpg' | asset_url }}" alt="{{ settings.landing2015_row6_img1_alt }}">
+          </figure>
+          <figcaption class="{{ row6_img1 }} mobile-show">
+            <h2>{{ settings.landing2015_row6_img1_headline }}</h2>
+            <h3>{{ settings.landing2015_row6_img1_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+        </a>
+
+        <a href="{{ settings.landing2015_row6_img2_link }}" class="six columns">
+          <figure class="{{ row6_img2 }} eight columns">
+            <div class="overlay"></div>
+            <img class="scale-with-grid" src="{{ 'landing2015_row6_img2.jpg' | asset_url }}" alt="{{ settings.landing2015_row6_img2_alt }}">
+          </figure>
+          <figcaption class="{{ row6_img2 }} four columns">
+            <h2>{{ settings.landing2015_row6_img2_headline }}</h2>
+            <h3>{{ settings.landing2015_row6_img2_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+        </a>
+
+        <div class="one column u-pull-right spacing-d"></div>
+        <a href="{{ settings.landing2015_row6_img3_link }}" class="four columns u-pull-right">
+          <figure class="{{ row6_img3 }} six columns">
+            <div class="overlay"></div>
+            <img class="scale-with-grid" src="{{ 'landing2015_row6_img3.jpg' | asset_url }}" alt="{{ settings.landing2015_row6_img3_alt }}">
+          </figure>
+          <figcaption class="{{ row6_img3 }} six columns">
+            <h2>{{ settings.landing2015_row6_img3_headline }}</h2>
+            <h3>{{ settings.landing2015_row6_img3_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+        </a>
+      </div>
+    {% endif %}
+
+  {% comment %}condition for row type:G2{% endcomment %}
+    {% if settings.landing2015_row6_cols == "2" %}
+      {% assign row6_cols_layout = "g2_med_large_med" %}
+
+      <div class="row custom-row {{ row6_cols_layout }}">
+
+        <div class="three columns spacing-d"></div>
+        <a href="{{ settings.landing2015_row6_img1_link }}" class="three columns">
+          <figcaption class="{{ row6_img1 }} mobile-hide">
+            <h2>{{ settings.landing2015_row6_img1_headline }}</h2>
+            <h3>{{ settings.landing2015_row6_img1_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+          <figure class="{{ row6_img1 }}">
+            <div class="overlay"></div>
+            <img class="scale-with-grid" src="{{ 'landing2015_row6_img1.jpg' | asset_url }}" alt="{{ settings.landing2015_row6_img1_alt }}">
+          </figure>
+          <figcaption class="{{ row6_img1 }} mobile-show">
+            <h2>{{ settings.landing2015_row6_img1_headline }}</h2>
+            <h3>{{ settings.landing2015_row6_img1_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+        </a>
+
+        <div class="one column spacing-d u-pull-right"></div>
+        <a href="{{ settings.landing2015_row6_img2_link }}" class="five columns u-pull-right">
+          <figcaption class="{{ row6_img2 }} mobile-hide">
+            <h2>{{ settings.landing2015_row6_img2_headline }}</h2>
+            <h3>{{ settings.landing2015_row6_img2_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+          <figure class="{{ row6_img2 }}">
+            <div class="overlay"></div>
+            <img class="scale-with-grid" src="{{ 'landing2015_row6_img2.jpg' | asset_url }}" alt="{{ settings.landing2015_row6_img2_alt }}">
+          </figure>
+          <figcaption class="{{ row6_img2 }} mobile-show">
+            <h2>{{ settings.landing2015_row6_img2_headline }}</h2>
+            <h3>{{ settings.landing2015_row6_img2_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+        </a>
+
+        <a href="{{ settings.landing2015_row6_img3_link }}" class="five columns u-pull-right">
+          <figure class="{{ row6_img3 }} seven columns">
+            <div class="overlay"></div>
+            <img class="scale-with-grid" src="{{ 'landing2015_row6_img3.jpg' | asset_url }}" alt="{{ settings.landing2015_row6_img3_alt }}">
+          </figure>
+          <figcaption class="{{ row6_img3 }} five columns">
+            <h2>{{ settings.landing2015_row6_img3_headline }}</h2>
+            <h3>{{ settings.landing2015_row6_img3_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+        </a>
+
+      </div>
+    {% endif %}
+
+  {% comment %}condition for row type:G3{% endcomment %}
+    {% if settings.landing2015_row6_cols == "3" %}
+      {% assign row6_cols_layout = "g3_small_large_med" %}
+      <div class="row custom-row {{ row6_cols_layout }}">
+
+        <div class="one column spacing-d u-pull-right"></div>
+        <a href="{{ settings.landing2015_row6_img1_link }}" class="four columns u-pull-right">
+          <figcaption class="{{ row6_img1 }} mobile-hide">
+            <h2>{{ settings.landing2015_row6_img1_headline }}</h2>
+            <h3>{{ settings.landing2015_row6_img1_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+          <figure class="{{ row6_img1 }}">
+            <div class="overlay"></div>
+            <img class="scale-with-grid" src="{{ 'landing2015_row6_img1.jpg' | asset_url }}" alt="{{ settings.landing2015_row6_img1_alt }}">
+          </figure>
+          <figcaption class="{{ row6_img1 }} mobile-show">
+            <h2>{{ settings.landing2015_row6_img1_headline }}</h2>
+            <h3>{{ settings.landing2015_row6_img1_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+        </a>
+
+        <div class="two columns spacing-d"></div>
+        <a href="{{ settings.landing2015_row6_img2_link }}" class="five columns">
+          <figcaption class="{{ row6_img2 }} mobile-hide">
+            <h2>{{ settings.landing2015_row6_img2_headline }}</h2>
+            <h3>{{ settings.landing2015_row6_img2_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+          <figure class="{{ row6_img2 }}">
+            <div class="overlay"></div>
+            <img class="scale-with-grid" src="{{ 'landing2015_row6_img2.jpg' | asset_url }}" alt="{{ settings.landing2015_row6_img2_alt }}">
+          </figure>
+          <figcaption class="{{ row6_img2 }} mobile-show">
+            <h2>{{ settings.landing2015_row6_img2_headline }}</h2>
+            <h3>{{ settings.landing2015_row6_img2_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+        </a>
+
+        <div class="one column spacing-d"></div>
+        <a href="{{ settings.landing2015_row6_img3_link }}" class="three columns">
+          <figcaption class="{{ row6_img3 }} mobile-hide">
+            <h2>{{ settings.landing2015_row6_img3_headline }}</h2>
+            <h3>{{ settings.landing2015_row6_img3_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+          <figure class="{{ row6_img3 }}">
+            <div class="overlay"></div>
+            <img class="scale-with-grid" src="{{ 'landing2015_row6_img3.jpg' | asset_url }}" alt="{{ settings.landing2015_row6_img3_alt }}">
+          </figure>
+          <figcaption class="{{ row6_img3 }} mobile-show">
+            <h2>{{ settings.landing2015_row6_img3_headline }}</h2>
+            <h3>{{ settings.landing2015_row6_img3_subheadline }}<span class="icon-arrow-right"></span></h3>
+          </figcaption>
+        </a>
+
+      </div>
+    {% endif %}
+
+
+  {% endif %}
+
+  <div class="row u-full-width subscribe-wrap">
+    <div class="container">
+      <div class="one column spacing-d"></div>
+      <div class="two columns">
+        <h4 class="subscribe-title">Become<br>an insider</h4>
+      </div>
+      <div class="four columns">
+        <p class="subscribe-desc">Sign up for our email newsletter to receive notifications on new arrivals, sales and promotions, special events, and more.</p>
+      </div>
+
+        <!-- Begin MailChimp Signup Form -->
+      <div class="mc_embed_signup-wrap four columns">
+        <div class="mc_embed_signup">
+        <form action="//rodengray.us2.list-manage.com/subscribe/post?u=81a8db5d2d46720110e454e44&amp;id=89291efd13" method="post" class="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+
+        <div class="mc-field-group">
+          <input type="email" value="" placeholder="Email Address" name="EMAIL" class="required email mce-EMAIL">
+          <input type="submit" value="Subscribe" name="subscribe" class="button mc-embedded-subscribe">
+        </div>
+          <div class="mce-responses">
+            <div class="response mce-error-response" style="display:none"></div>
+            <div class="response mce-success-response" style="display:none"></div>
+          </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+            <div style="position: absolute; left: -5000px;"><input type="text" name="b_81a8db5d2d46720110e454e44_89291efd13" tabindex="-1" value=""></div>
+        </form>
+        </div>
+      </div>
+
+        <!--End mc_embed_signup-->
+      <div class="one column spacing-d"></div>
+    </div>
+  </div>
+
+{% comment %}Row Insta{% endcomment %}
+  <div class="row insta">
+    <div class="container">
+      <div class="one column spacing-d"></div>
+      <div class="insta-inner ten columns">
+        <h4 class="insta-header"><span class="icon-instagram"></span>FOLLOW US ON INSTAGRAM</h4>
+
+        <div class="insta-items">
+          <a href="{{ settings.landing2015_rowinsta_img1_link }}" class="insta-item" target="_blank">
+          <figure>
+            <div class="overlay"></div>
+            <img class="scale-with-grid" src="{{ 'landing2015_rowinsta_img1.jpg' | asset_url }}" alt="{{ settings.landing2015_rowinsta_img1_alt }}">
+          </figure>
+          </a>
+
+          <a href="{{ settings.landing2015_rowinsta_img2_link }}" class="insta-item" target="_blank">
+          <figure>
+            <div class="overlay"></div>
+            <img class="scale-with-grid" src="{{ 'landing2015_rowinsta_img2.jpg' | asset_url }}" alt="{{ settings.landing2015_rowinsta_img2_alt }}">
+          </figure>
+          </a>
+
+          <a href="{{ settings.landing2015_rowinsta_img3_link }}" class="insta-item" target="_blank">
+          <figure>
+            <div class="overlay"></div>
+            <img class="scale-with-grid" src="{{ 'landing2015_rowinsta_img3.jpg' | asset_url }}" alt="{{ settings.landing2015_rowinsta_img3_alt }}">
+          </figure>
+          </a>
+        </div>
+      </div>
+      <div class="one column spacing-d"></div>
+    </div>
+  </div>
+
+</section>

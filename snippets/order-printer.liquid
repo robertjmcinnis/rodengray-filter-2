@@ -1,0 +1,173 @@
+<style type="text/css" scoped>
+.printer-preview-content { font-size: 0.7em; }
+.printer-preview-content * { font-family: 'FranklinGothicURWConBoo'; }
+.printer-preview-content h1, .printer-preview-content h2, .printer-preview-content h3 { font-family: 'FranklinGothicURWComBoo'; text-transform: uppercase; letter-spacing: 0.15em; }
+.printer-preview-content hr { border-bottom: 1px solid #9a9a9a; }
+.printer-preview-content strong { font-family: 'FranklinGothicURWConDem'; }
+.printer-preview-content .returns-info * { color: #cccccc; }
+.printer-preview-content .returns-info p { text-align: justify; }
+.printer-preview-content .returns-info p strong { color: #9a9a9a; }
+.printer-preview-content #wrapper table.table-tabular, .printer-preview-content .table-tabular { border: 1px solid #9a9a9a; }
+.printer-preview-content #wrapper table.table-tabular th, .printer-preview-content .table-tabular th { border-bottom: 1px solid #9a9a9a; }
+.printer-preview-content #wrapper table.table-tabular td, .printer-preview-content .table-tabular td { border-bottom: 1px solid #9a9a9a; }
+</style>
+{% assign item_count = 0 %}
+{% for line_item in line_items %}
+{% assign item_count = forloop.index %}
+{% endfor %}
+<div style="page-break-after: always;">
+<p style="float: right; text-align: right; margin: 0;">
+  {{ "now" | date: "%m/%d/%y" }}<br />
+  Invoice for: <span style="font-size: 2em; margin-left: 0.25em;">{{ order_name }}</span>
+</p>
+
+<div style="float: left; margin: 0 0 1.5em 0;" >
+  <img src="//cdn.shopify.com/s/files/1/0240/7285/t/4/assets/logo_img.png" style="width: 20em;"><br /><br />
+  {{ shop.address }}<br/>
+  {{ shop.city }} {{ shop.province_code }} {{ shop.zip | upcase }}<br/>
+  {{ shop.country }}
+</div>
+
+<hr />
+
+<h3 style="margin: 0 0 1em 0;">Item Details</h3>
+
+<table class="table-tabular" style="margin: 0 0 1.5em 0;">
+  <thead>
+    <tr>
+      <th>&nbsp;</th>
+      <th>Quantity</th>
+      <th>Item</th>
+      <th>Tax</th>
+      <th>Price</th>
+      <th style="width: 7em;">Discount</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for line_item in line_items %}
+    {% if line_item.variant.compare_at_price != 0 %}{% assign discount = line_item.variant.compare_at_price | minus: line_item.price | times: 100 | divided_by: line_item.variant.compare_at_price %}{% endif %}
+      <tr>
+        <td style="border-right: 1px solid #9a9a9a;">&nbsp;</td>
+        <td>{{ line_item.quantity }} x</td>
+        <td>{{ line_item.vendor }}<br/><b>{{ line_item.title }}</b><br/>{{ line_item.sku }}</td>
+        <td>{% for tax_line in tax_lines %}{{ tax_line.rate | times: line_item.line_price | money }} {{ tax_line.title }}<br/>{% endfor %}</td>
+        <td>{{ line_item.price | money }}</td>
+        <td>{% if line_item.variant.compare_at_price != 0 %}{{ discount }}%{% if discount >= 50 %}<br><strong>FINAL SALE</strong>{% endif %}{% endif %}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% comment %}
+<!-- Removed for Now -->
+{% if transactions.size > 1 %}
+  <h3 style="margin: 0 0 1em 0;">Transaction Details</h3>
+  <table class="table-tabular" style="margin: 0 0 1.5em 0;">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Amount</th>
+        <th>Kind</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for transaction in transactions %}
+        <tr>
+          <td>{{ transaction.gateway | payment_method }}</td>
+          <td>{{ transaction.amount | money }}</td>
+          <td>{{ transaction.kind }}</td>
+          <td>{{ transaction.status }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endif %}
+{% endcomment %}
+
+<h3 style="margin: 0 0 1em 0;">Payment Details</h3>
+
+<table class="table-tabular" style="margin: 0 0 1.5em 0;">
+  <tr>
+    <td>Subtotal price:</td>
+    <td>{{ subtotal_price | money }}</td>
+  </tr>
+  {% for discount in discounts %}
+  <tr>
+    <td>Includes discount "{{ discount.code }}"</td>
+    <td>{{ discount.savings | money }}</td>
+  </tr>
+  {% endfor %}
+  <tr>
+    <td>Total tax:</td>
+    <td>{{ tax_price | money }}</td>
+  </tr>
+  {% if shipping_address %}
+    <tr>
+      <td>Shipping:</td>
+      <td>{{ shipping_price | money }} | {{ shipping_line.title }} </td>
+    </tr>
+  {% endif %}
+  <tr>
+    <td><strong>Total price:</strong></td>
+    <td><strong>{{ total_price | money }}</strong></td>
+  </tr>
+  {% if total_paid != total_price %}
+    <tr>
+      <td><strong>Total paid:</strong></td>
+      <td><strong>{{ total_paid | money }}</strong></td>
+    </tr>
+    <tr>
+      <td><strong>Outstanding Amount:</strong></td>
+      <td><strong>{{ total_price | minus: total_paid | money }}</strong></td>
+    </tr>
+  {% endif %}
+</table>
+
+{% if note %}
+  <h3 style="margin: 0 0 1em 0;">Note</h3>
+  <p>{{ note }}</p>
+{% endif %}
+
+{% if shipping_address %}
+  <h3 style="margin: 0 0 1em 0;">Shipping Details</h3>
+
+  <div style="margin: 0 0 1em 0; padding: 1em; border: 1px solid #9a9a9a;">
+    <strong>{{ shipping_address.name }}</strong><br/>
+    {% if shipping_address.company %}
+      {{ shipping_address.company }}<br/>
+    {% endif %}
+    {{ shipping_address.street }}<br/>
+    {{ shipping_address.city }}
+    {{ shipping_address.province_code }}
+    {{ shipping_address.zip | upcase }}<br/>
+    {{ shipping_address.country }}
+  </div>
+{% endif %}
+
+<p>If you have any questions, please send an email to <u>info@rodengray.com</u></p>
+</div>
+
+{% unless item_count > 6 %}
+<div class="returns-info">
+<div style="width: 60%; float:left;">
+<h2>Returns &amp; Exchanges</h2>
+<p>You are welcome to return any clothing, footwear, and accessories ordered within 14 days of delivery for exchange or refund as long as the item is unworn and in new condition. Footwear must be returned in the original packaging. Items discounted 50% or more are <strong style="color: #9a9a9a;">Final Sale</strong> and may not be returned. Jewellery and apothecary items (fragrances, candles, incense, grooming products, and garment care products) are <strong>Final Sale</strong> and may not be returned.</p>
+<h3>Request a Return</h3>
+<p><strong>All returns must be authorized via email or phone prior to shipping</strong>. Items returned without authorization may be refused upon delivery. Please email info@rodengray.com with your order number and the items to be returned or scan the QR code on the right.</p>
+<h3>Returns in Canada</h3>
+<p>Return shipping is free for customers within Canada, request a return to receive your shipping label.</p>
+<h3>Returns from the USA</h3>
+<p>Return shipping charges for orders returned from the USA are the responsibility of the customer. All US returns must be shipped via US Postal Service (USPS), returns shipped via other services will incur brokerage fees and/or duties which will be deducted from the credit/refund you will receive. Returned items must be declared as "Returned Goods" in the customs section of the return label, returns that are not properly declared may incur additional fees. Please use a service that is trackable (we recommend Priority Mail International) as we are not responsible for damaged or lost returns.</p>
+<h3>International returns</h3>
+<p>Return shipping charges for orders outside of Canada are the responsibility of the customer. Please ship your return via a postal service (Royal Mail, Australia Post, EMS, etc.), returns shipped via courier services such as FedEx, DHL, or UPS will incur brokerage fees which will be deducted from the credit/refund you will receive. Returned items must be declared as "Returned Goods" in the customs section of the return shipping label, returns that are not properly declared may incur additional fees. Please use a service that is trackable as we are not responsible for damaged or lost returns.</p>
+<h3>Return Address</h3>
+<p>Roden Gray<br/>
+ATTN: Returns Order #{{ order_number }}<br/>
+16 Water St.<br/>
+Vancouver, BC<br/>
+Canada V6B 1A4</p>
+</div>
+<img src="http://qrickit.com/api/qr?d=MAILTO:info@rodengray.com?subject=Return%20Request%20for%20Order%20%23{{ order_number }}&fgdcolor=666666&txtcolor=666666&addtext=Scan%20to%20Request%20a%20Return" style="float:right; margin: 8% 5% 0 0"/>
+</div>
+{% endunless %}

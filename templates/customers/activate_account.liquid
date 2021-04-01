@@ -1,0 +1,35 @@
+<div class="customer-account__title-area" style="background-image:url('{{ settings.secondary_header_bg | img_url: '2000x' }}')">
+	<h1 class="customer-account__title">{{ 'customer.activate_account.title' | t }}</h1>
+	<p class="customer-account__text"{{ 'customer.activate_account.subtext' | t }}</p>
+</div>
+
+<div class="customer-activate">
+	{% form 'activate_customer_password' %}
+		{{ form.errors | default_errors }}
+
+		<p>
+			<label class="customer-activate__label" for="CustomerPassword">
+			{{ 'customer.activate_account.password' | t }}
+			</label>
+			<input type="password"
+				name="customer[password]"
+				class="customer-login__form-input customer-activate__input"
+				id="CustomerPassword"
+				placeholder="{{ 'customer.activate_account.password' | t }}">
+		</p>
+
+		<p>
+			<label class="customer-activate__label" for="CustomerPasswordConfirmation">
+			{{ 'customer.activate_account.password_confirm' | t }}
+			</label>
+			<input type="password"
+				class="customer-login__form-input customer-activate__input"
+				name="customer[password_confirmation]"
+				id="CustomerPasswordConfirmation"
+				placeholder="{{ 'customer.activate_account.password_confirm' | t }}">
+		</p>
+
+		<input type="submit" class="button" value="{{ 'customer.activate_account.submit' | t }}">
+		<input type="submit" class="button button--secondary" name="decline" value="{{ 'customer.activate_account.cancel' | t }}">
+	{% endform %}
+</div>

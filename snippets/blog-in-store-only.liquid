@@ -1,0 +1,63 @@
+{% paginate blog.articles by 8 %}
+<section class="blog">
+	<div class="row title">
+		<h2>
+			<a href="{{ blog.url }}">{{ blog.title }}</a>{% if current_tags %} | <a href="{{ blog.url }}/{{ current_tags.first | handleize }}">{{ current_tags.first }}</a>{% endif %}
+		</h2>
+	</div>
+	{% for article in blog.articles %}
+	<div class="row">
+		<article class="post">
+			<header>
+				<h3 class="title"><a href="{{ article.url }}">{{ article.title }}</a></h3>
+				<span class="date">
+					{{ article.created_at | date: '%A %B %d, %Y' }}
+				</span>
+			</header>
+			<section class="excerpt rte">
+				{{ article.excerpt_or_content }}
+				{% if article.excerpt != blank %}
+				<h4><a class="more" href="{{ article.url }}{% if article.tags contains 'Locals' %}#post-content{% endif %}">Continue Reading</a></h4>
+				{% endif %}
+			</section>
+			<footer>
+				<div class="tags">
+					<span>Filed under:</span>&nbsp;
+					<ul>
+						{% for tag in article.tags %}
+						<li><a href="{{ shop.url}}/blogs/{{ blog.handle }}/tagged/{{ tag | handleize }}">{{ tag }}</a></li>
+						{% endfor %}
+					</ul>
+				</div>
+				{% capture share_url %}{{ shop.url }}{{ article.url }}{% endcapture %}
+				{% capture share_text %}{{ article.title }}{% endcapture %}
+				{% include 'share-buttons' %}
+			</footer>
+		</article>
+	</div>
+	{% endfor %}
+	<div class="row blog-nav">
+		{% if paginate.previous %}
+		<a class="prev" href="{{ paginate.previous.url }}"><span class="icon-arrow-left"></span>Previous Page</a>
+		{% endif %}
+		{% if paginate.next %}
+		<a class="next" href="{{ paginate.next.url }}">Next Page<span class="icon-arrow-right"></span></a>
+		{% endif %}
+	</div>
+</section>
+<script type="text/javascript">
+$(function(){
+	$('article.post p > a > img').each(function() {
+		$(this).parent().unwrap().wrap("<figure></figure>");
+	});
+	$('article.post p > img').each(function() {
+		$(this).unwrap().wrap("<figure></figure>");
+	});
+	$('article.post img').each(function() {
+		var imgSrc = $(this).attr('src');
+		var newSrc = imgSrc.replace(/1024x1024/g, "2048x2048");
+		$(this).wrap('<div></div>').parent().zoom({ url: newSrc });
+	});
+});
+</script>
+{% endpaginate %}

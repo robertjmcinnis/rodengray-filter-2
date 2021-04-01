@@ -1,0 +1,35 @@
+{% assign sharing_enabled = true %}
+{% if share_url != '' %}
+{% assign share_url = '' %}
+{% assign share_text = '' %}
+
+{% case template %}
+	{% when 'page' %}
+		{% capture share_url %}{{ shop.url }}{{ page.url }}{% endcapture %}
+		{% capture share_text %}{{ page.title }} | Roden Gray{% endcapture %}
+	{% when 'blog' %}
+		{% capture share_url %}{{ shop.url }}{{ article.url }}{% endcapture %}
+		{% capture share_text %}{{ article.title }} | Roden Gray{% endcapture %}
+	{% when 'article' %}
+		{% capture share_url %}{{ shop.url }}{{ article.url }}{% endcapture %}
+		{% capture share_text %}{{ article.title }} | Roden Gray{% endcapture %}
+	{% when 'collection' %}
+		{% capture share_url %}{{ shop.url }}{{ collection.url }}{% endcapture %}
+		{% capture share_text %}{{ collection.title }} | Roden Gray{% endcapture %}
+	{% when 'product' %}
+		{% capture share_url %}{{ shop.url }}{{ product.url }}{% endcapture %}
+		{% capture share_text %}{{ product.vendor }} {{ product.title }} | Roden Gray{% endcapture %}
+{% endcase %}
+
+{% endif %}
+
+<div class="share-buttons clearfix">
+	<a href="https://www.facebook.com/sharer/sharer.php?s=100&p[url]={{ share_url }}{% if template == 'product' %}{% for image in product.images %}&p[images][{{ forloop.index0 }}]=http:{% assign picture = image.src | product_img_url: 'grande' | split: '?' %}{{ picture.first }}{% endfor %}{% endif %}&p[title]={{ share_text | url_escape }}&p[summary]={{ product.description | strip_html | truncate: 500 | url_escape }}" title="Share on Facebook" target="_blank" class="facebook-share" {% assign button = 'Facebook' %}{% include 'share-event' %}><span class="icon-facebook"></span></a>
+	<a href="http://twitter.com/intent/tweet?url={{ share_url | url_escape }}&text={{ share_text | url_escape }}&count=none&via=rodengray" title="Share on Twitter" target="_blank" class="twitter-share" {% assign button = 'Twitter' %}{% include 'share-event' %}><span class="icon-twitter"></span></a>
+	<a href="https://plus.google.com/share?url={{ share_url | url_param_escape }}" title="Share on Google+" target="_blank" class="google-share" {% assign button = 'Google Plus' %}{% include 'share-event' %}><span class="icon-googleplus"></span></a>
+	{% if template == 'product' %}{% assign picture = product.images.first.src | product_img_url: 'grande' | split: '?' %}
+	<a href="https://pinterest.com/pin/create/button/?url={{ share_url }}&media=http%3A{{ picture.first }}&description={{ share_text | url_escape }}" title="Share on Pinterest" target="_blank" class="pinterest-share" {% assign button = 'Pinterest' %}{% include 'share-event' %}><span class="icon-pinterest"></span></a>
+	<a href="https://www.tumblr.com/share/photo?source=https%3A{{ picture.first | url_param_escape | replace: '/', '%2F' }}&caption={{ share_text | url_param_escape }}&clickthru={{ share_url | url_param_escape | replace: '/', '%2F' }}" title="Share on Tumblr" target="_blank" class="tumblr-share" {% assign button = 'Tumblr' %}{% include 'share-event' %}><span class="icon-tumblr"></span></a>
+	{% endif %}
+	<a href="http://service.weibo.com/share/share.php?url={{ share_url | url_param_escape | replace: '/', '%2F' }}&title={{ share_text | url_param_escape }}" title="分享到新浪微博" target="_blank" class="weibo-share" {% assign button = 'Weibo' %}{% include 'share-event' %}><span class="icon-sina-weibo"></span></a>
+</div>

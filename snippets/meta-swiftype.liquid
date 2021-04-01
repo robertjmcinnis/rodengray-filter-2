@@ -1,0 +1,86 @@
+{% comment %}
+
+	Swiftype Search Meta Tags
+
+{% endcomment %}
+	{% if product %}
+		{% assign  = st_popularity = 4 %}
+		{% assign st_description = product.description | split: '<div id="item-designer">' %}
+		{% assign st_description = st_description.first | replace: '</p>', ' ' | replace: '</li>', ' ' | strip_html | strip_newlines | escape %}
+		{% assign st_type = 'product' %}
+		{% assign st_image = product.featured_image | product_img_url : 'medium' %}
+		{% capture st_section_list %}{% for tag in product.tags %}<meta class="swiftype" name="tags" data-type="string" content="{{ tag | replace: '-', ' ' | escape }}" />
+		{% assign st_published_at = product.published_at | date: "%Y-%m-%d" %}
+	{% endfor %}{% endcapture %}
+		{% capture st_info %}{% if product.available %}{% if product.options.size > 1 %}Sizes: {% for variant in product.variants %}{% if variant.available %}{{ variant.option2 }}{% unless forloop.last %},{% endunless %} {% endif %}{% endfor %}
+		{% else %}In-Stock{% endif %}{% else %}Sold Out{% endif %}{% endcapture %}
+		{% assign st_price = product.price | money_without_currency %}
+
+	{% elsif collection %}
+		{% assign st_popularity = 1 %}
+		{% for linklist in linklists %}
+			{% for link in linklist.links %}
+				{% if link.url contains collection.handle %}
+					{% assign st_popularity = 5 %}
+				{% endif %}
+			{% endfor %}
+		{% endfor %}
+		{% if current_tags %}
+			{% assign st_popularity = 1 %}
+		{% endif %}
+		{% assign st_type = 'collection' %}
+		{% if collection.description | size > 0 %}
+			{% assign st_description = collection.description | split: '</p>' %}
+			{% assign st_description = st_description.first | strip_html | escape %}
+		{% else %}
+			{% assign st_description = meta_description %}
+		{% endif %}
+		{% capture st_info %}{{ collection.products_count }} Items Available{% endcapture %}
+		{% if collection.image %}
+			{% assign st_image = collection.image | img_url %}
+		{% endif %}
+		{% if current_tags %}
+			{% capture st_section_list %}<meta class="swiftype" name="tags" data-type="string" content="{{ collection.title | escape }}" />
+	{% for tag in current_tags %}<meta class="swiftype" name="tags" data-type="string" content="{{ tag | replace: '-', ' ' | escape }}" />
+		{% endfor %}{% endcapture %}
+			{% else %}
+			{% capture st_section_list %}{% for tag in collection.tags %}<meta class="swiftype" name="tags" data-type="string" content="{{ tag | replace: '-', ' ' | escape }}" />
+	{% endfor %}{% endcapture %}
+		{% endif %}
+	
+	{% elsif blog %}
+		{% assign st_type = 'blog' %}
+		{% if template == 'article' %}
+			{% assign st_popularity = 2 %}
+			{% assign st_type = 'article' %}
+			{% assign st_description = article.excerpt_or_content | replace: '<p>', ' ' | replace: '</p>', '.' | strip_html | strip_newlines | strip |  truncatewords: 100 %}
+			{% if article.content contains 'img' %}
+				{% assign st_image = article.content | split: '<img' %}
+				{% assign st_image = st_image[1] | split: 'src="' %}
+				{% assign st_image = st_image[1] | split: '"' %}
+				{% assign st_image = st_image.first %}
+			{% endif %}
+			{% assign st_published_at = article.created_at | date: "%Y-%m-%d" %}
+		{% endif %}
+	{% elsif page %}
+		{% assign st_type = 'page' %}
+	{% endif %}
+	
+	{% assign st_image = st_image | remove: '_pico' | remove: '_icon' | remove: '_thumb' | remove: '_small' | remove: '_medium' | remove: '_large' | remove: '_compact' | remove: '_grande' | remove: '_1024x1024' | remove: '_2048x2048' | remove: '_master' | replace: '.jpg', '_medium.jpg' | replace: '.jpeg', '_medium.jpeg' | remove: 'http:' | remove: 'https:' %}
+	
+	{% if st_description == '' %}
+		{% assign st_description = meta_description %}
+	{% endif %}
+
+	<!-- Swiftype -->
+
+	<meta class="swiftype" name="title" data-type="string" content="{{ meta_title | remove: ' | Roden Gray' | strip_newlines | escape }}" />
+	<meta class="swiftype" name="type" data-type="enum" content="{{ st_type }}" />
+	{% if st_image contains '//' %}<meta class="swiftype" name="image" data-type="enum" content="{{ st_image | prepend: 'http:' }}" />{% endif %}
+	{% if st_info %}<meta class="swiftype" name="info" data-type="string" content="{{ st_info | strip_newlines | rstrip | escape }}" />{% endif %}
+	{% if st_description %}<meta class="swiftype" name="body" data-type="text" content="{{ st_description | escape }}" />{% endif %}
+	{{ st_section_list }}
+	{% if st_price %}<meta class="swiftype" name="price" data-type="float" content="{{ st_price }}"/>{% endif %}
+	{% if st_popularity %}<meta class="swiftype" name="popularity" data-type="integer" content="{{ st_popularity }}" />{% endif %}
+	{% if st_published_at %}<meta class="swiftype" name="published_at" data-type="date" content='{{ st_published_at }}' />{% endif %}
+	<!-- End Swiftype -->

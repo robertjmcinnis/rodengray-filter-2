@@ -1,0 +1,161 @@
+{% for block in section.blocks %}
+ 
+{% if block.settings.multiproduct_block != blank %}
+
+{% assign prodgrid = block.settings.multiproduct_block | newline_to_br | strip_newlines  | split: '<br />' %}
+
+<div class="custom-grid pod wow fadeIn"   style="background:{{block.settings.multiproduct_blockbg}};margin-left: -7%;width: 114% !important;padding: 7% !important;"> 
+  
+  
+    {% if block.settings.  product_blockimage != blank %}
+  <img class="product-thumb wow fadeIn" style="width:100% !important;margin-top: -4% !important;margin-bottom: 7% !important;" src="{{ block.settings.product_blockimage | img_url: 'master' }}" width="100%" />
+  <br clear="all">
+  {% endif %}
+  
+  
+{% if block.settings.gridtitle_block != blank %}
+<h2 class="wow fadeIn" style="margin-bottom:4% !important;font-family:union;text-transform:uppercase;font-size:28px;text-align:center;color:{{block.settings.multiproduct_blocktitle}} !important;">{{block.settings.gridtitle_block}}</h2>
+{% endif %}
+
+  {% if block.settings.customtext_block != blank %}
+  <div class="ed-pod ed-centre">
+	<p class="ed-p wow fadeIn" style="visibility: visible; animation-name: fadeIn;color:{{block.settings.multiproduct_blocktitle}} !important;">{{block.settings.customtext_block}}</p>
+         
+  </div>
+  {% endif %}
+  
+  {% for prodgriditem in prodgrid %}
+    <figure class="product one-third column {% cycle 'alpha', '', 'omega' %}">
+        <a href="{{ all_products[prodgriditem].url}}">
+            {% if all_products[prodgriditem].tags contains 'preorder' %}<div class="preorder-container"><div class="preorder-overlay"><span>Preorder</span></div></div>{% endif %}
+            {% unless all_products[prodgriditem].featured_image %}
+                <img class="product-thumb" src="//placehold.it/384x480&text=No%20Image%20Available"/>
+            {% endunless %}
+            {% for image in all_products[prodgriditem].images limit:2 %}
+
+              {% assign date_published = all_products[prodgriditem].published_at | date:'%Y%m%d' %}
+              {% assign date_now = '20171003'%}
+              {% assign date_difference = date_now | minus: date_published %}
+                {% if date_difference < 0 %}{%assign date_difference = 76 %}{% endif %}
+
+                <img class="{% if date_difference <= 75 %}dont-gray-me {% endif %}product-thumb {% if forloop.first %}primary{% endif %}{% if forloop.index == 2 %}secondary{% endif %}" {% if forloop.first %}src{% else %}data-hoverimg{% endif %}="{{ image.src | product_img_url: '1200x' }}" alt="{{ product.featured_image.alt | escape }}" />
+            {% endfor %}
+            <figcaption class="product-info" style="color:{{block.settings.multiproduct_blocktitle}} !important;">
+                <div class="product-title" style="color:{{block.settings.multiproduct_blocktitle}} !important;">
+                    {{ all_products[prodgriditem].vendor }} {{ all_products[prodgriditem].title }}
+                </div>
+                <div class="product-price" {% if all_products[prodgriditem].tags contains 'No Checkout' %}style="display:none;"{% endif %} style="color:{{block.settings.multiproduct_blocktitle}} !important;">
+                    {% if all_products[prodgriditem].available == false %}
+                    <span class="sold-out" style="color:{{block.settings.multiproduct_blocktitle}} !important;">Sold Out</span>
+                    {% else %}
+                        {% if all_products[prodgriditem].compare_at_price_min > all_products[prodgriditem].price %}
+                        <span class="sale-price" style="color:{{block.settings.multiproduct_blocktitle}} !important;">{{ all_products[prodgriditem].price | money }}</span>
+                        <span class="regular-price" style="color:{{block.settings.multiproduct_blocktitle}} !important;">{{ all_products[prodgriditem].compare_at_price_max | money }}</span>
+                        {% else %}
+                        {{ all_products[prodgriditem].price | money }}
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </figcaption>
+        </a>
+    </figure>
+  {% endfor %}
+
+  
+  
+
+      {% if block.settings.multiproduct_blocklink != blank %}
+          <br clear="all">
+            <br clear="all">
+  <div style="text-align:center">
+      <a style="text-decoration:none;font-weight:bold;font-size:14px;text-transform:uppercase;padding:10px;border:2px solid {{block.settings.multiproduct_blocktitle}};color:{{block.settings.multiproduct_blocktitle}} !important;" href="{{block.settings.multiproduct_blocklinkurl}}{{block.settings.whatkind}}">{{block.settings.multiproduct_blocklink}}</a>
+  </div>
+      {% endif %}
+
+  
+
+  	<br clear="all">
+  	</div>
+  
+{% else %}
+
+<!-- Nothing to see -->
+
+{% endif %}
+
+{% endfor %}
+
+{% schema %}
+{
+  "name": "New Arrivals Pods",
+	"max_blocks": 60,
+
+
+  "blocks": [
+    {
+      "type": "select",
+      "name": "Pod",
+      "settings": [
+       
+{
+"id": "gridtitle_block",
+"type": "text",
+"label": "Product Grid Title"
+},
+{                        
+"type": "color",
+"id": "multiproduct_blockbg",
+"label": "Grid Background Color" 
+},
+{                        
+"type": "color",
+"id": "multiproduct_blocktitle",
+"label": "Title Color" 
+},
+{                        
+"type": "image_picker",
+"id": "product_blockimage",
+"label": "Featured Product Banner" 
+},
+{
+"id": "customtext_block",
+"type": "textarea",
+"label": "Custom Text for Featured or Grid"
+},
+{
+"id": "multiproduct_block",
+"type": "textarea",
+"label": "Product Grid by ID"
+}
+,
+{
+"id": "multiproduct_blocklink",
+"type": "text",
+"label": "Button Label"
+}
+,
+{
+"id": "multiproduct_blocklinkurl",
+"type": "text",
+"label": "Button URL"
+},
+{
+   "id":        "whatkind",
+   "type":      "select",
+   "label":     "Link Sorting",
+   "options": [
+     {
+       "value": "?sort_by=created-descending",
+       "label": "Show Newest Items First"
+     },
+     {
+       "value": "?sort_by=price-ascending",
+       "label": "Show Sale Items First"
+     }
+   ]
+}
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,19 @@
+    <header class="sixteen columns collection-head ed">
+				<figure class="collection-desc rte row">
+                  <div class="hero" style="background-image:url({{ article.image.src | img_url: "original" }});background-size:cover !important;background-position:center center;"></div>
+					<figcaption style="background: {{article.metafields.editorial.box-color}} !important;">
+
+                        	<div class="pod-title ed-title balance-text" style="margin-top:0px;">{{ article.title }}</div>
+							<div class="pod-type ed-title">LOOKBOOK</div>
+	
+					</figcaption>
+				</figure>
+	</header>
+
+<section class="rg-content editorial row">
+      
+  	<!--<div class="pod-title ed-title balance-text">{{ article.title }}</div>
+	<div class="pod-type ed-title">EDITORIAL</div>
+	<br>-->
+ 	{{ article.content }}
+</section>

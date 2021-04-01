@@ -1,0 +1,7 @@
+{% assign linklist = linklists.[json-linklist-object] %}
+"linklist": {
+    "title": {{ linklist.handle | json }},
+    "links": [{% for link in linklist.links %}
+        { "title": {{ link.title | json }}, "url": "{{ shop.url }}{{ link.url }}" }{% unless forloop.last %},{% endunless %}
+    {% endfor %}]
+}

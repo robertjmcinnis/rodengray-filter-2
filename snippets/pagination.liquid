@@ -1,0 +1,27 @@
+<div class="pagination">
+	<div class="wrapper">
+		<div class="row">
+			<div class="col pagination__content">
+				{% if paginate.previous.is_link %}
+					<a class="pagination__link" href="{{ paginate.previous.url }}"><i class="fal fa-angle-left mr-xs"></i>Prev</a>
+				{% else %}
+					<p class="pagination__link pagination__link--disabled"><i class="fal fa-angle-left mr-xs"></i>Prev</p>
+				{% endif %}
+
+				{% for part in paginate.parts %}
+					{% if part.is_link %}
+						<a class="pagination__link" href="{{ part.url }}">{{ part.title }}</a>
+					{% else %}
+						<p class="pagination__current">{{ part.title }}</p>
+					{% endif %}
+				{% endfor %}
+
+				{% if paginate.next.is_link %}
+					<a class="pagination__link" href="{{ paginate.next.url }}">Next<i class="fal fa-angle-right ml-xs"></i></a>
+				{% else %}
+					<p class="pagination__link pagination__link--disabled">Next<i class="fal fa-angle-right ml-xs"></i></p>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</div>

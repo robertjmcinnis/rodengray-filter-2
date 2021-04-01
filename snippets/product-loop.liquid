@@ -1,0 +1,34 @@
+<figure class="product one-third column {% cycle 'alpha', '', 'omega' %}">
+	<a href="{{ product.url | within: collection }}">
+		{% if product.tags contains 'preorder' %}<div class="preorder-container"><div class="preorder-overlay"><span>Preorder</span></div></div>{% endif %}
+		{% unless product.featured_image %}
+			<img class="product-thumb" src="//placehold.it/384x480&text=No%20Image%20Available"/>
+		{% endunless %}
+		{% for image in product.images limit:2 %}
+
+          {% assign date_published = product.published_at | date:'%Y%m%d' %}
+          {% assign date_now = '20171003'%}
+          {% assign date_difference = date_now | minus: date_published %}
+      		{% if date_difference < 0 %}{%assign date_difference = 76 %}{% endif %}
+      
+			<img class="{% if date_difference <= 75 %}dont-gray-me {% endif %}product-thumb {% if forloop.first %}primary{% endif %}{% if forloop.index == 2 %}secondary{% endif %}" {% if forloop.first %}src{% else %}data-hoverimg{% endif %}="{{ image.src | product_img_url: '1200x' }}" alt="{{ product.featured_image.alt | escape }}" />
+		{% endfor %}
+		<figcaption class="product-info">
+			<div class="product-title">
+				{{ product.vendor }} {{ product.title }}
+			</div>
+			<div class="product-price" {% if product.tags contains 'No Checkout' %}style="display:none;"{% endif %}>
+				{% if product.available == false %}
+				<span class="sold-out">Sold Out</span>
+				{% else %}
+					{% if product.compare_at_price_min > product.price %}
+					<span class="sale-price">{{ product.price | money }}</span>
+					<span class="regular-price">{{ product.compare_at_price_max | money }}</span>
+					{% else %}
+					{{ product.price | money }}
+					{% endif %}
+				{% endif %}
+			</div>
+		</figcaption>
+	</a>
+</figure>
